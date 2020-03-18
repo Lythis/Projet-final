@@ -107,20 +107,20 @@
                     </div>
                 </div>
             </div>
-            <div class="bloc6 .container-fluid">
-                <div class="texte33">
-                    <h3>Praesent vitae velit trisique old alos</h3>
-                    <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
-                </div>
-                <div class="carde3" style="">
-                    <div class="card-body">
-                        <img src="image/persona2.jpg">
-                        <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
+            <div id="Lien1" class="collapse show">
+                <div class="bloc6 .container-fluid">
+                    <div class="texte33">
+                        <h3>Praesent vitae velit trisique old alos</h3>
+                        <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
                     </div>
+                    <div class="carde3" style="">
+                        <div class="card-body">
+                            <img src="image/persona2.jpg">
+                            <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
+                        </div>
+                    </div>
+                    <img src="image/step-2.jpg">
                 </div>
-                <img src="image/step-2.jpg">
-
-
             </div>
         </div>
         <div id="Lien2" class="collapse">
