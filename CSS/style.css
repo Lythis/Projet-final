@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 body{
 	margin: 0 auto;
 }
-=======
 /* Question */
 
 html {
@@ -25,16 +24,12 @@ body{
 	margin: 0 auto;
 }
 
->>>>>>> 994aa15a2e57ca499383b13f09052097e4effcc0
 .useless{
 	text-align: center;
 	color: white;
 	background-color: #1a2d34;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 994aa15a2e57ca499383b13f09052097e4effcc0
 .play{
 	padding-top: 18%;
 	padding-bottom: 18%;
@@ -42,10 +37,7 @@ body{
 	display: inline-block;
 	font-size: 3em;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 994aa15a2e57ca499383b13f09052097e4effcc0
 .rose1{
 	text-align: center;
 	background-color: #e70188;
@@ -54,18 +46,12 @@ body{
 	padding-top: 4%;
 	height: 250px;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 994aa15a2e57ca499383b13f09052097e4effcc0
 .rose2{
 	background-color: #e70188;
 	height: 200px;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 994aa15a2e57ca499383b13f09052097e4effcc0
 .titre_rose{
 	font-size: 3em;
 }
@@ -73,19 +59,13 @@ body{
 .marque1{
 	background-color: white;
 	display: flex;
-<<<<<<< HEAD
 	border-radius: 5%;
 	margin-right: 10px;
 }
 #kyan{
 	
 }
-.marque2{
-	background-color: white;
-	display: flex;
-	border-radius: 10%;
-	margin-right: 10px;
-}
+
 #tvit{
 	margin-left: 40%;
 }
@@ -94,48 +74,27 @@ body{
 	margin-left: 36%;
 	margin-right: 36%;
 }
-=======
+.marque-text{
 	width: 8%;
 	border-radius: 10%;
 	margin-right: 10px;
 }
 
-#kyan{
-	margin-left: 36%;
-}
 
 .marque2{
 	background-color: white;
 	display: flex;
-	width: 6%;
 	border-radius: 10%;
 	margin-right: 10px;
 }
 
-#tvit{
-	margin-left: 40%;
-}
-
-.container_haut{
-	display: flex
-}
-
->>>>>>> 994aa15a2e57ca499383b13f09052097e4effcc0
 .container_bas{
 	display: flex;
 	margin-top: 15px;
 }
-<<<<<<< HEAD
-.marque_image{
-	width: 50px;
-	height: 50px;
-	padding-left: 5%;
-	padding-top: 7%;
-	padding-right: 10%;
-	padding-bottom: 5%;
-}
+
 .marque-text{
-	padding-top: 10%;
+	padding-top: 2%;
 	padding-right: 10%;
 	font-size: 1em;
 }
@@ -154,13 +113,12 @@ body{
 	margin-top: -2%;
 
 }
-=======
 
 .marque_image{
-	width: 30px;
-	height: 30px;
+	width: 50px;
+	height: 40px;
 	padding-left: 5%;
-	padding-top: 7%;
+	padding-top: 5%;
 	padding-right: 10%;
 }
 
@@ -180,13 +138,13 @@ body{
 	margin-top: -2%;
 }
 
->>>>>>> 994aa15a2e57ca499383b13f09052097e4effcc0
+
 .footer_container{
 	width: 60%;
 	margin-left: 20%;
 	color: grey;
 	padding-top: 10%;
-<<<<<<< HEAD
+
 
 }
 .copyright{
@@ -206,7 +164,6 @@ body{
 	color: white;
 }
 
->>>>>>> 994aa15a2e57ca499383b13f09052097e4effcc0
 .icon{
 	color: white;
 	display: flex;
@@ -218,7 +175,6 @@ body{
 }
 
 #bar{
-<<<<<<< HEAD
 
     border-color: grey;
     height: 1px;
@@ -310,7 +266,7 @@ button[aria-expanded="false"] .fa-caret-right
 	display: flex;
 	margin-left: 10%;
 	margin-right: 10%;
-=======
+
     border-color: grey;
     height: 1px;
 }
@@ -340,5 +296,5 @@ button[aria-expanded="false"] .fa-caret-right
 	.responsive-bootstrap-card {
 		width: 100%;
 	}
->>>>>>> 994aa15a2e57ca499383b13f09052097e4effcc0
+
 }
