@@ -20,9 +20,6 @@ html {
 
 /* Accueil */
 
-body{
-	margin: 0 auto;
-}
 
 .useless{
 	text-align: center;
@@ -160,9 +157,6 @@ body{
 	width: 80%;
 }
 
-#white{
-	color: white;
-}
 
 .icon{
 	color: white;
