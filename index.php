@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>acceuil</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style_haut.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
@@ -14,21 +14,21 @@
         ?>
         <div class="hAcceuil">
             <div class="bloc1 .container-fluid">
-                <div class="texte1">
+                <div class="texte1 text-white">
                     <h1>
                         Lorem ipsum dolor sit amet.
                     </h1>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur quia, nihil impedit! Dolores magni ipsum facere adipisci ullam rem distinctio, pariatur iste, qui officiis. Adipisci voluptas ipsum illo corporis, voluptatibus!
                     </p>
-                    <button type="button" class="bouton">Bouton CTA</button>
+                    <button type="button" class="boutton text-white">Bouton CTA</button>
                 </div>
                 <img class="image1" src="image/step-1.png">
             </div>
         </div>
         <div class="bloc2">
 
-            <div class="row">
+            <div class="rowe">
                 <div class="col-sm">
                     <img src="image/i1.png">
                     <h4>Suits your Style</h4>
@@ -55,20 +55,20 @@
                 <p>eget sit amet tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros in cursus turpis massa</p>
             </div>
 
-            <div class="boutton">
-                <div>
-                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#Lien1">Lien1</button>
-                    <button type="button" class="btn btn-primary collapsed" data-toggle="collapse" data-target="#Lien2">Lien2</button>
-                    <button type="button" class="btn btn-primary collapsed" data-toggle="collapse" data-target="#Lien3">Lien3</button>
+            <div>
+                <div class="truc">
+                    <button type="button" class="btn couleur2" data-toggle="collapse" data-target="#Lien1">Lien1</button>
+                    <button type="button" class="btn couleur2 collapsed" data-toggle="collapse" data-target="#Lien2">Lien2</button>
+                    <button type="button" class="btn couleur2 collapsed" data-toggle="collapse" data-target="#Lien3">Lien3</button>
                 </div>
                 <div id="Lien1" class="collapse show">
                     <div class="bloc4 .container-fluid">
-                        <img src="image/step-2.jpg">
-                        <div class="texte3">
+                        <img class="image1" src="image/step-2.jpg">
+                        <div class="texte31">
                             <h3>Praesent vitae velit trisique old alos</h3>
                             <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
                         </div>
-                        <div class="carde" style="">
+                        <div class="carde1" style="">
                             <div class="card-body">
                                 <img src="image/persona2.jpg">
                                 <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
@@ -78,12 +78,12 @@
                 </div>
                 <div id="Lien2" class="collapse">
                     <div class="bloc4 .container-fluid">
-                        <img src="image/step-2.jpg">
-                        <div class="texte3">
+                        <img class="image2" src="image/step-2.jpg">
+                        <div class="texte32">
                             <h3>Praesent vitae velit trisique old alos</h3>
                             <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
                         </div>
-                        <div class="carde" style="">
+                        <div class="carde2" style="">
                             <div class="card-body">
                                 <img src="image/persona2.jpg">
                                 <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
@@ -93,12 +93,12 @@
                 </div>
                 <div id="Lien3" class="collapse">
                     <div class="bloc4 .container-fluid">
-                        <img src="image/step-2.jpg">
-                        <div class="texte3">
+                        <img class="image1" src="image/step-2.jpg">
+                        <div class="texte31">
                             <h3>Praesent vitae velit trisique old alos</h3>
                             <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
                         </div>
-                        <div class="carde" style="">
+                        <div class="carde1" style="">
                             <div class="card-body">
                                 <img src="image/persona2.jpg">
                                 <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
@@ -107,8 +107,54 @@
                     </div>
                 </div>
             </div>
+            <div class="bloc6 .container-fluid">
+                <div class="texte33">
+                    <h3>Praesent vitae velit trisique old alos</h3>
+                    <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
+                </div>
+                <div class="carde3" style="">
+                    <div class="card-body">
+                        <img src="image/persona2.jpg">
+                        <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
+                    </div>
+                </div>
+                <img src="image/step-2.jpg">
+
+
+            </div>
+        </div>
+        <div id="Lien2" class="collapse">
+            <div class="bloc6 .container-fluid">
+                <div class="texte33">
+                    <h3>Praesent vitae velit trisique old alos</h3>
+                    <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
+                </div>
+                <div class="carde3" style="">
+                    <div class="card-body">
+                        <img src="image/persona2.jpg">
+                        <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
+                    </div>
+                </div>
+            </div>
+            <img src="image/step-2.jpg">
 
         </div>
+        <div id="Lien3" class="collapse">
+            <div class="bloc6 .container-fluid">
+                <div class="texte33">
+                    <h3>Praesent vitae velit trisique old alos</h3>
+                    <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
+                </div>
+                <div class="carde3" style="">
+                    <div class="card-body">
+                        <img src="image/persona2.jpg">
+                        <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
+                    </div>
+                </div>
+            </div>
+            <img src="image/step-2.jpg">
+        </div>
+
         <div class="bloc5 .container-fluid">
             <div class="texte4">
                 <p> <img class="logo" src="image/iplay.png">
@@ -118,5 +164,7 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
     </body>
 </html>

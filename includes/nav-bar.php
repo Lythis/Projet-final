@@ -1,4 +1,4 @@
- <nav class="navbar navbar-expand-lg navbar-light couleur">
+ <nav class="navbar navbar-expand-lg couleur">
             <a class="titre text-white" href="#">Saint Vincent BTS 1</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,7 +46,7 @@
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li>
-                        <button type="button" class="connecter">Se connecter</button>
+                        <button type="button" class="boutton text-white">Se connecter</button>
                     </ul>
                 </span>
             </div>

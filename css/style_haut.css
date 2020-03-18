@@ -1,0 +1,222 @@
+@media screen and (min-width: 650px) {
+    .hAcceuil{
+        border-bottom-left-radius: 17% !important;
+        border-bottom-right-radius: 17% !important;
+        height: 80ex !important;
+    }
+    .texte1{
+        width: 83% !important;
+    }
+    .bloc1{
+        text-align: center !important;
+    }
+    .image1{
+        width: 77% !important;
+        padding-left: 8% !important;
+        padding-top: 8% !important;
+    }
+    .rowe{
+        width: 60% !important;
+        margin-left: 21% !important;
+        display: block !important;
+    }
+    .description{
+        margin-left: 12% !important;
+        width: 63% !important;
+        text-align: center !important;
+    }
+    .description p{
+        width: 94%;
+        margin-left: 14%;
+    }
+    .description h3{
+        margin-left: 37% !important;
+    }
+    .bloc4{
+        display: none !important;
+    }
+    .bloc6{
+        display: block;
+        text-align: center;
+    }
+    .texte4{
+        padding-top: 25% !important;
+    }
+    .texte4 p{
+        font-size: 116% !important;
+    }
+    .logo{
+        width: 7% !important;
+    }
+
+}
+
+.couleur{
+    background-color: #192D34;
+}
+.navbar-text{
+    margin-left: 60%;
+}
+.titre{
+    margin-left: 5%;
+}
+.boutton{
+    border-bottom-left-radius: 45%;
+    border-bottom-right-radius: 45%;
+    border-top-left-radius: 45%;
+    border-top-right-radius: 45%;
+    background-color: #ED008C;
+    border: none;
+}
+.hAcceuil{
+    background-color: #192D34;
+    border-bottom-left-radius: 45%;
+    border-bottom-right-radius: 45%;
+    height: 75ex;
+}
+.bloc1{
+    margin-left: 17%;
+    padding-top: 6%;
+}
+.texte1{
+    width: 25%;
+    float: left;
+}
+.bloc2{
+    margin-top: 8%;
+}
+.rowe{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    margin-left: 13%;
+    width: 75%;   
+}
+.bloc3{
+    background-color: #F8F9FD;
+    margin-top: 10%;
+}
+.description{
+    margin-left: 37%;
+    width: 30%;
+    text-align: center;
+}
+.couleur2{
+    background-color: #ED008C;
+}
+.bloc4{
+    display: inline-block;
+    margin-left: 25%;
+}
+.image1{
+    float: left;
+    width: 37%;   
+}
+.texte31{
+    width: 29%;
+    padding-left: 5%;
+    float: left;
+}
+.texte31 p{
+    width : 146%;
+}
+.carde1{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    width: 35%;
+    margin-left: 41%;
+}
+.carde1 img{
+    border-radius: 50%;
+    width: 12%;
+    float: left;
+    margin-right: 5%;
+}
+.truc{
+    text-align: center;
+    margin-bottom: 2%;
+}
+.image2{
+    float: right;
+    width: 37%;
+    margin-right: 22%; 
+}
+.texte32{
+    width: 29%;
+    padding-right: 7%;
+    margin-right: 9%;
+    float: right;
+}
+.texte32 p{
+    width : 146%;
+}
+.carde2{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    width: 35%;
+    margin-right: 41%;
+}
+.carde2 img{
+    border-radius: 50%;
+    width: 12%;
+    float: left;
+    margin-right: 5%;
+}
+.bloc5{
+    background-color: #192D34;
+    text-align: center;
+    height: 50ex;
+    color: white;
+    margin-top: 6%;
+}
+.texte4{
+    padding-top: 14%;
+}
+.texte4 img{
+    width: 3%;
+}
+.carde3{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    width: 72%;
+    margin-left: 13%;
+}
+.carde3 img{
+    border-radius: 50%;
+    width: 12%;
+    float: left;
+    margin-right: 5%;
+}
+.texte33{
+    width: 62%;
+    margin-left: 18%;
+}
+
+
