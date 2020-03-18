@@ -13,6 +13,11 @@ html {
 	margin-left: 25%;
 }
 
+.picture-user-small {
+	max-height: 24px;
+	max-width: 24px;
+}
+
 
 /* Accueil */
 
