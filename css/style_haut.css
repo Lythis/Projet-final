@@ -115,6 +115,8 @@
     border-top-right-radius: 45%;
     background-color: #ED008C;
     border: none;
+    width: 100%;
+    height: 5ex;
 }
 .hAcceuil{
     background-color: #192D34;
@@ -272,3 +274,8 @@
 .bloc6{
     display: none;
 }
+a{
+    text-decoration: none;
+    color: white !important;
+}
+

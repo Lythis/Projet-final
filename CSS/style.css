@@ -1,25 +1,25 @@
 
 body{
-	margin: 0 auto;
+    margin: 0 auto;
 }
 /* Question */
 
 html {
-  	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 .form-group {
-	text-align: center;
+    text-align: center;
 }
 
 .center {
-	width: 50%;
-	margin-left: 25%;
+    width: 50%;
+    margin-left: 25%;
 }
 
 .picture-user-small {
-	max-height: 24px;
-	max-width: 24px;
+    max-height: 24px;
+    max-width: 24px;
 }
 
 
@@ -27,547 +27,274 @@ html {
 
 
 .useless{
-	text-align: center;
-	color: white;
-	background-color: #1a2d34;
+    text-align: center;
+    color: white;
+    background-color: #1a2d34;
 }
 
 .play{
-	padding-top: 18%;
-	padding-bottom: 18%;
-	margin-top: 0;
-	display: inline-block;
-	font-size: 3em;
+    padding-top: 18%;
+    padding-bottom: 18%;
+    margin-top: 0;
+    display: inline-block;
+    font-size: 3em;
 }
 
 .rose1{
-	text-align: center;
-	background-color: #e70188;
-	color: white;
-	margin-top: 0%;
-	padding-top: 4%;
-	height: 250px;
+    text-align: center;
+    background-color: #e70188;
+    color: white;
+    margin-top: 0%;
+    padding-top: 4%;
+    height: 250px;
 }
 
 .rose2{
-	background-color: #e70188;
-	height: 200px;
+    background-color: #e70188;
+    height: 200px;
 }
 
 .titre_rose{
-	font-size: 3em;
+    font-size: 3em;
 }
 
 .marque1{
-	background-color: white;
-	display: flex;
-	border-radius: 5%;
-	margin-right: 10px;
+    background-color: white;
+    display: flex;
+    border-radius: 5%;
+    margin-right: 10px;
 }
 #kyan{
-	
+
 }
 
 #tvit{
-	margin-left: 40%;
+    margin-left: 40%;
 }
 .container_haut{
-	display: flex;
-	margin-left: 36%;
-	margin-right: 36%;
+    display: flex;
+    margin-left: 36%;
+    margin-right: 36%;
 }
 .marque-text{
-	width: 8%;
-	border-radius: 10%;
-	margin-right: 10px;
+    width: 8%;
+    border-radius: 10%;
+    margin-right: 10px;
 }
 
 
 .marque2{
-	background-color: white;
-	display: flex;
-	border-radius: 10%;
-	margin-right: 10px;
+    background-color: white;
+    display: flex;
+    border-radius: 10%;
+    margin-right: 10px;
 }
 
 .container_bas{
-	display: flex;
-	margin-top: 15px;
+    display: flex;
+    margin-top: 15px;
 }
 
 .marque-text{
-	padding-top: 2%;
-	padding-right: 10%;
-	font-size: 1em;
+    padding-top: 2%;
+    padding-right: 10%;
+    font-size: 1em;
 }
 .titre_faq{
-	font-size: 3em;
+    font-size: 3em;
 }
 .faq{
-	text-align: center;
+    text-align: center;
 }
 .faq-text{
-	margin-right: 34%;
-	margin-left: 34%;
+    margin-right: 34%;
+    margin-left: 34%;
 }
 .footer{
-	background-color: #1a2d34;
-	margin-top: -2%;
+    background-color: #1a2d34;
+    margin-top: -2%;
 
 }
 
 .marque_image{
-	width: 50px;
-	height: 40px;
-	padding-left: 5%;
-	padding-top: 5%;
-	padding-right: 10%;
+    width: 50px;
+    height: 40px;
+    padding-left: 5%;
+    padding-top: 5%;
+    padding-right: 10%;
 }
 
 .titre_faq{
-	font-size: 3em;
+    font-size: 3em;
 }
 
 .faq{
-	text-align: center;
+    text-align: center;
 }
 
 
 /* Footer */
 
 .footer{
-	background-color: #1a2d34;
-	margin-top: -2%;
+    background-color: #1a2d34;
+    margin-top: -2%;
 }
 
 
 .footer_container{
-	width: 60%;
-	margin-left: 20%;
-	color: grey;
-	padding-top: 10%;
+    width: 60%;
+    margin-left: 20%;
+    color: grey;
+    padding-top: 10%;
 
 
 }
 .copyright{
-	width: 80%;
+    width: 80%;
 }
 #white{
-	color: white;
+    color: white;
 }
 =======
 }
 
 .copyright{
-	width: 80%;
+    width: 80%;
 }
 
 
 .icon{
-	color: white;
-	display: flex;
-	justify-content: space-between;
-	margin-left:70% ;
-	padding-left: 10%;
-	padding-bottom: 10px;
-	margin-top: -2%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-left:70% ;
+    padding-left: 10%;
+    padding-bottom: 10px;
+    margin-top: -2%;
 }
 
 #bar{
 
     border-color: grey;
     height: 1px;
- 
+
 }
 
 .card{
-	margin-left: 34%;
-	margin-right: 34%;
-	margin-top: 1%;
+    margin-left: 34%;
+    margin-right: 34%;
+    margin-top: 1%;
 }
 .card-text{
-	font-size: 2vmin;
-	width: 80%;
+    font-size: 2vmin;
+    width: 80%;
 }
 .card-align{
-	display: flex;
+    display: flex;
 }
 .btn{
-	margin-left: 20%;
+    margin-left: 20%;
 }
 .card-head{
-	padding: .50rem .50rem;
+    padding: .50rem .50rem;
     margin-bottom: 0;
     border: 1px solid rgba(0,0,0,.125);
 }
 .btn-lien{
-	font-weight: 400;
+    font-weight: 400;
     text-decoration: none;
 }
 .get-in{
-	text-align: center;
-	margin-top: 5%;
+    text-align: center;
+    margin-top: 5%;
 }
 button[aria-expanded="true"] .fa-sort-down 
 {
-	display: none;
+    display: none;
 }
 button[aria-expanded="true"] .fa-caret-right
 {
-	display: block;
+    display: block;
 }
 button[aria-expanded="false"] .fa-sort-down
 {
-	display: none;
+    display: none;
 }
 
 button[aria-expanded="false"] .fa-caret-right
 {
-	display: block;
+    display: block;
 }
 
 @media screen and (max-width: 1100px){
-	.card{
-		margin-right: 10%;
-		margin-left: 10%;
-	}
-	.play{
-		padding-top: 40%;
-		padding-bottom: 40%;
-		font-size: 2em;
-	}
-	.faq-text{
-		margin-right: 10%;
-		margin-left: 10%;	
-		font-size: 3vmin;	
-			}
+    .card{
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+    .play{
+        padding-top: 40%;
+        padding-bottom: 40%;
+        font-size: 2em;
+    }
+    .faq-text{
+        margin-right: 10%;
+        margin-left: 10%;	
+        font-size: 3vmin;	
+    }
 
-	#tvit{
-		margin-left: 30%;
-	}
-	.container_haut{
-	display: flex;
-	margin-left: 22%;
-	margin-right: 22%;
-}
+    #tvit{
+        margin-left: 30%;
+    }
+    .container_haut{
+        display: flex;
+        margin-left: 22%;
+        margin-right: 22%;
+    }
 }
 @media screen and (max-width: 700px){
-	.card-text{
-		font-size: 4vmin;
-	}
-	.faq-text{
-		font-size: 4vmin;
-	}
-	.titre_rose{
-		font-size: 2em;
-	}
-	.container_haut{
-	display: flex;
-	margin-left: 10%;
-	margin-right: 10%;
+    .card-text{
+        font-size: 4vmin;
+    }
+    .faq-text{
+        font-size: 4vmin;
+    }
+    .titre_rose{
+        font-size: 2em;
+    }
+    .container_haut{
+        display: flex;
+        margin-left: 10%;
+        margin-right: 10%;
 
-    border-color: grey;
-    height: 1px;
-}
+        border-color: grey;
+        height: 1px;
+    }
 
-.responsive-bootstrap-card {
-	position: relative;
-	width: 50%;
-}
+    .responsive-bootstrap-card {
+        position: relative;
+        width: 50%;
+    }
 
-@media screen and (max-width: 992px){
-	.center {
-		width: 80%;
-		margin-left: 10%;
-	}
+    @media screen and (max-width: 992px){
+        .center {
+            width: 80%;
+            margin-left: 10%;
+        }
 
-	.responsive-bootstrap-card {
-		width: 80%;
-	}
-}
+        .responsive-bootstrap-card {
+            width: 80%;
+        }
+    }
 
-@media screen and (max-width: 576px){
-	.center {
-		width: 100%;
-		margin-left: 0%;
-	}
+    @media screen and (max-width: 576px){
+        .center {
+            width: 100%;
+            margin-left: 0%;
+        }
 
-	.responsive-bootstrap-card {
-		width: 100%;
-	}
+        .responsive-bootstrap-card {
+            width: 100%;
+        }
 
-}
-    @media screen and (max-width: 600px){
-    .hAcceuil{
-        border-bottom-left-radius: 17% !important;
-        border-bottom-right-radius: 17% !important;
-        height: 80ex !important;
     }
-}
-@media screen and (max-width: 990px){
-    .hAcceuil{
-        border-bottom-left-radius: 17% !important;
-        border-bottom-right-radius: 17% !important;
-        height: 90ex !important;
-    }
-}
-@media screen and (max-width: 990px) {
-    .texte1{
-        width: 83% !important;
-    }
-}
-@media screen and (max-width: 990px) {
-    .bloc1{
-        text-align: center !important;
-    }
-}
-@media screen and (max-width: 990px) {
-    .image1{
-        width: 77% !important;
-        padding-left: 8% !important;
-        padding-top: 8% !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .texte1{
-        width: 83% !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .bloc1{
-        text-align: center !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .image1{
-        width: 77% !important;
-        padding-left: 8% !important;
-        padding-top: 8% !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .rowe{
-        width: 60% !important;
-        margin-left: 21% !important;
-        display: block !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .description{
-        margin-left: 12% !important;
-        width: 63% !important;
-        text-align: center !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .description p{
-        width: 94% !important;
-        margin-left: 14% !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .description h3{
-        margin-left: 37% !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .bloc4{
-        display: none !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .bloc6{
-        display: block !important;
-        text-align: center !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .texte4{
-        padding-top: 25% !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .texte4 p{
-        font-size: 116% !important;
-    }
-}
-@media screen and (max-width: 600px) {
-    .logo{
-        width: 7% !important;
-    }
-}
-
-
-.couleur{
-    background-color: #192D34;
-}
-.navbar-text{
-    margin-left: 60%;
-}
-.titre{
-    margin-left: 5%;
-}
-.boutton{
-    border-bottom-left-radius: 45%;
-    border-bottom-right-radius: 45%;
-    border-top-left-radius: 45%;
-    border-top-right-radius: 45%;
-    background-color: #ED008C;
-    border: none;
-}
-.hAcceuil{
-    background-color: #192D34;
-    border-bottom-left-radius: 45%;
-    border-bottom-right-radius: 45%;
-    height: 75ex;
-}
-.bloc1{
-    margin-left: 26%;
-    padding-top: 6%;
-}
-.texte1{
-    width: 32%;
-    float: left;
-}
-.bloc2{
-    margin-top: 8%;
-}
-.rowe{
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    margin-left: 13%;
-    width: 75%;   
-}
-.bloc3{
-    background-color: #F8F9FD;
-    margin-top: 10%;
-}
-.description{
-    margin-left: 37%;
-    width: 30%;
-    text-align: center;
-}
-.couleur2{
-    background-color: #ED008C;
-}
-.bloc4{
-    display: inline-block;
-    margin-left: 25%;
-}
-.image1{
-    float: left;
-    width: 40%;   
-    padding-left: 3%;
-}
-.texte31{
-    width: 29%;
-    padding-left: 5%;
-    float: left;
-}
-.texte31 p{
-    width : 146%;
-}
-.carde1{
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-    width: 35%;
-    margin-left: 41%;
-}
-.carde1 img{
-    border-radius: 50%;
-    width: 12%;
-    float: left;
-    margin-right: 5%;
-}
-.truc{
-    text-align: center;
-    margin-bottom: 2%;
-}
-.image2{
-    float: right;
-    width: 37%;
-    margin-right: 22%; 
-}
-.texte32{
-    width: 29%;
-    padding-right: 7%;
-    margin-right: 9%;
-    float: right;
-}
-.texte32 p{
-    width : 146%;
-}
-.carde2{
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-    width: 35%;
-    margin-right: 41%;
-}
-.carde2 img{
-    border-radius: 50%;
-    width: 12%;
-    float: left;
-    margin-right: 5%;
-}
-.bloc5{
-    background-color: #192D34;
-    text-align: center;
-    height: 50ex;
-    color: white;
-    margin-top: 6%;
-}
-.texte4{
-    padding-top: 14%;
-}
-.texte4 img{
-    width: 3%;
-}
-.carde3{
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-    width: 72%;
-    margin-left: 13%;
-}
-.carde3 img{
-    border-radius: 50%;
-    width: 12%;
-    float: left;
-    margin-right: 5%;
-}
-.texte33{
-    width: 62%;
-    margin-left: 18%;
-}
-
-
-.bloc6{
-    display: none;
 }
