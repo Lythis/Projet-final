@@ -8,6 +8,9 @@
 		<title>Poser une question</title>
 	</head>
 	<body>
+		<?php
+			require_once('./includes/nav-bar.php');
+		?>
 		<div class="center">
 			<div class="form-group">
 			    <label for="votrequestion" class="lead">Votre question :</label>
@@ -18,6 +21,10 @@
 			    <button type="submit" class="btn btn-success">Envoyer</button>
 			</div>
 		</div>
+		<?php
+			require_once('./includes/footer.php');
+		?>
+
 
 	</body>
 	<script src="https://kit.fontawesome.com/6c2421ea48.js" crossorigin="anonymous"></script>
