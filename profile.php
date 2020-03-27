@@ -8,6 +8,9 @@
 		<title>Profil de Lythis</title>
 	</head>
 	<body>
+		<?php
+			require_once('includes/nav-bar.php'); 
+		?>
 		<div class="card responsive-bootstrap-card mx-5">
 			<div class="row_ligne card-header">
 				<div class="container_profil">
@@ -29,6 +32,10 @@
 			  	</div>
 			</div>
 		</div>
+	<?php 
+	require_once('./includes/footer.php');
+
+	?>
 	</body>
 	<script src="https://kit.fontawesome.com/6c2421ea48.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
