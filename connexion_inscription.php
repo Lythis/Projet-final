@@ -9,7 +9,11 @@
     <?php 
         require_once('includes/nav-bar.php');
     ?>
-        <div class="row">
+    <body class="inscription">
+        <?php
+        require_once('includes/nav-bar.php');
+        ?>
+        <div class="rowe2">
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">

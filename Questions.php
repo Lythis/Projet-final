@@ -19,9 +19,11 @@
 			    <button type="submit" class="btn btn-success">Envoyer</button>
 			</div>
 		</div>
-		<?php
-			require_once('./includes/footer.php');
-		?>
+		 <div class="bas-page">
+            <?php
+            require_once('includes/footer.php');
+            ?>
+        </div>
 
 
 	</body>
