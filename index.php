@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<body>
-    <html lang="fr">
-
     <?php
-    $title ='Live Question';
-    require_once('includes/header.php');
+        $title ='Live Question';
+        require_once('includes/header.php');
     ?>
     
     <body>
