@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <?php
+     <?php
         $title ='Connexion/inscription';
         require_once('includes/header.php');
     ?>

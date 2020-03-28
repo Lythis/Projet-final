@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
      <?php
         $title ='Questions/Reponses';
         require_once('includes/header.php');
