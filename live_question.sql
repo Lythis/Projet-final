@@ -29,9 +29,9 @@ USE `live_question`;
 --
 
 CREATE TABLE IF NOT EXISTS `categorie` (
-  `Id_categorie` int(11) NOT NULL AUTO_INCREMENT,
-  `Libelle_categorie` varchar(255) CHARACTER SET latin1 NOT NULL,
-  PRIMARY KEY (`Id_categorie`)
+    `Id_categorie` int(11) NOT NULL AUTO_INCREMENT,
+    `Libelle_categorie` varchar(255) CHARACTER SET latin1 NOT NULL,
+    PRIMARY KEY (`Id_categorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -41,14 +41,14 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 --
 
 CREATE TABLE IF NOT EXISTS `profil` (
-  `Id_profil` int(11) NOT NULL AUTO_INCREMENT,
-  `Pseudo_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `Mail_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `MotDePasse_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `Genre_profil` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `#Id_role` int(11) NOT NULL,
-  PRIMARY KEY (`Id_profil`),
-  KEY `#Id_role` (`#Id_role`)
+    `Id_profil` int(11) NOT NULL AUTO_INCREMENT,
+    `Pseudo_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
+    `Mail_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
+    `MotDePasse_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
+    `Genre_profil` varchar(50) CHARACTER SET latin1 NOT NULL,
+    `#Id_role` int(11) NOT NULL,
+    PRIMARY KEY (`Id_profil`),
+    KEY `#Id_role` (`#Id_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -58,14 +58,14 @@ CREATE TABLE IF NOT EXISTS `profil` (
 --
 
 CREATE TABLE IF NOT EXISTS `question` (
-  `Id_question` int(11) NOT NULL AUTO_INCREMENT,
-  `Titre_question` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `Date_creation_question` date NOT NULL,
-  `#Id_profil` int(11) NOT NULL,
-  `#Id_categorie` int(11) NOT NULL,
-  PRIMARY KEY (`Id_question`),
-  KEY `#Id_profil` (`#Id_profil`),
-  KEY `#Id_categorie` (`#Id_categorie`)
+    `Id_question` int(11) NOT NULL AUTO_INCREMENT,
+    `Titre_question` varchar(255) CHARACTER SET latin1 NOT NULL,
+    `Date_creation_question` date NOT NULL,
+    `#Id_profil` int(11) NOT NULL,
+    `#Id_categorie` int(11) NOT NULL,
+    PRIMARY KEY (`Id_question`),
+    KEY `#Id_profil` (`#Id_profil`),
+    KEY `#Id_categorie` (`#Id_categorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -75,14 +75,14 @@ CREATE TABLE IF NOT EXISTS `question` (
 --
 
 CREATE TABLE IF NOT EXISTS `reponse` (
-  `Id_reponse` int(11) NOT NULL AUTO_INCREMENT,
-  `Contenu_reponse` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `Date_reponse` date NOT NULL,
-  `#Id_profil` int(11) NOT NULL,
-  `#Id_question` int(11) NOT NULL,
-  PRIMARY KEY (`Id_reponse`),
-  KEY `#Id_profil` (`#Id_profil`),
-  KEY `#Id_question` (`#Id_question`)
+    `Id_reponse` int(11) NOT NULL AUTO_INCREMENT,
+    `Contenu_reponse` varchar(255) CHARACTER SET latin1 NOT NULL,
+    `Date_reponse` date NOT NULL,
+    `#Id_profil` int(11) NOT NULL,
+    `#Id_question` int(11) NOT NULL,
+    PRIMARY KEY (`Id_reponse`),
+    KEY `#Id_profil` (`#Id_profil`),
+    KEY `#Id_question` (`#Id_question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -92,9 +92,9 @@ CREATE TABLE IF NOT EXISTS `reponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `role` (
-  `Id_role` int(11) NOT NULL AUTO_INCREMENT,
-  `Libelle_role` varchar(50) CHARACTER SET latin1 NOT NULL,
-  PRIMARY KEY (`Id_role`)
+    `Id_role` int(11) NOT NULL AUTO_INCREMENT,
+    `Libelle_role` varchar(50) CHARACTER SET latin1 NOT NULL,
+    PRIMARY KEY (`Id_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
