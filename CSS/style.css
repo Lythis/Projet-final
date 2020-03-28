@@ -317,6 +317,8 @@ html {
 .footer{
     background-color: #1a2d34;
     margin-top: -2%;
+    bottom:0;
+    
 }
 
 
@@ -412,7 +414,6 @@ button[aria-expanded="false"] .fa-caret-right
 {
     display: block;
 }
-
 @media screen and (max-width: 1100px){
     .card{
         margin-right: 10%;
@@ -437,7 +438,7 @@ button[aria-expanded="false"] .fa-caret-right
     margin-left: 22%;
     margin-right: 22%;
 }
-}
+
 @media screen and (max-width: 700px){
     .card-text{
         font-size: 4vmin;
