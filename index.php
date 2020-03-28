@@ -306,6 +306,7 @@ require_once('./includes/nav-bar.php');
     </div>
     <p class="get-in">Still have unanswered questions?<a href="QuestionsReponses.php">Get in touch</a></p>
 </div>
+
 <?php 
 require_once('./includes/footer.php')
 

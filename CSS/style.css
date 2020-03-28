@@ -2,7 +2,8 @@
 body{
     margin: 0 auto;
 }
-footer {
+
+.bas-page footer {
     position: absolute; 
     bottom: 0; 
     left: 0; 
