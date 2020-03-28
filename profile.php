@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
    	<?php
         $title ='Profile';
         require_once('includes/header.php');
