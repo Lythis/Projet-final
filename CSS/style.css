@@ -361,8 +361,7 @@ html {
     margin-left: 20%;
     color: grey;
     padding-top: 6%;
-
-
+    padding-top: 10%;
 }
 .copyright{
     width: 80%;
@@ -430,6 +429,9 @@ html {
     flex-wrap: wrap;
 }
 
+.container_profil{
+
+}
 button[aria-expanded="true"] .fa-caret-right
 {
     display: none;
@@ -442,11 +444,11 @@ button[aria-expanded="false"] .fa-sort-down
 {
     display: none;
 }
-
 button[aria-expanded="false"] .fa-caret-right
 {
     display: block;
 }
+
 @media screen and (max-width: 1100px){
     .card{
         margin-right: 10%;
@@ -523,14 +525,14 @@ button[aria-expanded="false"] .fa-caret-right
             .hAcceuil{
                 border-bottom-left-radius: 17% ;
                 border-bottom-right-radius: 17% ;
-                height: 80ex ;
+                height: 80ex 
             }
         }
         @media screen and (max-width: 990px){
             .hAcceuil{
                 border-bottom-left-radius: 17% ;
                 border-bottom-right-radius: 17% ;
-                height: 90ex !important;
+                height: 90ex ;
             }
         }
         @media screen and (max-width: 990px) {
@@ -546,6 +548,7 @@ button[aria-expanded="false"] .fa-caret-right
         }
         @media screen and (max-width: 990px) {
             .image1{
+
                 width: 77% ;
                 padding-left: 8% ;
                 padding-top: 8% ;
@@ -581,7 +584,6 @@ button[aria-expanded="false"] .fa-caret-right
                 margin-left: 12% ;
                 width: 63% ;
                 text-align: center ;
-            }
         }
         @media screen and (max-width: 600px) {
             .description p{
@@ -596,6 +598,7 @@ button[aria-expanded="false"] .fa-caret-right
         }
         @media screen and (max-width: 600px) {
             .bloc4{
+
                 display: none ;
             }
         }
@@ -620,3 +623,5 @@ button[aria-expanded="false"] .fa-caret-right
                 width: 7% ;
             }
         }
+            
+    
