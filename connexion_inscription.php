@@ -1,61 +1,61 @@
 <?php
-    require_once('db/base_PDO.php');
-    $title ='Connexion/Inscription';
-    require_once('includes/header.php');
+require_once('db/base_PDO.php');
+$title ='Connexion/Inscription';
+require_once('includes/header.php');
 
-    // root@livequestion.com 12345
-    if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
+// root@livequestion.com 12345
+if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
 
-        $email = $_POST['email'];
-        $mdp = $_POST['mdp'];
-        $query = $con->prepare("SELECT * FROM profil");
-        $query->execute();
-        $profil = $query->fetchAll();
+    $email = $_POST['email'];
+    $mdp = $_POST['mdp'];
+    $query = $con->prepare("SELECT * FROM profil");
+    $query->execute();
+    $profil = $query->fetchAll();
 
-        $ind = 0;
-        $connexionvalide = false;
+    $ind = 0;
+    $connexionvalide = false;
 
-        while ($ind < count($profil) && $connexionvalide == false) {
+    while ($ind < count($profil) && $connexionvalide == false) {
 
-            if($profil[$ind]['Mail_profil'] == $email && $profil[$ind]['MotDePasse_profil'] == $mdp) {
-                $connexionvalide = true;
-            }
-            else {
-                $ind = $ind + 1;
-            }
-
+        if($profil[$ind]['Mail_profil'] == $email && $profil[$ind]['MotDePasse_profil'] == $mdp) {
+            $connexionvalide = true;
+        }
+        else {
+            $ind = $ind + 1;
         }
 
-        if ($connexionvalide == true) {
-            $_SESSION['pseudo'] = $profil[$ind]['Pseudo_profil'];
-        }
     }
+
+    if ($connexionvalide == true) {
+        $_SESSION['pseudo'] = $profil[$ind]['Pseudo_profil'];
+    }
+}
 ?>
 
 <body>
     <?php 
-        require_once('includes/nav-bar.php');
+    require_once('includes/nav-bar.php');
     ?>
     <body class="inscription">
         <?php
-            if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
+        if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
 
-                if ($connexionvalide == true) {
-                    echo "Bienvenue ".$_SESSION['pseudo']." !";
-                }
-
-                else {
-                ?>
-
-                <p>Nom d'utilisateur ou mot de passe erroné.</p>
-                <p><a href="connexion_inscription.php">Revenir en arrière</a></p>
-
-                <?php
-                }
-
+            if ($connexionvalide == true) {
+                echo "Bienvenue ".$_SESSION['pseudo']." !";
             }
 
             else {
+        ?>
+
+        <p>Nom d'utilisateur ou mot de passe erroné.</p>
+        <p><a href="connexion_inscription.php">Revenir en arrière</a></p>
+
+        <?php
+            }
+
+        }
+
+        else {
         ?>
         <div class="rowe2">
             <div class="col-sm-6">
@@ -87,15 +87,15 @@
                         </button>
 
                         <!--
-                        Test afin de vérifier qu'on est bien connecté à la base de données
-                        <?php
-                            $query = $con->prepare("SELECT * FROM profil");
-                            $query->execute();
-                            $users = $query->fetchAll();
+Test afin de vérifier qu'on est bien connecté à la base de données
+<?php
+            $query = $con->prepare("SELECT * FROM profil");
+            $query->execute();
+            $users = $query->fetchAll();
 
-                            var_dump($users)
-                        ?>
-                        -->
+            var_dump($users)
+?>
+-->
 
                         <!-- Modal -->
                         <div class="modal fade" id="inscription" tabindex="-1" role="dialog" aria-labelledby="inscriptionLabel" aria-hidden="true">
@@ -108,32 +108,46 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="InputPseudo">Pseudo</label>
-                                                <input type="email" class="form-control" id="pseudo" aria-describedby="pseudoHelp" placeholder="">
-                                                <small id="pseudoHelp" class="form-text text-muted"></small>
+                                        <form class="needs-validation" novalidate>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="validationCustom01">Pseudo</label>
+                                                    <input type="text" class="form-control" id="validationCustom01" placeholder="pseudo" required>
+                                                    <div class="invalid-feedback">
+                                                        veuillez entrer votre pseudo.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="validationCustom02">adresse Email</label>
+                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="adresse Email" required>
+                                                    <div class="invalid-feedback">
+                                                        veuillez entrer un email valide
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="validationCustomUsername">Mots de Passe</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="validationCustomUsername" placeholder="MDP" aria-describedby="inputGroupPrepend" required>
+                                                        <div class="invalid-feedback">
+                                                            veuillez entrer un MDP
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="validationCustomUsername">Confirmation Mots de Passe</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="validationCustomUsername" placeholder="MDP" aria-describedby="inputGroupPrepend" required>
+                                                        <div class="invalid-feedback">
+                                                            veuillez entrer le même MDP
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="InputEmail1">Adresse Mail</label>
-                                                <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="">
-                                                <small id="emailHelp" class="form-text text-muted"></small>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="InputPassword1">Mot de passe</label>
-                                                <input type="password" class="form-control" id="InputPassword1" placeholder="">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="InputPassword1">Confirmer votre mot de passe</label>
-                                                <input type="password" class="form-control" id="InputPassword1" placeholder="">
-                                            </div>
-
-
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                            <button class="btn btn-primary" type="submit">Submit form</button>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                        <button type="submit" class="btn btn-primary">Inscription</button>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +161,7 @@
 
         <div class="bas-page">
             <?php
-                require_once('includes/footer.php');
+            require_once('includes/footer.php');
             ?>
         </div>
 
