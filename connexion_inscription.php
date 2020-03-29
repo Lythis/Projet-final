@@ -1,61 +1,85 @@
 <?php
-require_once('db/base_PDO.php');
-$title ='Connexion/Inscription';
-require_once('includes/header.php');
+    require_once('db/base_PDO.php');
+    $title ='Connexion/Inscription';
+    require_once('includes/header.php');
 
-// root@livequestion.com 12345
-if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
+    // root@livequestion.com 12345
+    if (!empty($_POST['email']) && !empty($_POST['mdp']) && isset($_POST['connexion']) && $_POST['connexion'] == 'valide') {
 
-    $email = $_POST['email'];
-    $mdp = $_POST['mdp'];
-    $query = $con->prepare("SELECT * FROM profil");
-    $query->execute();
-    $profil = $query->fetchAll();
+        $email = $_POST['email'];
+        $mdp = $_POST['mdp'];
+        $query = $con->prepare("SELECT * FROM profil");
+        $query->execute();
+        $profil = $query->fetchAll();
 
-    $ind = 0;
-    $connexionvalide = false;
+        $ind = 0;
+        $connexionvalide = false;
 
-    while ($ind < count($profil) && $connexionvalide == false) {
+        while ($ind < count($profil) && $connexionvalide == false) {
 
-        if($profil[$ind]['Mail_profil'] == $email && $profil[$ind]['MotDePasse_profil'] == $mdp) {
-            $connexionvalide = true;
+            if($profil[$ind]['Mail_profil'] == $email && $profil[$ind]['MotDePasse_profil'] == $mdp) {
+                $connexionvalide = true;
+            }
+            else {
+                $ind = $ind + 1;
+            }
+
         }
-        else {
-            $ind = $ind + 1;
-        }
 
+        if ($connexionvalide == true) {
+            $_SESSION['pseudo'] = $profil[$ind]['Pseudo_profil'];
+        }
     }
 
-    if ($connexionvalide == true) {
-        $_SESSION['pseudo'] = $profil[$ind]['Pseudo_profil'];
+    elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']) && !empty($_POST['mdpinscription']) && !empty($_POST['mdpinscriptionconfirm']) && $_POST['mdpinscriptionconfirm'] == $_POST['mdpinscription'] && isset($_POST['inscription']) && $_POST['inscription'] == 'valide') {
+
+        $query = $con->prepare('INSERT INTO profil (Pseudo_profil, Mail_profil, MotDePasse_profil, Genre_profil, `#Id_role`) VALUES (:pseudo, :email, :password, :genre, :role)');
+        $query->bindParam(':pseudo', $_POST['pseudoinscription']);
+        $query->bindParam(':email', $_POST['emailinscription']);
+        $query->bindParam(':password', $_POST['mdpinscription']);
+        $query->bindParam(':genre', $genre);
+        $query->bindParam(':role', $role);
+        $genre = 'Homme';
+        $role = 2;
+        $query->execute();
+
     }
-}
 ?>
 
 <body>
     <?php 
-    require_once('includes/nav-bar.php');
+        require_once('includes/nav-bar.php');
     ?>
     <body class="inscription">
         <?php
-        if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
+            if (!empty($_POST['email']) && !empty($_POST['mdp']) && isset($_POST['connexion']) && $_POST['connexion'] == 'valide') {
 
-            if ($connexionvalide == true) {
-                echo "Bienvenue ".$_SESSION['pseudo']." !";
+                $_POST['connexion'] = '';
+
+                if ($connexionvalide == true) {
+                    echo "Bienvenue ".$_SESSION['pseudo']." !";
+                }
+
+                else {
+                ?>
+
+                <p>Nom d'utilisateur ou mot de passe erroné.</p>
+                <p><a href="connexion_inscription.php">Revenir en arrière</a></p>
+
+                <?php
+                }
+
+            }
+
+            elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']) && !empty($_POST['mdpinscription']) && !empty($_POST['mdpinscriptionconfirm']) && $_POST['mdpinscriptionconfirm'] == $_POST['mdpinscription'] && isset($_POST['inscription']) && $_POST['inscription'] == 'valide') {
+
+                $_POST['inscription'] = '';
+
+                echo "Vous avez bien été enregistré.";
+
             }
 
             else {
-        ?>
-
-        <p>Nom d'utilisateur ou mot de passe erroné.</p>
-        <p><a href="connexion_inscription.php">Revenir en arrière</a></p>
-
-        <?php
-            }
-
-        }
-
-        else {
         ?>
         <div class="rowe2">
             <div class="col-sm-6">
@@ -72,7 +96,7 @@ if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
                                 <label for="InputPassword1">Mot de passe</label>
                                 <input type="password" class="form-control" id="InputPassword1" placeholder="" name="mdp">
                             </div>
-                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                            <button type="submit" class="btn btn-primary" name="connexion" value="valide">Envoyer</button>
                         </form>
                     </div>
                 </div>
@@ -87,18 +111,17 @@ if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
                         </button>
 
                         <!--
-Test afin de vérifier qu'on est bien connecté à la base de données
-<?php
-            $query = $con->prepare("SELECT * FROM profil");
-            $query->execute();
-            $users = $query->fetchAll();
-
-            var_dump($users)
-?>
--->
+                        Test afin de vérifier qu'on est bien connecté à la base de données
+                        <?php
+                            $query = $con->prepare("SELECT * FROM profil");
+                            $query->execute();
+                            $users = $query->fetchAll();
+                            var_dump($users)
+                        ?>
+                        -->
 
                         <!-- Modal -->
-                        <div class="modal fade" id="inscription" tabindex="-1" role="dialog" aria-labelledby="inscriptionLabel" aria-hidden="true">
+                           <div class="modal fade" id="inscription" tabindex="-1" role="dialog" aria-labelledby="inscriptionLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -108,18 +131,19 @@ Test afin de vérifier qu'on est bien connecté à la base de données
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="needs-validation" novalidate>
+                                        <form class="needs-validation" novalidate action="connexion_inscription.php" method="post">
+                                       
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom01">Pseudo</label>
-                                                    <input type="text" class="form-control" id="validationCustom01" placeholder="pseudo" required>
+                                                    <input type="text" class="form-control" id="validationCustom01" placeholder="pseudo" name="pseudoinscription">
                                                     <div class="invalid-feedback">
                                                         veuillez entrer votre pseudo.
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom02">adresse Email</label>
-                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="adresse Email" required>
+                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="adresse Email" name="emailinscription">
                                                     <div class="invalid-feedback">
                                                         veuillez entrer un email valide
                                                     </div>
@@ -127,7 +151,7 @@ Test afin de vérifier qu'on est bien connecté à la base de données
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustomUsername">Mots de Passe</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="validationCustomUsername" placeholder="MDP" aria-describedby="inputGroupPrepend" required>
+                                                        <input type="password" class="form-control" id="validationCustomUsername" placeholder="MDP" aria-describedby="inputGroupPrepend" name="mdpinscription">
                                                         <div class="invalid-feedback">
                                                             veuillez entrer un MDP
                                                         </div>
@@ -136,7 +160,7 @@ Test afin de vérifier qu'on est bien connecté à la base de données
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustomUsername">Confirmation Mots de Passe</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="validationCustomUsername" placeholder="MDP" aria-describedby="inputGroupPrepend" required>
+                                                        <input type="password" class="form-control" id="validationCustomUsername" placeholder="MDP" aria-describedby="inputGroupPrepend" name="mdpinscriptionconfirm">
                                                         <div class="invalid-feedback">
                                                             veuillez entrer le même MDP
                                                         </div>
@@ -144,24 +168,25 @@ Test afin de vérifier qu'on est bien connecté à la base de données
                                                 </div>
                                             </div>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                            <button class="btn btn-primary" type="submit">Submit form</button>
+                                            <button type="submit" class="btn btn-primary" name="inscription" value="valide">Inscription</button>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
         <?php } ?>
 
         <div class="bas-page">
             <?php
-            require_once('includes/footer.php');
+                require_once('includes/footer.php');
             ?>
         </div>
 

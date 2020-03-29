@@ -523,103 +523,103 @@ button[aria-expanded="false"] .fa-caret-right
         }
         @media screen and (max-width: 600px){
             .hAcceuil{
-                border-bottom-left-radius: 17% !important;
-                border-bottom-right-radius: 17% !important;
-                height: 80ex !important;
+                border-bottom-left-radius: 17% ;
+                border-bottom-right-radius: 17% ;
+                height: 80ex ;
             }
         }
         @media screen and (max-width: 990px){
             .hAcceuil{
-                border-bottom-left-radius: 17% !important;
-                border-bottom-right-radius: 17% !important;
-                height: 90ex !important;
+                border-bottom-left-radius: 17% ;
+                border-bottom-right-radius: 17% ;
+                height: 90ex ;
             }
         }
         @media screen and (max-width: 990px) {
             .texte1{
-                width: 83% !important;
+                width: 83% ;
             }
         }
         @media screen and (max-width: 990px) {
             .bloc1{
-                text-align: center !important;
-                margin-left: 15% !important;
+                text-align: center ;
+                margin-left: 15% ;
             }
         }
         @media screen and (max-width: 990px) {
             .image1{
-                width: 77% !important;
-                padding-left: 8% !important;
-                padding-top: 8% !important;
+                width: 77% ;
+                padding-left: 8% ;
+                padding-top: 8% ;
             }
         }
         @media screen and (max-width: 600px) {
             .texte1{
-                width: 83% !important;
+                width: 83% ;
             }
         }
         @media screen and (max-width: 600px) {
             .bloc1{
-                text-align: center !important;
-                margin-left: 15% !important;
+                text-align: center ;
+                margin-left: 15% ;
             }
         }
         @media screen and (max-width: 600px) {
             .image1{
-                width: 77% !important;
-                padding-left: 8% !important;
-                padding-top: 8% !important;
+                width: 77% ;
+                padding-left: 8% ;
+                padding-top: 8% ;
             }
         }
         @media screen and (max-width: 600px) {
             .rowe{
-                width: 60% !important;
-                margin-left: 21% !important;
-                display: block !important;
+                width: 60% ;
+                margin-left: 21% ;
+                display: block ;
             }
         }
         @media screen and (max-width: 600px) {
             .description{
-                margin-left: 12% !important;
-                width: 63% !important;
-                text-align: center !important;
+                margin-left: 12% ;
+                width: 63% ;
+                text-align: center ;
             }
         }
         @media screen and (max-width: 600px) {
             .description p{
-                width: 94% !important;
-                margin-left: 14% !important;
+                width: 94% ;
+                margin-left: 14% ;
             }
         }
         @media screen and (max-width: 600px) {
             .description h3{
-                margin-left: 19% !important;
+                margin-left: 19% ;
             }
         }
         @media screen and (max-width: 600px) {
             .bloc4{
-                display: none !important;
+                display: none ;
             }
         }
         @media screen and (max-width: 600px) {
             .bloc6{
-                display: block !important;
-                text-align: center !important;
+                display: block ;
+                text-align: center ;
             }
         }
         @media screen and (max-width: 600px) {
             .texte4{
-                padding-top: 25% !important;
+                padding-top: 25% ;
             }
         }
         @media screen and (max-width: 600px) {
             .texte4 p{
-                font-size: 116% !important;
+                font-size: 116% ;
             }
         }
         @media screen and (max-width: 600px) {
             .logo{
-                width: 7% !important;
+                width: 7% ;
             }
         }
 
