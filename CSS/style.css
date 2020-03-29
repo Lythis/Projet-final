@@ -40,7 +40,7 @@ html {
     height: 75ex;
 }
 .bloc1{
-    margin-left: 26%;
+    margin-left: 22%;
     padding-top: 6%;
 }
 .texte1{
@@ -126,7 +126,7 @@ html {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
     width: 35%;
-    margin-left: 41%;
+    margin-left: 45%;
 }
 .carde1 img{
     border-radius: 50%;
@@ -289,6 +289,12 @@ html {
     margin-left: 36%;
     margin-right: 36%;
 }
+.marque-text{
+    width: 8%;
+    border-radius: 10%;
+    margin-right: 10px;
+}
+
 
 .marque2{
     background-color: white;
@@ -302,6 +308,11 @@ html {
     margin-top: 15px;
 }
 
+.marque-text{
+    padding-top: 2%;
+    padding-right: 10%;
+    font-size: 1em;
+}
 .titre_faq{
     font-size: 3em;
 }
@@ -341,7 +352,7 @@ html {
     background-color: #1a2d34;
     margin-top: -2%;
     bottom:0;
-    
+
 }
 
 
@@ -420,11 +431,11 @@ html {
 .container_profil{
 
 }
-button[aria-expanded="true"] .fa-caret-right
+button[aria-expanded="true"] .fa-sort-down 
 {
     display: none;
 }
-button[aria-expanded="true"] .fa-sort-down
+button[aria-expanded="true"] .fa-caret-right
 {
     display: block;
 }
@@ -433,7 +444,8 @@ button[aria-expanded="false"] .fa-sort-down
     display: none;
 }
 
-button[aria-expanded="false"] .fa-caret-right{
+button[aria-expanded="false"] .fa-caret-right
+{
     display: block;
 }
 @media screen and (max-width: 1100px){
@@ -457,155 +469,157 @@ button[aria-expanded="false"] .fa-caret-right{
     }
     .container_haut{
 
-    display: flex;
-    margin-left: 22%;
-    margin-right: 22%;
-}
-
-@media screen and (max-width: 700px){
-    .card-text{
-        font-size: 4vmin;
-    }
-    .faq-text{
-        font-size: 4vmin;
-    }
-    .titre_rose{
-        font-size: 2em;
-    }
-    .container_haut{
         display: flex;
-        margin-left: 10%;
-        margin-right: 10%;
-
-        border-color: grey;
-        height: 1px;
+        margin-left: 22%;
+        margin-right: 22%;
     }
 
-    .responsive-bootstrap-card {
-        position: relative;
-        width: 50%;
-    }
-
-    @media screen and (max-width: 992px){
-        .center {
-            width: 80%;
+    @media screen and (max-width: 700px){
+        .card-text{
+            font-size: 4vmin;
+        }
+        .faq-text{
+            font-size: 4vmin;
+        }
+        .titre_rose{
+            font-size: 2em;
+        }
+        .container_haut{
+            display: flex;
             margin-left: 10%;
+            margin-right: 10%;
+
+            border-color: grey;
+            height: 1px;
         }
 
         .responsive-bootstrap-card {
-            width: 80%;
-        }
-    }
-
-    @media screen and (max-width: 576px){
-        .center {
-            width: 100%;
-            margin-left: 0%;
+            position: relative;
+            width: 50%;
         }
 
-        .responsive-bootstrap-card {
-            width: 100%;
+        @media screen and (max-width: 992px){
+            .center {
+                width: 80%;
+                margin-left: 10%;
+            }
+
+            .responsive-bootstrap-card {
+                width: 80%;
+            }
         }
 
-    }
-    @media screen and (max-width: 600px){
-        .hAcceuil{
-            border-bottom-left-radius: 17% !important;
-            border-bottom-right-radius: 17% !important;
-            height: 80ex !important;
+        @media screen and (max-width: 576px){
+            .center {
+                width: 100%;
+                margin-left: 0%;
+            }
+
+            .responsive-bootstrap-card {
+                width: 100%;
+            }
+
         }
-    }
-    @media screen and (max-width: 990px){
-        .hAcceuil{
-            border-bottom-left-radius: 17% !important;
-            border-bottom-right-radius: 17% !important;
-            height: 90ex !important;
+        @media screen and (max-width: 600px){
+            .hAcceuil{
+                border-bottom-left-radius: 17% !important;
+                border-bottom-right-radius: 17% !important;
+                height: 80ex !important;
+            }
         }
-    }
-    @media screen and (max-width: 990px) {
-        .texte1{
-            width: 83% !important;
+        @media screen and (max-width: 990px){
+            .hAcceuil{
+                border-bottom-left-radius: 17% !important;
+                border-bottom-right-radius: 17% !important;
+                height: 90ex !important;
+            }
         }
-    }
-    @media screen and (max-width: 990px) {
-        .bloc1{
-            text-align: center !important;
+        @media screen and (max-width: 990px) {
+            .texte1{
+                width: 83% !important;
+            }
         }
-    }
-    @media screen and (max-width: 990px) {
-        .image1{
-            width: 77% !important;
-            padding-left: 8% !important;
-            padding-top: 8% !important;
+        @media screen and (max-width: 990px) {
+            .bloc1{
+                text-align: center !important;
+                margin-left: 15% !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .texte1{
-            width: 83% !important;
+        @media screen and (max-width: 990px) {
+            .image1{
+                width: 77% !important;
+                padding-left: 8% !important;
+                padding-top: 8% !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .bloc1{
-            text-align: center !important;
+        @media screen and (max-width: 600px) {
+            .texte1{
+                width: 83% !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .image1{
-            width: 77% !important;
-            padding-left: 8% !important;
-            padding-top: 8% !important;
+        @media screen and (max-width: 600px) {
+            .bloc1{
+                text-align: center !important;
+                margin-left: 15% !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .rowe{
-            width: 60% !important;
-            margin-left: 21% !important;
-            display: block !important;
+        @media screen and (max-width: 600px) {
+            .image1{
+                width: 77% !important;
+                padding-left: 8% !important;
+                padding-top: 8% !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .description{
-            margin-left: 12% !important;
-            width: 63% !important;
-            text-align: center !important;
+        @media screen and (max-width: 600px) {
+            .rowe{
+                width: 60% !important;
+                margin-left: 21% !important;
+                display: block !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .description p{
-            width: 94% !important;
-            margin-left: 14% !important;
+        @media screen and (max-width: 600px) {
+            .description{
+                margin-left: 12% !important;
+                width: 63% !important;
+                text-align: center !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .description h3{
-            margin-left: 37% !important;
+        @media screen and (max-width: 600px) {
+            .description p{
+                width: 94% !important;
+                margin-left: 14% !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .bloc4{
-            display: none !important;
+        @media screen and (max-width: 600px) {
+            .description h3{
+                margin-left: 19% !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .bloc6{
-            display: block !important;
-            text-align: center !important;
+        @media screen and (max-width: 600px) {
+            .bloc4{
+                display: none !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .texte4{
-            padding-top: 25% !important;
+        @media screen and (max-width: 600px) {
+            .bloc6{
+                display: block !important;
+                text-align: center !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .texte4 p{
-            font-size: 116% !important;
+        @media screen and (max-width: 600px) {
+            .texte4{
+                padding-top: 25% !important;
+            }
         }
-    }
-    @media screen and (max-width: 600px) {
-        .logo{
-            width: 7% !important;
+        @media screen and (max-width: 600px) {
+            .texte4 p{
+                font-size: 116% !important;
+            }
         }
-    }
+        @media screen and (max-width: 600px) {
+            .logo{
+                width: 7% !important;
+            }
+        }
 
 
