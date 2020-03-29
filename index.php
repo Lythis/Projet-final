@@ -1,12 +1,11 @@
-
 <?php
-$title ='Live Question';
-require_once('includes/header.php');
+    $title ='Live Question';
+    require_once('includes/header.php');
 ?>
 
 <body>
     <?php 
-    require_once('includes/nav-bar.php');
+        require_once('includes/nav-bar.php');
     ?>
     <div class="hAcceuil">
         <div class="bloc1 .container-fluid">

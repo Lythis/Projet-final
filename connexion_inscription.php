@@ -1,36 +1,77 @@
 <?php
-$title ='Connexion/inscription';
-require_once('includes/header.php');
+    require_once('db/base_PDO.php');
+    $title ='Connexion/Inscription';
+    require_once('includes/header.php');
+
+    if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
+
+        $email = $_POST['email'];
+        $mdp = $_POST['mdp'];
+        $query = $con->prepare("SELECT * FROM profil");
+        $query->execute();
+        $profil = $query->fetchAll();
+
+        $ind = 0;
+        $connexionvalide = false;
+
+        while ($ind < count($profil) && $connexionvalide == false) {
+
+            if($profil[$ind]['Mail_profil'] == $email && $profil[$ind]['MotDePasse_profil'] == $mdp) {
+                $connexionvalide = true;
+            }
+            else {
+                $ind = $ind + 1;
+            }
+
+        }
+
+        if ($connexionvalide == true) {
+            $_SESSION['pseudo'] = $profil[$ind]['Pseudo_profil'];
+        }
+    }
 ?>
 
 <body>
     <?php 
-    require_once('includes/nav-bar.php');
+        require_once('includes/nav-bar.php');
     ?>
     <body class="inscription">
         <?php
-        require_once('includes/nav-bar.php');
+            if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
+
+                if ($connexionvalide == true) {
+                    echo "Bienvenue ".$_SESSION['pseudo']." !";
+                }
+
+                else {
+                ?>
+
+                <p>Nom d'utilisateur ou mot de passe erroné.</p>
+                <p><a href="connexion_inscription.php">Revenir en arrière</a></p>
+
+                <?php
+                }
+
+            }
+
+            else {
         ?>
         <div class="rowe2">
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">connexion</h5>
-                        <form>
+                        <h5 class="card-title">Connexion</h5>
+                        <form action="connexion_inscription.php" method="post">
                             <div class="form-group">
-                                <label for="InputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="entre ton email">
+                                <label for="InputEmail1">Adresse mail</label>
+                                <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="" name="email">
                                 <small id="emailHelp" class="form-text text-muted"></small>
                             </div>
                             <div class="form-group">
-                                <label for="InputPassword1">mot de passe</label>
-                                <input type="password" class="form-control" id="InputPassword1" placeholder="MDP">
+                                <label for="InputPassword1">Mot de passe</label>
+                                <input type="password" class="form-control" id="InputPassword1" placeholder="" name="mdp">
                             </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Envoyer</button>
                         </form>
                     </div>
                 </div>
@@ -38,11 +79,22 @@ require_once('includes/header.php');
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">pas de compte, alors inscris toi</h5>
-                        <p class="card-text">inscris toi afin de poser des questions</p>
+                        <h5 class="card-title">Pas de compte? Alors inscris toi!</h5>
+                        <p class="card-text">Inscris toi afin de poser des questions.</p>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inscription">
-                            inscription
+                            Inscription
                         </button>
+
+                        <!--
+                        Test afin de vérifier qu'on est bien connecté à la base de données
+                        <?php
+                            $query = $con->prepare("SELECT * FROM profil");
+                            $query->execute();
+                            $users = $query->fetchAll();
+
+                            var_dump($users)
+                        ?>
+                        -->
 
                         <!-- Modal -->
                         <div class="modal fade" id="inscription" tabindex="-1" role="dialog" aria-labelledby="inscriptionLabel" aria-hidden="true">
@@ -57,30 +109,30 @@ require_once('includes/header.php');
                                     <div class="modal-body">
                                         <form>
                                             <div class="form-group">
-                                                <label for="InputPseudo">pseudo</label>
-                                                <input type="email" class="form-control" id="pseudo" aria-describedby="pseudoHelp" placeholder="ecrit ton pseudo.">
+                                                <label for="InputPseudo">Pseudo</label>
+                                                <input type="email" class="form-control" id="pseudo" aria-describedby="pseudoHelp" placeholder="">
                                                 <small id="pseudoHelp" class="form-text text-muted"></small>
                                             </div>
                                             <div class="form-group">
-                                                <label for="InputEmail1">Email address</label>
-                                                <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="entre ton email">
+                                                <label for="InputEmail1">Adresse Mail</label>
+                                                <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="">
                                                 <small id="emailHelp" class="form-text text-muted"></small>
                                             </div>
                                             <div class="form-group">
-                                                <label for="InputPassword1">mot de passe</label>
-                                                <input type="password" class="form-control" id="InputPassword1" placeholder="MDP">
+                                                <label for="InputPassword1">Mot de passe</label>
+                                                <input type="password" class="form-control" id="InputPassword1" placeholder="">
                                             </div>
                                             <div class="form-group">
-                                                <label for="InputPassword1">confirme ton MDP</label>
-                                                <input type="password" class="form-control" id="InputPassword1" placeholder="confirme ton MDP">
+                                                <label for="InputPassword1">Confirmer votre mot de passe</label>
+                                                <input type="password" class="form-control" id="InputPassword1" placeholder="">
                                             </div>
 
 
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-                                        <button type="submit" class="btn btn-primary">inscription</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        <button type="submit" class="btn btn-primary">Inscription</button>
                                     </div>
                                 </div>
                             </div>
@@ -89,9 +141,12 @@ require_once('includes/header.php');
                 </div>
             </div>
         </div>
+
+        <?php } ?>
+
         <div class="bas-page">
             <?php
-            require_once('includes/footer.php');
+                require_once('includes/footer.php');
             ?>
         </div>
 

@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-expand-lg couleur">
     <a class="titre text-white" href="./index.php">Saint Vincent BTS 1</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +46,21 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
+                <?php
+                    if (!empty($_SESSION)) {
+                        echo $_SESSION['pseudo'];
+                ?>
+                <form action="./index.php" method="post">
+                    <button type="submit" class="boutton text-white" name="deconnexion" value="valide">Déconnexion</button>
+                </form>
+                <?php
+                    }
+                    else {
+                ?>
                 <button onclick="window.location.href ='./connexion_inscription.php'" type="button" class="boutton text-white">Se connecter</button>
+                <?php
+                    }
+                ?>
             </ul>
         </span>
     </div>

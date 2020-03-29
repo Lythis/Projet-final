@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if (isset($_POST['deconnexion']) && $_POST['deconnexion'] == 'valide') {
+		session_unset();
+		session_destroy();
+		$_POST['deconnexion'] = '';
+	}
+?>
 <!DOCTYPE html>
 <html>
     <head>
