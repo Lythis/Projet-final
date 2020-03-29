@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <?php
-        $title ='Connexion/inscription';
-        require_once('includes/header.php');
-    ?>
-        
-    <body>
+<?php
+$title ='Connexion/inscription';
+require_once('includes/header.php');
+?>
+
+<body>
     <?php 
-        require_once('includes/nav-bar.php');
+    require_once('includes/nav-bar.php');
     ?>
     <body class="inscription">
         <?php
@@ -104,4 +102,4 @@
 
 
     </body>
-</html>
+    </html>

@@ -197,7 +197,7 @@ $questions = [
         </div>
         <div class="rose1">
             <span class="titre_rose">Etiam laot, alique sceleris.</span>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem 	
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem   
                 <p>accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.</p>
             </div>
             <div class="rose2">
@@ -232,11 +232,11 @@ $questions = [
                         <img src="image/marque6.jpg" class="marque_image">
                         <p class="marque-text">Utosia</p>
                     </div>
-                </div>	
+                </div>  
             </div>
             <div class="faq">
                 <span class="titre_faq">FAQ</span>
-                <p class="faq-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem 	
+                <p class="faq-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem  
                 accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.</p>
             </div>
             <div class="accordion" id="accordionExample">
