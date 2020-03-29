@@ -3,6 +3,7 @@
     $title ='Connexion/Inscription';
     require_once('includes/header.php');
 
+    // root@livequestion.com 12345
     if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
 
         $email = $_POST['email'];
