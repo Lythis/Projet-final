@@ -361,7 +361,6 @@ html {
     margin-left: 20%;
     color: grey;
     padding-top: 6%;
-    padding-top: 10%;
 }
 .copyright{
     width: 80%;
@@ -429,9 +428,6 @@ html {
     flex-wrap: wrap;
 }
 
-.container_profil{
-
-}
 button[aria-expanded="true"] .fa-caret-right
 {
     display: none;
