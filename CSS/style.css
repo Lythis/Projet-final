@@ -432,7 +432,7 @@ html {
 .container_profil{
 
 }
-button[aria-expanded="true"] .fa-sort-down 
+button[aria-expanded="true"] .fa-caret-right
 {
     display: none;
 }
@@ -445,7 +445,7 @@ button[aria-expanded="false"] .fa-sort-down
     display: none;
 }
 
-button[aria-expanded="false"] .fa-caret-right
+button[aria-expanded="false"] .fa-sort-down
 {
     display: block;
 }
