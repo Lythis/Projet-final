@@ -4,7 +4,7 @@
     require_once('includes/header.php');
 
     // root@livequestion.com 12345
-    if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
+    if (!empty($_POST['email']) && !empty($_POST['mdp']) && isset($_POST['connexion']) && $_POST['connexion'] == 'valide') {
 
         $email = $_POST['email'];
         $mdp = $_POST['mdp'];
@@ -30,6 +30,20 @@
             $_SESSION['pseudo'] = $profil[$ind]['Pseudo_profil'];
         }
     }
+
+    elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']) && !empty($_POST['mdpinscription']) && !empty($_POST['mdpinscriptionconfirm']) && $_POST['mdpinscriptionconfirm'] == $_POST['mdpinscription'] && isset($_POST['inscription']) && $_POST['inscription'] == 'valide') {
+
+        $query = $con->prepare('INSERT INTO profil (Pseudo_profil, Mail_profil, MotDePasse_profil, Genre_profil, `#Id_role`) VALUES (:pseudo, :email, :password, :genre, :role)');
+        $query->bindParam(':pseudo', $_POST['pseudoinscription']);
+        $query->bindParam(':email', $_POST['emailinscription']);
+        $query->bindParam(':password', $_POST['mdpinscription']);
+        $query->bindParam(':genre', $genre);
+        $query->bindParam(':role', $role);
+        $genre = 'Homme';
+        $role = 2;
+        $query->execute();
+
+    }
 ?>
 
 <body>
@@ -38,7 +52,9 @@
     ?>
     <body class="inscription">
         <?php
-            if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
+            if (!empty($_POST['email']) && !empty($_POST['mdp']) && isset($_POST['connexion']) && $_POST['connexion'] == 'valide') {
+
+                $_POST['connexion'] = '';
 
                 if ($connexionvalide == true) {
                     echo "Bienvenue ".$_SESSION['pseudo']." !";
@@ -52,6 +68,14 @@
 
                 <?php
                 }
+
+            }
+
+            elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']) && !empty($_POST['mdpinscription']) && !empty($_POST['mdpinscriptionconfirm']) && $_POST['mdpinscriptionconfirm'] == $_POST['mdpinscription'] && isset($_POST['inscription']) && $_POST['inscription'] == 'valide') {
+
+                $_POST['inscription'] = '';
+
+                echo "Vous avez bien été enregistré.";
 
             }
 
@@ -72,7 +96,7 @@
                                 <label for="InputPassword1">Mot de passe</label>
                                 <input type="password" class="form-control" id="InputPassword1" placeholder="" name="mdp">
                             </div>
-                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                            <button type="submit" class="btn btn-primary" name="connexion" value="valide">Envoyer</button>
                         </form>
                     </div>
                 </div>
@@ -108,33 +132,31 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
+                                        <form action="connexion_inscription.php" method="post">
                                             <div class="form-group">
                                                 <label for="InputPseudo">Pseudo</label>
-                                                <input type="email" class="form-control" id="pseudo" aria-describedby="pseudoHelp" placeholder="">
+                                                <input type="text" class="form-control" id="pseudo" aria-describedby="pseudoHelp" placeholder="" name="pseudoinscription">
                                                 <small id="pseudoHelp" class="form-text text-muted"></small>
                                             </div>
                                             <div class="form-group">
                                                 <label for="InputEmail1">Adresse Mail</label>
-                                                <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="">
+                                                <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="" name="emailinscription">
                                                 <small id="emailHelp" class="form-text text-muted"></small>
                                             </div>
                                             <div class="form-group">
                                                 <label for="InputPassword1">Mot de passe</label>
-                                                <input type="password" class="form-control" id="InputPassword1" placeholder="">
+                                                <input type="password" class="form-control" id="InputPassword1" placeholder="" name="mdpinscription">
                                             </div>
                                             <div class="form-group">
                                                 <label for="InputPassword1">Confirmer votre mot de passe</label>
-                                                <input type="password" class="form-control" id="InputPassword1" placeholder="">
+                                                <input type="password" class="form-control" id="InputPassword1" placeholder="" name="mdpinscriptionconfirm">
                                             </div>
-
-
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                        <button type="submit" class="btn btn-primary">Inscription</button>
-                                    </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                            <button type="submit" class="btn btn-primary" name="inscription" value="valide">Inscription</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
