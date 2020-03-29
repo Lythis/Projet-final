@@ -360,9 +360,7 @@ html {
     width: 60%;
     margin-left: 20%;
     color: grey;
-    padding-top: 10%;
-
-
+    padding-top: 6%;
 }
 .copyright{
     width: 80%;
@@ -429,14 +427,12 @@ html {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
-.container_profil{
 
-}
-button[aria-expanded="true"] .fa-sort-down 
+button[aria-expanded="true"] .fa-caret-right
 {
     display: none;
 }
-button[aria-expanded="true"] .fa-caret-right
+button[aria-expanded="true"] .fa-sort-down
 {
     display: block;
 }
@@ -444,11 +440,11 @@ button[aria-expanded="false"] .fa-sort-down
 {
     display: none;
 }
-
 button[aria-expanded="false"] .fa-caret-right
 {
     display: block;
 }
+
 @media screen and (max-width: 1100px){
     .card{
         margin-right: 10%;
@@ -525,7 +521,11 @@ button[aria-expanded="false"] .fa-caret-right
             .hAcceuil{
                 border-bottom-left-radius: 17% ;
                 border-bottom-right-radius: 17% ;
+<<<<<<< HEAD
                 height: 80ex ;
+=======
+                height: 80ex 
+>>>>>>> 6e3a83a1decc5e591a8da844833b1ace3becd803
             }
         }
         @media screen and (max-width: 990px){
@@ -548,6 +548,10 @@ button[aria-expanded="false"] .fa-caret-right
         }
         @media screen and (max-width: 990px) {
             .image1{
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6e3a83a1decc5e591a8da844833b1ace3becd803
                 width: 77% ;
                 padding-left: 8% ;
                 padding-top: 8% ;
@@ -555,7 +559,11 @@ button[aria-expanded="false"] .fa-caret-right
         }
         @media screen and (max-width: 600px) {
             .texte1{
+<<<<<<< HEAD
                 width: 83% ;
+=======
+                width: 83%;
+>>>>>>> 6e3a83a1decc5e591a8da844833b1ace3becd803
             }
         }
         @media screen and (max-width: 600px) {
@@ -567,7 +575,11 @@ button[aria-expanded="false"] .fa-caret-right
         @media screen and (max-width: 600px) {
             .image1{
                 width: 77% ;
+<<<<<<< HEAD
                 padding-left: 8% ;
+=======
+                padding-left: 8%;
+>>>>>>> 6e3a83a1decc5e591a8da844833b1ace3becd803
                 padding-top: 8% ;
             }
         }
@@ -598,6 +610,7 @@ button[aria-expanded="false"] .fa-caret-right
         }
         @media screen and (max-width: 600px) {
             .bloc4{
+
                 display: none ;
             }
         }
@@ -622,5 +635,5 @@ button[aria-expanded="false"] .fa-caret-right
                 width: 7% ;
             }
         }
-
-
+            
+    
