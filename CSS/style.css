@@ -289,12 +289,6 @@ html {
     margin-left: 36%;
     margin-right: 36%;
 }
-.marque-text{
-    width: 8%;
-    border-radius: 10%;
-    margin-right: 10px;
-}
-
 
 .marque2{
     background-color: white;
@@ -308,11 +302,6 @@ html {
     margin-top: 15px;
 }
 
-.marque-text{
-    padding-top: 2%;
-    padding-right: 10%;
-    font-size: 1em;
-}
 .titre_faq{
     font-size: 3em;
 }
@@ -431,11 +420,11 @@ html {
 .container_profil{
 
 }
-button[aria-expanded="true"] .fa-sort-down 
+button[aria-expanded="true"] .fa-caret-right
 {
     display: none;
 }
-button[aria-expanded="true"] .fa-caret-right
+button[aria-expanded="true"] .fa-sort-down
 {
     display: block;
 }
@@ -444,8 +433,7 @@ button[aria-expanded="false"] .fa-sort-down
     display: none;
 }
 
-button[aria-expanded="false"] .fa-caret-right
-{
+button[aria-expanded="false"] .fa-caret-right{
     display: block;
 }
 @media screen and (max-width: 1100px){
