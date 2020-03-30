@@ -521,11 +521,7 @@ button[aria-expanded="false"] .fa-caret-right
             .hAcceuil{
                 border-bottom-left-radius: 17% ;
                 border-bottom-right-radius: 17% ;
-<<<<<<< HEAD
                 height: 80ex ;
-=======
-                height: 80ex 
->>>>>>> 6e3a83a1decc5e591a8da844833b1ace3becd803
             }
         }
         @media screen and (max-width: 990px){
@@ -548,10 +544,6 @@ button[aria-expanded="false"] .fa-caret-right
         }
         @media screen and (max-width: 990px) {
             .image1{
-<<<<<<< HEAD
-=======
-
->>>>>>> 6e3a83a1decc5e591a8da844833b1ace3becd803
                 width: 77% ;
                 padding-left: 8% ;
                 padding-top: 8% ;
@@ -559,11 +551,7 @@ button[aria-expanded="false"] .fa-caret-right
         }
         @media screen and (max-width: 600px) {
             .texte1{
-<<<<<<< HEAD
                 width: 83% ;
-=======
-                width: 83%;
->>>>>>> 6e3a83a1decc5e591a8da844833b1ace3becd803
             }
         }
         @media screen and (max-width: 600px) {
@@ -575,11 +563,7 @@ button[aria-expanded="false"] .fa-caret-right
         @media screen and (max-width: 600px) {
             .image1{
                 width: 77% ;
-<<<<<<< HEAD
                 padding-left: 8% ;
-=======
-                padding-left: 8%;
->>>>>>> 6e3a83a1decc5e591a8da844833b1ace3becd803
                 padding-top: 8% ;
             }
         }
