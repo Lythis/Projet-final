@@ -136,33 +136,33 @@
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom01">Pseudo</label>
-                                                    <input type="text" class="form-control" id="validationCustom01" placeholder="pseudo" name="pseudoinscription" required>
+                                                    <input type="text" class="form-control" id="validationCustom01" placeholder="" name="pseudoinscription" required>
                                                     <div class="invalid-feedback">
-                                                        veuillez entrer votre pseudo.
+                                                        Veuillez entrer votre pseudo.
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom02">adresse Email</label>
-                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="adresse Email" name="emailinscription" required>
+                                                    <label for="validationCustom02">Adresse Email</label>
+                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="" name="emailinscription" required>
                                                     <div class="invalid-feedback">
-                                                        veuillez entrer un email valide
+                                                        Veuillez entrer un email valide
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustomMDP">Mots de Passe</label>
+                                                    <label for="validationCustomMDP">Mot de Passe</label>
                                                     <div class="input-group">
-                                                        <input type="password" class="form-control" id="validationCustomMDP" placeholder="MDP" aria-describedby="inputGroupPrepend" name="mdpinscription" required>
+                                                        <input type="password" class="form-control" id="validationCustomMDP" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscription" required>
                                                         <div class="invalid-feedback">
-                                                            veuillez entrer un MDP
+                                                            Veuillez entrer un MDP
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustomMDP">Confirmation Mots de Passe</label>
+                                                    <label for="validationCustomMDP">Confirmation Mot de Passe</label>
                                                     <div class="input-group">
-                                                        <input type="password" class="form-control" id="validationCustomMDP" placeholder="MDP" aria-describedby="inputGroupPrepend" name="mdpinscriptionconfirm" required>
+                                                        <input type="password" class="form-control" id="validationCustomMDP" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscriptionconfirm" required>
                                                         <div class="invalid-feedback">
-                                                            veuillez entrer le même MDP
+                                                            Veuillez confirmer votre MDP
                                                         </div>
                                                     </div>
                                                 </div>
