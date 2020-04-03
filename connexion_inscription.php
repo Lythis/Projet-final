@@ -143,7 +143,7 @@
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom02">adresse Email</label>
-                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="adresse Email" name="emailinscription" required>
+                                                    <input type="email" class="form-control" id="validationCustom02" placeholder="adresse Email" name="emailinscription" required>
                                                     <div class="invalid-feedback">
                                                         veuillez entrer un email valide
                                                     </div>
