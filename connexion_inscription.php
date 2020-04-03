@@ -190,6 +190,6 @@ Test afin de vérifier qu'on est bien connecté à la base de données
             <?php
             require_once('includes/footer.php');
             ?>
-        </div>
 
+        </div>
 
