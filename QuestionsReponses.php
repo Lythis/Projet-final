@@ -1,12 +1,3 @@
-<?php
-$title ='Questions/Reponses';
-require_once('includes/header.php');
-?>
-
-<body>
-    <?php 
-    require_once('includes/nav-bar.php');
-    ?>
     <div class="card responsive-bootstrap-card mx-auto">
         <h5 class="card-header"><img class="picture-user-small" src="profile-picture/lythis.jpg" alt=""> <b>Lythis</b> a posé la question</h5>
         <div class="card-body">
@@ -47,5 +38,3 @@ require_once('includes/header.php');
         require_once('includes/footer.php');
         ?>
     </div>
-</body>
-</html>

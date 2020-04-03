@@ -189,7 +189,3 @@
                 require_once('includes/footer.php');
             ?>
         </div>
-
-
-    </body>
-    </html>
