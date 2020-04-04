@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 04 avr. 2020 à 12:10
+-- Généré le :  sam. 04 avr. 2020 à 14:09
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -93,14 +93,16 @@ CREATE TABLE IF NOT EXISTS `question` (
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `question`
 --
 
 INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES
-(1, 'Qui est la meilleure waifu/meilleur husbando?', '2020-04-03', 2, 1);
+(1, 'Qui est la meilleure waifu/meilleur husbando?', '2020-04-03', 2, 1),
+(2, 'J\'aime TELLEMENT les VM, j\'en fais tout les jours, suis-je addicte?', '2020-04-04', 2, 7),
+(3, 'Why is Japan such a peaceful land?', '2020-04-04', 1, 10);
 
 -- --------------------------------------------------------
 
@@ -118,14 +120,16 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   PRIMARY KEY (`Id_reponse`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_question` (`#Id_question`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `reponse`
 --
 
 INSERT INTO `reponse` (`Id_reponse`, `Contenu_reponse`, `Date_reponse`, `#Id_profil`, `#Id_question`) VALUES
-(1, 'Astolfo', '2020-04-03', 1, 1);
+(1, 'Astolfo', '2020-04-03', 1, 1),
+(2, 'Because it\'s soooo beautiful :3', '2020-04-04', 2, 3),
+(3, 'Omg Lythis noticed me!!', '2020-04-04', 1, 3);
 
 -- --------------------------------------------------------
 

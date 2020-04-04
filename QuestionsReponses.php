@@ -1,4 +1,4 @@
-    <div class="card responsive-bootstrap-card mx-auto">
+    <div class="card responsive-bootstrap-card m-card">
         <h5 class="card-header"><img class="picture-user-small" src="profile-picture/lythis.jpg" alt=""> <b></b> a posé la question</h5>
         <div class="card-body">
             <h5 class="card-title"></h5>
@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="card hidden-answer responsive-bootstrap-card mx-auto">
+    <div class="card hidden-answer responsive-bootstrap-card">
         <div class="card-body">
             <div class="card mb-2">
                 <div class="card-header">
