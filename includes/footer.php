@@ -41,8 +41,14 @@
                         }, false);
                     });
                 }, false);
-            })();
-        </script>
-    </footer>
+
+            });
+        }, false);
+    })();
+</script>
+</footer>
 </body>
 </html>
+
+
+
