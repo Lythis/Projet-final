@@ -3,7 +3,7 @@ $title ='Question';
 require_once('includes/header.php');
 ?>
 
-<body>
+<body class="font-page">>
     <?php 
     require_once('includes/nav-bar.php');
     ?>
