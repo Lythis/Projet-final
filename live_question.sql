@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 29 mars 2020 à 08:29
+-- Généré le :  sam. 04 avr. 2020 à 12:10
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -33,7 +33,23 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `Id_categorie` int(11) NOT NULL AUTO_INCREMENT,
   `Libelle_categorie` varchar(255) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`Id_categorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`Id_categorie`, `Libelle_categorie`) VALUES
+(1, 'Anime'),
+(2, 'NSFW'),
+(3, 'Voiture'),
+(4, 'Informatique'),
+(5, 'Coronavirus'),
+(6, 'Politique'),
+(7, 'VM'),
+(8, 'Idols'),
+(9, 'K-Pop'),
+(10, 'Japon');
 
 -- --------------------------------------------------------
 
@@ -51,14 +67,15 @@ CREATE TABLE IF NOT EXISTS `profil` (
   `#Id_role` int(11) NOT NULL,
   PRIMARY KEY (`Id_profil`),
   KEY `#Id_role` (`#Id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `profil`
 --
 
 INSERT INTO `profil` (`Id_profil`, `Pseudo_profil`, `Mail_profil`, `MotDePasse_profil`, `Genre_profil`, `#Id_role`) VALUES
-(1, 'root', 'root@livequestion.com', '12345', 'Non binaire', 1);
+(1, 'root', 'root@livequestion.com', '12345', 'Non binaire', 1),
+(2, 'Lythis', 'lythis@morgan.fr', '4567', 'Homme', 2);
 
 -- --------------------------------------------------------
 
@@ -76,7 +93,14 @@ CREATE TABLE IF NOT EXISTS `question` (
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `question`
+--
+
+INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES
+(1, 'Qui est la meilleure waifu/meilleur husbando?', '2020-04-03', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +118,14 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   PRIMARY KEY (`Id_reponse`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_question` (`#Id_question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `reponse`
+--
+
+INSERT INTO `reponse` (`Id_reponse`, `Contenu_reponse`, `Date_reponse`, `#Id_profil`, `#Id_question`) VALUES
+(1, 'Astolfo', '2020-04-03', 1, 1);
 
 -- --------------------------------------------------------
 
