@@ -19,15 +19,18 @@
 
             if($profil[$ind]['Mail_profil'] == $email && $profil[$ind]['MotDePasse_profil'] == $mdp) {
                 $connexionvalide = true;
+                $_SESSION['utilisateur'] = [
+                   'id' => $profil[$ind]['Id_profil'],
+                   'email' => $profil[$ind]['Mail_profil'],
+                   'pseudo' => $profil[$ind]['Pseudo_profil'],
+                   'genre' => $profil[$ind]['Genre_profil'],
+                   'role' => $profil[$ind]["#Id_role"],
+                ];
             }
             else {
                 $ind = $ind + 1;
             }
 
-        }
-
-        if ($connexionvalide == true) {
-            $_SESSION['pseudo'] = $profil[$ind]['Pseudo_profil'];
         }
     }
 
@@ -42,7 +45,6 @@
         $genre = 'Homme';
         $role = 2;
         $query->execute();
-
     }
 ?>
 
@@ -57,7 +59,7 @@
                 $_POST['connexion'] = '';
 
                 if ($connexionvalide == true) {
-                    echo "Bienvenue ".$_SESSION['pseudo']." !";
+                    echo "Bienvenue ".$_SESSION['utilisateur']['pseudo']." !";
                 }
 
                 else {
