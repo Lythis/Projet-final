@@ -361,7 +361,6 @@ html {
     margin-left: 20%;
     color: grey;
     padding-top: 6%;
-    padding-top: 10%;
 }
 .copyright{
     width: 80%;
@@ -491,7 +490,6 @@ button[aria-expanded="false"] .fa-caret-right
             margin-right: 10%;
 
             border-color: grey;
-            height: 1px;
         }
 
         .responsive-bootstrap-card {
@@ -558,70 +556,61 @@ button[aria-expanded="false"] .fa-caret-right
             .texte1{
                 width: 83%;
             }
-        }
-        @media screen and (max-width: 600px) {
+            .logo{
+                width: 7% ;
+            }
             .bloc1{
                 text-align: center ;
                 margin-left: 15% ;
             }
-        }
-        @media screen and (max-width: 600px) {
             .image1{
                 width: 77% ;
                 padding-left: 8%;
                 padding-top: 8% ;
             }
-        }
-        @media screen and (max-width: 600px) {
             .rowe{
                 width: 60% ;
                 margin-left: 21% ;
                 display: block ;
             }
-        }
-        @media screen and (max-width: 600px) {
             .description{
                 margin-left: 12% ;
                 width: 63% ;
                 text-align: center ;
-        }
-        @media screen and (max-width: 600px) {
+            }
             .description p{
                 width: 94% ;
                 margin-left: 14% ;
             }
-        }
-        @media screen and (max-width: 600px) {
             .description h3{
                 margin-left: 19% ;
             }
-        }
-        @media screen and (max-width: 600px) {
             .bloc4{
 
                 display: none ;
             }
-        }
-        @media screen and (max-width: 600px) {
             .bloc6{
                 display: block ;
                 text-align: center ;
             }
-        }
-        @media screen and (max-width: 600px) {
             .texte4{
                 padding-top: 25% ;
             }
-        }
-        @media screen and (max-width: 600px) {
             .texte4 p{
                 font-size: 116% ;
             }
-        }
-        @media screen and (max-width: 600px) {
-            .logo{
-                width: 7% ;
+           .container_haut{
+                display: flex;
+                margin-left: 5%;
+                margin-right: 5%;
+
+                border-color: grey;
+            }
+            .container_bas{
+                display: flex;
+                margin-left: 10%;
+                margin-right: 10%;
+
             }
         }
-            
-    
+
