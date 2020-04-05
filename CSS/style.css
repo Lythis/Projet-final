@@ -217,9 +217,6 @@ html {
     display: none;
 }
 
-.bas-page{
-
-}
 
 .form-group {
     text-align: center;
@@ -428,9 +425,7 @@ html {
     flex-wrap: wrap;
 }
 
-.container_profil{
 
-}
 button[aria-expanded="true"] .fa-caret-right
 {
     display: none;
@@ -446,6 +441,9 @@ button[aria-expanded="false"] .fa-sort-down
 button[aria-expanded="false"] .fa-caret-right
 {
     display: block;
+}
+.question_btn{
+    margin-left: 20%;
 }
 
 @media screen and (max-width: 1100px){
@@ -601,15 +599,14 @@ button[aria-expanded="false"] .fa-caret-right
             }
            .container_haut{
                 display: flex;
-                margin-left: 5%;
-                margin-right: 5%;
+        
 
                 border-color: grey;
             }
             .container_bas{
                 display: flex;
-                margin-left: 10%;
-                margin-right: 10%;
+            
+                margin-right: 50%;
 
             }
         }

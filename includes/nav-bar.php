@@ -48,7 +48,7 @@
                 </li>
                 <?php
                     if (!empty($_SESSION)) {
-                        echo $_SESSION['pseudo'];
+                        echo $_SESSION['utilisateur']['pseudo'];
                 ?>
                 <form action="./index.php" method="post">
                     <button type="submit" class="boutton text-white" name="deconnexion" value="valide">Déconnexion</button>
