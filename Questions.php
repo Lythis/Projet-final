@@ -1,24 +1,80 @@
 <?php
-$title ='Question';
-require_once('includes/header.php');
+    require_once('db/base_PDO.php');
+    $title ='Poser une Question';
+    require_once('includes/header.php');
 ?>
 
-<body>
+<body class="font-page">
     <?php 
-    require_once('includes/nav-bar.php');
+        require_once('includes/nav-bar.php');
+
+        if (!empty($_POST['question']) && !empty($_POST['categorie']) && $_POST['poserquestion'] == 'valide') {
+
+            $obtenirdate = getdate();
+            $date = $obtenirdate['year']."-".$obtenirdate['mon']."-".$obtenirdate['mday'];
+
+            $query = $con->prepare('INSERT INTO `question`(`Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES (:question, :dateajd, :id_user, :id_categorie)');
+            $query->bindParam(':question', $_POST['question']);
+            $query->bindParam(':dateajd', $date);
+            $query->bindParam(':id_user', $_SESSION['utilisateur']['id']);
+            $query->bindParam(':id_categorie', $_POST['categorie']);
+            $query->execute();
+
+    ?>
+        <p>Votre question a bien été envoyé. <a href="./index.php">Voir les questions</a>.</p>
+    <?php
+        }
+
+        elseif (!empty($_SESSION)) {
     ?>
     <div class="center">
         <div class="form-group">
-            <label for="votrequestion" class="lead">Votre question :</label>
-            <textarea class="form-control mb-2 w-100" id="votrequestion" rows="2"></textarea>
-            <div class="invalid-feedback mb-2">
-                Veuillez saisir une question.
-            </div>
-            <button type="submit" class="btn btn-success">Envoyer</button>
+            <form class="needs-validation" method="post" action="Questions.php" novalidate>
+                <div class="form-group">
+                    <div class="col-lg">
+                        <label for="validationTooltip01">Votre question :</label>
+                        <input type="text" class="form-control" id="validationTooltip01" placeholder="Question" name="question" required>
+                        <div class="invalid-feedback mb-2">
+                            Veuillez saisir une question.
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <label for="validationTooltip02">Catégorie :</label>
+                        <select class="custom-select mb-2" id="validationTooltip02" placeholder="Categorie" name="categorie" required>
+                            <option value="">Selectionner une catégorie</option>
+                            <option value="1">Anime</option>
+                            <option value="2">NSFW</option>
+                            <option value="3">Voiture</option>
+                            <option value="4">Informatique</option>
+                            <option value="5">Coronavirus</option>
+                            <option value="6">Politique</option>
+                            <option value="7">VM</option>
+                            <option value="8">Idols</option>
+                            <option value="9">K-Pop</option>
+                            <option value="10">Japon</option>
+
+                        </select>
+                        <div class="invalid-feedback mb-2">
+                            Veuillez selectionner une categorie.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn1 btn-success" name="poserquestion" value="valide">Envoyer</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="bas-page">
-        <?php
+
+<?php
+    }
+    else {
+?>
+    <p>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour poser une question!</p>
+<?php
+    }
+?>
+
+<div class="bas-page">
+    <?php
         require_once('includes/footer.php');
-        ?>
-    </div>
+    ?>
+</div>
