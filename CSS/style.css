@@ -351,8 +351,6 @@ html {
 .footer{
     background-color: #1a2d34;
     margin-top: -2%;
-    bottom:0;
-
 }
 
 
@@ -360,7 +358,9 @@ html {
     width: 60%;
     margin-left: 20%;
     color: grey;
-    padding-top: 6%;
+    padding-top: 10%;
+
+
 }
 .copyright{
     width: 80%;
@@ -385,6 +385,11 @@ html {
     margin-top: -2%;
 }
 
+.m-card{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
 #bar{
 
     border-color: grey;
@@ -403,9 +408,6 @@ html {
 }
 .card-align{
     display: flex;
-}
-.btn{
-    margin-left: 20%;
 }
 .card-head{
     padding: .50rem .50rem;
@@ -513,31 +515,142 @@ button[aria-expanded="false"] .fa-caret-right
     display: block;
 }
 
-@media screen and (max-width: 1100px){
-    .card{
-        margin-right: 10%;
+button[aria-expanded="true"] .afficher
+{
+    display: none;
+}
+button[aria-expanded="true"] .masquer
+{
+    display: block;
+}
+button[aria-expanded="false"] .masquer
+{
+    display: none;
+}
+button[aria-expanded="false"] .afficher
+{
+    display: block;
+}
+
+@media screen and (max-width: 992px){
+    .center {
+        width: 80%;
         margin-left: 10%;
     }
-    .play{
-        padding-top: 40%;
-        padding-bottom: 40%;
-        font-size: 2em;
+
+    .responsive-bootstrap-card {
+        width: 80%;
     }
-    .faq-text{
-        margin-right: 10%;
-        margin-left: 10%;   
-        font-size: 3vmin;   
+}
+
+@media screen and (max-width: 576px){
+    .center {
+        width: 100%;
+        margin-left: 0%;
     }
 
-    #tvit{
-        margin-left: 30%;
+    .responsive-bootstrap-card {
+        width: 100%;
     }
-    .container_haut{
+}
 
+@media screen and (max-width: 600px){
+    .hAcceuil{
+        border-bottom-left-radius: 17% ;
+        border-bottom-right-radius: 17% ;
+        height: 80ex 
+    }
+}
+
+@media screen and (max-width: 990px){
+    .hAcceuil{
+        border-bottom-left-radius: 17% ;
+        border-bottom-right-radius: 17% ;
+        height: 90ex ;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .texte1{
+        width: 83% ;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .bloc1{
+        text-align: center ;
+        margin-left: 15% ;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .image1{
+
+        width: 77% ;
+        padding-left: 8% ;
+        padding-top: 8% ;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .texte1{
+        width: 83%;
+    }
+    .logo{
+        width: 7% ;
+    }
+    .bloc1{
+        text-align: center ;
+        margin-left: 15% ;
+    }
+    .image1{
+        width: 77% ;
+        padding-left: 8%;
+        padding-top: 8% ;
+    }
+    .rowe{
+        width: 60% ;
+        margin-left: 21% ;
+        display: block ;
+    }
+    .description{
+        margin-left: 12% ;
+        width: 63% ;
+        text-align: center ;
+    }
+    .description p{
+        width: 94% ;
+        margin-left: 14% ;
+    }
+    .description h3{
+        margin-left: 19% ;
+    }
+    .bloc4{
+
+        display: none ;
+    }
+    .bloc6{
+        display: block ;
+        text-align: center ;
+    }
+    .texte4{
+        padding-top: 25% ;
+    }
+    .texte4 p{
+        font-size: 116% ;
+    }
+   .container_haut{
         display: flex;
-        margin-left: 22%;
-        margin-right: 22%;
+        margin-left: 5%;
+        margin-right: 5%;
+
+        border-color: grey;
     }
+    .container_bas{
+        display: flex;
+        margin-left: 10%;
+        margin-right: 10%;
+
 
     @media screen and (max-width: 700px){
         .card-text{
@@ -688,4 +801,8 @@ button[aria-expanded="false"] .fa-caret-right
             }
         }
 
+
+
+    }
+}
 
