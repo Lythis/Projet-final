@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 05 avr. 2020 à 14:01
+-- Généré le :  lun. 06 avr. 2020 à 15:18
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `profil` (
   `#Id_role` int(11) NOT NULL,
   PRIMARY KEY (`Id_profil`),
   KEY `#Id_role` (`#Id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `profil`
@@ -75,7 +75,8 @@ CREATE TABLE IF NOT EXISTS `profil` (
 
 INSERT INTO `profil` (`Id_profil`, `Pseudo_profil`, `Mail_profil`, `MotDePasse_profil`, `Genre_profil`, `#Id_role`) VALUES
 (1, 'root', 'root@livequestion.com', '12345', 'Non binaire', 1),
-(2, 'Lythis', 'lythis@morgan.fr', '4567', 'Homme', 2);
+(2, 'Lythis', 'lythis@morgan.fr', '4567', 'Homme', 2),
+(55, 'Kyllian', 'kyllian@joseph.fr', '5555', 'Voiture', 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `question`
@@ -104,7 +105,9 @@ INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question
 (2, 'J\'aime TELLEMENT les VM, j\'en fais tout les jours, suis-je addicte?', '2020-04-04', 2, 7),
 (3, 'Why is Japan such a peaceful land?', '2020-04-04', 1, 10),
 (4, 'Comment faire pour que Morgan soit plus intelligent?', '2020-04-05', 1, 5),
-(5, 'Who\'s the best idol?', '2020-04-05', 1, 8);
+(5, 'Who\'s the best idol?', '2020-04-05', 1, 8),
+(6, 'Ceci est un test', '2020-04-05', 2, 1),
+(45, 'Pourquoi je suis aussi beau?', '2020-04-06', 55, 3);
 
 -- --------------------------------------------------------
 
@@ -122,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   PRIMARY KEY (`Id_reponse`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_question` (`#Id_question`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `reponse`
@@ -131,7 +134,9 @@ CREATE TABLE IF NOT EXISTS `reponse` (
 INSERT INTO `reponse` (`Id_reponse`, `Contenu_reponse`, `Date_reponse`, `#Id_profil`, `#Id_question`) VALUES
 (1, 'Astolfo', '2020-04-03', 1, 1),
 (2, 'Because it\'s soooo beautiful :3', '2020-04-04', 2, 3),
-(3, 'Omg Lythis noticed me!!', '2020-04-04', 1, 3);
+(3, 'Omg Lythis noticed me!!', '2020-04-04', 1, 3),
+(66, ':(', '2020-04-06', 2, 45),
+(77, 'Tu es super beau', '2020-04-02', 1, 45);
 
 -- --------------------------------------------------------
 
