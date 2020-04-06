@@ -326,7 +326,7 @@ html {
 .footer{
     background-color: #1a2d34;
     margin-top: -2%;
-
+    bottom:0;
 }
 
 .marque_image{
