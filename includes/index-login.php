@@ -1,7 +1,7 @@
     <h3 class="d-flex justify-content-center">Envie de poser une question? Venez la poser&nbsp;<a href="./Questions.php">ici</a>!</h3>
 
     <?php
-        $query = $con->prepare("SELECT * FROM question");
+        $query = $con->prepare("SELECT * FROM question ORDER BY `Date_creation_question` DESC");
         $query->execute();
         $questions = $query->fetchAll();
 
@@ -11,7 +11,7 @@
             $idprofil = $question["#Id_profil"];
             $idcategorie = $question["#Id_categorie"];
 
-            $query = $con->prepare("SELECT * FROM `reponse` WHERE `#Id_question` = ( SELECT `Id_question` FROM `question` WHERE `Id_question` = $idquestion ORDER BY `Date_reponse` )");
+            $query = $con->prepare("SELECT * FROM `reponse` WHERE `#Id_question` = ( SELECT `Id_question` FROM `question` WHERE `Id_question` = $idquestion) ORDER BY `Date_reponse`");
             $query->execute();
             $reponses = $query->fetchAll();
 
