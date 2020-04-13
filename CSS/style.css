@@ -14,6 +14,15 @@ body{
 html {
     scroll-behavior: smooth;
 }
+
+button[name="question"]{
+    font-size: 100%;
+    font-family: inherit;
+    color: blue;
+    background-color: white;
+    border: 0;
+    padding: 0;
+}
 .couleur{
     background-color: #192D34;
 }
