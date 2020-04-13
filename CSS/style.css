@@ -283,9 +283,6 @@ button[name="question"]{
     border-radius: 5%;
     margin-right: 10px;
 }
-#kyan{
-
-}
 
 #tvit{
     margin-left: 40%;
@@ -499,6 +496,9 @@ button[name="question"]{
     margin-right: 20%;
     margin-top: 22%;
 }
+.masquer{
+    display: none;
+}
 
 
 
@@ -691,4 +691,5 @@ button[aria-expanded="false"] .fa-caret-right
                 margin-left: 19% ;
             }
         }
-    
+    }
+}
