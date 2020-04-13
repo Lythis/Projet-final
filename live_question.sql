@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 04 avr. 2020 à 14:09
+-- Généré le :  Dim 05 avr. 2020 à 14:01
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `question`
@@ -102,7 +102,9 @@ CREATE TABLE IF NOT EXISTS `question` (
 INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES
 (1, 'Qui est la meilleure waifu/meilleur husbando?', '2020-04-03', 2, 1),
 (2, 'J\'aime TELLEMENT les VM, j\'en fais tout les jours, suis-je addicte?', '2020-04-04', 2, 7),
-(3, 'Why is Japan such a peaceful land?', '2020-04-04', 1, 10);
+(3, 'Why is Japan such a peaceful land?', '2020-04-04', 1, 10),
+(4, 'Comment faire pour que Morgan soit plus intelligent?', '2020-04-05', 1, 5),
+(5, 'Who\'s the best idol?', '2020-04-05', 1, 8);
 
 -- --------------------------------------------------------
 

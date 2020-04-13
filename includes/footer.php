@@ -43,6 +43,9 @@
         }, false);
     })();
 </script>
+
+        </script>
+
 </footer>
 </body>
 </html>
