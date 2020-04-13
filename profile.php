@@ -15,7 +15,7 @@ require_once('includes/header.php');
                 </div>	    
                 <div class="col ">
                     <h3 class="card-title ml-2">Lythis</h3>
-                    <h5>Genre : Homme</h5>
+                    <h5>Genre : non-binaire</h5>
                     <p>Description personnelle : Je suis un dévelopeur full-stack.</p>
                 </div>
 

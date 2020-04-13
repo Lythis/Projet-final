@@ -4,7 +4,9 @@
     require_once('includes/header.php');
 ?>
 
+
 <body class="font-page">
+
     <?php 
         require_once('includes/nav-bar.php');
 

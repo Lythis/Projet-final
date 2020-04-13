@@ -424,6 +424,73 @@ html {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+.btn2{
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.font-page{
+    background-image: url(../image/abstract.jpg);
+    background-size: cover;
+}
+.form-row1{
+    display: -ms-flexbox;
+
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+.card4{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 14%;
+}
+.card4-2{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 22%;
+}
+
 
 
 button[aria-expanded="true"] .fa-caret-right
@@ -472,6 +539,7 @@ button[aria-expanded="false"] .fa-caret-right
         margin-right: 22%;
     }
 
+
     @media screen and (max-width: 700px){
         .card-text{
             font-size: 4vmin;
@@ -488,6 +556,7 @@ button[aria-expanded="false"] .fa-caret-right
             margin-right: 10%;
 
             border-color: grey;
+            height: 1px;
         }
 
         .responsive-bootstrap-card {
@@ -517,13 +586,6 @@ button[aria-expanded="false"] .fa-caret-right
             }
 
         }
-        @media screen and (max-width: 600px){
-            .hAcceuil{
-                border-bottom-left-radius: 17% ;
-                border-bottom-right-radius: 17% ;
-                height: 80ex 
-            }
-        }
         @media screen and (max-width: 990px){
             .hAcceuil{
                 border-bottom-left-radius: 17% ;
@@ -544,45 +606,42 @@ button[aria-expanded="false"] .fa-caret-right
         }
         @media screen and (max-width: 990px) {
             .image1{
-
                 width: 77% ;
                 padding-left: 8% ;
                 padding-top: 8% ;
             }
-        }
+        }    
         @media screen and (max-width: 600px) {
+            .hAcceuil{
+                border-bottom-left-radius: 17% ;
+                border-bottom-right-radius: 17% ;
+                height: 80ex 
+
+            }
             .texte1{
                 width: 83%;
             }
             .logo{
                 width: 7% ;
             }
+
             .bloc1{
                 text-align: center ;
                 margin-left: 15% ;
             }
+
             .image1{
                 width: 77% ;
                 padding-left: 8%;
                 padding-top: 8% ;
             }
+        
             .rowe{
                 width: 60% ;
                 margin-left: 21% ;
                 display: block ;
             }
-            .description{
-                margin-left: 12% ;
-                width: 63% ;
-                text-align: center ;
-            }
-            .description p{
-                width: 94% ;
-                margin-left: 14% ;
-            }
-            .description h3{
-                margin-left: 19% ;
-            }
+        
             .bloc4{
 
                 display: none ;
@@ -605,9 +664,22 @@ button[aria-expanded="false"] .fa-caret-right
             }
             .container_bas{
                 display: flex;
-            
                 margin-right: 50%;
-
+            }
+            .logo{
+                width: 7% ;
+            }
+            .description p{
+                width: 94% ;
+                margin-left: 14% ;
+            }
+            .description{
+                margin-left: 12% ;
+                width: 63% ;
+                text-align: center ;
+            }
+            .description h3{
+                margin-left: 19% ;
             }
         }
-
+    
