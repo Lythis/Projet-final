@@ -37,9 +37,6 @@
             <div class="card-body">
                 <h5 class="card-title">Catégorie : <?php echo $categorie["0"]["Libelle_categorie"]; ?></h5>
                 <p class="card-text"><?php echo $question[0]["Titre_question"]; ?></p>
-                <form action="./QuestionsReponses.php" method="get">
-                    <button name="question" value="<?php echo $idquestion ?>">Accéder à la question</button>
-                </form>
                 <blockquote class="blockquote mb-2">
                     <p></p>
                     <footer class="blockquote-footer">Le <?php echo $question[0]["Date_creation_question"]; ?></footer>
