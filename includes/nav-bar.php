@@ -48,7 +48,9 @@
                 </li>
                 <?php
                     if (!empty($_SESSION)) {
-                        echo $_SESSION['utilisateur']['pseudo'];
+                        echo'<li class="nav-item">
+                        <a class="nav-link active text-light" href="profile.php">
+                      ', $_SESSION['utilisateur']['pseudo'],'</a></li>'
                 ?>
                 <form action="./index.php" method="post">
                     <button type="submit" class="boutton text-white" name="deconnexion" value="valide">Déconnexion</button>

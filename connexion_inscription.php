@@ -40,7 +40,7 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
     $query->bindParam(':pseudo', $_POST['pseudoinscription']);
     $query->bindParam(':email', $_POST['emailinscription']);
     $query->bindParam(':password', $_POST['mdpinscription']);
-    $query->bindParam(':genre', $genre);
+    $query->bindParam(':genre', $_POST['genreInscription']);
     $query->bindParam(':role', $role);
     $genre = 'Homme';
     $role = 2;
@@ -167,6 +167,21 @@ Test afin de vérifier qu'on est bien connecté à la base de données
                                                             veuillez entrer le même MDP
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                <label for="validationTooltip02">Genre :</label>
+                                                <select class="custom-select mb-2" id="validationTooltip02" placeholder="Genre" name="genreInscription" required>
+                                                    <option value="">Selectionner une catégorie</option>
+                                                    <option value="Homme">Homme</option>
+                                                    <option value="Femme">Femme</option>
+                                                    <option value="non-binaire">non-binaire</option>
+                                                    <option value="licorne magique">licorne magique</option>
+                                                    <option value="autre">autre</option>
+                                                    <option value="...">...</option>
+                                                </select>
+                                                <div class="invalid-feedback mb-2">
+                                                    Sélectionne un genre :).
+                                                </div>
                                                 </div>
                                             </div>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
