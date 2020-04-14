@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 06 avr. 2020 à 15:18
+-- Généré le :  mar. 14 avr. 2020 à 14:31
 -- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.3.12
+-- Version de PHP :  7.4.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -64,19 +64,22 @@ CREATE TABLE IF NOT EXISTS `profil` (
   `Mail_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
   `MotDePasse_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
   `Genre_profil` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `Image_profil` varchar(255) NOT NULL DEFAULT 'Default.png',
+  `Description_profil` text NOT NULL DEFAULT 'Aucune information disponible.',
   `#Id_role` int(11) NOT NULL,
   PRIMARY KEY (`Id_profil`),
   KEY `#Id_role` (`#Id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `profil`
 --
 
-INSERT INTO `profil` (`Id_profil`, `Pseudo_profil`, `Mail_profil`, `MotDePasse_profil`, `Genre_profil`, `#Id_role`) VALUES
-(1, 'root', 'root@livequestion.com', '12345', 'Non binaire', 1),
-(2, 'Lythis', 'lythis@morgan.fr', '4567', 'Homme', 2),
-(55, 'Kyllian', 'kyllian@joseph.fr', '5555', 'Voiture', 1);
+INSERT INTO `profil` (`Id_profil`, `Pseudo_profil`, `Mail_profil`, `MotDePasse_profil`, `Genre_profil`, `Image_profil`, `Description_profil`, `#Id_role`) VALUES
+(1, 'root', 'root@livequestion.com', '12345', 'Non binaire', 'Default.png', 'Aucune information disponible.', 1),
+(2, 'Lythis', 'lythis@morgan.fr', '4567', 'Homme', 'lythis.jpg', 'Aucune information disponible.', 2),
+(55, 'Kyllian', 'kyllian@joseph.fr', '5555', 'Homme', 'kyllian.jpg', 'Aucune information disponible.', 1),
+(56, 'Léo', 'leo@stvincent.net', 'oui', 'Hélicoptère d\'attaque', 'Default.png', 'Aucune information disponible.', 2);
 
 -- --------------------------------------------------------
 

@@ -19,7 +19,16 @@ button[name="question"]{
     font-size: 100%;
     font-family: inherit;
     color: blue;
-    background-color: white;
+    background-color: inherit;
+    border: 0;
+    padding: 0;
+}
+
+button[name="profil"]{
+    font-size: 100%;
+    font-family: inherit;
+    color: white;
+    background-color: inherit;
     border: 0;
     padding: 0;
 }
@@ -239,6 +248,11 @@ button[name="question"]{
 .picture-user-small {
     max-height: 24px;
     max-width: 24px;
+}
+
+.picture-user {
+    max-height: 200px;
+    max-width: 200px;
 }
 
 

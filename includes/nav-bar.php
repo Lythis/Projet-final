@@ -48,10 +48,12 @@
                 </li>
                 <?php
                     if (!empty($_SESSION)) {
-                        echo'<li class="nav-item">
-                        <a class="nav-link active text-light" href="profile.php">
-                      ', $_SESSION['utilisateur']['pseudo'],'</a></li>'
                 ?>
+                <li class="nav-item">
+                    <form action="./profil.php" method="get">
+                        <button name="profil" value="<?php echo $_SESSION['utilisateur']['id']; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $_SESSION['utilisateur']['image']; ?>" alt="<?php echo $_SESSION['utilisateur']['pseudo']; ?>"><?php echo $_SESSION['utilisateur']['pseudo']; ?></button>
+                    </form>
+                </li>
                 <form action="./index.php" method="post">
                     <button type="submit" class="boutton text-white" name="deconnexion" value="valide">Déconnexion</button>
                 </form>
