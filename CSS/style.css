@@ -24,10 +24,10 @@ html {
     margin-left: 5%;
 }
 .boutton{
-    border-bottom-left-radius: 45%;
-    border-bottom-right-radius: 45%;
-    border-top-left-radius: 45%;
-    border-top-right-radius: 45%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
     background-color: #ED008C;
     border: none;
     width: 100%;
@@ -320,11 +320,7 @@ html {
     margin-right: 34%;
     margin-left: 34%;
 }
-.footer{
-    background-color: #1a2d34;
-    margin-top: -2%;
-    bottom:0;
-}
+
 
 .marque_image{
     width: 50px;
@@ -347,9 +343,8 @@ html {
 
 .footer{
     background-color: #1a2d34;
-    margin-top: -2%;
     bottom:0;
-
+    margin-top: 2%;
 }
 
 
@@ -357,7 +352,7 @@ html {
     width: 60%;
     margin-left: 20%;
     color: grey;
-    padding-top: 6%;
+    padding-top: 3%;
 }
 .copyright{
     width: 80%;
@@ -513,6 +508,12 @@ button[aria-expanded="false"] .fa-caret-right
     margin-left: 20%;
 }
 
+/* Profil */
+.titre_post{
+    margin-left: 3%;
+    text-decoration: underline;
+    margin-top: 1%;
+}
 @media screen and (max-width: 1100px){
     .card{
         margin-right: 10%;
@@ -586,31 +587,22 @@ button[aria-expanded="false"] .fa-caret-right
             }
 
         }
-        @media screen and (max-width: 990px){
+        @media screen and (max-width: 990px) {
             .hAcceuil{
                 border-bottom-left-radius: 17% ;
                 border-bottom-right-radius: 17% ;
                 height: 90ex ;
             }
-        }
-        @media screen and (max-width: 990px) {
-            .texte1{
-                width: 83% ;
-            }
-        }
-        @media screen and (max-width: 990px) {
             .bloc1{
                 text-align: center ;
                 margin-left: 15% ;
             }
-        }
-        @media screen and (max-width: 990px) {
             .image1{
                 width: 77% ;
                 padding-left: 8% ;
                 padding-top: 8% ;
             }
-        }    
+        }
         @media screen and (max-width: 600px) {
             .hAcceuil{
                 border-bottom-left-radius: 17% ;

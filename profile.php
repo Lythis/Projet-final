@@ -18,18 +18,19 @@ require_once('includes/header.php');
                     <h5>Genre : non-binaire</h5>
                     <p>Description personnelle : Je suis un dévelopeur full-stack.</p>
                 </div>
-
+            
             </div>
             <div class="row_ligne card-body">
-                <div class="col">
-                    <h5 class="card-title ">Questions posées par Lythis :</h5>
-                    <p class="card-text">Wow, such empty.</p>
-                </div>
             </div>
         </div>
     </div>
+    <h2 class="titre_post">
+        Post-Recent
+     </h2>
+
      <div class="bas-page">
         <?php
         require_once('includes/footer.php');
         ?>
     </div>
+</html>

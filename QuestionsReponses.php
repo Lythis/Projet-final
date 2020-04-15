@@ -1,3 +1,11 @@
+
+        <?php
+            require_once('includes/header.php');
+        ?>
+ <body>
+ <?php 
+    require_once('includes/nav-bar.php');
+    ?>
     <div class="card responsive-bootstrap-card m-card">
         <h5 class="card-header"><img class="picture-user-small" src="profile-picture/lythis.jpg" alt=""> <b></b> a posé la question</h5>
         <div class="card-body">
@@ -33,8 +41,10 @@
             </div>
         </div>
     </div>
+
     <div class="bas-page">
     <?php
         require_once('includes/footer.php');
     ?>
     </div>
+</html>
