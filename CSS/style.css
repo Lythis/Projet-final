@@ -51,6 +51,17 @@ button[name="profil"]{
     width: 100%;
     height: 5ex;
 }
+.bouttonC{
+    border-bottom-left-radius: 45%;
+    border-bottom-right-radius: 45%;
+    border-top-left-radius: 45%;
+    border-top-right-radius: 45%;
+    background-color: #31BCE7 ;
+    border: none;
+    width: 100%;
+    height: 5ex;
+    margin-left: 126%;
+}
 .hAcceuil{
     background-color: #192D34;
     border-bottom-left-radius: 45%;
