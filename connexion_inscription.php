@@ -37,12 +37,16 @@ if (!empty($_POST['email']) && !empty($_POST['mdp']) && isset($_POST['connexion'
 
 elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']) && !empty($_POST['mdpinscription']) && !empty($_POST['mdpinscriptionconfirm']) && $_POST['mdpinscriptionconfirm'] == $_POST['mdpinscription'] && isset($_POST['inscription']) && $_POST['inscription'] == 'valide') {
 
-    $query = $con->prepare('INSERT INTO profil (Pseudo_profil, Mail_profil, MotDePasse_profil, Genre_profil, `#Id_role`) VALUES (:pseudo, :email, :password, :genre, :role)');
+    $query = $con->prepare('INSERT INTO profil (Pseudo_profil, Mail_profil, MotDePasse_profil, Genre_profil, Image_profil, Description_profil, `#Id_role`) VALUES (:pseudo, :email, :password, :genre, :image, :description, :role)');
     $query->bindParam(':pseudo', $_POST['pseudoinscription']);
     $query->bindParam(':email', $_POST['emailinscription']);
     $query->bindParam(':password', $_POST['mdpinscription']);
     $query->bindParam(':genre', $_POST['genreInscription']);
+    $query->bindParam(':image', $image_default_profil);
+    $query->bindParam(':description', $description_default_profil);
     $query->bindParam(':role', $role);
+    $image_default_profil = "Default.png";
+    $description_default_profil = "Aucune information disponible.";
     $role = 2;
     $query->execute();
 }

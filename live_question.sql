@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 14 avr. 2020 à 14:31
+-- Généré le :  mer. 15 avr. 2020 à 13:12
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -64,12 +64,12 @@ CREATE TABLE IF NOT EXISTS `profil` (
   `Mail_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
   `MotDePasse_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
   `Genre_profil` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `Image_profil` varchar(255) NOT NULL DEFAULT 'Default.png',
-  `Description_profil` text NOT NULL DEFAULT 'Aucune information disponible.',
+  `Image_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `Description_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
   `#Id_role` int(11) NOT NULL,
   PRIMARY KEY (`Id_profil`),
   KEY `#Id_role` (`#Id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `profil`
@@ -79,7 +79,8 @@ INSERT INTO `profil` (`Id_profil`, `Pseudo_profil`, `Mail_profil`, `MotDePasse_p
 (1, 'root', 'root@livequestion.com', '12345', 'Non binaire', 'Default.png', 'Aucune information disponible.', 1),
 (2, 'Lythis', 'lythis@morgan.fr', '4567', 'Homme', 'lythis.jpg', 'Aucune information disponible.', 2),
 (55, 'Kyllian', 'kyllian@joseph.fr', '5555', 'Homme', 'kyllian.jpg', 'Aucune information disponible.', 1),
-(56, 'Léo', 'leo@stvincent.net', 'oui', 'Hélicoptère d\'attaque', 'Default.png', 'Aucune information disponible.', 2);
+(56, 'Léo', 'leo@stvincent.net', 'oui', 'Hélicoptère d\'attaque', 'Default.png', 'Aucune information disponible.', 2),
+(57, 'Nico Nico Nii', 'nico@stvincent.net', 'nico', 'Non-binaire', 'Default.png', 'Aucune information disponible.', 2);
 
 -- --------------------------------------------------------
 
@@ -97,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `question`
@@ -110,7 +111,8 @@ INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question
 (4, 'Comment faire pour que Morgan soit plus intelligent?', '2020-04-05', 1, 5),
 (5, 'Who\'s the best idol?', '2020-04-05', 1, 8),
 (6, 'Ceci est un test', '2020-04-05', 2, 1),
-(45, 'Pourquoi je suis aussi beau?', '2020-04-06', 55, 3);
+(45, 'Pourquoi je suis aussi beau?', '2020-04-06', 55, 3),
+(46, 'Pourquoi Nico Nico Nii me harcèle même dans mes rêves?', '2020-04-15', 57, 1);
 
 -- --------------------------------------------------------
 
