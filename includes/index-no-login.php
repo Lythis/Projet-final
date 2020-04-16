@@ -53,7 +53,7 @@
                     <h3>Praesent vitae velit trisique old alos</h3>
                     <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
                 </div>
-                <div class="carde1" style="">
+                <div class="carde1">
                     <div class="card-body">
                         <img src="image/persona2.jpg">
                         <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
@@ -68,7 +68,7 @@
                     <h3>Praesent vitae velit trisique old alos</h3>
                     <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
                 </div>
-                <div class="carde2" style="">
+                <div class="carde2" >
                     <div class="card-body">
                         <img src="image/persona2.jpg">
                         <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
@@ -83,7 +83,7 @@
                     <h3>Praesent vitae velit trisique old alos</h3>
                     <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
                 </div>
-                <div class="carde1" style="">
+                <div class="carde1" >
                     <div class="card-body">
                         <img src="image/persona2.jpg">
                         <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
@@ -98,7 +98,7 @@
                 <h3>Praesent vitae velit trisique old alos</h3>
                 <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
             </div>
-            <div class="carde3" style="">
+            <div class="carde3" >
                 <div class="card-body">
                     <img src="image/persona2.jpg">
                     <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>
@@ -114,7 +114,7 @@
             <h3>Praesent vitae velit trisique old alos</h3>
             <p>ultrices in iaculis nunc sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla</p>
         </div>
-        <div class="carde3" style="">
+        <div class="carde3" >
             <div class="card-body">
                 <img src="image/persona2.jpg">
                 <p>"hendrerit dolor magna eget est lorem ipsum dolor sit"</p>

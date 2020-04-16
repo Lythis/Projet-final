@@ -8,7 +8,7 @@
 <body class="font-page">
 
     <?php 
-        require_once('includes/nav-bar.php');
+        require_once('./includes/nav-bar-login.php');
 
         if (!empty($_POST['question']) && !empty($_POST['categorie']) && $_POST['poserquestion'] == 'valide') {
 

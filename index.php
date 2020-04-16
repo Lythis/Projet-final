@@ -5,7 +5,15 @@ require_once('includes/header.php');
 require_once('includes/tableaux.php');
 ?>
 
-<body>
+<?php
+    if (!empty($_SESSION)) {
+        echo '<body class= "back">';
+    }
+    else {
+        echo '<body>';
+    }
+?>
+
     <?php
     if (!empty($_SESSION)) {
         require_once('./includes/nav-bar-login.php');

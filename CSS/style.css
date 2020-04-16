@@ -351,11 +351,7 @@ button[name="profil"]{
     margin-right: 34%;
     margin-left: 34%;
 }
-.footer{
-    background-color: #1a2d34;
-    margin-top: -2%;
-    bottom:0;
-}
+
 
 .marque_image{
     width: 50px;
@@ -378,7 +374,7 @@ button[name="profil"]{
 
 .footer{
     background-color: #1a2d34;
-    margin-top: -2%;
+    margin-top: 8.5%;
     bottom:0;
 
 }
@@ -717,4 +713,48 @@ button[aria-expanded="false"] .fa-caret-right
             }
         }
     }
+}
+.back{
+    background-color: #dfdfdf;
+}
+.carde5{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 1%;
+    text-align: center;
+}
+.pBtn{
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    height: 5ex;
+    margin-left: 5%;
 }

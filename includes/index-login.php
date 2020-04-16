@@ -23,13 +23,13 @@
             $query->execute();
             $categorie = $query->fetchAll();
     ?>
-        <div class="card responsive-bootstrap-card m-card" id="questionpose<?php echo $idquestion ?>">
+        <div class="carde5 responsive-bootstrap-card m-card shadow-lg p-3 mb-5" id="questionpose<?php echo $idquestion ?>">
             <form action="profil.php" method="get">
-                <h5 class="card-header" id="reponse<?php echo $idquestion; ?>"><button name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a posé la question :</h5>
+                <h5 class="card-header" id="reponse<?php echo $idquestion; ?>"><button class="text-dark" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a posé la question :</h5>
             </form>
             <div class="card-body">
                 <h5 class="card-title">Catégorie : <?php echo $categorie["0"]["Libelle_categorie"]; ?></h5>
-                <p class="card-text"><?php echo $question["Titre_question"]; ?></p>
+                <p class=""><?php echo $question["Titre_question"]; ?></p>
                 <form action="./QuestionsReponses.php" method="get">
                     <button name="question" value="<?php echo $idquestion ?>">Accéder à la question</button>
                 </form>
@@ -37,7 +37,7 @@
                     <p></p>
                     <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]; ?></footer>
                 </blockquote>
-                <button class="btn btn-primary toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
+                <button class=" btn-primary toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
                     <span class="afficher">Afficher les réponses</span>
                     <span class="masquer">Masquer les réponses</span>
                 </button>
@@ -55,12 +55,12 @@
                     $users = $query->fetchAll();
 
         ?>
-                <div class="card responsive-bootstrap-card collapse" id="question<?php echo $idquestion; ?>">
+                <div class="card responsive-bootstrap-card collapse " id="question<?php echo $idquestion; ?>">
                     <div class="card-body">
-                        <div class="">
+                        <div class="text-dark">
                             <div class="card-header">
                                 <form action="profil.php" method="get">
-                                    <button name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a répondu :
+                                    <button class="text-dark" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a répondu :
                                 </form>
                             </div>
                             <div class="card-body">
