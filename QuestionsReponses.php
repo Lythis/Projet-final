@@ -59,8 +59,8 @@ if(!empty($_GET['question']) && !empty($question)) {
                     <p></p>
                     <footer class="blockquote-footer">Le <?php echo $question[0]["Date_creation_question"]; ?></footer>
                 </blockquote>
-
-                <button class="btn btn-primary toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
+<div style="display: flex";>
+                <button class="pBtn btn-primary toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
                     <span class="afficher">Afficher les réponses (<?php echo $nombrereponses; ?>)</span>
 
                     <span class="masquer">Masquer les réponses</span>
@@ -70,6 +70,7 @@ if(!empty($_GET['question']) && !empty($question)) {
                         répondre
                     </button>
                 </p>
+                </div>
             </div>
                     <div class="collapse" id="collapseReponse">
                     <div class="">

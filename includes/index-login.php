@@ -45,7 +45,7 @@
                     <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]; ?></footer>
                 </blockquote>
 
-                <button class="btn btn-primary toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
+                <button class="pBtn btn-primary toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
                     <span class="afficher">Afficher les réponses (<?php echo $nombrereponses; ?>)</span>
 
                     <span class="masquer">Masquer les réponses</span>
