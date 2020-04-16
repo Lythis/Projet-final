@@ -11,7 +11,7 @@
             $idprofil = $question["#Id_profil"];
             $idcategorie = $question["#Id_categorie"];
 
-            $query = $con->prepare("SELECT * FROM `reponse` WHERE `#Id_question` = ( SELECT `Id_question` FROM `question` WHERE `Id_question` = $idquestion) ORDER BY `Date_reponse`");
+            $query = $con->prepare("SELECT * FROM `reponse` WHERE `#Id_question` = ( SELECT `Id_question` FROM `question` WHERE `Id_question` = $idquestion) ORDER BY `Date_reponse` DESC");
             $query->execute();
             $reponses = $query->fetchAll();
 
@@ -22,6 +22,13 @@
             $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = ( SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_categorie` = $idcategorie )");
             $query->execute();
             $categorie = $query->fetchAll();
+
+            $nombrereponses = 0;
+            if(!empty($reponses)) {
+                for ($ind=0; $ind < count($reponses); $ind++) { 
+                    $nombrereponses = $nombrereponses + 1;
+                }
+            }
     ?>
         <div class="card responsive-bootstrap-card m-card" id="questionpose<?php echo $idquestion ?>">
             <form action="profil.php" method="get">
@@ -38,7 +45,7 @@
                     <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]; ?></footer>
                 </blockquote>
                 <button class="btn btn-primary toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
-                    <span class="afficher">Afficher les réponses</span>
+                    <span class="afficher">Afficher les réponses (<?php echo $nombrereponses; ?>)</span>
                     <span class="masquer">Masquer les réponses</span>
                 </button>
             </div>
@@ -53,7 +60,6 @@
                     $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `reponse` WHERE `#Id_question` = $idquestion AND `Id_reponse` = $unereponse)");
                     $query->execute();
                     $users = $query->fetchAll();
-
         ?>
                 <div class="card responsive-bootstrap-card collapse" id="question<?php echo $idquestion; ?>">
                     <div class="card-body">
