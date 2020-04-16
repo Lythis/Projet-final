@@ -26,7 +26,6 @@
         <p>Votre question a bien été envoyé. <a href="./index.php">Voir les questions</a>.</p>
     <?php
         }
-
         elseif (!empty($_SESSION)) {
     ?>
     <div class="center">

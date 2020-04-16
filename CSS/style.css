@@ -14,6 +14,24 @@ body{
 html {
     scroll-behavior: smooth;
 }
+
+button[name="question"]{
+    font-size: 100%;
+    font-family: inherit;
+    color: blue;
+    background-color: inherit;
+    border: 0;
+    padding: 0;
+}
+
+button[name="profil"]{
+    font-size: 100%;
+    font-family: inherit;
+    color: white;
+    background-color: inherit;
+    border: 0;
+    padding: 0;
+}
 .couleur{
     background-color: #192D34;
 }
@@ -232,6 +250,11 @@ html {
     max-width: 24px;
 }
 
+.picture-user {
+    max-height: 200px;
+    max-width: 200px;
+}
+
 
 /* Accueil */
 
@@ -273,9 +296,6 @@ html {
     display: flex;
     border-radius: 5%;
     margin-right: 10px;
-}
-#kyan{
-
 }
 
 #tvit{
@@ -342,7 +362,7 @@ html {
 /* Footer */
 
 .footer{
-    background-color: #1a2d34;
+    background-color: #eb008b;
     bottom:0;
     margin-top: 2%;
 }
@@ -353,6 +373,7 @@ html {
     margin-left: 20%;
     color: grey;
     padding-top: 3%;
+     background-color: #eb008b;
 }
 .copyright{
     width: 80%;
@@ -484,6 +505,9 @@ html {
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 22%;
+}
+.masquer{
+    display: none;
 }
 
 
@@ -674,4 +698,5 @@ button[aria-expanded="false"] .fa-caret-right
                 margin-left: 19% ;
             }
         }
-    
+    }
+}

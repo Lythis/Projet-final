@@ -3,7 +3,7 @@
         <div class="footer">
             <div class="footer_container">	
                 <hr id="bar">
-                <div >
+                <div>
                     <p class="copyright"> © 2019 Page protected by reCAPTCHA and subject to Google's <span id="white">Privacy Policy</span> and <span id="white">Terms of service</span></p>
                 </div>
                 <div class="icon">
@@ -43,9 +43,6 @@
         }, false);
     })();
 </script>
-
-        </script>
-
 </footer>
 </body>
 </html>

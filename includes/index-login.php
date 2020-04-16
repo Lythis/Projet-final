@@ -24,10 +24,15 @@
             $categorie = $query->fetchAll();
     ?>
         <div class="card responsive-bootstrap-card m-card" id="questionpose<?php echo $idquestion ?>">
-            <h5 class="card-header" id="reponse<?php echo $idquestion; ?>"><img class="picture-user-small" src="profile-picture/lythis.jpg" alt=""> <b><?php echo $users["0"]["Pseudo_profil"]; ?></b> a posé la question :</h5>
+            <form action="profil.php" method="get">
+                <h5 class="card-header" id="reponse<?php echo $idquestion; ?>"><button name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a posé la question :</h5>
+            </form>
             <div class="card-body">
                 <h5 class="card-title">Catégorie : <?php echo $categorie["0"]["Libelle_categorie"]; ?></h5>
                 <p class="card-text"><?php echo $question["Titre_question"]; ?></p>
+                <form action="./QuestionsReponses.php" method="get">
+                    <button name="question" value="<?php echo $idquestion ?>">Accéder à la question</button>
+                </form>
                 <blockquote class="blockquote mb-2">
                     <p></p>
                     <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]; ?></footer>
@@ -54,7 +59,9 @@
                     <div class="card-body">
                         <div class="">
                             <div class="card-header">
-                                <img class="picture-user-small" src="profile-picture/leo.jpg" alt=""> <b><?php echo $users["0"]["Pseudo_profil"]; ?></b> a répondu :
+                                <form action="profil.php" method="get">
+                                    <button name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a répondu :
+                                </form>
                             </div>
                             <div class="card-body">
                                 <?php echo $reponse["Contenu_reponse"]; ?>

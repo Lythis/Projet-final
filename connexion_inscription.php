@@ -24,6 +24,7 @@ if (!empty($_POST['email']) && !empty($_POST['mdp']) && isset($_POST['connexion'
                 'email' => $profil[$ind]['Mail_profil'],
                 'pseudo' => $profil[$ind]['Pseudo_profil'],
                 'genre' => $profil[$ind]['Genre_profil'],
+                'image' => $profil[$ind]['Image_profil'],
                 'role' => $profil[$ind]["#Id_role"],
             ];
         }
@@ -36,13 +37,16 @@ if (!empty($_POST['email']) && !empty($_POST['mdp']) && isset($_POST['connexion'
 
 elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']) && !empty($_POST['mdpinscription']) && !empty($_POST['mdpinscriptionconfirm']) && $_POST['mdpinscriptionconfirm'] == $_POST['mdpinscription'] && isset($_POST['inscription']) && $_POST['inscription'] == 'valide') {
 
-    $query = $con->prepare('INSERT INTO profil (Pseudo_profil, Mail_profil, MotDePasse_profil, Genre_profil, `#Id_role`) VALUES (:pseudo, :email, :password, :genre, :role)');
+    $query = $con->prepare('INSERT INTO profil (Pseudo_profil, Mail_profil, MotDePasse_profil, Genre_profil, Image_profil, Description_profil, `#Id_role`) VALUES (:pseudo, :email, :password, :genre, :image, :description, :role)');
     $query->bindParam(':pseudo', $_POST['pseudoinscription']);
     $query->bindParam(':email', $_POST['emailinscription']);
     $query->bindParam(':password', $_POST['mdpinscription']);
-    $query->bindParam(':genre', $genre);
+    $query->bindParam(':genre', $_POST['genreInscription']);
+    $query->bindParam(':image', $image_default_profil);
+    $query->bindParam(':description', $description_default_profil);
     $query->bindParam(':role', $role);
-    $genre = 'Homme';
+    $image_default_profil = "Default.png";
+    $description_default_profil = "Aucune information disponible.";
     $role = 2;
     $query->execute();
 }
@@ -138,36 +142,49 @@ Test afin de vérifier qu'on est bien connecté à la base de données
                                             <div class="form-row1">
                                                 <div class=" mb-3">
                                                     <label for="validationCustom01">Pseudo</label>
-                                                    <input type="text" class="form-control" id="validationCustom01" placeholder="pseudo" name="pseudoinscription" required>
+                                                    <input type="text" class="form-control" id="validationCustom01" placeholder="" name="pseudoinscription" required>
                                                     <div class="invalid-feedback">
-                                                        veuillez entrer votre pseudo.
+                                                        Veuillez entrer votre pseudo.
                                                     </div>
                                                 </div>
                                                 <div class=" mb-3">
-                                                    <label for="validationCustom02">adresse Email</label>
-                                                    <input type="email" class="form-control" id="validationCustom02" placeholder="adresse Email" name="emailinscription" required>
+                                                    <label for="validationCustom02">Adresse Email</label>
+                                                    <input type="email" class="form-control" id="validationCustom02" placeholder="" name="emailinscription" required>
                                                     <div class="invalid-feedback">
-                                                        veuillez entrer un email valide
+                                                        Veuillez entrer un email valide.
                                                     </div>
                                                 </div>
                                                 <div class=" mb-3">
-                                                    <label for="validationCustomMDP">Mots de Passe</label>
+                                                    <label for="validationCustomMDP">Mot de passe</label>
                                                     <div class="input-group">
-                                                        <input type="password" class="form-control" id="validationCustomMDP" placeholder="MDP" aria-describedby="inputGroupPrepend" name="mdpinscription" required>
+                                                        <input type="password" class="form-control" id="validationCustomMDP" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscription" required>
                                                         <div class="invalid-feedback">
-                                                            veuillez entrer un MDP
+                                                            Veuillez entrer un mot de passe valide.
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class=" mb-3">
-                                                    <label for="validationCustomMDP">Confirmation Mots de Passe</label>
+                                                    <label for="validationCustomMDP">Confirmation mot de passe</label>
                                                     <div class="input-group">
-                                                        <input type="password" class="form-control" id="validationCustomMDP" placeholder="MDP" aria-describedby="inputGroupPrepend" name="mdpinscriptionconfirm" required>
+                                                        <input type="password" class="form-control" id="validationCustomMDP" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscriptionconfirm" required>
                                                         <div class="invalid-feedback">
-                                                            veuillez entrer le même MDP
+                                                            Veuillez saisir le même mot de passe.
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="mb-3">
+                                                <label for="validationTooltip02">Genre :</label>
+                                                <select class="custom-select mb-2" id="validationTooltip02" placeholder="Genre" name="genreInscription" required>
+                                                    <option value="">Selectionner une catégorie</option>
+                                                    <option value="Homme">Homme</option>
+                                                    <option value="Femme">Femme</option>
+                                                    <option value="Non-binaire">Non-binaire</option>
+                                                    <option value="Hélicoptère d'attaque">Hélicoptère d'attaque</option>
+                                                </select>
+                                                <div class="invalid-feedback mb-2">
+                                                    Veuillez sélectionner un genre.
+                                                </div>
+                                                    </div>
                                             </div>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                                             <button type="submit" class="btn btn-primary" name="inscription" value="valide">Inscription</button>
