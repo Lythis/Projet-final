@@ -374,7 +374,9 @@ button[name="profil"]{
 
 .footer{
     background-color: #1a2d34;
+
     margin-top: 8.5%;
+
     bottom:0;
 
 }
@@ -714,6 +716,7 @@ button[aria-expanded="false"] .fa-caret-right
         }
     }
 }
+
 .back{
     background-color: #dfdfdf;
 }
@@ -758,3 +761,4 @@ button[aria-expanded="false"] .fa-caret-right
     height: 5ex;
     margin-left: 5%;
 }
+

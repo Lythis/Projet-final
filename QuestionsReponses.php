@@ -1,32 +1,40 @@
 <?php
-    require_once('db/base_PDO.php');
+require_once('db/base_PDO.php');
 
-    $getthequestion = $_GET['question'];
-    $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $getthequestion");
-    $query->execute();
-    $question = $query->fetchAll();
+$getthequestion = $_GET['question'];
+$query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $getthequestion");
+$query->execute();
+$question = $query->fetchAll();
 
-    if(!empty($_GET['question']) && !empty($question)) {
-
-        $idquestion = $question[0]["Id_question"];
-        $idprofil = $question[0]["#Id_profil"];
-        $idcategorie = $question[0]["#Id_categorie"];
-
-        $query = $con->prepare("SELECT * FROM `reponse` WHERE `#Id_question` = ( SELECT `Id_question` FROM `question` WHERE `Id_question` = $idquestion) ORDER BY `Date_reponse`");
-        $query->execute();
-        $reponses = $query->fetchAll();
-
-        $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_profil` = $idprofil )");
-        $query->execute();
-        $users = $query->fetchAll();
-
-        $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = ( SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_categorie` = $idcategorie )");
-        $query->execute();
-        $categorie = $query->fetchAll();
-
-        $title ='Question de '.$users[0]["Pseudo_profil"];
-        require_once('includes/header.php');
+if(!empty($_GET['question']) && !empty($question)) {
     
+    $idquestion = $question[0]["Id_question"];
+    $idprofil = $question[0]["#Id_profil"];
+    $idcategorie = $question[0]["#Id_categorie"];
+    
+    $query = $con->prepare("SELECT * FROM `reponse` WHERE `#Id_question` = ( SELECT `Id_question` FROM `question` WHERE `Id_question` = $idquestion) ORDER BY `Date_reponse` DESC");
+    $query->execute();
+    $reponses = $query->fetchAll();
+    
+    $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_profil` = $idprofil )");
+    $query->execute();
+    $users = $query->fetchAll();
+    
+    $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = ( SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_categorie` = $idcategorie )");
+    $query->execute();
+    $categorie = $query->fetchAll();
+    
+    $title ='Question de '.$users[0]["Pseudo_profil"];
+    require_once('includes/header.php');
+
+    $nombrereponses = 0;
+    if(!empty($reponses)) {
+        for ($ind=0; $ind < count($reponses); $ind++) { 
+            $nombrereponses = $nombrereponses + 1;
+        }
+    }
+    
+
 ?>
 <body>
 <?php
@@ -51,9 +59,10 @@
                     <p></p>
                     <footer class="blockquote-footer">Le <?php echo $question[0]["Date_creation_question"]; ?></footer>
                 </blockquote>
-                <div style="display: flex;">
-                <button class="pBtn btn-primary toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
-                    <span class="afficher">Afficher les réponses</span>
+
+                <button class="btn btn-primary toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
+                    <span class="afficher">Afficher les réponses (<?php echo $nombrereponses; ?>)</span>
+
                     <span class="masquer">Masquer les réponses</span>
                 </button>
                 <p>
@@ -81,8 +90,9 @@
                     </div>
             </div>
         </div>
-
+        
         <?php
+
             if (!empty($reponses)) {
                 foreach ($reponses as $reponse) {
 
@@ -123,6 +133,7 @@
         </div>
 
     <?php
+
         }
     }
     else {
@@ -132,7 +143,9 @@
         echo 'Question introuvable. <a href="./index.php">Revenir aux questions</a>.';
     }
     ?>
+
     <?php
     
         require_once('includes/footer.php');
     ?>
+
