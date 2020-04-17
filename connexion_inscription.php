@@ -91,7 +91,7 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
             $_POST['inscription'] = '';
             echo '<div class="pCard">
             <div class="card-body" style="display: flex;">
-            <p class="card-text"> <img src="image/welcomex².gif" style="  width: 90%;
+            <p class="card-text"> <img src="image/welcome.gif" style="  width: 90%;
             margin-right: 6%;" class="" alt="bienvenue">
            <h6> Vous avez bien été enregistré. Bienvenue dans le clan</h6>
             </div>
