@@ -22,7 +22,7 @@
 
 <body>
     <?php 
-    require_once('includes/nav-bar.php');
+    require_once('./includes/nav-bar-login.php');
     ?>
     <div class="card responsive-bootstrap-card mx-5">
         <div class="row_ligne card-header">

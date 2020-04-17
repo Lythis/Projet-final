@@ -88,7 +88,7 @@
             else {
     ?>
 
-        <div class="card responsive-bootstrap-card collapse" id="question<?php echo $idquestion; ?>">
+        <div class="card responsive-bootstrap-card collapse shadow-lg p-3 mb-5" id="question<?php echo $idquestion; ?>">
             <p>Wow, such empty.</p>
         </div>
 

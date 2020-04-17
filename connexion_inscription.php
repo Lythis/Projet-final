@@ -63,16 +63,25 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
             $_POST['connexion'] = '';
             
             if ($connexionvalide == true) {
-                echo "Bienvenue ".$_SESSION['utilisateur']['pseudo']." !";
+                echo '<div class="pCard">
+                <div class="card-body">
+                <p class="card-text"> <img src="image/check.gif" style="  width: 48%;
+                margin-right: 6%;" class="" alt="pouve en l\'air">
+                 Bienvenue '.$_SESSION['utilisateur']['pseudo']." !",'</p>
+                  
+                </div>
+              </div>';
             }
             
             else {
-                ?>
-                
-                <p>Nom d'utilisateur ou mot de passe erroné.</p>
-                <p><a href="connexion_inscription.php">Revenir en arrière</a></p>
-                
-                <?php
+                echo '<div class="pCard">
+                <div class="card-body" style="display: flex;">
+                <p class="card-text"> <img src="image/tenor.gif" style="  width: 75%;
+                margin-right: 6%;" class="" alt="facher">
+                <h6>Nom d\'utilisateur ou mot de passe erroné.
+                <a href="connexion_inscription.php">Revenir en arrière</a></h6></p>
+                </div>
+              </div>';
             }
             
         }
@@ -80,8 +89,14 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
         elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']) && !empty($_POST['mdpinscription']) && !empty($_POST['mdpinscriptionconfirm']) && $_POST['mdpinscriptionconfirm'] == $_POST['mdpinscription'] && isset($_POST['inscription']) && $_POST['inscription'] == 'valide') {
             
             $_POST['inscription'] = '';
-            
-            echo "Vous avez bien été enregistré.";
+            echo '<div class="pCard">
+            <div class="card-body" style="display: flex;">
+            <p class="card-text"> <img src="image/welcomex².gif" style="  width: 90%;
+            margin-right: 6%;" class="" alt="bienvenue">
+           <h6> Vous avez bien été enregistré. Bienvenue dans le clan</h6>
+            </div>
+          </div>';
+            echo "";
             
         }
         
@@ -203,7 +218,7 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
             
             <?php } ?>
             
-            <div class="bas-page">
+            <div>
                 <?php
                 require_once('includes/footer.php');
                 ?>
