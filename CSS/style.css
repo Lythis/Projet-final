@@ -35,6 +35,7 @@ html {
 
 button[name="question"]{
     color: white;
+    
 }
 .p-card{
     margin-left: 27%;
@@ -43,15 +44,17 @@ button[name="question"]{
     margin-top: 1%;
 }
 
-
-button[name="profil"]{
+.bProfil{
     font-size: 100%;
     font-family: inherit;
-    color: white;
+    color: black;
     background-color: inherit;
     border: 0;
     padding: 0;
+    width: 100%;
+    height: 5ex;
 }
+
 .couleur{
     background-color: #192D34;
 }

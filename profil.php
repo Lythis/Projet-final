@@ -60,7 +60,7 @@
                         </div>
                         <div>
                             <form action="./profil.php" method="get">
-                                <button name="profil" value="<?php echo $users[0]["Id_profil"]; ?>,edit">Editer le profil</button>
+                                <button class="pBtn" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>,edit">Editer le profil</button>
                             </form>
                         </div>
                    </div>
