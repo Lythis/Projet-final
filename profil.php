@@ -115,8 +115,15 @@
     elseif(!empty($_GET['profil']) && !empty($users) && isset($profilstatus[1])) {
         //La requête est-elle bien égale à "edit"?
         if($profilstatus[1] == "edit") {
+            //L'utilisateur est-il bien connecté?
+            if(!isset($_SESSION['utilisateur'])) {
+                $title = 'Accès refusé';
+                require_once('includes/header.php');
+                require_once('includes/nav-bar.php');
+                echo '<p>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir un profil!</p>';
+            }
             //Le profil demandé est le profil actuel de la session ou la session est administrateur
-            if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) {
+            elseif($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) {
                 $title = 'Modification du profil de '.$users[0]["Pseudo_profil"];
                 require_once('includes/header.php');
                 require_once('includes/nav-bar.php');
