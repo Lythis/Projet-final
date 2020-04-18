@@ -112,7 +112,7 @@ if(!empty($_GET['question']) && !empty($question)) {
 </div>
 
 
-<div class="cardP w-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse show"  id="question<?php echo $idquestion; ?>">
+<div class="cardP w-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="question<?php echo $idquestion; ?>">
 
     <div class="card-body">
         <div class="">
