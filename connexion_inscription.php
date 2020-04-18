@@ -215,7 +215,6 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
         </div>
 
         <?php } ?>
@@ -227,13 +226,5 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
         </div>
     </body>
     </html>
-=======
-            
-            <?php } ?>
-            
-            <div>
-                <?php
-                require_once('includes/footer.php');
-                ?>
-            </div>
->>>>>>> 535e5a30947893de31643785e3df035bd8722777
+ 
+
