@@ -191,7 +191,7 @@
     <div class="accordion" id="accordionExample">
         <?php foreach ($questions as $ask) { ?>
         <div class="card">
-            <div class="card-head" id="<?php echo $ask ['idcard']?>">
+            <div class="card-headerP" id="<?php echo $ask ['idcard']?>">
                 <h2 class="mb-0">
                     <div class="card-align">
                         <p class="card-text"><?php echo $ask['question'];?></p>

@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <div class="col-lg">
                         <label for="validationTooltip01">Votre question :</label>
-                        <textarea type="text" class="form-control" id="validationTooltip01" placeholder="Question" name="question" required></textarea>
+                        <textarea type="text" class="form-control autoExpand" placeholder="Question, Auto-Expanding Textarea " name="question" required></textarea>
                         <div class="invalid-feedback mb-2">
                             Veuillez saisir une question.
                         </div>

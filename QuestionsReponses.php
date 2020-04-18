@@ -86,7 +86,7 @@ if(!empty($_GET['question']) && !empty($question)) {
             <div class="form-row1" >
                 <div class=" mb-3" >
                     <label for="validationCustom01">répondre</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="" name="reponses" required>
+                    <textarea  placeholder='Auto-Expanding Textarea' type="text" class="form-control autoExpand" id="validationCustom01" name="reponses" required></textarea>
                     <div class="invalid-feedback">
                         votre réponse
                     </div>
