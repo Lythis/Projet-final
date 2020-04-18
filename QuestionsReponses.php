@@ -54,7 +54,7 @@ if(!empty($_GET['question']) && !empty($question)) {
     }
 ?>
 <div>
-    <div class="card w-50 mr-md-9 border border-dark responsive-bootstrap-card m-card shadow-lg p-3 " style="border: 1px solid black;" id="questionpose<?php echo $idquestion ?>" >
+    <div class="cardP w-50 mr-md-9 responsive-bootstrap-card m-card shadow-lg p-3 " id="questionpose<?php echo $idquestion ?>" >
         <form action="profil.php" method="get">
             <h5 class="card-header " id="reponse<?php echo $idquestion; ?>"><button class="text-dark" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a posé la question :</h5>
         </form>
@@ -77,7 +77,7 @@ if(!empty($_GET['question']) && !empty($question)) {
         </div>
     </div>
 </div>
-<div class="card responsive-bootstrap-card collapse shadow-lg p-3 mb-5" id="repondre">
+<div class="cardP w-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="repondre">
     <div class="card-body">
         <form class="needs-validation">
 
@@ -110,7 +110,7 @@ if(!empty($_GET['question']) && !empty($question)) {
 </div>
 
 
-<div class="card w-100 responsive-bootstrap-card collapse shadow-lg p-3 mb-5"  id="question<?php echo $idquestion; ?>">
+<div class="cardP w-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse show"  id="question<?php echo $idquestion; ?>">
 
     <div class="card-body">
         <div class="">

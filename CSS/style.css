@@ -11,6 +11,11 @@ body{
     left: 0; 
     right: 0
 }
+.cardP{
+    background-color: white;
+    margin-left: 25%;
+    border: 2px solid black;
+}
 
 html {
     scroll-behavior: smooth;
@@ -27,10 +32,7 @@ html {
 .pseudo-card{
     padding-left: 15%;
 }
-.card-header{
-    box-shadow: 3px 3px 3px black;
 
-}
 button[name="question-profil"]{
     margin-left: 15%;
     color: white;
@@ -447,10 +449,11 @@ button[name="profil"]{
 .btn{
     margin-left: 20%;
 }
-.card-head{
+.card-headerP{
     padding: .50rem .50rem;
     margin-bottom: 0;
     border: 1px solid rgba(0,0,0,.125);
+    box-shadow: 3px 3px 3px black;
 }
 .btn-lien{
     font-weight: 400;
@@ -777,14 +780,14 @@ button[aria-expanded="false"] .fa-caret-right
 .pBtn{
     display: inline-block;
     font-weight: 400;
-    color: #212529;
+    color: white    ;
     text-align: center;
     vertical-align: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: transparent;
+    background-color: #31BCE7;
     border: 1px solid transparent;
     border-top-color: transparent;
     border-right-color: transparent;
@@ -796,7 +799,6 @@ button[aria-expanded="false"] .fa-caret-right
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     height: 5ex;
-    margin-left: 5%;
 }
 .pCard{
     position: relative;

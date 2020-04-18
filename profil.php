@@ -27,7 +27,7 @@
     ?>
     <div class="profil">
         <div class="card responsive-bootstrap-card mx-5">
-            <div class="row_ligne card_profil card-header">
+            <div class="row_ligne card_profil card-headerP">
                 <div class="container_profil">
                     <div class="col-3">
                         <img class="rond_profil float-left img-fluid mr-4 picture-user" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
@@ -59,7 +59,7 @@
                         foreach ($questions as $question) {
                     ?>
                     <div class=" p-card">
-                        <div class="card-header">
+                        <div class="card-headerP">
                         <img class="rond_profil float-left img-fluid image-questions" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
 
                             <h5 class="card-title pseudo-card"> <?php echo $users[0]["Pseudo_profil"]; ?> :</h5>
