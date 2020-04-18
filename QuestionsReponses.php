@@ -1,10 +1,12 @@
 <?php
 require_once('db/base_PDO.php');
 
-$getthequestion = $_GET['question'];
-$query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $getthequestion");
-$query->execute();
-$question = $query->fetchAll();
+if(isset($_GET['question'])) {
+    $getthequestion = $_GET['question'];
+    $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $getthequestion");
+    $query->execute();
+    $question = $query->fetchAll();
+}
 
 if(!empty($_GET['question']) && !empty($question)) {
 
