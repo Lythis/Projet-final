@@ -565,8 +565,7 @@ button[aria-expanded="false"] .fa-caret-right
 }
 
 /* Profil */
-.profil{
-    background-color: #E8E5E4;
+.profil{    
     padding-top: 15%;
     margin-top: -15%;
 }

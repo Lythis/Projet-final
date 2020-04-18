@@ -35,7 +35,14 @@
     if(!empty($_GET['profil']) && !empty($users) && !isset($profilstatus[1])) {
 ?>
 
-<body>
+<?php
+    if (!empty($_SESSION)) {
+        echo '<body class= "back">';
+    }
+    else {
+        echo '<body>';
+    }
+?> 
     <?php 
 
     require_once('./includes/nav-bar-login.php');
