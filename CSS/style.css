@@ -572,7 +572,6 @@ button[aria-expanded="false"] .fa-caret-right
 }
 .card_profil{
     box-shadow: 3px 3px 3px black;
-    border-radius: 5%;
 }
 .profil_information{
     padding-top: 3%;
