@@ -126,7 +126,7 @@
             elseif($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) {
                 $title = 'Modification du profil de '.$users[0]["Pseudo_profil"];
                 require_once('includes/header.php');
-                require_once('includes/nav-bar.php');
+                require_once('includes/nav-bar-login.php');
                 ?>
                     <!-- edit du profil ici -->
                 <?php
