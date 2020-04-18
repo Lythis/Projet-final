@@ -215,11 +215,16 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
                     </div>
                 </div>
             </div>
-            
-            <?php } ?>
-            
-            <div>
-                <?php
-                require_once('includes/footer.php');
-                ?>
-            </div>
+        </div>
+
+        <?php } ?>
+
+        <div class="bas-page">
+            <?php
+            require_once('includes/footer.php');
+            ?>
+        </div>
+    </body>
+    </html>
+ 
+
