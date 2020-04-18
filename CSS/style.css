@@ -5,19 +5,43 @@ body{
 
 
 /* Question */
+.bas-page footer {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0
+}
 
 html {
     scroll-behavior: smooth;
 }
 
-button[name="question"]{
+.question-text{
     font-size: 100%;
     font-family: inherit;
-    color: blue;
     background-color: inherit;
     border: 0;
-    padding: 0;
+    
+    padding-left: 15%;
 }
+.pseudo-card{
+    padding-left: 15%;
+}
+.card-header{
+    box-shadow: 3px 3px 3px black;
+
+}
+button[name="question-profil"]{
+    margin-left: 15%;
+    color: white;
+}
+.p-card{
+    margin-left: 27%;
+    margin-right: 27%;
+    background-color: white;
+    margin-top: 1%;
+}
+
 
 button[name="profil"]{
     font-size: 100%;
@@ -37,20 +61,17 @@ button[name="profil"]{
     margin-left: 5%;
 }
 .boutton{
-    border-bottom-left-radius: 45%;
-    border-bottom-right-radius: 45%;
-    border-top-left-radius: 45%;
-    border-top-right-radius: 45%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
     background-color: #ED008C;
     border: none;
     width: 100%;
     height: 5ex;
 }
 .bouttonC{
-    border-bottom-left-radius: 45%;
-    border-bottom-right-radius: 45%;
-    border-top-left-radius: 45%;
-    border-top-right-radius: 45%;
+    border-radius: 5%;
     background-color: #31BCE7 ;
     border: none;
     width: 100%;
@@ -369,11 +390,9 @@ button[name="profil"]{
 
 .footer{
     background-color: #1a2d34;
-
-   margin-top: 9.9%;
-
+   margin-top: 2%;
     bottom:0;
-
+    margin-top: 2%;
 }
 
 
@@ -381,7 +400,7 @@ button[name="profil"]{
     width: 60%;
     margin-left: 20%;
     color: grey;
-    padding-top: 6%;
+    padding-top: 3%;
 }
 .copyright{
     width: 80%;
@@ -540,6 +559,38 @@ button[aria-expanded="false"] .fa-caret-right
     margin-left: 20%;
 }
 
+/* Profil */
+.profil{
+    background-color: #E8E5E4;
+    padding-top: 15%;
+    margin-top: -15%;
+}
+.card_profil{
+    box-shadow: 3px 3px 3px black;
+    border-radius: 5%;
+}
+.profil_information{
+    padding-top: 3%;
+    width: 40%;
+    float: left;
+}
+
+.profil_description{
+    padding-top:3% ;
+}
+.rond_profil{
+    border-radius: 50%;
+    border: 4px solid black;
+}
+.titre_post{
+    text-align: center;
+    margin-top: 1%;
+}
+.image-questions{
+    width: 80px;
+    height: 80px;
+    margin-left: 2%;
+}
 @media screen and (max-width: 1100px){
     .card{
         margin-right: 10%;
@@ -613,31 +664,22 @@ button[aria-expanded="false"] .fa-caret-right
             }
 
         }
-        @media screen and (max-width: 990px){
+        @media screen and (max-width: 990px) {
             .hAcceuil{
                 border-bottom-left-radius: 17% ;
                 border-bottom-right-radius: 17% ;
                 height: 90ex ;
             }
-        }
-        @media screen and (max-width: 990px) {
-            .texte1{
-                width: 83% ;
-            }
-        }
-        @media screen and (max-width: 990px) {
             .bloc1{
                 text-align: center ;
                 margin-left: 15% ;
             }
-        }
-        @media screen and (max-width: 990px) {
             .image1{
                 width: 77% ;
                 padding-left: 8% ;
                 padding-top: 8% ;
             }
-        }    
+        }
         @media screen and (max-width: 600px) {
             .hAcceuil{
                 border-bottom-left-radius: 17% ;
@@ -744,10 +786,10 @@ button[aria-expanded="false"] .fa-caret-right
     user-select: none;
     background-color: transparent;
     border: 1px solid transparent;
-        border-top-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-left-color: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
