@@ -84,9 +84,8 @@ if(!empty($_GET['question']) && !empty($question)) {
 
             <div style="display: flex";>
 
-                <button class="pBtn  toggle-btn" type="button" data-toggle="collapse" data-target=" #repondre, #question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls=" question<?php echo $idquestion; ?>">
+                <button class="pBtn toggle-btn" type="button" data-toggle="collapse" data-target="#repondre, #question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls=" question<?php echo $idquestion; ?>">
                     <span class="afficher">Afficher les réponses (<?php echo $nombrereponses; ?>)</span>
-
                     <span class="masquer">Masquer les réponses</span>
                 </button>
             </div>
