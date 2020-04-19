@@ -66,9 +66,11 @@
                             <p><?php echo $users[0]["Description_profil"]; ?></p>
                         </div>
                         <div>
+                            <?php if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) { ?>
                             <form action="./profil.php" method="get">
                                 <button class="pBtn" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>,edit">Editer le profil</button>
                             </form>
+                            <?php } ?>
                         </div>
                    </div>
                 </div>

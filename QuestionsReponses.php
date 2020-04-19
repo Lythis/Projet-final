@@ -1,11 +1,25 @@
 <?php
 require_once('db/base_PDO.php');
+$dontstartsession = true;
+session_start();
 
 if(isset($_GET['question'])) {
     $getthequestion = $_GET['question'];
     $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $getthequestion");
     $query->execute();
     $question = $query->fetchAll();
+
+    if(isset($_POST['reponse']) && !empty($_POST['reponse']) && !empty($_SESSION['utilisateur'])) {
+        $obtenirdate = getdate();
+        $date = $obtenirdate['year']."-".$obtenirdate['mon']."-".$obtenirdate['mday'];
+    
+        $query = $con->prepare('INSERT INTO `reponse`(`Contenu_reponse`, `Date_reponse`, `#Id_profil`, `#Id_question`) VALUES (:reponse, :dateajd, :id_user, :id_question)');
+        $query->bindParam(':reponse', $_POST['reponse']);
+        $query->bindParam(':dateajd', $date);
+        $query->bindParam(':id_user', $_SESSION['utilisateur']['id']);
+        $query->bindParam(':id_question', $_GET['question']);
+        $query->execute();
+    }
 }
 
 if(!empty($_GET['question']) && !empty($question)) {
@@ -81,18 +95,17 @@ if(!empty($_GET['question']) && !empty($question)) {
 </div>
 <div class="cardP w-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="repondre">
     <div class="card-body">
-        <form class="needs-validation">
-
+        <form class="needs-validation" method="post" action="./QuestionsReponses.php?question=<?php echo $_GET['question']; ?>">
             <div class="form-row1" >
                 <div class=" mb-3" >
-                    <label for="validationCustom01">répondre</label>
-                    <textarea  placeholder='Auto-Expanding Textarea' type="text" class="form-control autoExpand" id="validationCustom01" name="reponses" required></textarea>
+                    <label for="validationCustom01">Répondre à la question :</label>
+                    <textarea  placeholder='' type="text" class="form-control autoExpand" id="validationCustom01" name="reponse" required></textarea>
                     <div class="invalid-feedback">
-                        votre réponse
+                        Veuillez saisir une réponse.
                     </div>
                 </div>
             </div>
-            <button type="submit" style="margin-bottom: 2%;" class="pBtn " name="envoyer" value="valide">envoyer</button>
+            <button type="submit" style="margin-bottom: 2%;" class="pBtn">Envoyer</button>
         </form>
     </div>
 
@@ -160,4 +173,3 @@ else {
 
 require_once('includes/footer.php');
 ?>
-
