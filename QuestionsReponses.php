@@ -88,6 +88,9 @@ if(!empty($_GET['question']) && !empty($question)) {
                     <span class="afficher">Afficher les réponses (<?php echo $nombrereponses; ?>)</span>
                     <span class="masquer">Masquer les réponses</span>
                 </button>
+                <form action="./delete.php" method="post">
+                <button class="btn btn-danger mt-3" name="" value="<?php echo $profilstatus[0]; ?>">Supprimer</button>
+                </form>
             </div>
         </div>
     </div>
