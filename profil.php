@@ -69,6 +69,7 @@
                             <?php if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) { ?>
                             <form action="./profil.php" method="get">
                                 <button class="pBtn" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>,edit">Editer le profil</button>
+                                <button class="pBtn bg-danger" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>,supp">supprimer profil</button>
                             </form>
                             <?php } ?>
                         </div>
@@ -148,7 +149,41 @@
                 echo 'Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.';
             }
         }
-        //La requête n'est pas égale à "edit"
+     
+        //La requête est-elle bien égale à "supp"?
+        elseif($profilstatus[1] == "supp") {
+            //L'utilisateur est-il bien connecté?
+            if(!isset($_SESSION['utilisateur'])) {
+                $title = 'Accès refusé';
+                require_once('includes/header.php');
+                require_once('includes/nav-bar.php');
+                echo '<p>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir un profil!</p>';
+            }
+            //Le profil demandé est le profil actuel de la session ou la session est administrateur
+            elseif($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) {
+                $title = 'Modification du profil de '.$users[0]["Pseudo_profil"];
+                require_once('includes/header.php');
+                require_once('includes/nav-bar-login.php');
+                ?>
+                    <!-- supp du profil ici -->
+                    <div class="card d-flex">
+                        <div class="card-body ">
+                            <img src="image/sad.gif" class="card-img-top w-50" alt="triste">
+                            <p class="card-text float-right pl-3 w-50">voulez vous vraiment supprimer ce compte
+                            <a href="#" class="btn btn-danger mt-3"> supprimer</a></p>
+                        </div>
+                    </div>
+                <?php
+            }
+            //Message d'erreur car accès refusé
+            else {
+                $title = 'Accès refusé';
+                require_once('includes/header.php');
+                require_once('includes/nav-bar.php');
+                echo 'Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.';
+            }
+        }
+        //La requête n'est pas égale à "edit ou a supp"
         else {
             $title = 'Erreur';
             require_once('includes/header.php');
@@ -164,4 +199,5 @@
         require_once('includes/nav-bar.php');
         echo 'Profil introuvable. <a href="./index.php">Revenir à l\'accueil</a>.';
     }
+    
     ?>

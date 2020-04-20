@@ -96,7 +96,6 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
            <h6> Vous avez bien été enregistré. Bienvenue dans le clan</h6>
             </div>
           </div>';
-            echo "";
             
         }
         
