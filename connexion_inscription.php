@@ -89,14 +89,16 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
         elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']) && !empty($_POST['mdpinscription']) && !empty($_POST['mdpinscriptionconfirm']) && $_POST['mdpinscriptionconfirm'] == $_POST['mdpinscription'] && isset($_POST['inscription']) && $_POST['inscription'] == 'valide') {
             
             $_POST['inscription'] = '';
-            echo '<div class="pCard">
+        ?>
+        <div class="pCard">
             <div class="card-body" style="display: flex;">
-            <p class="card-text"> <img src="image/welcome.gif" style="  width: 90%;
-            margin-right: 6%;" class="" alt="bienvenue">
-           <h6> Vous avez bien été enregistré. Bienvenue dans le clan</h6>
+                <p class="card-text"> <img src="image/welcome.gif" style=" width: 90%;  margin-right: 6%;" class="" alt="bienvenue">
+                <h6>Vous avez bien été enregistré.</h6>
+                <h6>Bienvenue chez LiveQuestion! <a href="./connexion_inscription.php">Se connecter</a>.</h6>
             </div>
-          </div>';
-            
+        </div>
+        
+        <?php    
         }
         
         else {

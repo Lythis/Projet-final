@@ -69,7 +69,7 @@
                             <?php if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) { ?>
                             <form action="./profil.php" method="get">
                                 <button class="pBtn" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>,edit">Editer le profil</button>
-                                <button class="pBtn bg-danger" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>,supp">supprimer profil</button>
+                                <button class="pBtn bg-danger" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>,supp">Supprimer le profil</button>
                             </form>
                             <?php } ?>
                         </div>
@@ -169,8 +169,11 @@
                     <div class="card d-flex">
                         <div class="card-body ">
                             <img src="image/sad.gif" class="card-img-top w-50" alt="triste">
-                            <p class="card-text float-right pl-3 w-50">voulez vous vraiment supprimer ce compte
-                            <a href="#" class="btn btn-danger mt-3"> supprimer</a></p>
+                            <p class="card-text float-right pl-3 w-50">Voulez vous vraiment supprimer ce compte?</p>
+                            <form action="./delete.php" method="post">
+                                <button class="btn btn-danger mt-3" name="profil" value="<?php echo $profilstatus[0]; ?>">Supprimer</button>
+                            </form>
+                            <a class="btn btn-primary mt-3" href="./profil.php?profil=<?php echo $profilstatus[0]; ?>">Revenir en arrière</a>
                         </div>
                     </div>
                 <?php
