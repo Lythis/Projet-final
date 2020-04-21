@@ -100,7 +100,7 @@
                                     <blockquote class="blockquote mb-0">
                                         <p class="card-text question-text"><?php echo $question["Titre_question"]; ?></p>
                                         <form action="./QuestionsReponses.php" method="get">
-                                            <button  class="btn btn-primary toggle-btn" name="question" value="<?php echo $question["Id_question"] ?>"> 
+                                            <button  class="btn btn-profil btn-primary mr-4 toggle-btn" name="question" value="<?php echo $question["Id_question"] ?>"> 
                                                 Voir la question
                                             </button>
                                         </form>
@@ -136,8 +136,53 @@
                     require_once('includes/header.php');
                     require_once('includes/nav-bar-login.php');
                     ?>
-                        <!-- edit du profil ici -->
-                    <?php
+                    <!-- edit du profil ici -->
+                    <div class="change-image">
+                        <img class="image-edit  img-fluid  picture-user" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
+            
+                        <label for="file" class="label-file">Choisir une image</label>
+                        <input id="file" class="input-file" type="file">
+
+                        <button class=" btn-edit text-white"> Supprimer image </button>
+                        
+                    </div>
+                    <div class="edit-profil">
+                        <div class="card-body">
+                            
+                            <form>
+
+                            <div>
+                                <label for="exampleInputEmail1">Nouveau pseudo : </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="<?php echo $_SESSION['utilisateur']['pseudo']; ?>">
+                            </div>
+                            <div >
+                                <label for="exampleInputPassword1">Nouveau MDP :</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <div >
+                                <label for="exampleInputPassword1">Nouvelle description :</label>
+                                <textarea type="text" class="form-control autoExpand w-100" placeholder="<?php echo $users[0]["Description_profil"];?> " name="descriptionProfil" required></textarea>
+                            </div>
+                            <div >
+                                <label for="validationTooltip02">Nouveau genre :</label>
+                                    <select class="custom-select mb-2" id="validationTooltip02" placeholder="Genre" name="genreInscription" required>
+                                        <option value="">Selectionner une catégorie</option>
+                                        <option value="Homme">Homme</option>
+                                        <option value="Femme">Femme</option>
+                                        <option value="Non-binaire">Non-binaire</option>
+                                        <option value="Hélicoptère d'attaque">Hélicoptère d'attaque</option>
+                                    </select>
+                                <div class="invalid-feedback mb-2">
+                                    Veuillez sélectionner un genre.
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+           
+
+  <?php
                 }
                 //Message d'erreur car accès refusé
                 else {
