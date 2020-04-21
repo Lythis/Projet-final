@@ -143,7 +143,7 @@
                         <label for="file" class="label-file">Choisir une image</label>
                         <input id="file" class="input-file" type="file">
 
-                        <button class=" btn-edit text-white"> Supprimer image </button>
+                        <button class=" btn-edit text-dark"> Supprimer image </button>
                         
                     </div>
                     <div class="edit-profil">
