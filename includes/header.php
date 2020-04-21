@@ -1,15 +1,11 @@
 <?php
-    if(!isset($dontstartsession)) {
-        $dontstartsession = false;
+    require_once('./fonctions/fonctions.php');
+    if(isset($startedsession) && $startedsession == true) {
+        connexionDeconnexion(true);
     }
-    if($dontstartsession == !true) {
-        session_start();
+    else {
+        connexionDeconnexion(false);
     }
-	if (isset($_POST['deconnexion']) && $_POST['deconnexion'] == 'valide') {
-		session_unset();
-		session_destroy();
-		$_POST['deconnexion'] = '';
-	}
 ?>
 <!DOCTYPE html>
 <html>

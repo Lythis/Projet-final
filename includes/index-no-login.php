@@ -189,20 +189,22 @@
         accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.</p>
     </div>
     <div class="accordion" id="accordionExample">
-        <?php foreach ($questions as $ask) { ?>
+        <?php
+            require_once('includes/tableaux.php');
+            foreach ($questions as $ask) {
+        ?>
         <div class="card">
-            <div class="card-headerP" id="<?php echo $ask ['idcard']?>">
+            <div class="card-head" id="<?php echo $ask ['idcard']?>">
                 <h2 class="mb-0">
                     <div class="card-align">
                         <p class="card-text"><?php echo $ask['question'];?></p>
-                        <button class="btn btn-lien" type="button" data-toggle="collapse" data-target="#<?php echo $ask ['idcollapse']?>" aria-expanded="false" aria-controls="<?php echo $ask['idcollapse'] ?>">
+                        <button class="btn btn-faq btn-lien" type="button" data-toggle="collapse" data-target="#<?php echo $ask ['idcollapse']?>" aria-expanded="false" aria-controls="<?php echo $ask['idcollapse'] ?>">
                             <i class="fa fa-caret-right"></i>
                             <i class="fa fa-sort-down"></i>
                         </button>
                     </div>
                 </h2>
             </div>
-
             <div id="<?php echo $ask['idcollapse']?>" class="collapse " aria-labelledby="<?php echo $ask['idcard']?>" data-parent="#accordionExample">
                 <div class="card-body">
                     <?php echo $ask ["texte"];?>

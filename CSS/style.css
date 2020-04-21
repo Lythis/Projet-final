@@ -16,7 +16,6 @@ body{
     margin-left: 25%;
     border: 2px solid black;
 }
-
 html {
     scroll-behavior: smooth;
 }
@@ -32,11 +31,14 @@ html {
 .pseudo-card{
     padding-left: 15%;
 }
-
-button[name="question"]{
-    color: white;
-    
+.card-headerP{
+    box-shadow: 3px 3px 3px black;
 }
+.btn-profil{
+    margin-left: 5%;
+    margin-bottom: 1%;
+}
+
 .p-card{
     margin-left: 27%;
     margin-right: 27%;
@@ -44,17 +46,15 @@ button[name="question"]{
     margin-top: 1%;
 }
 
-.bProfil{
+
+button[name="profil"]{
     font-size: 100%;
     font-family: inherit;
-    color: black;
-    background-color: inherit;
+    color: white;
+    background-color: transparent;
     border: 0;
     padding: 0;
-    width: 100%;
-    height: 5ex;
 }
-
 .couleur{
     background-color: #192D34;
 }
@@ -364,6 +364,9 @@ button[name="question"]{
 .titre_faq{
     font-size: 3em;
 }
+.btn-faq{
+    margin-left: 20%;
+}
 .faq{
     text-align: center;
 }
@@ -391,12 +394,17 @@ button[name="question"]{
 
 
 /* Footer */
-
+.footer-log{
+    margin-top: 2%;
+    bottom:0;
+    position: relative;
+    width: 100%;
+    background-color: #9B9999;
+}
 .footer{
     background-color: #1a2d34;
-   margin-top: 2%;
-    bottom:0;
     margin-top: 2%;
+    bottom:0;
 }
 
 
@@ -448,14 +456,11 @@ button[name="question"]{
 .card-align{
     display: flex;
 }
-.btn{
-    margin-left: 20%;
-}
-.card-headerP{
+
+.card-head{
     padding: .50rem .50rem;
     margin-bottom: 0;
     border: 1px solid rgba(0,0,0,.125);
-    box-shadow: 3px 3px 3px black;
 }
 .btn-lien{
     font-weight: 400;
@@ -565,12 +570,13 @@ button[aria-expanded="false"] .fa-caret-right
 }
 
 /* Profil */
-.profil{    
-    padding-top: 15%;
-    margin-top: -15%;
+.profil{
+    background-color: #E8E5E4;
+    padding-bottom: 3%;
 }
 .card_profil{
     box-shadow: 3px 3px 3px black;
+
 }
 .profil_information{
     padding-top: 3%;
@@ -583,7 +589,9 @@ button[aria-expanded="false"] .fa-caret-right
 }
 .rond_profil{
     border-radius: 50%;
-    border: 4px solid black;
+    border: 3px solid black;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 .titre_post{
     text-align: center;
@@ -593,6 +601,47 @@ button[aria-expanded="false"] .fa-caret-right
     width: 80px;
     height: 80px;
     margin-left: 2%;
+}
+.image-edit{
+    margin-left: 25%;
+    border-radius: 50%;
+    margin-bottom: 2%;
+    margin-right: 5%;
+    
+}
+
+.edit-profil{
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 2px solid black;
+}
+.btn-edit{
+    background-color: #31BCE7;
+    border: none;
+    border-radius: 2%;
+    width: 10%;
+    padding-top: 13px;
+    padding-bottom: 13px;
+
+}
+.label-file {
+    cursor: pointer;
+    color: white;
+    background-color: #31BCE7;
+    border-radius: 2%;
+    width: 10%;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    text-align: center;
+}
+.label-file:hover {
+    color: blue;
+}
+.input-file {
+    display: none;
+}
+.inputfile + label {
+	cursor: pointer; 
 }
 @media screen and (max-width: 1100px){
     .card{
@@ -758,7 +807,7 @@ button[aria-expanded="false"] .fa-caret-right
 }
 
 .back{
-    background-color: #dfdfdf;
+    background-color: #E8E5E4;
 }
 .carde5{
     position: relative;
@@ -780,7 +829,7 @@ button[aria-expanded="false"] .fa-caret-right
 .pBtn{
     display: inline-block;
     font-weight: 400;
-    color: white    ;
+    color: #212529;
     text-align: center;
     vertical-align: middle;
     -webkit-user-select: none;
@@ -789,17 +838,17 @@ button[aria-expanded="false"] .fa-caret-right
     user-select: none;
     background-color: #31BCE7;
     border: 1px solid transparent;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+    border: transparent;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     height: 5ex;
+    margin-left: 1%;
+    width: 8%;
 }
+
 .pCard{
     position: relative;
     display: -ms-flexbox;
