@@ -1,5 +1,10 @@
 <?php
-	session_start();
+    if(!isset($dontstartsession)) {
+        $dontstartsession = false;
+    }
+    if($dontstartsession == !true) {
+        session_start();
+    }
 	if (isset($_POST['deconnexion']) && $_POST['deconnexion'] == 'valide') {
 		session_unset();
 		session_destroy();

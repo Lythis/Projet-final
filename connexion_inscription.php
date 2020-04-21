@@ -226,3 +226,8 @@ elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']
             ?>
         </div>
     </body>
+
+    </html>
+ 
+
+

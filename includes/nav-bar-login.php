@@ -15,7 +15,7 @@
                 ?>
                 <li class="nav-item">
                     <form action="./profil.php" method="get">
-                        <button name="profil" class="boutton text-dark" value="<?php echo $_SESSION['utilisateur']['id']; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $_SESSION['utilisateur']['image']; ?>" alt="<?php echo $_SESSION['utilisateur']['pseudo']; ?>"><?php echo $_SESSION['utilisateur']['pseudo']; ?></button>
+                        <button name="profil" class="bProfil text-dark" value="<?php echo $_SESSION['utilisateur']['id']; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $_SESSION['utilisateur']['image']; ?>" alt="<?php echo $_SESSION['utilisateur']['pseudo']; ?>"><?php echo $_SESSION['utilisateur']['pseudo']; ?></button>
                     </form>
                 </li>
                 <form action="./index.php" method="post">

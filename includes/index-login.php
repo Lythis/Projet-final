@@ -38,14 +38,14 @@
                 <h5 class="card-title">Catégorie : <?php echo $categorie["0"]["Libelle_categorie"]; ?></h5>
                 <p class=""><?php echo $question["Titre_question"]; ?></p>
                 <form action="./QuestionsReponses.php" method="get">
-                    <button name="question" value="<?php echo $idquestion ?>">Accéder à la question</button>
+                    <button class="pBtn" name="question" value="<?php echo $idquestion ?>">Accéder à la question</button>
                 </form>
                 <blockquote class="blockquote mb-2">
                     <p></p>
                     <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]; ?></footer>
                 </blockquote>
 
-                <button class="pBtn btn-primary toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
+                <button class="pBtn toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
                     <span class="afficher">Afficher les réponses (<?php echo $nombrereponses; ?>)</span>
 
                     <span class="masquer">Masquer les réponses</span>

@@ -5,7 +5,14 @@
 ?>
 
 
-<body class="font-page">
+<?php
+    if (!empty($_SESSION)) {
+        echo '<body class= "back">';
+    }
+    else {
+        echo '<body>';
+    }
+?>  
 
     <?php 
         require_once('./includes/nav-bar-login.php');
@@ -28,13 +35,15 @@
         }
         elseif (!empty($_SESSION)) {
     ?>
-    <div class="center">
+    <div class="cardP w-50 mr-md-9 responsive-bootstrap-card m-card shadow-lg p-3">
+  <div class="card-body">
+  <div>
         <div class="form-group">
             <form class="needs-validation" method="post" action="Questions.php" novalidate>
                 <div class="form-group">
                     <div class="col-lg">
                         <label for="validationTooltip01">Votre question :</label>
-                        <input type="text" class="form-control" id="validationTooltip01" placeholder="Question" name="question" required>
+                        <textarea type="text" class="form-control autoExpand" placeholder="Question, Auto-Expanding Textarea " name="question" required></textarea>
                         <div class="invalid-feedback mb-2">
                             Veuillez saisir une question.
                         </div>
@@ -59,11 +68,14 @@
                             Veuillez selectionner une categorie.
                         </div>
                     </div>
-                    <button type="submit" class="btn1 btn-success" name="poserquestion" value="valide">Envoyer</button>
+                    <button type="submit" class="pBtn " name="poserquestion" value="valide">Envoyer</button>
                 </div>
             </form>
         </div>
     </div>
+  </div>
+</div>
+    
 
 <?php
     }
