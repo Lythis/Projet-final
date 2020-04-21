@@ -1,8 +1,11 @@
 <?php
+    require_once('fonctions/fonctions.php');
     $dontstartsession = true;
     session_start();
-    if(!empty($_SESSION['utilisateur'])) {
+
+    if(estConnecte($_SESSION['utilisateur']) == true) {
         require_once('db/base_PDO.php');
+        $con = connexionBdd();
 
         if(!empty($_GET['question'])) {
             $questionstatus = $_GET['question'];
@@ -10,21 +13,10 @@
         }
 
         if(isset($questionstatus[0]) && !empty($questionstatus[0])) {
-            $getthequestion = $questionstatus[0];
-            $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $getthequestion");
-            $query->execute();
-            $question = $query->fetchAll();
+            $question = selectFromQuestion($questionstatus[0]);
 
             if(isset($_POST['reponse']) && !empty($_POST['reponse'])) {
-                $obtenirdate = getdate();
-                $date = $obtenirdate['year']."-".$obtenirdate['mon']."-".$obtenirdate['mday'];
-            
-                $query = $con->prepare('INSERT INTO `reponse`(`Contenu_reponse`, `Date_reponse`, `#Id_profil`, `#Id_question`) VALUES (:reponse, :dateajd, :id_user, :id_question)');
-                $query->bindParam(':reponse', $_POST['reponse']);
-                $query->bindParam(':dateajd', $date);
-                $query->bindParam(':id_user', $_SESSION['utilisateur']['id']);
-                $query->bindParam(':id_question', $questionstatus[0]);
-                $query->execute();
+                insertIntoReponse($_POST['reponse'], $_SESSION['utilisateur']['id'], $questionstatus[0]);
             }
         }
 
@@ -34,27 +26,16 @@
             $idprofil = $question[0]["#Id_profil"];
             $idcategorie = $question[0]["#Id_categorie"];
 
-            $query = $con->prepare("SELECT * FROM `reponse` WHERE `#Id_question` = ( SELECT `Id_question` FROM `question` WHERE `Id_question` = $idquestion) ORDER BY `Date_reponse` DESC");
-            $query->execute();
-            $reponses = $query->fetchAll();
+            $reponses = selectFromReponseWithIdQuestion($idquestion, "DESC");
 
-            $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_profil` = $idprofil )");
-            $query->execute();
-            $users = $query->fetchAll();
+            $users = selectFromProfilWithIdQuestion($idquestion, $idprofil);
 
-            $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = ( SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_categorie` = $idcategorie )");
-            $query->execute();
-            $categorie = $query->fetchAll();
+            $categorie = selectFromCategorieWithIdQuestion($idquestion, $idcategorie);
 
             $title ='Question de '.$users[0]["Pseudo_profil"];
             require_once('includes/header.php');
 
-            $nombrereponses = 0;
-            if(!empty($reponses)) {
-                for ($ind=0; $ind < count($reponses); $ind++) { 
-                    $nombrereponses = $nombrereponses + 1;
-                }
-            }
+            $nombrereponses = getNombreReponses($reponses);
 
         if (!empty($_SESSION)) {
             echo '<body class= "back">';
@@ -113,13 +94,9 @@
 
         if (!empty($reponses)) {
             foreach ($reponses as $reponse) {
+                $idreponse = $reponse["Id_reponse"];
 
-                $unereponse = $reponse["Id_reponse"];
-
-                $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `reponse` WHERE `#Id_question` = $idquestion AND `Id_reponse` = $unereponse)");
-                $query->execute();
-                $users = $query->fetchAll();
-
+                $users = selectFromProfilWithIdReponse($idquestion, $idreponse);
         ?>
 
     </div>
@@ -166,7 +143,7 @@
             require_once('includes/header.php');
             require_once('includes/nav-bar-login.php');
             ?>
-                <!-- supp du profil ici -->
+                <!-- supp de la question ici -->
                 <div class="card d-flex">
                     <div class="card-body ">
                         <img src="image/sad.gif" class="card-img-top " alt="triste">
@@ -177,8 +154,6 @@
                         <form action="./profil.php?profil=<?php echo $questionstatus[0]; ?>">
                             <button class="btn btn-primary mt-3" name="profil" value="<?php echo $questionstatus[0]; ?>">Revenir en arrière</button>
                         </form>
-                        
-                        
                     </div>
                 </div>
             <?php
