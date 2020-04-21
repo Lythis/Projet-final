@@ -31,14 +31,14 @@ html {
 .pseudo-card{
     padding-left: 15%;
 }
-.card-header{
+.card-headerP{
     box-shadow: 3px 3px 3px black;
+}
+.btn-profil{
+    margin-left: 5%;
+    margin-bottom: 1%;
+}
 
-}
-button[name="question-profil"]{
-    margin-left: 15%;
-    color: white;
-}
 .p-card{
     margin-left: 27%;
     margin-right: 27%;
@@ -51,7 +51,7 @@ button[name="profil"]{
     font-size: 100%;
     font-family: inherit;
     color: white;
-    background-color: inherit;
+    background-color: #31BCE7;
     border: 0;
     padding: 0;
 }
@@ -569,7 +569,7 @@ button[aria-expanded="false"] .fa-caret-right
 }
 .card_profil{
     box-shadow: 3px 3px 3px black;
-    border-radius: 5%;
+
 }
 .profil_information{
     padding-top: 3%;
@@ -583,6 +583,8 @@ button[aria-expanded="false"] .fa-caret-right
 .rond_profil{
     border-radius: 50%;
     border: 3px solid black;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 .titre_post{
     text-align: center;
@@ -600,9 +602,7 @@ button[aria-expanded="false"] .fa-caret-right
     margin-right: 5%;
     
 }
-.change-image{
-    margin-top: 0;
-}
+
 .edit-profil{
     margin-left: 25%;
     margin-right: 25%;
@@ -841,7 +841,8 @@ button[aria-expanded="false"] .fa-caret-right
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     height: 5ex;
-    margin-left: 5%;
+    margin-left: 1%;
+    width: 8%;
 }
 .pCard{
     position: relative;

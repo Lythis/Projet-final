@@ -8,7 +8,7 @@
             <ul class="navbar-nav ">
             
             <li class="nav-item">
-            <a class="nav-link active text-dark" href="./Questions.php">poser une question</a>
+            <a class="nav-link active text-dark" href="./Questions.php">Poser une question</a>
             </li>
             <?php
                     if (!empty($_SESSION)) {
