@@ -51,7 +51,7 @@ button[name="profil"]{
     font-size: 100%;
     font-family: inherit;
     color: white;
-    background-color: #31BCE7;
+    background-color: transparent;
     border: 0;
     padding: 0;
 }
@@ -364,6 +364,9 @@ button[name="profil"]{
 .titre_faq{
     font-size: 3em;
 }
+.btn-faq{
+    margin-left: 20%;
+}
 .faq{
     text-align: center;
 }
@@ -391,12 +394,17 @@ button[name="profil"]{
 
 
 /* Footer */
-
+.footer-log{
+    margin-top: 2%;
+    bottom:0;
+    position: relative;
+    width: 100%;
+    background-color: #9B9999;
+}
 .footer{
     background-color: #1a2d34;
-   margin-top: 2%;
-    bottom:0;
     margin-top: 2%;
+    bottom:0;
 }
 
 
@@ -564,8 +572,7 @@ button[aria-expanded="false"] .fa-caret-right
 /* Profil */
 .profil{
     background-color: #E8E5E4;
-    padding-top: 15%;
-    margin-top: -15%;
+    padding-bottom: 3%;
 }
 .card_profil{
     box-shadow: 3px 3px 3px black;
@@ -800,7 +807,7 @@ button[aria-expanded="false"] .fa-caret-right
 }
 
 .back{
-    background-color: #dfdfdf;
+    background-color: #E8E5E4;
 }
 .carde5{
     position: relative;
@@ -829,12 +836,9 @@ button[aria-expanded="false"] .fa-caret-right
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: transparent;
+    background-color: #31BCE7;
     border: 1px solid transparent;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+    border: transparent;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -844,6 +848,7 @@ button[aria-expanded="false"] .fa-caret-right
     margin-left: 1%;
     width: 8%;
 }
+
 .pCard{
     position: relative;
     display: -ms-flexbox;
