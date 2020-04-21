@@ -32,6 +32,3 @@ require_once('includes/tableaux.php');
     }
     ?>
 
-    <?php 
-    require_once('./includes/footer.php');
-    ?>
