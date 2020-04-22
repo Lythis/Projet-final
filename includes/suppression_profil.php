@@ -2,10 +2,10 @@
     <div class="card-body ">
         <img src="image/sad.gif" class="card-img-top " alt="triste">
         <p class="card-text float-right ">Voulez vous vraiment supprimer ce compte?
-        <form action="./delete.php" method="post">
+        <form class="text-center" action="./delete.php" method="post">
             <button class="btn btn-danger mt-3" name="profil" value="<?php echo $profilstatus[0]; ?>">Supprimer</button>
         </form>
-        <form action="./profil.php?profil=<?php echo $profilstatus[0]; ?>">
+        <form class="text-center" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>">
             <button class="btn btn-primary mt-3" name="profil" value="<?php echo $profilstatus[0]; ?>">Revenir en arrière</button>
         </form>
     </div>

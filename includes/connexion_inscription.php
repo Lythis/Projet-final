@@ -39,7 +39,6 @@
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="connexion_inscription.php" method="post">
-                                    
                                     <div class="form-row1">
                                         <div class=" mb-3">
                                             <label for="validationCustom01">Pseudo</label>

@@ -13,13 +13,13 @@
 
             <div style="display: flex";>
 
-                <button class="pBtn toggle-btn" type="button" data-toggle="collapse" data-target="#repondre, #question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls=" question<?php echo $idquestion; ?>">
+                <button class="btn bg-primary text-white toggle-btn" type="button" data-toggle="collapse" data-target="#repondre, #question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls=" question<?php echo $idquestion; ?>">
                     <span class="afficher">Afficher les réponses (<?php echo $nombrereponses; ?>)</span>
                     <span class="masquer">Masquer les réponses</span>
                 </button>
                 <?php if($idprofil == $_SESSION['utilisateur']['id'] || $_SESSION['utilisateur']['role'] == 1) { ?>
                     <form action="./QuestionsReponses.php" method="get">
-                        <button class="btn btn-danger mt-3" name="question" value="<?php echo $idquestion; ?>,supp">Supprimer la question</button>
+                        <button class="btn btn-danger ml-4" name="question" value="<?php echo $idquestion; ?>,supp">Supprimer la question</button>
                     </form>
                 <?php } ?>
             </div>
@@ -29,16 +29,16 @@
 <div class="cardP w-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="repondre">
     <div class="card-body">
         <form class="needs-validation" method="post" action="./QuestionsReponses.php?question=<?php echo $questionstatus[0]; ?>">
-            <div class="form-row1" >
+            <div >
                 <div class=" mb-3" >
                     <label for="validationCustom01">Répondre à la question :</label>
-                    <textarea  placeholder='' type="text" class="form-control autoExpand" id="validationCustom01" name="reponse" required></textarea>
+                    <textarea  placeholder='' type="text" class="form-control autoExpand w-100" id="validationCustom01" name="reponse" required></textarea>
                     <div class="invalid-feedback">
                         Veuillez saisir une réponse.
                     </div>
                 </div>
             </div>
-            <button type="submit" style="margin-bottom: 2%;" class="pBtn">Envoyer</button>
+            <button type="submit" class="btn bg-primary text-white">Envoyer</button>
         </form>
     </div>
 
@@ -71,10 +71,13 @@
         </div>
     </div>
 </div>
+
 <?php
         }
     }
     else {
-        echo "Wow, such empty.";
+        echo '<div class="ml-4">Wow, such empty.</div>';
     }
 ?>
+
+</div>

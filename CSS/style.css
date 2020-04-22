@@ -47,14 +47,7 @@ html {
 }
 
 
-button[name="profil"]{
-    font-size: 100%;
-    font-family: inherit;
-    color: white;
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-}
+
 .couleur{
     background-color: #192D34;
 }
@@ -846,7 +839,7 @@ button[aria-expanded="false"] .fa-caret-right
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     height: 5ex;
     margin-left: 1%;
-    width: 8%;
+    width: 30%;
 }
 
 .pCard{
