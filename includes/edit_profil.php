@@ -10,47 +10,50 @@
     <div class="card-body">
         <form>
         <div>
-            <label for="exampleInputEmail1">Pseudo : </label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $_SESSION['utilisateur']['pseudo']; ?>">
+            <label >Pseudo : </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $users[0]["Pseudo_profil"]; ?>">
         </div>
-
+        <div>
+            <label >E-mail : </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $users[0]["Mail_profil"]; ?>">
+        </div>
         <div class=" mb-3">
-            <label for="validationCustomMDP">Mot de passe</label>
+            <label >Ancien mot de passe : </label>
             <div class="input-group">
-                <input type="password" class="form-control" id="validationCustomMDP" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscription" required>
-                <div class="invalid-feedback">
-                    Veuillez entrer un mot de passe valide.
-                </div>
+                <input type="password" class="form-control" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscription" required>
             </div>
         </div>
         <div class=" mb-3">
-            <label for="validationCustomMDP">Confirmation mot de passe</label>
+            <label>Nouveau mot de passe : </label>
             <div class="input-group">
-                <input type="password" class="form-control" id="validationCustomMDP" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscriptionconfirm" required>
-                <div class="invalid-feedback">
-                    Veuillez saisir le même mot de passe.
-                </div>
+                <input type="password" class="form-control" id="validationCustomMDP" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscription" required>
+            </div>
+        </div>
+        <div class=" mb-3">
+            <label>Confirmation mot de passe : </label>
+            <div class="input-group">
+                <input type="password" class="form-control" id="validationCustomMDP" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscriptionconfirm" required >
+
             </div>
         </div>
     
         <div>
-            <label for="exampleInputPassword1">Description :</label>
-            <textarea type="text" class="form-control autoExpand w-100" value="<?php echo $users[0]["Description_profil"];?> " name="descriptionProfil" required></textarea>
+            <label >Description :</label>
+            <textarea type="text" class="form-control autoExpand w-100" name="descriptionProfil" required> <?php echo $users[0]["Description_profil"]; ?> </textarea>
         </div>
         <div >
-            <label for="validationTooltip02">Genre :</label>
-                <select class="custom-select mb-2" id="validationTooltip02" placeholder="Genre" name="genreInscription" required>
-                    <option value="">Selectionner une catégorie</option>
+            <label >Genre :</label>
+                <select class="custom-select mb-2"  value="<?php echo $users[0]["Genre_profil"];?>" name="genreInscription"  required>    
                     <option value="Homme">Homme</option>
                     <option value="Femme">Femme</option>
                     <option value="Non-binaire">Non-binaire</option>
                     <option value="Hélicoptère d'attaque">Hélicoptère d'attaque</option>
                 </select>
-            <div class="invalid-feedback mb-2">
-                Veuillez sélectionner un genre.
-            </div>
+
         </div>
+    
         <button type="submit" class="btn btn-primary" name="inscription" value="valide">Accepter</button>
         </form>
     </div>
+</div>
 </div>

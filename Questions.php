@@ -21,5 +21,5 @@
         echo '<p>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour poser une question!</p>';
     }
 
-    require_once('includes/footer.php');
+    require_once('includes/footer-login.php');
 ?>
