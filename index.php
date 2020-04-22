@@ -5,4 +5,5 @@
     navBar();
 
     accueil();
+    footer();
 ?>
