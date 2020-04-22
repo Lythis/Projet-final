@@ -5,4 +5,5 @@
     navBar($_SESSION);
 
     accueil($_SESSION);
+    footer($_SESSION);
 ?>
