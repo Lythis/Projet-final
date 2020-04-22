@@ -4,7 +4,7 @@
     <label for="file" class="label-file">Choisir une image</label>
     <input id="file" class="input-file" type="file">
 
-    <button class=" btn-edit text-dark"> Supprimer image </button>
+    <button class=" btn-edit text-dark">Supprimer image</button>
 </div>
 <div class="edit-profil">
     <div class="card-body">
@@ -18,7 +18,7 @@
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $users[0]["Mail_profil"]; ?>">
         </div>
         <div class=" mb-3">
-            <label >Ancien mot de passe : </label>
+            <label>Mot de passe actuel : </label>
             <div class="input-group">
                 <input type="password" class="form-control" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscription" required>
             </div>
@@ -39,7 +39,7 @@
     
         <div>
             <label >Description :</label>
-            <textarea type="text" class="form-control autoExpand w-100" name="descriptionProfil" required> <?php echo $users[0]["Description_profil"]; ?> </textarea>
+            <textarea type="text" class="form-control autoExpand w-100" name="descriptionProfil" required><?php echo $users[0]["Description_profil"]; ?></textarea>
         </div>
         <div >
             <label >Genre :</label>
@@ -49,7 +49,6 @@
                     <option value="Non-binaire">Non-binaire</option>
                     <option value="Hélicoptère d'attaque">Hélicoptère d'attaque</option>
                 </select>
-
         </div>
     
         <button type="submit" class="btn btn-primary" name="inscription" value="valide">Accepter</button>

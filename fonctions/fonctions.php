@@ -35,6 +35,15 @@
         }
     }
 
+    function footer($session) {
+        if(!empty($session)) {
+            require_once('./includes/footer-login.php');
+        }
+        else {
+            require_once('./includes/footer.php');
+        }
+    }
+
     function accueil($session) {
         if (!empty($session)) {
             require_once('./includes/index-login.php');
