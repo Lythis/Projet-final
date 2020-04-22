@@ -64,4 +64,4 @@
     ?>
 
 </div>
-<?php footer($_SESSION)?>
+<?php footer()?>

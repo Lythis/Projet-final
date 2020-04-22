@@ -2,7 +2,7 @@
     require_once('./fonctions/fonctions.php');
     $startedsession = startSessionHere();
     //L'utilisateur est-il bien connecté?
-    if(estConnecte($_SESSION['utilisateur']) == true) {
+    if(estConnecte() == true) {
 
         //On a bien recupéré des données en GET
         if(!empty($_GET['profil'])) {
@@ -30,9 +30,9 @@
         //Notre tableau GET ($profilstatus) ne contient qu'une seule colonne
         if(!empty($_GET['profil']) && !empty($users) && !isset($profilstatus[1])) {
 
-            require_once('./includes/nav-bar-login.php');
+            navBar();
             require_once('./includes/profil.php');
-            require_once('includes/footer-login.php');
+            footer();
       
         }
 
@@ -44,10 +44,37 @@
                 //Le profil demandé est le profil actuel de la session ou la session est administrateur
                 if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) {
                     $title = 'Modification du profil de '.$users[0]["Pseudo_profil"];
+                    $success = [
+                        'pseudo' => "false",
+                        'mail' => "false",
+                        'mdp' => "false",
+                        'description' => "false",
+                        'genre' => "false",
+                    ];
+                    if(!empty($_POST)) {
+                        $success = editProfil($profilstatus[0], $success);
+                        $users = selectFromProfil($profilstatus[0]);
+                    }
                     require_once('includes/header.php');
                     require_once('includes/nav-bar-login.php');
                     require_once('./includes/edit_profil.php');
-                    require_once('includes/footer-login.php');
+                    footer();
+                    if(!empty($_POST)) {
+                        $success = [
+                            'pseudo' => "false",
+                            'mail' => "false",
+                            'mdp' => "false",
+                            'description' => "false",
+                            'genre' => "false",
+                        ];
+                        $_POST['pseudo'] = '';
+                        $_POST['mail'] = '';
+                        $_POST['mdp'] = '';
+                        $_POST['nvmdp'] = '';
+                        $_POST['nvmdpconfirm'] = '';
+                        $_POST['description'] = '';
+                        $_POST['genre'] = '';
+                    }
                 }
 
                 //Message d'erreur car accès refusé
