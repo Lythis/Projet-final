@@ -1,3 +1,4 @@
+<body class="bgP">
 <div class="card d-flex">
     <div class="card-body ">
         <img src="image/sad.gif" class="card-img-top " alt="triste">

@@ -859,3 +859,6 @@ button[aria-expanded="false"] .fa-caret-right
     width: 26%;
 }
 
+.bgP{
+    background-color: #E8E5E4;
+}

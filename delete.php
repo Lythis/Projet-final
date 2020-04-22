@@ -1,3 +1,4 @@
+
 <?php
     require_once('./fonctions/fonctions.php');
     $startedsession = startSessionHere();
@@ -38,4 +39,5 @@
     navBar($_SESSION);
 
     require_once('./includes/delete_message.php');
+    footer($_SESSION)
 ?>

@@ -99,3 +99,4 @@
         </div>
     </div>
 </div>
+<?php footer($_SESSION)?>

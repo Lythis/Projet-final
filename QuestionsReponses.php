@@ -1,3 +1,4 @@
+
 <?php
     require_once('fonctions/fonctions.php');
     $startedsession = startSessionHere();
@@ -61,5 +62,5 @@
         echo '<p>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir une question!</p>';
     }
     
-    require_once('includes/footer.php');
+    footer($_SESSION)
 ?>

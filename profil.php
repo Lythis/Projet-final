@@ -99,5 +99,4 @@
         require_once('includes/nav-bar.php');
         echo '<p>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir un profil!</p>';
     }
-    
 ?>

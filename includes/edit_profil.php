@@ -1,3 +1,4 @@
+<body class="bgP">
 <div class="change-image">
     <img class="image-edit  img-fluid  picture-user" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
 
@@ -56,3 +57,4 @@
     </div>
 </div>
 </div>
+<?php footer($_SESSION)?>

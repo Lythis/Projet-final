@@ -1,3 +1,4 @@
+<body class="bgP">
 <h3 class="d-flex justify-content-center">Envie de poser une question? Venez la poser&nbsp;<a href="./Questions.php">ici</a>!</h3>
 
 <?php
