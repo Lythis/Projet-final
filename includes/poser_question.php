@@ -6,7 +6,7 @@
                     <div class="form-group">
                         <div class="col-lg">
                             <label for="validationTooltip01">Votre question :</label>
-                            <textarea type="text" class="form-control autoExpand w-100" placeholder="" name="question" required></textarea>
+                            <textarea type="text" class="form-control autoExpand w-100 h-50" placeholder="" name="question" required></textarea>
                             <div class="invalid-feedback mb-2">
                                 Veuillez saisir une question.
                             </div>

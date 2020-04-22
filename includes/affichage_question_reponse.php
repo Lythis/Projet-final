@@ -32,7 +32,7 @@
             <div >
                 <div class=" mb-3" >
                     <label for="validationCustom01">Répondre à la question :</label>
-                    <textarea  placeholder='' type="text" class="form-control autoExpand w-100" id="validationCustom01" name="reponse" required></textarea>
+                    <textarea  placeholder='' type="text" class="form-control autoExpand w-100 h50" id="validationCustom01" name="reponse" required></textarea>
                     <div class="invalid-feedback">
                         Veuillez saisir une réponse.
                     </div>
