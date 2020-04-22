@@ -15,13 +15,13 @@
     else {
 ?>
 
-    <div class="pCard">
-        <div class="card-body" style="display: flex;">
-            <p class="card-text"> <img src="image/tenor.gif" style="  width: 75%;
-            margin-right: 6%;" class="" alt="facher">
-            <p>Accès refusé. <a href="index.php">Revenir à l'accueil</a>.</p>
+        <div class="card">
+            <div class="card-body" style="display: flex;">
+                <p class="card-text"> <img src="image/tenor.gif" style="  width: 75%;
+                margin-right: 6%;" class="" alt="facher">
+                <p>Accès refusé. <a href="index.php">Revenir à l'accueil</a>.</p>
+            </div>
         </div>
-    </div>
 
 <?php
     }

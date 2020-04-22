@@ -55,7 +55,13 @@
                     $title = 'Accès refusé';
                     require_once('includes/header.php');
                     require_once('includes/nav-bar.php');
-                    echo 'Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.';
+                    echo'<div class="card">
+                    <div class="card-body" style="display: flex;">
+                        <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
+                        margin-right: 6%;" class="" alt="facher">
+                        <h6>Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                    </div>
+                    </div>';
                 }
             }
         
@@ -73,15 +79,27 @@
                     $title = 'Accès refusé';
                     require_once('includes/header.php');
                     require_once('includes/nav-bar.php');
-                    echo 'Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.';
+                    echo'<div class="card">
+                    <div class="card-body" style="display: flex;">
+                        <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
+                        margin-right: 6%;" class="" alt="facher">
+                        <h6>Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                    </div>
+                    </div>';
+                    }
                 }
-            }
             //La requête n'est pas égale à "edit ou a supp"
             else {
                 $title = 'Erreur';
                 require_once('includes/header.php');
                 require_once('includes/nav-bar.php');
-                echo 'Problème lors de votre requête. <a href="./index.php">Revenir à l\'accueil</a>.';
+                echo'<div class="card">
+                <div class="card-body" style="display: flex;">
+                    <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
+                    margin-right: 6%;" class="" alt="facher">
+                    <h6>Problème lors de votre requête. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                </div>
+                </div>';
             }
         }
 
@@ -90,13 +108,26 @@
             $title = 'Profil introuvable';
             require_once('includes/header.php');
             require_once('includes/nav-bar.php');
-            echo 'Profil introuvable. <a href="./index.php">Revenir à l\'accueil</a>.';
+            echo'<div class="card">
+        <div class="card-body" style="display: flex;">
+            <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
+            margin-right: 6%;" class="" alt="facher">
+            <h6>Profil introuvable. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+        </div>
+    </div>';
         }
     }
     else {
         $title = 'Accès refusé';
         require_once('includes/header.php');
         require_once('includes/nav-bar.php');
-        echo '<p>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir un profil!</p>';
+        echo'<div class="card">
+        <div class="card-body" style="display: flex;">
+            <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
+            margin-right: 6%;" class="" alt="facher">
+            <h6>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir un profil!</h6></p>
+        </div>
+    </div>';
     }
+    footer($_SESSION)
 ?>

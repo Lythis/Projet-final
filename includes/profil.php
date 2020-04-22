@@ -64,4 +64,3 @@
     ?>
 
 </div>
-<?php footer($_SESSION)?>
