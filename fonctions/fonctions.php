@@ -1,22 +1,25 @@
 <?php
     require_once('db/base_PDO.php');
 
+    #Fonction pour se connecter/déconnecter, si la fonction startSessionHere() a été utilisé avant et a retourné true alors la session ne démarre pas ici, ne retourne rien
     function connexionDeconnexion($dontstartsession) {
         if($dontstartsession == false) {
             session_start();
         }
-        if (isset($_POST['deconnexion']) && $_POST['deconnexion'] == 'valide') {
+        if(isset($_POST['deconnexion']) && $_POST['deconnexion'] == 'valide') {
             session_unset();
             session_destroy();
             $_POST['deconnexion'] = '';
         }
     }
 
+    #Fonction pour start une session à un endroit précis (autre que le header), retourne true
     function startSessionHere() {
         session_start();
         return true;
     }
 
+    #Fonction qui retourne true si une session est active, false sinon
     function estConnecte() {
         if(!empty($_SESSION)) {
             return true;
@@ -26,6 +29,7 @@
         }
     }
 
+    #Fonction pour savoir quelle navbar utiliser en fonction de l'état de la session, ne retourne rien
     function navBar() {
         if(!empty($_SESSION)) {
             require_once('./includes/nav-bar-login.php');
@@ -35,6 +39,7 @@
         }
     }
 
+    #Fonction pour savoir quel footer utiliser en fonction de l'état de la session, ne retourne rien
     function footer() {
         if(!empty($_SESSION)) {
             require_once('./includes/footer-login.php');
@@ -44,6 +49,7 @@
         }
     }
 
+    #Fonction pour savoir quel accueil afficher en fonction de l'état de la session, ne retourne rien
     function accueil() {
         if (!empty($_SESSION)) {
             require_once('./includes/index-login.php');
@@ -53,6 +59,7 @@
         }
     }
 
+    #Connecter une session, retourne le tableau session
     function connexionSession($idprofil, $mailprofil, $pseudoprofil, $genreprofil, $imageprofil, $roleprofil) {
         return $_SESSION['utilisateur'] = [
             'id' => $idprofil,
@@ -64,13 +71,14 @@
         ];
     }
 
+    #Créer un profil, ne retourne rien
     function creerProfil($pseudo, $email, $mdp, $genre) {
         $con = connexionBdd();
 
         $query = $con->prepare('INSERT INTO profil (Pseudo_profil, Mail_profil, MotDePasse_profil, Genre_profil, Image_profil, Description_profil, `#Id_role`) VALUES (:pseudo, :email, :password, :genre, :image, :description, :role)');
         $query->bindParam(':pseudo', $pseudo);
         $query->bindParam(':email', $email);
-        $query->bindParam(':password', $mdp);
+        $query->bindParam(':password', $mdp); #Le mot de passe a déjà été crypté avant
         $query->bindParam(':genre', $genre);
         $query->bindParam(':image', $image_default_profil);
         $query->bindParam(':description', $description_default_profil);
@@ -81,6 +89,7 @@
         $query->execute();
     }
 
+    #Sélectionner tout les profils de la base de données, retourne les profils en tableau
     function selectAllProfil() {
         $con = connexionBdd();
 
@@ -89,6 +98,7 @@
         return $query->fetchAll();
     }
 
+    #Sélectionner toutes les questions de la base de données en donnant l'ordre de triage, retourne les questions en tableau
     function selectAllQuestions($order) {
         $con = connexionBdd();
 
@@ -97,6 +107,7 @@
         return $query->fetchAll();
     }
 
+    #Sélectionner une question en précisant son ID et l'ordre de triage, retourne la question en tableau
     function selectFromQuestion($idquestion, $order) {
         $con = connexionBdd();
 
@@ -105,6 +116,7 @@
         return $query->fetchAll();
     }
 
+    #Sélectionner un profil en précisant son ID, retourne le profil en tableau
     function selectFromProfil($idprofil) {
         $con = connexionBdd();
 
@@ -113,6 +125,7 @@
         return $query->fetchAll();
     }
 
+    #Sélectionner une question en précisant l'ID du profil auteur et l'ordre de triage, retourne la question en tableau
     function selectFromQuestionWithIdProfil($idprofil, $order) {
         $con = connexionBdd();
 
@@ -121,6 +134,7 @@
         return $query->fetchAll();
     }
 
+    #Sélectionner une réponse en précisant l'ID de la question et l'ordre de triage, retourne la/les réponse(s) en tableau
     function selectFromReponseWithIdQuestion($idquestion, $order) {
         $con = connexionBdd();
 
@@ -129,6 +143,7 @@
         return $query->fetchAll();
     }
 
+    #Sélectionner l'auteur d'une question en précisant l'ID de la question, retourne le profil en tableau
     function selectFromProfilWithIdQuestion($idquestion, $idprofil) {
         $con = connexionBdd();
 
@@ -137,6 +152,7 @@
         return $query->fetchAll();
     }
 
+    #Sélectionner l'auteur d'une réponse en précisant l'ID de la réponse, retourne le profil en tableau
     function selectFromProfilWithIdReponse($idquestion, $idreponse) {
         $con = connexionBdd();
 
@@ -145,6 +161,7 @@
         return $query->fetchAll();
     }
 
+    #Sélectionner une catégorie en précisant l'ID de la question, retourne la catégorie en tableau
     function selectFromCategorieWithIdQuestion($idquestion, $idcategorie) {
         $con = connexionBdd();
 
@@ -153,6 +170,7 @@
         return $query->fetchAll();
     }
 
+    #Fonction pour compter le nombre de réponses à une question, retourne le nombre de réponses obtenues
     function getNombreReponses($reponses) {
         $nombrereponses = 0;
         if(!empty($reponses)) {
@@ -163,6 +181,7 @@
         return $nombrereponses;
     }
 
+    #Fonction pour insérer une question dans la base de données, ne retourne rien
     function insertIntoQuestion($question, $date, $utilisateur, $categorie) {
         $con = connexionBdd();
 
@@ -174,6 +193,7 @@
         $query->execute();
     }
 
+    #Fonction pour insérer une réponse dans la base de données, ne retourne rien
     function insertIntoReponse($reponse, $date, $utilisateur, $question) {
         $con = connexionBdd();
             
@@ -185,11 +205,13 @@
         $query->execute();
     }
 
+    #Fonction qui obtient un tableau date, retourne une date conforme pour la base de données
     function obtenirDate() {
         $obtenirdate = getdate();
         return $obtenirdate['year']."-".$obtenirdate['mon']."-".$obtenirdate['mday'];
     }
 
+    #Fonction pour supprimer un profil de la base de données ainsi que les questions/réponses de ce profil, ne retourne rien
     function deleteProfil($idprofil) {
         $con = connexionBdd();
 
@@ -206,6 +228,7 @@
         $query->execute();
     }
 
+    #Fonction pour supprimer une question de la base de données ainsi que les réponses de cette question, ne retourne rien
     function deleteQuestion($idquestion) {
         $con = connexionBdd();
 
@@ -218,6 +241,7 @@
         $query->execute();
     }
 
+    #Fonction pour modifier un profil de la base de données, retourne un tableau "success" définit auparavent
     function editProfil($idprofil, $success) {
         $con = connexionBdd();
         $users = selectFromProfil($idprofil);
@@ -267,20 +291,16 @@
             }
         }
 
-        if(!empty($_POST['nvmdp']) && $_POST['nvmdp'] != $users[0]['MotDePasse_profil']) {
+        if(!empty($_POST['nvmdp']) && !password_verify($_POST['nvmdp'], $users[0]['MotDePasse_profil'])) {
+            $_POST['nvmdp'] = password_hash($_POST['nvmdp'], PASSWORD_DEFAULT);
 
-            if(isset($_POST['nvmdpconfirm']) && $_POST['nvmdp'] == $_POST['nvmdpconfirm']) {
+            if(!empty($_POST['nvmdpconfirm']) && password_verify($_POST['nvmdpconfirm'], $_POST['nvmdp'])) {
 
-                if($_POST['mdp'] == $users[0]['MotDePasse_profil']) {
+                if(password_verify($_POST['mdp'], $users[0]['MotDePasse_profil'])) {
                     $nouveaumdp = $_POST['nvmdp'];
                     $query = $con->prepare("UPDATE `profil` SET `MotDePasse_profil` = :mdp WHERE `Id_profil` = $idprofil");
                     $query->bindParam(':mdp', $nouveaumdp);
                     $query->execute();
-
-                    if($_SESSION['utilisateur']['id'] == $users[0]['Id_profil']) {
-                        $users = selectFromProfil($idprofil);
-                        $_SESSION['utilisateur']['mdp'] = $users[0]['MotDePasse_profil'];
-                    }
 
                     $success['mdp'] = "true";
                 }
@@ -325,6 +345,7 @@
         return $success;
     }
 
+    #Fonction pour vérifier dans la base de données si un email existe déjà, retourne true si oui, false sinon
     function mailExist($mail) {
         $users = selectAllProfil();
 

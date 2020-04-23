@@ -5,7 +5,7 @@
     <label for="file" class="label-file">Choisir une image</label>
     <input id="file" class="input-file" type="file">
 
-    <button class=" btn-edit text-dark">Supprimer image</button>
+    <button class="btn-edit text-dark" name="image" value="Default.png">Supprimer l'image</button>
 </div>
 <div class="edit-profil">
     <div class="card-body">
