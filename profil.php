@@ -56,7 +56,7 @@
                         $users = selectFromProfil($profilstatus[0]);
                     }
                     require_once('includes/header.php');
-                    require_once('includes/nav-bar-login.php');
+                    navBar();
                     require_once('./includes/edit_profil.php');
                     footer();
                     if(!empty($_POST)) {
@@ -81,7 +81,7 @@
                 else {
                     $title = 'Accès refusé';
                     require_once('includes/header.php');
-                    require_once('includes/nav-bar.php');
+                    navBar();
                     echo'<div class="card">
                     <div class="card-body" style="display: flex;">
                         <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
@@ -98,19 +98,19 @@
                 if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) {
                     $title = 'Suppression du profil de '.$users[0]["Pseudo_profil"];
                     require_once('includes/header.php');
-                    require_once('includes/nav-bar-login.php');
+                    navBar();
                     require_once('./includes/suppression_profil.php');
                 }
                 //Message d'erreur car accès refusé
                 else {
                     $title = 'Accès refusé';
                     require_once('includes/header.php');
-                    require_once('includes/nav-bar.php');
+                    navBar();
                     echo'<div class="card">
                     <div class="card-body" style="display: flex;">
                         <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
                         margin-right: 6%;" class="" alt="facher">
-                        <h6>Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                        <h6>Vous n\'avez pas le droit de supprimer ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
                     </div>
                     </div>';
                     }
@@ -119,7 +119,7 @@
             else {
                 $title = 'Erreur';
                 require_once('includes/header.php');
-                require_once('includes/nav-bar.php');
+                navBar();
                 echo'<div class="card">
                 <div class="card-body" style="display: flex;">
                     <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
@@ -134,7 +134,7 @@
         else {
             $title = 'Profil introuvable';
             require_once('includes/header.php');
-            require_once('includes/nav-bar.php');
+            navBar();
             echo'<div class="card">
         <div class="card-body" style="display: flex;">
             <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
@@ -147,7 +147,7 @@
     else {
         $title = 'Accès refusé';
         require_once('includes/header.php');
-        require_once('includes/nav-bar.php');
+        navBar();
         echo'<div class="card">
         <div class="card-body" style="display: flex;">
             <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
@@ -156,5 +156,5 @@
         </div>
     </div>';
     }
-    footer($_SESSION)
+    footer()
 ?>

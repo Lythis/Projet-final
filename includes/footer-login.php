@@ -60,7 +60,7 @@
 <script>
 $(document).ready(function(e) {
 
-  $('#question, #validationCustom01').keyup(function() {
+  $('#question, #validationCustom01 , #desc').keyup(function() {
   
     var nombreCaractere = $(this).val().length;
     

@@ -40,7 +40,8 @@
         
             <div>
                 <label >Description :</label> <?php if($success['description'] == "true") {?> <i class="fas fa-check"></i> Modification réussi <?php } ?>
-                <textarea type="text" class="form-control autoExpand w-100" name="description"><?php echo $users[0]["Description_profil"]; ?></textarea>
+                <textarea type="text" class="form-control autoExpand w-100 h-25" id="desc" name="description"><?php echo $users[0]["Description_profil"]; ?></textarea>
+                <p style="text-align:right" id="compteur">0 mots | 0 Caractere / 250</p>
             </div>
             <div >
                 <label >Genre :</label> <?php if($success['genre'] == "true") {?> <i class="fas fa-check"></i> Modification réussi <?php } ?>

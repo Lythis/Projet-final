@@ -52,7 +52,13 @@
             require_once('includes/header.php');
 
             navBar();
-            echo 'Question introuvable. <a href="./index.php">Revenir aux questions</a>.';
+            echo'<div class="card">
+                    <div class="card-body" style="display: flex;">
+                        <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
+                        margin-right: 6%;" class="" alt="facher">
+                        <h6 class="mt-5">Question introuvable. <a href="./index.php">Revenir aux questions</a>.</h6></p>
+                    </div>
+                    </div>';
 
         }
 
