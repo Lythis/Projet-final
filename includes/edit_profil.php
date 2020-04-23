@@ -15,7 +15,7 @@
         </div>
         <div>
             <label >E-mail : </label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $users[0]["Mail_profil"]; ?>">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $users[0]["Mail_profil"]; ?>">
         </div>
         <div class=" mb-3">
             <label >Ancien mot de passe : </label>
@@ -32,7 +32,7 @@
         <div class=" mb-3">
             <label>Confirmation mot de passe : </label>
             <div class="input-group">
-                <input type="password" class="form-control" id="validationCustomMDP" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscriptionconfirm" required >
+                <input type="password" class="form-control" id="validationCustomMDP" placeholder="" aria-describedby="inputGroupPrepend" name="mdpinscriptionconfirm" required>
 
             </div>
         </div>

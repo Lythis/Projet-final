@@ -35,6 +35,5 @@
     }
 
     navBar($_SESSION);
-
     require_once('./includes/connexion_inscription_message.php');
 ?>
