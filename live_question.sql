@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 15 avr. 2020 à 13:12
+-- Généré le :  jeu. 23 avr. 2020 à 14:54
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -64,28 +64,27 @@ CREATE TABLE IF NOT EXISTS `profil` (
   `Mail_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
   `MotDePasse_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
   `Genre_profil` varchar(50) CHARACTER SET latin1 NOT NULL,
-
   `Image_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
   `Description_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
-
   `#Id_role` int(11) NOT NULL,
   PRIMARY KEY (`Id_profil`),
   KEY `#Id_role` (`#Id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `profil`
 --
 
 INSERT INTO `profil` (`Id_profil`, `Pseudo_profil`, `Mail_profil`, `MotDePasse_profil`, `Genre_profil`, `Image_profil`, `Description_profil`, `#Id_role`) VALUES
-
-
-(1, 'root', 'root@livequestion.com', '12345', 'Non binaire', 'Default.png', 'Aucune information disponible.', 1),
-(2, 'Lythis', 'lythis@morgan.fr', '4567', 'Homme', 'lythis.jpg', 'Aucune information disponible.', 2),
-(55, 'Kyllian', 'kyllian@joseph.fr', '5555', 'Homme', 'kyllian.jpg', 'Aucune information disponible.', 1),
-(56, 'Léo', 'leo@stvincent.net', 'oui', 'Hélicoptère d\'attaque', 'Default.png', 'Aucune information disponible.', 2),
-(57, 'Nico Nico Nii', 'nico@stvincent.net', 'nico', 'Non-binaire', 'Default.png', 'Aucune information disponible.', 2);
-
+(1, 'YumYum', 'root@livequestion.com', '$2y$10$tZjW1sjH3sllXUf98JLqdueBoEvSprB6H9/x5I5PDoQuWaNRxJAte', 'Non-binaire', 'Default.png', 'uwu', 1),
+(2, 'Lythis', 'lythis@morgan.fr', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', 'lythis.jpg', 'Aucune information disponible.', 1),
+(55, 'Kyllian', 'kyllian@joseph.fr', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', 'kyllian.jpg', 'Aucune information disponible.', 1),
+(56, 'Leo', 'leo@stvincent.net', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Hélicoptère d\'attaque', 'Default.png', 'Aucune information disponible.', 2),
+(57, 'Nico Nico Nii', 'nico@stvincent.net', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Non-binaire', 'Default.png', 'Aucune information disponible.', 2),
+(63, 'test', 'me@test', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Femme', 'Default.png', 'Aucune information disponible.', 2),
+(64, 'Jeff', 'jeff@jeff.jeff', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', 'Default.png', 'Super prof des BTS 1 (ils travaillent mais que des fois)', 2),
+(65, 'Christopher', 'christopher@gmail.com', '$2y$10$gec1euS8zD7C3iQdZRyiouncOUUdmDfwhozHaLTtyVUT6WAqjxJna', 'Homme', 'Default.png', 'Aucune information disponible.', 2),
+(66, 'Mikaël', 'mikael@mika.fr', '$2y$10$NW9XY69pN37hi/9OuCUf7Op0tx7.FM61VPcZl5RNW.7r.hiADh.1.', 'Homme', 'Default.png', 'Aucune information disponible.', 2);
 
 -- --------------------------------------------------------
 
@@ -103,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `question`
@@ -135,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   PRIMARY KEY (`Id_reponse`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_question` (`#Id_question`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `reponse`
@@ -146,7 +145,12 @@ INSERT INTO `reponse` (`Id_reponse`, `Contenu_reponse`, `Date_reponse`, `#Id_pro
 (2, 'Because it\'s soooo beautiful :3', '2020-04-04', 2, 3),
 (3, 'Omg Lythis noticed me!!', '2020-04-04', 1, 3),
 (66, ':(', '2020-04-06', 2, 45),
-(77, 'Tu es super beau', '2020-04-02', 1, 45);
+(77, 'Tu es super beau', '2020-04-02', 1, 45),
+(78, 'oui', '2020-04-19', 1, 45),
+(79, 'test', '2020-04-19', 1, 3),
+(85, 'test', '2020-04-21', 1, 45),
+(86, 'test2', '2020-04-21', 1, 45),
+(91, 'k', '2020-04-22', 1, 46);
 
 -- --------------------------------------------------------
 
