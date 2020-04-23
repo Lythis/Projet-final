@@ -32,7 +32,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="inscriptionLabel">Page inscription</h5>
+                                <h5 class="modal-title" id="inscriptionLabel">Inscription</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -75,7 +75,7 @@
                                         <div class="mb-3">
                                             <label for="validationTooltip02">Genre :</label>
                                             <select class="custom-select mb-2" id="validationTooltip02" placeholder="Genre" name="genreInscription" required>
-                                                <option value="">Selectionner une catégorie</option>
+                                                <option value="">Selectionner un genre</option>
                                                 <option value="Homme">Homme</option>
                                                 <option value="Femme">Femme</option>
                                                 <option value="Non-binaire">Non-binaire</option>
@@ -99,4 +99,4 @@
         </div>
     </div>
 </div>
-<?php footer($_SESSION)?>
+<?php footer()?>

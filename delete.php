@@ -36,8 +36,8 @@
 
     require_once('includes/header.php');
 
-    navBar($_SESSION);
+    navBar();
 
     require_once('./includes/delete_message.php');
-    footer($_SESSION)
+    footer()
 ?>

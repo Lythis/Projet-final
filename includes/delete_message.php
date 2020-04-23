@@ -25,5 +25,5 @@
 
 <?php
     }
-    footer($_SESSION)
+    footer()
 ?>

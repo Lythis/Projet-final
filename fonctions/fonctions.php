@@ -17,8 +17,8 @@
         return true;
     }
 
-    function estConnecte($session) {
-        if(!empty($session)) {
+    function estConnecte() {
+        if(!empty($_SESSION)) {
             return true;
         }
         else {
@@ -26,8 +26,8 @@
         }
     }
 
-    function navBar($session) {
-        if(!empty($session)) {
+    function navBar() {
+        if(!empty($_SESSION)) {
             require_once('./includes/nav-bar-login.php');
         }
         else {
@@ -35,8 +35,8 @@
         }
     }
 
-    function footer($session) {
-        if(!empty($session)) {
+    function footer() {
+        if(!empty($_SESSION)) {
             require_once('./includes/footer-login.php');
         }
         else {
@@ -44,8 +44,8 @@
         }
     }
 
-    function accueil($session) {
-        if (!empty($session)) {
+    function accueil() {
+        if (!empty($_SESSION)) {
             require_once('./includes/index-login.php');
         }
         else {
@@ -209,12 +209,136 @@
     function deleteQuestion($idquestion) {
         $con = connexionBdd();
 
-        $query = $con->prepare('DELETE FROM `question` WHERE `Id_question` = :id');
-        $query->bindParam(':id', $idquestion);
-        $query->execute();
-
         $query = $con->prepare('DELETE FROM `reponse` WHERE `#Id_question` = :id');
         $query->bindParam(':id', $idquestion);
         $query->execute();
+
+        $query = $con->prepare('DELETE FROM `question` WHERE `Id_question` = :id');
+        $query->bindParam(':id', $idquestion);
+        $query->execute();
+    }
+
+    function editProfil($idprofil, $success) {
+        $con = connexionBdd();
+        $users = selectFromProfil($idprofil);
+
+        if(isset($_POST['pseudo']) && $_POST['pseudo'] != $users[0]['Pseudo_profil']) {
+            if(!empty($_POST['pseudo'])) {
+                $nouveaupseudo = $_POST['pseudo'];
+                $query = $con->prepare("UPDATE `profil` SET `Pseudo_profil` = :pseudo WHERE `Id_profil` = $idprofil");
+                $query->bindParam(':pseudo', $nouveaupseudo);
+                $query->execute();
+
+                if($_SESSION['utilisateur']['id'] == $users[0]['Id_profil']) {
+                    $users = selectFromProfil($idprofil);
+                    $_SESSION['utilisateur']['pseudo'] = $users[0]['Pseudo_profil'];
+                }
+
+                $success['pseudo'] = "true";
+            }
+            else {
+                $success['pseudo'] = "failpseudo";
+            }
+        }
+
+        if(isset($_POST['mail']) && $_POST['mail'] != $users[0]['Mail_profil']) {
+
+            if(mailExist($_POST['mail']) == false) {
+
+                if(!empty($_POST['mail'])) {
+                    $nouveaumail = $_POST['mail'];
+                    $query = $con->prepare("UPDATE `profil` SET `Mail_profil` = :mail WHERE `Id_profil` = $idprofil");
+                    $query->bindParam(':mail', $nouveaumail);
+                    $query->execute();
+
+                    if($_SESSION['utilisateur']['id'] == $users[0]['Id_profil']) {
+                        $users = selectFromProfil($idprofil);
+                        $_SESSION['utilisateur']['mail'] = $users[0]['Mail_profil'];
+                    }
+
+                    $success['mail'] = "true";
+                }
+                else {
+                    $success['mail'] = "failmail";
+                }
+            }
+            else {
+                $success['mail'] = "mailexist";
+            }
+        }
+
+        if(!empty($_POST['nvmdp']) && $_POST['nvmdp'] != $users[0]['MotDePasse_profil']) {
+
+            if(isset($_POST['nvmdpconfirm']) && $_POST['nvmdp'] == $_POST['nvmdpconfirm']) {
+
+                if($_POST['mdp'] == $users[0]['MotDePasse_profil']) {
+                    $nouveaumdp = $_POST['nvmdp'];
+                    $query = $con->prepare("UPDATE `profil` SET `MotDePasse_profil` = :mdp WHERE `Id_profil` = $idprofil");
+                    $query->bindParam(':mdp', $nouveaumdp);
+                    $query->execute();
+
+                    if($_SESSION['utilisateur']['id'] == $users[0]['Id_profil']) {
+                        $users = selectFromProfil($idprofil);
+                        $_SESSION['utilisateur']['mdp'] = $users[0]['MotDePasse_profil'];
+                    }
+
+                    $success['mdp'] = "true";
+                }
+                else {
+                    $success['mdp'] = "failmdp";
+                }
+            }
+            else {
+                $success['mdp'] = "failnvmdp";
+            }
+        }
+
+        if(isset($_POST['description']) && $_POST['description'] != $users[0]['Description_profil']) {
+
+            if(empty($_POST['description'])) {
+                $nouvelledescription = "Aucune information disponible.";
+                $query = $con->prepare("UPDATE `profil` SET `Description_profil` = :descri WHERE `Id_profil` = $idprofil");
+                $query->bindParam(':descri', $nouvelledescription);
+                $query->execute();
+            }
+            else {
+                $nouvelledescription = $_POST['description'];
+                $query = $con->prepare("UPDATE `profil` SET `Description_profil` = :descri WHERE `Id_profil` = $idprofil");
+                $query->bindParam(':descri', $nouvelledescription);
+                $query->execute();
+
+                $success['description'] = "true";
+            }
+        }
+
+        if(isset($_POST['genre']) && $_POST['genre'] != $users[0]['Genre_profil']) {
+            $nouveaugenre = $_POST['genre'];
+            $query = $con->prepare("UPDATE `profil` SET `Genre_profil` = :genre WHERE `Id_profil` = $idprofil");
+            $query->bindParam(':genre', $nouveaugenre);
+            $query->execute();
+
+            $success['genre'] = "true";
+        }
+
+        connexionSession($users[0]['Id_profil'],$users[0]['Mail_profil'], $users[0]['Pseudo_profil'], $users[0]['Genre_profil'], $users[0]['Image_profil'], $users[0]['#Id_role']);
+
+        return $success;
+    }
+
+    function mailExist($mail) {
+        $users = selectAllProfil();
+
+        $ind = 0;
+
+        while ($ind < count($users)) {
+            
+            if($users[$ind]['Mail_profil'] == $mail) {
+                return true;
+            }
+            else {
+                $ind = $ind + 1;
+            }
+        }
+        return false;
     }
 ?>

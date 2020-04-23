@@ -34,8 +34,9 @@
         creerProfil($_POST['pseudoinscription'], $_POST['emailinscription'], $_POST['mdpinscription'], $_POST['genreInscription']);
     }
 
-    navBar($_SESSION);
+    navBar();
     
     require_once('./includes/connexion_inscription_message.php');
-    footer($_SESSION);
+    
+    footer();
 ?>

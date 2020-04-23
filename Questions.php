@@ -3,7 +3,7 @@
     $title ='Poser une Question';
     require_once('includes/header.php');
 
-    require_once('./includes/nav-bar-login.php');
+    navBar();
 
     if (!empty($_POST['question']) && !empty($_POST['categorie']) && $_POST['poserquestion'] == 'valide') {
 
@@ -15,7 +15,7 @@
     </div>';
         }
 
-    elseif (estConnecte($_SESSION['utilisateur']) == true) {
+    elseif (estConnecte() == true) {
         require_once('./includes/poser_question.php');
     }
 
@@ -27,5 +27,5 @@
     </div>';
     }
 
-    footer($_SESSION)
+    footer()
 ?>
