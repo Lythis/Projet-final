@@ -51,7 +51,13 @@
             $title = 'Question Invalide';
             require_once('includes/header.php');
             require_once('./includes/nav-bar-login.php');
-            echo 'Question introuvable. <a href="./index.php">Revenir aux questions</a>.';
+            echo'<div class="card">
+                    <div class="card-body" style="display: flex;">
+                        <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
+                        margin-right: 6%;" class="" alt="facher">
+                        <h6 class="mt-5">Question introuvable. <a href="./index.php">Revenir aux questions</a>.</h6></p>
+                    </div>
+                    </div>';
         }
 
     }
@@ -59,7 +65,13 @@
         $title = 'Accès refusé';
         require_once('includes/header.php');
         require_once('includes/nav-bar.php');
-        echo '<p>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir une question!</p>';
+        echo'<div class="card">
+                    <div class="card-body" style="display: flex;">
+                        <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
+                        margin-right: 6%;" class="" alt="facher">
+                        <h6 class="mt-5">Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir une question!</a>.</h6></p>
+                    </div>
+                    </div>';
     }
     
     footer($_SESSION)

@@ -57,7 +57,7 @@
                     require_once('includes/nav-bar.php');
                     echo'<div class="card">
                     <div class="card-body" style="display: flex;">
-                        <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
+                        <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
                         margin-right: 6%;" class="" alt="facher">
                         <h6>Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
                     </div>
@@ -81,7 +81,7 @@
                     require_once('includes/nav-bar.php');
                     echo'<div class="card">
                     <div class="card-body" style="display: flex;">
-                        <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
+                        <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
                         margin-right: 6%;" class="" alt="facher">
                         <h6>Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
                     </div>
