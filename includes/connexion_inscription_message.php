@@ -35,6 +35,18 @@
                     }
                     
                 }
+                elseif (isset($mailexist) && $mailexist == true) {
+                    $_POST['inscription'] = '';
+
+                    ?>
+                    <div class="pCard">
+                        <div class="card-body" style="display: flex;">
+                            <p class="card-text"> <img src="image/tenor.gif" style=" width: 90%;  margin-right: 6%;" class="" alt="bienvenue"><h6>Cet e-mail existe déjà. <a href="./connexion_inscription.php">Revenir en arrière</a>.</h6></p>
+                        </div>
+                    </div>
+                <?php
+                }
+
                 elseif (isset($creationreussi) && $creationreussi == true) {
                     $_POST['inscription'] = '';
 
