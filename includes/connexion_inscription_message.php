@@ -18,7 +18,7 @@
                     ?>
                         <div class="pCard">
                             <div class="card-body">
-                                <p class="card-text"><img src="image/check.gif" style="width: 48%; margin-right: 6%;" class="" alt="pouve en l'air">Bienvenue <?php echo $_SESSION['utilisateur']['pseudo']; ?>! <a href="./index.php">Accès aux questions</a>.</p>
+                                <p class="card-text"><img src="image/check.gif" style="width: 48%; margin-right: 6%;" class="" alt="pouve en l'air"><h6> <?php echo $_SESSION['utilisateur']['pseudo']; ?>! <a href="./index.php">Accès aux questions</a>.</h6></p>
                             </div>
                         </div>
                 <?php

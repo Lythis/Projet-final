@@ -7,7 +7,9 @@
                     <div class="form-group">
                         <div class="col-lg">
                             <label for="validationTooltip01">Votre question :</label>
-                            <textarea type="text" class="form-control autoExpand w-100 h-50" placeholder="" name="question" required></textarea>
+                            <textarea id="question" type="text" class="form-control autoExpand w-100 h-50" placeholder="" name="question" maxlength="250" required></textarea>
+                            
+                            <p style="text-align:right" id="compteur">0 mots | 0 Caractere / 250</p>
                             <div class="invalid-feedback mb-2">
                                 Veuillez saisir une question.
                             </div>

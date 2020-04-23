@@ -3,6 +3,13 @@ body{
     margin: 0 auto;
 }
 
+/* couleur du nombre de charactere*/
+.mauvais {
+    color:#cc0000;
+  }
+  .presque {
+    color: orange;
+  }
 
 /* Question */
 .bas-page footer {

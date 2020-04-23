@@ -2,10 +2,10 @@
 <div class="change-image">
     <img class="image-edit  img-fluid  picture-user" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
 
-    <label for="file" class="label-file">Choisir une image</label>
+    <label for="file" class="label-file text-white">Choisir une image</label>
     <input id="file" class="input-file" type="file">
 
-    <button class=" btn-edit text-dark">Supprimer image</button>
+    <button class=" btn-edit text-white">Supprimer image</button>
 </div>
 <div class="edit-profil">
     <div class="card-body">

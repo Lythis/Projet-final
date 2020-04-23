@@ -1,6 +1,6 @@
 <footer>
         <div class="footer-log border border-dark">
-            <div class="footer_container">	
+            <div class="footer_container">  
                 <hr id="bar">
                 <div>
                     <p class="copyright"> © 2019 Page protected by reCAPTCHA and subject to Google's <span id="white">Privacy Policy</span> and <span id="white">Terms of service</span></p>
@@ -13,8 +13,8 @@
                     <i class="fab fa-google"></i>
                 </div>
             </div>
-        </div>	
-        </div>	
+        </div>  
+        </div>  
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -56,6 +56,29 @@
         rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
         this.rows = minRows + rows;
     });
+</script>
+<script>
+$(document).ready(function(e) {
+
+  $('#question, #validationCustom01').keyup(function() {
+  
+    var nombreCaractere = $(this).val().length;
+    
+    var nombreMots = jQuery.trim($(this).val()).split(' ').length;
+    if($(this).val() === '') {
+        nombreMots = 0;
+    }   
+    
+    var msg = ' ' + nombreMots + ' mot(s) | ' + nombreCaractere + ' Caractere(s) / 250';
+    $('#compteur').text(msg);
+    
+    if(nombreCaractere == 250 ){{  $('#compteur').addClass("mauvais"); $('#compteur').removeClass("presque");} }else{ if (nombreCaractere > 199 && nombreCaractere < 250) { $('#compteur').addClass("presque"); } else { $('#compteur').removeClass("presque"); $('#compteur').removeClass("mauvais"); }
+    
+    
+  }})  
+  
+  
+});
 </script>
 </footer>
 </body>

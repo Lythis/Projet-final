@@ -31,7 +31,8 @@
             <div >
                 <div class=" mb-3" >
                     <label for="validationCustom01">Répondre à la question :</label>
-                    <textarea  placeholder='' type="text" class="form-control autoExpand w-100 h50" id="validationCustom01" name="reponse" required></textarea>
+                    <textarea  placeholder='' type="text" class="form-control autoExpand w-100 h50" id="validationCustom01" maxlength="250" name="reponse" required></textarea>
+                    <p style="text-align:right" id="compteur">0 mots | 0 Caractere / 250</p>
                     <div class="invalid-feedback">
                         Veuillez saisir une réponse.
                     </div>
