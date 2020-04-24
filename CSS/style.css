@@ -627,6 +627,7 @@ button[aria-expanded="false"] .fa-caret-right
     margin-left: 25%;
     margin-right: 25%;
     border: 2px solid black;
+    margin-bottom: 9%;
 }
 .btn-edit{
     background-color: #31BCE7;
