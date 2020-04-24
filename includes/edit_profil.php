@@ -1,12 +1,18 @@
 <body class="bgP">
 <div class="change-image">
-    <img class="image-edit  img-fluid  picture-user" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
+    <img class="image-edit  img-fluid  picture-user" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
 
-    <label for="file" class="label-file text-white">Choisir une image</label>
-    <input id="file" class="input-file" type="file">
+    <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
+        <div>
+            <label >URL de l'image : </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="image" value="<?php echo $users[0]["Image_profil"]; ?>">
+            <button class="btn-edit text-white">Envoyer l'image</button>
+        </div>
+    </form>
 
-
-    <button class="btn-edit text-white" name="image" value="Default.png">Supprimer l'image</button>
+    <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
+        <button class="btn-edit text-white" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
+    </form>
 
 </div>
 <div class="edit-profil">

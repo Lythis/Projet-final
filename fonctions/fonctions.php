@@ -362,4 +362,19 @@
         }
         return false;
     }
+
+    function editImage($idprofil) {
+        $con = connexionBdd();
+        $users = selectFromProfil($idprofil);
+
+        $nouvelleimage = $_POST['image'];
+        $query = $con->prepare("UPDATE `profil` SET `Image_profil` = :newimage WHERE `Id_profil` = $idprofil");
+        $query->bindParam(':newimage', $nouvelleimage);
+        $query->execute();
+
+        if($_SESSION['utilisateur']['id'] == $users[0]['Id_profil']) {
+            $users = selectFromProfil($idprofil);
+            $_SESSION['utilisateur']['image'] = $users[0]['Image_profil'];
+        }
+    }
 ?>
