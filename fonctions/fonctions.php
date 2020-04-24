@@ -83,7 +83,7 @@
         $query->bindParam(':image', $image_default_profil);
         $query->bindParam(':description', $description_default_profil);
         $query->bindParam(':role', $role);
-        $image_default_profil = "Default.png";
+        $image_default_profil = "./image_profil/Default.png";
         $description_default_profil = "Aucune information disponible.";
         $role = 2;
         $query->execute();
@@ -361,5 +361,20 @@
             }
         }
         return false;
+    }
+
+    function editImage($idprofil) {
+        $con = connexionBdd();
+        $users = selectFromProfil($idprofil);
+
+        $nouvelleimage = $_POST['image'];
+        $query = $con->prepare("UPDATE `profil` SET `Image_profil` = :newimage WHERE `Id_profil` = $idprofil");
+        $query->bindParam(':newimage', $nouvelleimage);
+        $query->execute();
+
+        if($_SESSION['utilisateur']['id'] == $users[0]['Id_profil']) {
+            $users = selectFromProfil($idprofil);
+            $_SESSION['utilisateur']['image'] = $users[0]['Image_profil'];
+        }
     }
 ?>

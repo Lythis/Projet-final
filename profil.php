@@ -51,7 +51,10 @@
                         'description' => "false",
                         'genre' => "false",
                     ];
-                    if(!empty($_POST)) {
+                    if(isset($_POST['image']) && !empty($_POST['image'])) {
+                        editImage($profilstatus[0]);
+                    }
+                    elseif(!empty($_POST)) {
                         $success = editProfil($profilstatus[0], $success);
                         $users = selectFromProfil($profilstatus[0]);
                     }
@@ -74,6 +77,7 @@
                         $_POST['nvmdpconfirm'] = '';
                         $_POST['description'] = '';
                         $_POST['genre'] = '';
+                        $_POST['image'] = '';
                     }
                 }
 
