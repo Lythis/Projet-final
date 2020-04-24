@@ -1,6 +1,13 @@
 
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
 body{
-    margin: 0 auto;
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
 }
 
 /* couleur du nombre de charactere*/
@@ -395,16 +402,22 @@ html {
 
 /* Footer */
 .footer-log{
-    margin-top: 2%;
-    bottom:0;
-    position: relative;
-    width: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
     background-color: #9B9999;
+    text-align: center;
 }
 .footer{
-    background-color: #1a2d34;
-    margin-top: 2%;
-    bottom:0;
+    position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color:  #1a2d34;
+  text-align: center;
 }
 
 
