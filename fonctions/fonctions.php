@@ -83,7 +83,7 @@
         $query->bindParam(':image', $image_default_profil);
         $query->bindParam(':description', $description_default_profil);
         $query->bindParam(':role', $role);
-        $image_default_profil = "Default.png";
+        $image_default_profil = "./image_profil/Default.png";
         $description_default_profil = "Aucune information disponible.";
         $role = 2;
         $query->execute();
