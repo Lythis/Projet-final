@@ -9,7 +9,9 @@ body{
     padding-bottom: 6rem;
     min-height: 100%;
 }
-
+footer{
+    margin-top: 10%;
+}
 /* couleur du nombre de charactere*/
 .mauvais {
     color:#cc0000;
