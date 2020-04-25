@@ -1,3 +1,4 @@
+<body class="bgP">
 <div class="cardP w-50 mr-md-9 responsive-bootstrap-card m-card shadow-lg p-3">
     <div class="card-body">
         <div>
@@ -6,7 +7,7 @@
                     <div class="form-group">
                         <div class="col-lg">
                             <label for="validationTooltip01">Votre question :</label>
-                            <textarea type="text" class="form-control autoExpand w-100" placeholder="" name="question" required></textarea>
+                            <textarea type="text" class="form-control autoExpand w-100 h-50" placeholder="" name="question" required></textarea>
                             <div class="invalid-feedback mb-2">
                                 Veuillez saisir une question.
                             </div>

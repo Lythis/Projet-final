@@ -46,25 +46,7 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
-                <?php
-                    if (!empty($_SESSION)) {
-                ?>
-                <li class="nav-item">
-                    <form action="./profil.php" method="get">
-                        <button name="profil" value="<?php echo $_SESSION['utilisateur']['id']; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $_SESSION['utilisateur']['image']; ?>" alt="<?php echo $_SESSION['utilisateur']['pseudo']; ?>"><?php echo $_SESSION['utilisateur']['pseudo']; ?></button>
-                    </form>
-                </li>
-                <form action="./index.php" method="post">
-                    <button type="submit" class="boutton text-white" name="deconnexion" value="valide">Déconnexion</button>
-                </form>
-                <?php
-                    }
-                    else {
-                ?>
                 <button onclick="window.location.href ='./connexion_inscription.php'" type="button" class="boutton text-white">Se connecter</button>
-                <?php
-                    }
-                ?>
             </ul>
         </span>
     </div>

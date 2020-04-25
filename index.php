@@ -2,7 +2,8 @@
     require_once('fonctions/fonctions.php');
     $title ='LiveQuestion';
     require_once('includes/header.php');
-    navBar($_SESSION);
+    navBar();
 
-    accueil($_SESSION);
+    accueil();
+    footer();
 ?>

@@ -1,3 +1,4 @@
+<body class="bgP">
 <?php
     if(isset($todelete) && $success == true) {
 ?>
@@ -24,4 +25,5 @@
 
 <?php
     }
+    footer()
 ?>

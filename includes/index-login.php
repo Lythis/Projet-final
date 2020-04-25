@@ -1,3 +1,4 @@
+<body class="bgP">
 <h3 class="d-flex justify-content-center">Envie de poser une question? Venez la poser&nbsp;<a href="./Questions.php">ici</a>!</h3>
 
 <?php
@@ -18,21 +19,21 @@
         $nombrereponses = getNombreReponses($reponses);
 ?>
     <div class="carde5 responsive-bootstrap-card m-card shadow-lg p-3 mb-5" id="questionpose<?php echo $idquestion ?>">
-        <form action="profil.php" method="get">
-            <h5 class="card-header" id="reponse<?php echo $idquestion; ?>"><button class="text-dark" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a posé la question :</h5>
-        </form>
+        <h5 class="card-header" id="reponse<?php echo $idquestion; ?>"><a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users[0]["Id_profil"]; ?>"><b><?php echo $users["0"]["Pseudo_profil"]; ?></a></b> a posé la question :</h5>
         <div class="card-body">
             <h5 class="card-title">Catégorie : <?php echo $categorie["0"]["Libelle_categorie"]; ?></h5>
             <p class=""><?php echo $question["Titre_question"]; ?></p>
-            <form action="./QuestionsReponses.php" method="get">
-                <button class="pBtn" name="question" value="<?php echo $idquestion ?>">Accéder à la question</button>
-            </form>
+            
             <blockquote class="blockquote mb-2">
                 <p></p>
                 <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]; ?></footer>
             </blockquote>
 
-            <button class="pBtn toggle-btn" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
+            
+            <form action="./QuestionsReponses.php" method="get">
+                <button class="pBtn" name="question" value="<?php echo $idquestion ?>">Accéder à la question</button>
+            </form>
+            <button class="pBtn toggle-btn mt-3" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
                 <span class="afficher">Afficher les réponses (<?php echo $nombrereponses; ?>)</span>
 
                 <span class="masquer">Masquer les réponses</span>
@@ -79,8 +80,4 @@
 <?php
         }
     }
-?>
-
-<?php
-    require_once('includes/footer.php');
 ?>

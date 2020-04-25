@@ -1,3 +1,4 @@
+<body class="bgP">
 <div class="profil">
     <div class="card responsive-bootstrap-card mx-5">
         <div class="row_ligne card_profil card-headerP">
@@ -63,3 +64,4 @@
     ?>
 
 </div>
+<?php footer()?>

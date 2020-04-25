@@ -1,8 +1,7 @@
+<body class="bgP">
 <div>
     <div class="cardP w-50 mr-md-9 responsive-bootstrap-card m-card shadow-lg p-3 " id="questionpose<?php echo $idquestion ?>" >
-        <form action="profil.php" method="get">
-            <h5 class="card-header " id="reponse<?php echo $idquestion; ?>"><button class="text-dark" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a posé la question :</h5>
-        </form>
+        <h5 class="card-header " id="reponse<?php echo $idquestion; ?>"><a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users[0]["Id_profil"]; ?>"><b><?php echo $users["0"]["Pseudo_profil"]; ?></a></b> a posé la question :</h5>
         <div class="card-body">
             <h5 class="card-title">Catégorie : <?php echo $categorie["0"]["Libelle_categorie"]; ?></h5>
             <p class="card-text"><?php echo $question[0]["Titre_question"]; ?></p>
@@ -32,7 +31,7 @@
             <div >
                 <div class=" mb-3" >
                     <label for="validationCustom01">Répondre à la question :</label>
-                    <textarea  placeholder='' type="text" class="form-control autoExpand w-100" id="validationCustom01" name="reponse" required></textarea>
+                    <textarea  placeholder='' type="text" class="form-control autoExpand w-100 h50" id="validationCustom01" name="reponse" required></textarea>
                     <div class="invalid-feedback">
                         Veuillez saisir une réponse.
                     </div>
@@ -79,5 +78,5 @@
         echo '<div class="ml-4">Wow, such empty.</div>';
     }
 ?>
-
+    
 </div>

@@ -1,8 +1,9 @@
+
 <?php
     require_once('fonctions/fonctions.php');
     $startedsession = startSessionHere();
 
-    if(estConnecte($_SESSION['utilisateur']) == true) {
+    if(estConnecte() == true) {
 
         if(!empty($_GET['question'])) {
             $questionstatus = $_GET['question'];
@@ -49,7 +50,7 @@
         else {
             $title = 'Question Invalide';
             require_once('includes/header.php');
-            require_once('./includes/nav-bar-login.php');
+            navBar();
             echo 'Question introuvable. <a href="./index.php">Revenir aux questions</a>.';
         }
 
@@ -61,5 +62,5 @@
         echo '<p>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir une question!</p>';
     }
     
-    require_once('includes/footer.php');
+    footer()
 ?>
