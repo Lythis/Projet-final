@@ -4,7 +4,7 @@
         <div class="row_ligne card_profil card-headerP">
             <div class="container_profil">
                 <div class="col-3">
-                    <img class="rond_profil float-left img-fluid mr-4 picture-user" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
+                    <img class="rond_profil float-left  mr-4 picture-user" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
                 </div>
                 <div class="col ">
                     <div class="profil_information">
@@ -39,7 +39,7 @@
             ?>
             <div class=" p-card">
                 <div class="card-headerP">
-                    <img class="rond_profil float-left img-fluid image-questions" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
+                    <img class="rond_profil float-left  image-questions" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
                     
                     <h5 class="card-title pseudo-card"> <?php echo $users[0]["Pseudo_profil"]; ?> :</h5>
                     
@@ -64,4 +64,4 @@
     ?>
 
 </div>
-<?php footer()?>
+

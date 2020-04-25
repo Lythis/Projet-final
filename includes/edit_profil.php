@@ -1,11 +1,20 @@
 <body class="bgP">
 <div class="change-image">
-    <img class="image-edit  img-fluid  picture-user" src="./image_profil/<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
+    <img class="image-edit    picture-user" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
+    <div class="form-image-edit">
+    <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
+        <div>
+            <label >URL de l'image : </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="image" value="<?php echo $users[0]["Image_profil"]; ?>">
+            <button class="btn-edit text-white">Envoyer l'image</button>
+        </div>
+    </form>
+    
 
-    <label for="file" class="label-file">Choisir une image</label>
-    <input id="file" class="input-file" type="file">
-
-    <button class=" btn-edit text-dark">Supprimer image</button>
+    <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
+        <button class="btn-edit text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
+    </form>
+    </div>
 </div>
 <div class="edit-profil">
     <div class="card-body">
@@ -16,7 +25,7 @@
             </div>
             <div>
                 <label >E-mail : </label> <?php if($success['mail'] == "true") { ?> <i class="fas fa-check"></i> Modification réussi <?php } elseif($success['mail'] == "failmail") { ?> <i class="fas fa-times"></i> Modification impossible <?php } elseif($success['mail'] == "mailexist") { ?> <i class="fas fa-times"></i> Cet e-mail existe déjà <?php } ?>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mail" value="<?php echo $users[0]["Mail_profil"]; ?>" required>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mail" value="<?php echo $users[0]["Mail_profil"]; ?>" required>
             </div>
             <div class=" mb-3">
                 <label>Mot de passe actuel : </label> <?php if($success['mdp'] == "true") {?> <i class="fas fa-check"></i> Modification réussi <?php } elseif($success['mdp'] == "failmdp") { ?> <i class="fas fa-times"></i> Modification du mot de passe impossible - Mot de passe incorrect <?php } ?>
@@ -40,7 +49,8 @@
         
             <div>
                 <label >Description :</label> <?php if($success['description'] == "true") {?> <i class="fas fa-check"></i> Modification réussi <?php } ?>
-                <textarea type="text" class="form-control autoExpand w-100" name="description"><?php echo $users[0]["Description_profil"]; ?></textarea>
+                <textarea type="text" class="form-control autoExpand w-100 h-25" id="desc" maxlength="250" name="description"><?php echo $users[0]["Description_profil"]; ?></textarea>
+                <p style="text-align:right" id="compteur">0 mots | 0 Caractere / 250</p>
             </div>
             <div >
                 <label >Genre :</label> <?php if($success['genre'] == "true") {?> <i class="fas fa-check"></i> Modification réussi <?php } ?>

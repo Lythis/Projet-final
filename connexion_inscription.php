@@ -16,7 +16,7 @@
         
         while ($ind < count($profil) && $connexionvalide == false) {
             
-            if($profil[$ind]['Mail_profil'] == $email && $profil[$ind]['MotDePasse_profil'] == $mdp) {
+            if($profil[$ind]['Mail_profil'] == $email && password_verify($mdp, $profil[$ind]['MotDePasse_profil'])) {
                 $connexionvalide = true;
 
                 connexionSession($profil[$ind]['Id_profil'], $profil[$ind]['Mail_profil'], $profil[$ind]['Pseudo_profil'], $profil[$ind]['Genre_profil'], $profil[$ind]['Image_profil'], $profil[$ind]["#Id_role"]);
@@ -29,9 +29,15 @@
     }
 
     elseif (!empty($_POST['pseudoinscription']) && !empty($_POST['emailinscription']) && !empty($_POST['mdpinscription']) && !empty($_POST['mdpinscriptionconfirm']) && $_POST['mdpinscriptionconfirm'] == $_POST['mdpinscription'] && isset($_POST['inscription']) && $_POST['inscription'] == 'valide') {
-        $creationreussi = true;
+        
+        if(mailExist($_POST['emailinscription']) == false) {
+            $creationreussi = true;
 
-        creerProfil($_POST['pseudoinscription'], $_POST['emailinscription'], $_POST['mdpinscription'], $_POST['genreInscription']);
+            creerProfil($_POST['pseudoinscription'], $_POST['emailinscription'], password_hash($_POST['mdpinscription'], PASSWORD_DEFAULT), $_POST['genreInscription']);
+        }
+        else {
+            $mailexist = true;
+        }
     }
 
     navBar($_SESSION);
