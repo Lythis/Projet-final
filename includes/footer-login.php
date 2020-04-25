@@ -80,6 +80,13 @@ $(document).ready(function(e) {
   
 });
 </script>
+<script> 
+    $(document).ready(function() {
+        $("#image-edit_onclick").click(function() {
+        $("#image-edit img.top").toggleClass("transparent");
+});
+});
+</script>
 </footer>
 </body>
 </html>

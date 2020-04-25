@@ -3,8 +3,10 @@
     <div class="card responsive-bootstrap-card mx-5">
         <div class="row_ligne card_profil card-headerP">
             <div class="container_profil">
-                <div class="col-3">
-                    <img class="rond_profil float-left  mr-4 picture-user" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
+                <div class="col-2 link-height">
+                    <a  href="<?php echo $users[0]["Image_profil"]; ?>">
+                    <img class="rond_profil float-left  mr-4 picture-user" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">    
+                    </a>       
                 </div>
                 <div class="col ">
                     <div class="profil_information">
