@@ -55,19 +55,17 @@
 
 <div class="cardP w-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="question<?php echo $idquestion; ?>">
     <div class="card-body">
-        <div class="">
-            <div class="card-header">
-                <form action="profil.php" class="text-dark" method="get">
-                    <button class="text-dark" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a répondu :
-                </form>
+        <div>
+            <form action="profil.php" class="text-dark" method="get">
+                <button class="text-dark" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a répondu :
+            </form>
             </div>
             <div class="card-body">
                 <?php echo $reponse["Contenu_reponse"]; ?>
                 <blockquote class="blockquote mb-0">
 
-                    <footer class="blockquote-footer">Le <?php echo $reponse["Date_reponse"]; ?></footer>
-                </blockquote>
-            </div>
+                <footer class="blockquote-footer">Le <?php echo $reponse["Date_reponse"]; ?></footer>
+            </blockquote>
         </div>
     </div>
 </div>

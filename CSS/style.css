@@ -9,14 +9,19 @@ body{
     padding-bottom: 6rem;
     min-height: 100%;
 }
+
+
+* {-moz-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
 footer{
     margin-top: 10%;
 }
-/* couleur du nombre de charactere*/
 .mauvais {
     color:#cc0000;
   }
-  .presque {
+.presque {
     color: orange;
   }
 
@@ -286,13 +291,16 @@ html {
 }
 
 .picture-user-small {
-    max-height: 24px;
-    max-width: 24px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover; 
 }
 
 .picture-user {
-    max-height: 200px;
-    max-width: 200px;
+    height: 200px;
+    width: 200px;
+    object-fit: cover; 
 }
 
 
@@ -404,6 +412,9 @@ html {
 
 /* Footer */
 .footer-log{
+    bottom:0;
+    position: relative;
+    width: 100%;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -413,13 +424,16 @@ html {
     text-align: center;
 }
 .footer{
+    background-color: #1a2d34;
+    margin-top: 2%;
+
     position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color:  #1a2d34;
-  text-align: center;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color:  #1a2d34;
+    text-align: center;
 }
 
 
@@ -432,6 +446,7 @@ html {
 .copyright{
     width: 80%;
 }
+
 #white{
     color: white;
 }
@@ -451,7 +466,13 @@ html {
     padding-bottom: 10px;
     margin-top: -2%;
 }
-
+.icon-log{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 10px;
+}
 #bar{
 
     border-color: grey;
@@ -587,7 +608,7 @@ button[aria-expanded="false"] .fa-caret-right
 /* Profil */
 .profil{
     background-color: #E8E5E4;
-    padding-bottom: 3%;
+    margin-top: 3%;
 }
 .card_profil{
     box-shadow: 3px 3px 3px black;
@@ -606,7 +627,7 @@ button[aria-expanded="false"] .fa-caret-right
     border-radius: 50%;
     border: 3px solid black;
     margin-top: 1%;
-    margin-bottom: 1%;
+
 }
 .titre_post{
     text-align: center;
@@ -616,6 +637,7 @@ button[aria-expanded="false"] .fa-caret-right
     width: 80px;
     height: 80px;
     margin-left: 2%;
+    object-fit: cover; 
 }
 .image-edit{
     margin-left: 25%;
@@ -624,21 +646,41 @@ button[aria-expanded="false"] .fa-caret-right
     margin-right: 5%;
     
 }
-
+.link-height{
+    height: 210px;
+    position: absolute;
+}
 .edit-profil{
     margin-left: 25%;
     margin-right: 25%;
     border: 2px solid black;
     margin-bottom: 9%;
 }
+.container_profil{
+    display: flex;
+}
+#change-image{
+    display: flex;
+}
+.form-image-edit{
+    display: flex;
+    width: 20%;
+    margin-top: 2%;
+}
 .btn-edit{
     background-color: #31BCE7;
     border: none;
     border-radius: 2%;
-    width: 10%;
-    padding-top: 13px;
-    padding-bottom: 13px;
-
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5%;
+}
+.delete-btn{
+    margin-top: 14%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-left: 5%;
+    border-radius: 2%;
 }
 .label-file {
     cursor: pointer;

@@ -1,7 +1,7 @@
 <body class="bgP">
-<div class="change-image">
-    <img class="image-edit  img-fluid  picture-user" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
-
+<div id="change-image">
+    <img class="image-edit  img-top picture-user" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>">
+    <div class="form-image-edit">
     <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
         <div>
             <label >URL de l'image : </label>
@@ -9,11 +9,12 @@
             <button class="btn-edit text-white">Envoyer l'image</button>
         </div>
     </form>
+    
 
     <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
-        <button class="btn-edit text-white" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
+        <button class="btn-edit text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
     </form>
-
+    </div>
 </div>
 <div class="edit-profil">
     <div class="card-body">
