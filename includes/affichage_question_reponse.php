@@ -57,7 +57,7 @@
     <div class="card-body">
         <div>
             <form action="profil.php" class="text-dark" method="get">
-                <button class="text-dark" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a répondu :
+            <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users[0]["Id_profil"]; ?>"><b><?php echo $users["0"]["Pseudo_profil"]; ?></a> a répondu :
             </form>
             </div>
             <div class="card-body">

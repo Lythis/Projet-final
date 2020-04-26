@@ -15,7 +15,7 @@
     else {
 ?>
 
-        <div class="card">
+        <div class="card w-25">
             <div class="card-body" style="display: flex;">
                 <p class="card-text"> <img src="image/tenor.gif" style="  width: 75%;
                 margin-right: 6%;" class="" alt="facher">
