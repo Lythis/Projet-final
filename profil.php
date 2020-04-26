@@ -53,6 +53,7 @@
                     ];
                     if(isset($_POST['image']) && !empty($_POST['image'])) {
                         editImage($profilstatus[0]);
+                        $users = selectFromProfil($profilstatus[0]);
                     }
                     elseif(!empty($_POST)) {
                         $success = editProfil($profilstatus[0], $success);

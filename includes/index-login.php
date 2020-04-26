@@ -22,10 +22,9 @@
         <h5  id="reponse<?php echo $idquestion; ?>"><a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small " src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users[0]["Id_profil"]; ?>"><b><?php echo $users["0"]["Pseudo_profil"]; ?></a></b> a posé la question :</h5>
         <div class="card-body">
             <h5 class="card-title">Catégorie : <?php echo $categorie["0"]["Libelle_categorie"]; ?></h5>
-            <p class=""><?php echo $question["Titre_question"]; ?></p>
+            <span><?php echo $question["Titre_question"]; ?></span>
             
             <blockquote class="blockquote mb-2">
-                <p></p>
                 <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]; ?></footer>
             </blockquote>
 
@@ -51,13 +50,12 @@
             <div class="card responsive-bootstrap-card collapse " id="question<?php echo $idquestion; ?>">
                 <div class="card-body">
                     <div class="text-dark">
-                            <form action="profil.php" method="get">
-                                <button class="text-dark" name="profil" value="<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"> <b><?php echo $users["0"]["Pseudo_profil"]; ?></button></b> a répondu :
-                            </form>
+
+                        <h5 class="card-header "><a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users[0]["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users[0]["Image_profil"]; ?>" alt="<?php echo $users[0]["Pseudo_profil"]; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users[0]["Id_profil"]; ?>"><b><?php echo $users["0"]["Pseudo_profil"]; ?></a></b> a répondu :</h5>
+
                         <div class="card-body">
                             <?php echo $reponse["Contenu_reponse"]; ?>
                             <blockquote class="blockquote mb-0">
-                                <p></p>
                                 <footer class="blockquote-footer">Le <?php echo $reponse["Date_reponse"]; ?></footer>
                             </blockquote>
                         </div>

@@ -1,20 +1,20 @@
 <footer>
-        <div class="footer-log border border-dark">
-            <div class="footer_container">  
-                <hr id="bar">
-                <div>
-                    <p class="copyright"> © 2019 Page protected by reCAPTCHA and subject to Google's <span id="white">Privacy Policy</span> and <span id="white">Terms of service</span></p>
-                </div>
-                <div class="icon">
+        <div class="footer-log">
+                <div class="icon-log">
                     <i class="fab fa-dribbble"></i>
                     <i class="fab fa-twitter"></i>
                     <i class="fab fa-github"></i>
                     <i class="fab fa-facebook-f"></i>
                     <i class="fab fa-google"></i>
                 </div>
-            </div>
-        </div>  
-        </div>  
+        
+
+                <hr id="bar">
+                <div>
+                    <p > © 2019 Page protected by reCAPTCHA and subject to Google's <span id="white">Privacy Policy</span> and <span id="white">Terms of service</span></p>
+                </div>
+        </div>
+
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -78,6 +78,13 @@ $(document).ready(function(e) {
   }})  
   
   
+});
+</script>
+<script> 
+    $(document).ready(function() {
+        $("#image-edit_onclick").click(function() {
+        $("#image-edit img.top").toggleClass("transparent");
+});
 });
 </script>
 </footer>
