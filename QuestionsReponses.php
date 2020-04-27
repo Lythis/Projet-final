@@ -1,4 +1,3 @@
-
 <?php
     require_once('fonctions/fonctions.php');
     $startedsession = startSessionHere();
@@ -20,9 +19,9 @@
 
         if(isset($question) && !empty($question) && !isset($questionstatus[1])) {
 
-            $idquestion = $question[0]["Id_question"];
-            $idprofil = $question[0]["#Id_profil"];
-            $idcategorie = $question[0]["#Id_categorie"];
+            $idquestion = $question["Id_question"];
+            $idprofil = $question["#Id_profil"];
+            $idcategorie = $question["#Id_categorie"];
 
             $reponses = selectFromReponseWithIdQuestion($idquestion, "DESC");
 
@@ -30,7 +29,7 @@
 
             $categorie = selectFromCategorieWithIdQuestion($idquestion, $idcategorie);
 
-            $title ='Question de '.$users[0]["Pseudo_profil"];
+            $title ='Question de '.$users["Pseudo_profil"];
             require_once('includes/header.php');
 
             $nombrereponses = getNombreReponses($reponses);
@@ -52,14 +51,14 @@
             require_once('includes/header.php');
 
             navBar();
-            echo'<div class="card">
-                    <div class="card-body" style="display: flex;">
-                        <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
-                        margin-right: 6%;" class="" alt="facher">
-                        <h6 class="mt-5">Question introuvable. <a href="./index.php">Revenir aux questions</a>.</h6></p>
-                    </div>
-                    </div>';
-
+        ?>
+            <div class="card">
+                <div class="card-body" style="display: flex;">
+                    <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
+                    <h6 class="mt-5">Question introuvable. <a href="./index.php">Revenir aux questions</a>.</h6></p>
+                </div>
+            </div>;
+        <?php
         }
 
     }
@@ -67,13 +66,14 @@
         $title = 'Accès refusé';
         require_once('includes/header.php');
         require_once('includes/nav-bar.php');
-        echo'<div class="card">
-                    <div class="card-body" style="display: flex;">
-                        <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
-                        margin-right: 6%;" class="" alt="facher">
-                        <h6 class="mt-5">Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir une question!</a>.</h6></p>
-                    </div>
-                    </div>';
+    ?>
+        <div class="card">
+            <div class="card-body" style="display: flex;">
+                <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%; margin-right: 6%;" class="" alt="facher">
+                <h6 class="mt-5">Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir une question!</a>.</h6></p>
+            </div>
+        </div>;
+    <?php
     }
     
     footer()

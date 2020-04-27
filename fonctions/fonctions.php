@@ -113,7 +113,7 @@
 
         $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $idquestion ORDER BY `Date_creation_question` $order");
         $query->execute();
-        return $query->fetchAll();
+        return $query->fetch();
     }
 
     #Sélectionner un profil en précisant son ID, retourne le profil en tableau
@@ -122,7 +122,7 @@
 
         $query = $con->prepare("SELECT * FROM profil WHERE `Id_profil` = $idprofil");
         $query->execute();
-        return $query->fetchAll();
+        return $query->fetch();
     }
 
     #Sélectionner une question en précisant l'ID du profil auteur et l'ordre de triage, retourne la question en tableau
@@ -149,7 +149,7 @@
 
         $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_profil` = $idprofil )");
         $query->execute();
-        return $query->fetchAll();
+        return $query->fetch();
     }
 
     #Sélectionner l'auteur d'une réponse en précisant l'ID de la réponse, retourne le profil en tableau
@@ -158,7 +158,7 @@
 
         $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `reponse` WHERE `#Id_question` = $idquestion AND `Id_reponse` = $idreponse)");
         $query->execute();
-        return $query->fetchAll();
+        return $query->fetch();
     }
 
     #Sélectionner une catégorie en précisant l'ID de la question, retourne la catégorie en tableau
@@ -167,7 +167,7 @@
 
         $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = ( SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_categorie` = $idcategorie )");
         $query->execute();
-        return $query->fetchAll();
+        return $query->fetch();
     }
 
     #Fonction pour compter le nombre de réponses à une question, retourne le nombre de réponses obtenues
@@ -246,16 +246,16 @@
         $con = connexionBdd();
         $users = selectFromProfil($idprofil);
 
-        if(isset($_POST['pseudo']) && $_POST['pseudo'] != $users[0]['Pseudo_profil']) {
+        if(isset($_POST['pseudo']) && $_POST['pseudo'] != $users['Pseudo_profil']) {
             if(!empty($_POST['pseudo'])) {
                 $nouveaupseudo = $_POST['pseudo'];
                 $query = $con->prepare("UPDATE `profil` SET `Pseudo_profil` = :pseudo WHERE `Id_profil` = $idprofil");
                 $query->bindParam(':pseudo', $nouveaupseudo);
                 $query->execute();
 
-                if($_SESSION['utilisateur']['id'] == $users[0]['Id_profil']) {
+                if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
                     $users = selectFromProfil($idprofil);
-                    $_SESSION['utilisateur']['pseudo'] = $users[0]['Pseudo_profil'];
+                    $_SESSION['utilisateur']['pseudo'] = $users['Pseudo_profil'];
                 }
 
                 $success['pseudo'] = "true";
@@ -265,7 +265,7 @@
             }
         }
 
-        if(isset($_POST['mail']) && $_POST['mail'] != $users[0]['Mail_profil']) {
+        if(isset($_POST['mail']) && $_POST['mail'] != $users['Mail_profil']) {
 
             if(mailExist($_POST['mail']) == false) {
 
@@ -275,9 +275,9 @@
                     $query->bindParam(':mail', $nouveaumail);
                     $query->execute();
 
-                    if($_SESSION['utilisateur']['id'] == $users[0]['Id_profil']) {
+                    if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
                         $users = selectFromProfil($idprofil);
-                        $_SESSION['utilisateur']['mail'] = $users[0]['Mail_profil'];
+                        $_SESSION['utilisateur']['mail'] = $users['Mail_profil'];
                     }
 
                     $success['mail'] = "true";
@@ -291,12 +291,12 @@
             }
         }
 
-        if(!empty($_POST['nvmdp']) && !password_verify($_POST['nvmdp'], $users[0]['MotDePasse_profil'])) {
+        if(!empty($_POST['nvmdp']) && !password_verify($_POST['nvmdp'], $users['MotDePasse_profil'])) {
             $_POST['nvmdp'] = password_hash($_POST['nvmdp'], PASSWORD_DEFAULT);
 
             if(!empty($_POST['nvmdpconfirm']) && password_verify($_POST['nvmdpconfirm'], $_POST['nvmdp'])) {
 
-                if(password_verify($_POST['mdp'], $users[0]['MotDePasse_profil'])) {
+                if(password_verify($_POST['mdp'], $users['MotDePasse_profil'])) {
                     $nouveaumdp = $_POST['nvmdp'];
                     $query = $con->prepare("UPDATE `profil` SET `MotDePasse_profil` = :mdp WHERE `Id_profil` = $idprofil");
                     $query->bindParam(':mdp', $nouveaumdp);
@@ -313,7 +313,7 @@
             }
         }
 
-        if(isset($_POST['description']) && $_POST['description'] != $users[0]['Description_profil']) {
+        if(isset($_POST['description']) && $_POST['description'] != $users['Description_profil']) {
 
             if(empty($_POST['description'])) {
                 $nouvelledescription = "Aucune information disponible.";
@@ -331,7 +331,7 @@
             }
         }
 
-        if(isset($_POST['genre']) && $_POST['genre'] != $users[0]['Genre_profil']) {
+        if(isset($_POST['genre']) && $_POST['genre'] != $users['Genre_profil']) {
             $nouveaugenre = $_POST['genre'];
             $query = $con->prepare("UPDATE `profil` SET `Genre_profil` = :genre WHERE `Id_profil` = $idprofil");
             $query->bindParam(':genre', $nouveaugenre);
@@ -340,7 +340,7 @@
             $success['genre'] = "true";
         }
 
-        connexionSession($users[0]['Id_profil'],$users[0]['Mail_profil'], $users[0]['Pseudo_profil'], $users[0]['Genre_profil'], $users[0]['Image_profil'], $users[0]['#Id_role']);
+        connexionSession($users['Id_profil'],$users['Mail_profil'], $users['Pseudo_profil'], $users['Genre_profil'], $users['Image_profil'], $users['#Id_role']);
 
         return $success;
     }
@@ -372,9 +372,9 @@
         $query->bindParam(':newimage', $nouvelleimage);
         $query->execute();
 
-        if($_SESSION['utilisateur']['id'] == $users[0]['Id_profil']) {
+        if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
             $users = selectFromProfil($idprofil);
-            $_SESSION['utilisateur']['image'] = $users[0]['Image_profil'];
+            $_SESSION['utilisateur']['image'] = $users['Image_profil'];
         }
     }
 ?>

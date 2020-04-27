@@ -18,12 +18,12 @@
 
         //Notre GET n'est pas vide et on a récupéré les informations de l'utilisateur présent dans notre GET (ici présent dans $users, donc si $users n'est pas vide)
         if(!empty($_GET['profil']) && !empty($users)) {
-            $idprofil = $users[0]["Id_profil"];
-            $role = $users[0]["#Id_role"];
+            $idprofil = $users["Id_profil"];
+            $role = $users["#Id_role"];
 
             $questions = selectFromQuestionWithIdProfil($idprofil, "DESC");
 
-            $title ='Profil de '.$users[0]["Pseudo_profil"];
+            $title ='Profil de '.$users["Pseudo_profil"];
             require_once('includes/header.php');
         }
 
@@ -43,7 +43,7 @@
 
                 //Le profil demandé est le profil actuel de la session ou la session est administrateur
                 if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) {
-                    $title = 'Modification du profil de '.$users[0]["Pseudo_profil"];
+                    $title = 'Modification du profil de '.$users["Pseudo_profil"];
                     $success = [
                         'pseudo' => "false",
                         'mail' => "false",
@@ -87,13 +87,14 @@
                     $title = 'Accès refusé';
                     require_once('includes/header.php');
                     navBar();
-                    echo'<div class="card">
-                    <div class="card-body" style="display: flex;">
-                        <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
-                        margin-right: 6%;" class="" alt="facher">
-                        <h6>Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                ?>
+                    <div class="card">
+                        <div class="card-body" style="display: flex;">
+                            <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
+                            <h6>Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                        </div>
                     </div>
-                    </div>';
+                <?php
                 }
             }
         
@@ -101,7 +102,7 @@
             elseif($profilstatus[1] == "supp") {
                 //Le profil demandé est le profil actuel de la session ou la session est administrateur
                 if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) {
-                    $title = 'Suppression du profil de '.$users[0]["Pseudo_profil"];
+                    $title = 'Suppression du profil de '.$users["Pseudo_profil"];
                     require_once('includes/header.php');
                     navBar();
                     require_once('./includes/suppression_profil.php');
@@ -111,13 +112,14 @@
                     $title = 'Accès refusé';
                     require_once('includes/header.php');
                     navBar();
-                    echo'<div class="card">
-                    <div class="card-body" style="display: flex;">
-                        <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%;
-                        margin-right: 6%;" class="" alt="facher">
-                        <h6>Vous n\'avez pas le droit de supprimer ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                ?>
+                    <div class="card">
+                        <div class="card-body" style="display: flex;">
+                            <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
+                            <h6>Vous n\'avez pas le droit de supprimer ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                        </div>
                     </div>
-                    </div>';
+                <?php
                     }
                 }
             //La requête n'est pas égale à "edit ou a supp"
@@ -125,13 +127,14 @@
                 $title = 'Erreur';
                 require_once('includes/header.php');
                 navBar();
-                echo'<div class="card">
-                <div class="card-body" style="display: flex;">
-                    <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
-                    margin-right: 6%;" class="" alt="facher">
-                    <h6>Problème lors de votre requête. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+            ?>
+                <div class="card">
+                    <div class="card-body" style="display: flex;">
+                        <p class="card-text w-25"> <img src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
+                        <h6>Problème lors de votre requête. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                    </div>
                 </div>
-                </div>';
+            <?php
             }
         }
 
@@ -140,26 +143,28 @@
             $title = 'Profil introuvable';
             require_once('includes/header.php');
             navBar();
-            echo'<div class="card">
-        <div class="card-body" style="display: flex;">
-            <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
-            margin-right: 6%;" class="" alt="facher">
-            <h6>Profil introuvable. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
-        </div>
-    </div>';
+        ?>
+            <div class="card">
+                <div class="card-body" style="display: flex;">
+                    <p class="card-text w-25"> <img src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
+                    <h6>Profil introuvable. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                </div>
+            </div>
+        <?php
         }
     }
     else {
         $title = 'Accès refusé';
         require_once('includes/header.php');
         navBar();
-        echo'<div class="card">
-        <div class="card-body" style="display: flex;">
-            <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%;
-            margin-right: 6%;" class="" alt="facher">
-            <h6>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir un profil!</h6></p>
+    ?>
+        <div class="card">
+            <div class="card-body" style="display: flex;">
+                <p class="card-text w-25"> <img src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
+                <h6>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour voir un profil!</h6></p>
+            </div>
         </div>
-    </div>';
+    <?php
     }
     footer()
 ?>

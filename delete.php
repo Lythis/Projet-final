@@ -1,4 +1,3 @@
-
 <?php
     require_once('./fonctions/fonctions.php');
     $startedsession = startSessionHere();
@@ -26,7 +25,7 @@
 
             $userquestion = selectFromQuestion($todelete, "DESC");
 
-            if($_SESSION['utilisateur']['id'] == $userquestion[0]['#Id_profil'] || $_SESSION['utilisateur']['role'] == 1) {
+            if($_SESSION['utilisateur']['id'] == $userquestion['#Id_profil'] || $_SESSION['utilisateur']['role'] == 1) {
                 deleteQuestion($todelete);
 
                 $success = true;

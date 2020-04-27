@@ -13,7 +13,7 @@
     </div>
 </div>
 <div class="bloc2">
-
+    
     <div class="rowe">
         <div class="col-sm">
             <img src="image/i1.png">
@@ -39,7 +39,7 @@
         <h3>Aenean magna odio</h3>
         <p>eget sit amet tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros in cursus turpis massa</p>
     </div>
-
+    
     <div>
         <div class="truc">
             <button type="button" class="btn1" data-toggle="collapse" data-target="#Lien1">Lien1</button>
@@ -122,7 +122,7 @@
         </div>
     </div>
     <img src="image/step-2.jpg">
-
+    
 </div>
 <div id="Lien3" class="collapse">
     <div class="bloc6 .container-fluid">
@@ -186,32 +186,32 @@
     <div class="faq">
         <span class="titre_faq">FAQ</span>
         <p class="faq-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem  
-        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.</p>
-    </div>
-    <div class="accordion" id="accordionExample">
-        <?php
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.</p>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <?php
             require_once('includes/tableaux.php');
             foreach ($questions as $ask) {
-        ?>
-        <div class="card">
-            <div class="card-head" id="<?php echo $ask ['idcard']?>">
-                <h2 class="mb-0">
-                    <div class="card-align">
-                        <p class="card-text"><?php echo $ask['question'];?></p>
-                        <button class="btn btn-faq btn-lien" type="button" data-toggle="collapse" data-target="#<?php echo $ask ['idcollapse']?>" aria-expanded="false" aria-controls="<?php echo $ask['idcollapse'] ?>">
-                            <i class="fa fa-caret-right"></i>
-                            <i class="fa fa-sort-down"></i>
-                        </button>
+                ?>
+                <div class="card">
+                    <div class="card-head" id="<?php echo $ask ['idcard']?>">
+                        <h2 class="mb-0">
+                            <div class="card-align">
+                                <p class="card-text"><?php echo $ask['question'];?></p>
+                                <button class="btn btn-faq btn-lien" type="button" data-toggle="collapse" data-target="#<?php echo $ask ['idcollapse']?>" aria-expanded="false" aria-controls="<?php echo $ask['idcollapse'] ?>">
+                                    <i class="fa fa-caret-right"></i>
+                                    <i class="fa fa-sort-down"></i>
+                                </button>
+                            </div>
+                        </h2>
                     </div>
-                </h2>
-            </div>
-            <div id="<?php echo $ask['idcollapse']?>" class="collapse " aria-labelledby="<?php echo $ask['idcard']?>" data-parent="#accordionExample">
-                <div class="card-body">
-                    <?php echo $ask ["texte"];?>
+                    <div id="<?php echo $ask['idcollapse']?>" class="collapse " aria-labelledby="<?php echo $ask['idcard']?>" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <?php echo $ask ["texte"];?>
+                        </div>
+                    </div>
                 </div>
+                <?php } ?>
             </div>
+            <p class="get-in">Still have unanswered questions?<a href="QuestionsReponses.php">Get in touch</a></p>
         </div>
-            <?php } ?>
-        </div>
-        <p class="get-in">Still have unanswered questions?<a href="QuestionsReponses.php">Get in touch</a></p>
-    </div>
