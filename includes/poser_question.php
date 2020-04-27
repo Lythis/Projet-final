@@ -1,5 +1,5 @@
 <body class="bgP">
-    <div class="cardP w-50 mr-md-9 responsive-bootstrap-card m-card shadow-lg p-3">
+    <div class="cardP mr-md-9 m-card shadow-lg p-3">
         <div class="card-body">
             <div>
                 <div class="form-group">

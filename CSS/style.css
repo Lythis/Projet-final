@@ -32,11 +32,22 @@ body{
     left: 0; 
     right: 0
 }
-.cardP{
-    background-color: white;
-    margin-left: 25%;
-    border: 2px solid black;
+
+@media screen and (min-width: 990px){
+    .cardP{
+        margin-left: 25%;
+        width: 50%;
+        background-color: white;
+        border: 2px solid black;
+    }
 }
+@media screen and (max-width: 990px){
+    .cardP{
+        background-color: white;
+        border: 2px solid black;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
