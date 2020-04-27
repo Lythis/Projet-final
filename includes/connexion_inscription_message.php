@@ -1,5 +1,4 @@
 <body class="font-page">
-    <body class="inscription">
         <?php
             if(estConnecte($_SESSION) && empty($_POST)) {
         ?>
