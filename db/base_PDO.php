@@ -1,4 +1,5 @@
 <?php
+	#Fonction pour accéder à la base de données
 	function connexionBdd() {
 		$user = "root";
 		$pass = "root";
