@@ -2,8 +2,8 @@
     require_once('db/base_PDO.php');
 
     #Fonction pour se connecter/déconnecter, si la fonction startSessionHere() a été utilisé avant et a retourné true alors la session ne démarre pas ici, ne retourne rien
-    function connexionDeconnexion($dontstartsession) {
-        if($dontstartsession == false) {
+    function connexionDeconnexion($dontStartSession) {
+        if($dontStartSession == false) {
             session_start();
         }
         if(isset($_POST['deconnexion']) && $_POST['deconnexion'] == 'valide') {
@@ -32,17 +32,17 @@
     #Fonction pour savoir quelle navbar utiliser en fonction de l'état de la session, ne retourne rien
     function navBar() {
         if(!empty($_SESSION)) {
-            require_once('./includes/nav-bar-login.php');
+            require_once('./includes/nav_bar_login.php');
         }
         else {
-            require_once('./includes/nav-bar.php');
+            require_once('./includes/nav_bar.php');
         }
     }
 
     #Fonction pour savoir quel footer utiliser en fonction de l'état de la session, ne retourne rien
     function footer() {
         if(!empty($_SESSION)) {
-            require_once('./includes/footer-login.php');
+            require_once('./includes/footer_login.php');
         }
         else {
             require_once('./includes/footer.php');
@@ -52,22 +52,22 @@
     #Fonction pour savoir quel accueil afficher en fonction de l'état de la session, ne retourne rien
     function accueil() {
         if (!empty($_SESSION)) {
-            require_once('./includes/index-login.php');
+            require_once('./includes/index_login.php');
         }
         else {
-            require_once('./includes/index-no-login.php');
+            require_once('./includes/index_no_login.php');
         }
     }
 
     #Connecter une session, retourne le tableau session
-    function connexionSession($idprofil, $mailprofil, $pseudoprofil, $genreprofil, $imageprofil, $roleprofil) {
+    function connexionSession($idProfil, $mailProfil, $pseudoProfil, $genreProfil, $imageProfil, $roleProfil) {
         return $_SESSION['utilisateur'] = [
-            'id' => $idprofil,
-            'email' => $mailprofil,
-            'pseudo' => $pseudoprofil,
-            'genre' => $genreprofil,
-            'image' => $imageprofil,
-            'role' => $roleprofil,
+            'id' => $idProfil,
+            'email' => $mailProfil,
+            'pseudo' => $pseudoProfil,
+            'genre' => $genreProfil,
+            'image' => $imageProfil,
+            'role' => $roleProfil,
         ];
     }
 
@@ -80,11 +80,11 @@
         $query->bindParam(':email', $email);
         $query->bindParam(':password', $mdp); #Le mot de passe a déjà été crypté avant
         $query->bindParam(':genre', $genre);
-        $query->bindParam(':image', $image_default_profil);
-        $query->bindParam(':description', $description_default_profil);
+        $query->bindParam(':image', $imageDefaultProfil);
+        $query->bindParam(':description', $descriptionDefaultProfil);
         $query->bindParam(':role', $role);
-        $image_default_profil = "./image_profil/Default.png";
-        $description_default_profil = "Aucune information disponible.";
+        $imageDefaultProfil = "./image_profil/Default.png";
+        $descriptionDefaultProfil = "Aucune information disponible.";
         $role = 2;
         $query->execute();
     }
@@ -108,77 +108,77 @@
     }
 
     #Sélectionner une question en précisant son ID et l'ordre de triage, retourne la question en tableau
-    function selectFromQuestion($idquestion, $order) {
+    function selectFromQuestion($idQuestion, $order) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $idquestion ORDER BY `Date_creation_question` $order");
+        $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $idQuestion ORDER BY `Date_creation_question` $order");
         $query->execute();
         return $query->fetch();
     }
 
     #Sélectionner un profil en précisant son ID, retourne le profil en tableau
-    function selectFromProfil($idprofil) {
+    function selectFromProfil($idProfil) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM profil WHERE `Id_profil` = $idprofil");
+        $query = $con->prepare("SELECT * FROM profil WHERE `Id_profil` = $idProfil");
         $query->execute();
         return $query->fetch();
     }
 
     #Sélectionner une question en précisant l'ID du profil auteur et l'ordre de triage, retourne la question en tableau
-    function selectFromQuestionWithIdProfil($idprofil, $order) {
+    function selectFromQuestionWithidProfil($idProfil, $order) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `question` WHERE `#Id_profil` = $idprofil ORDER BY `Date_creation_question` $order");
+        $query = $con->prepare("SELECT * FROM `question` WHERE `#Id_profil` = $idProfil ORDER BY `Date_creation_question` $order");
         $query->execute();
         return $query->fetchAll();
     }
 
     #Sélectionner une réponse en précisant l'ID de la question et l'ordre de triage, retourne la/les réponse(s) en tableau
-    function selectFromReponseWithIdQuestion($idquestion, $order) {
+    function selectFromReponseWithidQuestion($idQuestion, $order) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `reponse` WHERE `#Id_question` = ( SELECT `Id_question` FROM `question` WHERE `Id_question` = $idquestion) ORDER BY `Date_reponse` $order");
+        $query = $con->prepare("SELECT * FROM `reponse` WHERE `#Id_question` = ( SELECT `Id_question` FROM `question` WHERE `Id_question` = $idQuestion) ORDER BY `Date_reponse` $order");
         $query->execute();
         return $query->fetchAll();
     }
 
     #Sélectionner l'auteur d'une question en précisant l'ID de la question, retourne le profil en tableau
-    function selectFromProfilWithIdQuestion($idquestion, $idprofil) {
+    function selectFromProfilWithidQuestion($idQuestion, $idProfil) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_profil` = $idprofil )");
+        $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `question` WHERE `Id_question` = $idQuestion AND `#Id_profil` = $idProfil )");
         $query->execute();
         return $query->fetch();
     }
 
     #Sélectionner l'auteur d'une réponse en précisant l'ID de la réponse, retourne le profil en tableau
-    function selectFromProfilWithIdReponse($idquestion, $idreponse) {
+    function selectFromProfilWithidReponse($idQuestion, $idReponse) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `reponse` WHERE `#Id_question` = $idquestion AND `Id_reponse` = $idreponse)");
+        $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `reponse` WHERE `#Id_question` = $idQuestion AND `Id_reponse` = $idReponse)");
         $query->execute();
         return $query->fetch();
     }
 
     #Sélectionner une catégorie en précisant l'ID de la question, retourne la catégorie en tableau
-    function selectFromCategorieWithIdQuestion($idquestion, $idcategorie) {
+    function selectFromCategorieWithidQuestion($idQuestion, $idCategorie) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = ( SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idquestion AND `#Id_categorie` = $idcategorie )");
+        $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = ( SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idQuestion AND `#Id_categorie` = $idCategorie )");
         $query->execute();
         return $query->fetch();
     }
 
     #Fonction pour compter le nombre de réponses à une question, retourne le nombre de réponses obtenues
-    function getNombreReponses($reponses) {
-        $nombrereponses = 0;
+    function getnombreReponses($reponses) {
+        $nombreReponses = 0;
         if(!empty($reponses)) {
             for ($ind=0; $ind < count($reponses); $ind++) { 
-                $nombrereponses = $nombrereponses + 1;
+                $nombreReponses = $nombreReponses + 1;
             }
         }
-        return $nombrereponses;
+        return $nombreReponses;
     }
 
     #Fonction pour insérer une question dans la base de données, ne retourne rien
@@ -207,54 +207,54 @@
 
     #Fonction qui obtient un tableau date, retourne une date conforme pour la base de données
     function obtenirDate() {
-        $obtenirdate = getdate();
-        return $obtenirdate['year']."-".$obtenirdate['mon']."-".$obtenirdate['mday'];
+        $obtenirDate = getdate();
+        return $obtenirDate['year']."-".$obtenirDate['mon']."-".$obtenirDate['mday'];
     }
 
     #Fonction pour supprimer un profil de la base de données ainsi que les questions/réponses de ce profil, ne retourne rien
-    function deleteProfil($idprofil) {
+    function deleteProfil($idProfil) {
         $con = connexionBdd();
 
         $query = $con->prepare('DELETE FROM `reponse` WHERE `reponse`.`#Id_profil` = :id');
-        $query->bindParam(':id', $idprofil);
+        $query->bindParam(':id', $idProfil);
         $query->execute();
 
         $query = $con->prepare('DELETE FROM `question` WHERE `question`.`#Id_profil` = :id');
-        $query->bindParam(':id', $idprofil);
+        $query->bindParam(':id', $idProfil);
         $query->execute();
 
         $query = $con->prepare('DELETE FROM `profil` WHERE `profil`.`Id_profil` = :id');
-        $query->bindParam(':id', $idprofil);
+        $query->bindParam(':id', $idProfil);
         $query->execute();
     }
 
     #Fonction pour supprimer une question de la base de données ainsi que les réponses de cette question, ne retourne rien
-    function deleteQuestion($idquestion) {
+    function deleteQuestion($idQuestion) {
         $con = connexionBdd();
 
         $query = $con->prepare('DELETE FROM `reponse` WHERE `#Id_question` = :id');
-        $query->bindParam(':id', $idquestion);
+        $query->bindParam(':id', $idQuestion);
         $query->execute();
 
         $query = $con->prepare('DELETE FROM `question` WHERE `Id_question` = :id');
-        $query->bindParam(':id', $idquestion);
+        $query->bindParam(':id', $idQuestion);
         $query->execute();
     }
 
     #Fonction pour modifier un profil de la base de données, retourne un tableau "success" définit auparavent
-    function editProfil($idprofil, $success) {
+    function editProfil($idProfil, $success) {
         $con = connexionBdd();
-        $users = selectFromProfil($idprofil);
+        $users = selectFromProfil($idProfil);
 
         if(isset($_POST['pseudo']) && $_POST['pseudo'] != $users['Pseudo_profil']) {
             if(!empty($_POST['pseudo'])) {
-                $nouveaupseudo = $_POST['pseudo'];
-                $query = $con->prepare("UPDATE `profil` SET `Pseudo_profil` = :pseudo WHERE `Id_profil` = $idprofil");
-                $query->bindParam(':pseudo', $nouveaupseudo);
+                $nouveauPseudo = $_POST['pseudo'];
+                $query = $con->prepare("UPDATE `profil` SET `Pseudo_profil` = :pseudo WHERE `Id_profil` = $idProfil");
+                $query->bindParam(':pseudo', $nouveauPseudo);
                 $query->execute();
 
                 if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
-                    $users = selectFromProfil($idprofil);
+                    $users = selectFromProfil($idProfil);
                     $_SESSION['utilisateur']['pseudo'] = $users['Pseudo_profil'];
                 }
 
@@ -270,13 +270,13 @@
             if(mailExist($_POST['mail']) == false) {
 
                 if(!empty($_POST['mail'])) {
-                    $nouveaumail = $_POST['mail'];
-                    $query = $con->prepare("UPDATE `profil` SET `Mail_profil` = :mail WHERE `Id_profil` = $idprofil");
-                    $query->bindParam(':mail', $nouveaumail);
+                    $nouveauMail = $_POST['mail'];
+                    $query = $con->prepare("UPDATE `profil` SET `Mail_profil` = :mail WHERE `Id_profil` = $idProfil");
+                    $query->bindParam(':mail', $nouveauMail);
                     $query->execute();
 
                     if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
-                        $users = selectFromProfil($idprofil);
+                        $users = selectFromProfil($idProfil);
                         $_SESSION['utilisateur']['mail'] = $users['Mail_profil'];
                     }
 
@@ -297,9 +297,9 @@
             if(!empty($_POST['nvmdpconfirm']) && password_verify($_POST['nvmdpconfirm'], $_POST['nvmdp'])) {
 
                 if(password_verify($_POST['mdp'], $users['MotDePasse_profil'])) {
-                    $nouveaumdp = $_POST['nvmdp'];
-                    $query = $con->prepare("UPDATE `profil` SET `MotDePasse_profil` = :mdp WHERE `Id_profil` = $idprofil");
-                    $query->bindParam(':mdp', $nouveaumdp);
+                    $nouveauMdp = $_POST['nvmdp'];
+                    $query = $con->prepare("UPDATE `profil` SET `MotDePasse_profil` = :mdp WHERE `Id_profil` = $idProfil");
+                    $query->bindParam(':mdp', $nouveauMdp);
                     $query->execute();
 
                     $success['mdp'] = "true";
@@ -316,15 +316,15 @@
         if(isset($_POST['description']) && $_POST['description'] != $users['Description_profil']) {
 
             if(empty($_POST['description'])) {
-                $nouvelledescription = "Aucune information disponible.";
-                $query = $con->prepare("UPDATE `profil` SET `Description_profil` = :descri WHERE `Id_profil` = $idprofil");
-                $query->bindParam(':descri', $nouvelledescription);
+                $nouvelleDescription = "Aucune information disponible.";
+                $query = $con->prepare("UPDATE `profil` SET `Description_profil` = :descri WHERE `Id_profil` = $idProfil");
+                $query->bindParam(':descri', $nouvelleDescription);
                 $query->execute();
             }
             else {
-                $nouvelledescription = $_POST['description'];
-                $query = $con->prepare("UPDATE `profil` SET `Description_profil` = :descri WHERE `Id_profil` = $idprofil");
-                $query->bindParam(':descri', $nouvelledescription);
+                $nouvelleDescription = $_POST['description'];
+                $query = $con->prepare("UPDATE `profil` SET `Description_profil` = :descri WHERE `Id_profil` = $idProfil");
+                $query->bindParam(':descri', $nouvelleDescription);
                 $query->execute();
 
                 $success['description'] = "true";
@@ -332,9 +332,9 @@
         }
 
         if(isset($_POST['genre']) && $_POST['genre'] != $users['Genre_profil']) {
-            $nouveaugenre = $_POST['genre'];
-            $query = $con->prepare("UPDATE `profil` SET `Genre_profil` = :genre WHERE `Id_profil` = $idprofil");
-            $query->bindParam(':genre', $nouveaugenre);
+            $nouveauGenre = $_POST['genre'];
+            $query = $con->prepare("UPDATE `profil` SET `Genre_profil` = :genre WHERE `Id_profil` = $idProfil");
+            $query->bindParam(':genre', $nouveauGenre);
             $query->execute();
 
             $success['genre'] = "true";
@@ -363,17 +363,17 @@
         return false;
     }
 
-    function editImage($idprofil) {
+    function editImage($idProfil) {
         $con = connexionBdd();
-        $users = selectFromProfil($idprofil);
+        $users = selectFromProfil($idProfil);
 
-        $nouvelleimage = $_POST['image'];
-        $query = $con->prepare("UPDATE `profil` SET `Image_profil` = :newimage WHERE `Id_profil` = $idprofil");
-        $query->bindParam(':newimage', $nouvelleimage);
+        $nouvelleImage = $_POST['image'];
+        $query = $con->prepare("UPDATE `profil` SET `Image_profil` = :newimage WHERE `Id_profil` = $idProfil");
+        $query->bindParam(':newimage', $nouvelleImage);
         $query->execute();
 
         if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
-            $users = selectFromProfil($idprofil);
+            $users = selectFromProfil($idProfil);
             $_SESSION['utilisateur']['image'] = $users['Image_profil'];
         }
     }

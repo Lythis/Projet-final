@@ -20,7 +20,7 @@
                             <p><?php echo $users["Description_profil"]; ?></p>
                         </div>
                         <div>
-                            <?php if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) { ?>
+                            <?php if($_SESSION['utilisateur']['id'] == $profilStatus[0] || $_SESSION['utilisateur']['role'] == 1) { ?>
                                 <form action="./profil.php" method="get">
                                     <button class="btn bg-primary text-white " name="profil" value="<?php echo $users["Id_profil"]; ?>,edit">Editer le profil</button>
                                     <button class="btn bg-danger text-white" name="profil" value="<?php echo $users["Id_profil"]; ?>,supp">Supprimer le profil</button>
