@@ -75,7 +75,7 @@
         else {
             ?>
             
-            <div class="card responsive-bootstrap-card collapse shadow-lg p-3 mb-5" id="question<?php echo $idQuestion; ?>">
+            <div class="cardR responsive-bootstrap-card collapse shadow-lg p-3 mb-5" id="question<?php echo $idQuestion; ?>">
                 <p>Wow, such empty.</p>
             </div>
             
