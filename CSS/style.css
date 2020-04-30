@@ -1250,3 +1250,10 @@ button[aria-expanded="false"] .afficher
         border: 2px solid black;
     }
 }
+@media screen and (min-width: 1200px){
+    .card{
+        margin-left: 25% ;
+        margin-right: 25% ;
+
+    }
+}
