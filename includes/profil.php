@@ -40,7 +40,7 @@
                 foreach ($questions as $question) {
                     ?>
                     <div class=" p-card">
-                        <div class="card-headerP">
+                        <div >
                             <img class="rond_profil float-left  image-questions" src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>">
                             
                             <h5 class="card-title pseudo-card"> <?php echo $users["Pseudo_profil"]; ?> :</h5>
