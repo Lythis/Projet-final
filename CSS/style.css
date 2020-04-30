@@ -838,6 +838,7 @@ button[aria-expanded="false"] .afficher
         padding-top: 40%;
         padding-bottom: 40%;
         font-size: 2em;
+
     }
 
     .faq-text{
@@ -1018,13 +1019,19 @@ button[aria-expanded="false"] .afficher
         margin-left: 0%;
         margin-right: 0%;
     }
+    
     .container_bas{
-        margin-right: 0%;
+        margin-left: -15%;
+    }
+}
 
+@media screen and (max-width: 430px){
+    .marque_image{
+        width: 30px;
+        height: 20px;
     }
 
 }
-
 @media screen and (max-width: 990px) {
     .hAcceuil{
         border-bottom-left-radius: 17% ;
@@ -1100,7 +1107,7 @@ button[aria-expanded="false"] .afficher
 
     .container_bas{
         display: flex;
-        margin-right: 50%;
+        margin-right: 15%;
     }
 
     .logo{
@@ -1204,7 +1211,7 @@ button[aria-expanded="false"] .afficher
         background-color: white;
 
     }
-
+}
 @media screen and (max-width: 990px){
     .cardP{
         background-color: white;
@@ -1228,6 +1235,9 @@ button[aria-expanded="false"] .afficher
 
     }
 }
+
+
+
 @media screen and (min-width: 700px) and (max-width : 1300px){
     .picture-user{
         height: 125px;
