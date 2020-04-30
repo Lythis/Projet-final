@@ -38,7 +38,7 @@
                 </form>
                 <button class="pBtn toggle-btn mt-3" type="button" data-toggle="collapse" data-target="#question<?php echo $idQuestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idQuestion; ?>">
                     <span class="afficher">Afficher les réponses (<?php echo $nombreReponses; ?>)</span>
-                    
+                
                     <span class="masquer">Masquer les réponses</span>
                 </button>
             </div>
