@@ -1,6 +1,8 @@
-<body class="font-page">
+<body class="bgP">
+
     <?php
     if(estConnecte($_SESSION) && empty($_POST)) {
+
         ?>
         <div class="pCard">
             <div class="card-body">

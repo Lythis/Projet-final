@@ -1,4 +1,4 @@
-<footer>
+<footer class="pF">
     <div class="footer-log">
         <div class="icon-log">
             <i class="fab fa-dribbble"></i>

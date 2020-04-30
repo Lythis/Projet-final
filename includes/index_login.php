@@ -1,5 +1,8 @@
 <body class="bgP">
-    <h3 class="d-flex justify-content-center">Envie de poser une question? Venez la poser&nbsp;<a href="./Questions.php">ici</a>!</h3>
+    <div class=" justify-content-center">
+    <h3 class="d-md-flex justify-content-center">Envie de poser une question? Venez la poser&nbsp;<a href="./Questions.php">ici</a>!</h3>
+    </div>
+    
     
     <?php
     $questions = selectAllQuestions("DESC");
