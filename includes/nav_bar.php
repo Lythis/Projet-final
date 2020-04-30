@@ -46,7 +46,7 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
-                <button onclick="window.location.href ='./connexion_inscription.php'" type="button" class="boutton text-white">Se connecter</button>
+                <button onclick="window.location.href ='./connexion_inscription.php'" type="button" class="boutton text-white" style="font-size: 91%;">Se connecter</button>
             </ul>
         </span>
     </div>
