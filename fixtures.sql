@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 23 avr. 2020 à 14:54
+-- Généré le :  jeu. 30 avr. 2020 à 15:19
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -31,9 +31,9 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `categorie`;
 CREATE TABLE IF NOT EXISTS `categorie` (
   `Id_categorie` int(11) NOT NULL AUTO_INCREMENT,
-  `Libelle_categorie` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `Libelle_categorie` varchar(255) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `categorie`
@@ -60,31 +60,31 @@ INSERT INTO `categorie` (`Id_categorie`, `Libelle_categorie`) VALUES
 DROP TABLE IF EXISTS `profil`;
 CREATE TABLE IF NOT EXISTS `profil` (
   `Id_profil` int(11) NOT NULL AUTO_INCREMENT,
-  `Pseudo_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `Mail_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `MotDePasse_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `Genre_profil` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `Image_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `Description_profil` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `Pseudo_profil` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `Mail_profil` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `MotDePasse_profil` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `Genre_profil` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `Image_profil` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `Description_profil` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `#Id_role` int(11) NOT NULL,
   PRIMARY KEY (`Id_profil`),
   KEY `#Id_role` (`#Id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `profil`
 --
 
 INSERT INTO `profil` (`Id_profil`, `Pseudo_profil`, `Mail_profil`, `MotDePasse_profil`, `Genre_profil`, `Image_profil`, `Description_profil`, `#Id_role`) VALUES
-(1, 'YumYum', 'root@livequestion.com', '$2y$10$tZjW1sjH3sllXUf98JLqdueBoEvSprB6H9/x5I5PDoQuWaNRxJAte', 'Non-binaire', 'Default.png', 'uwu', 1),
-(2, 'Lythis', 'lythis@morgan.fr', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', 'lythis.jpg', 'Aucune information disponible.', 1),
-(55, 'Kyllian', 'kyllian@joseph.fr', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', 'kyllian.jpg', 'Aucune information disponible.', 1),
-(56, 'Leo', 'leo@stvincent.net', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Hélicoptère d\'attaque', 'Default.png', 'Aucune information disponible.', 2),
-(57, 'Nico Nico Nii', 'nico@stvincent.net', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Non-binaire', 'Default.png', 'Aucune information disponible.', 2),
-(63, 'test', 'me@test', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Femme', 'Default.png', 'Aucune information disponible.', 2),
-(64, 'Jeff', 'jeff@jeff.jeff', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', 'Default.png', 'Super prof des BTS 1 (ils travaillent mais que des fois)', 2),
-(65, 'Christopher', 'christopher@gmail.com', '$2y$10$gec1euS8zD7C3iQdZRyiouncOUUdmDfwhozHaLTtyVUT6WAqjxJna', 'Homme', 'Default.png', 'Aucune information disponible.', 2),
-(66, 'Mikaël', 'mikael@mika.fr', '$2y$10$NW9XY69pN37hi/9OuCUf7Op0tx7.FM61VPcZl5RNW.7r.hiADh.1.', 'Homme', 'Default.png', 'Aucune information disponible.', 2);
+(1, 'Yam', 'root@livequestion.com', '$2y$10$tZjW1sjH3sllXUf98JLqdueBoEvSprB6H9/x5I5PDoQuWaNRxJAte', 'Non-binaire', 'https://pbs.twimg.com/media/ESww5viU4AAdJA7.png', 'uwu', 1),
+(2, 'Lythis', 'lythis@morgan.fr', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', './image_profil/lythis.jpg', 'Aucune information disponible.', 1),
+(55, 'Kyllian', 'kyllian@joseph.fr', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', './image_profil/kyllian.jpg', 'Aucune information disponible.', 1),
+(56, 'Leo', 'leo@stvincent.net', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Hélicoptère d\'attaque', './image_profil/Default.png', 'Aucune information disponible.', 2),
+(57, 'Nico Nico Nii', 'nico@stvincent.net', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Non-binaire', './image_profil/Default.png', 'Aucune information disponible.', 2),
+(63, 'test', 'me@test', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Femme', './image_profil/Default.png', 'Aucune information disponible.', 2),
+(64, 'Jeff', 'jeff@jeff.jeff', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', './image_profil/Default.png', 'Super prof des BTS 1 (ils travaillent mais que des fois)', 2),
+(65, 'Christopher', 'christopher@gmail.com', '$2y$10$gec1euS8zD7C3iQdZRyiouncOUUdmDfwhozHaLTtyVUT6WAqjxJna', 'Homme', './image_profil/Default.png', 'Aucune information disponible.', 2),
+(66, 'Mikaël', 'mikael@mika.fr', '$2y$10$NW9XY69pN37hi/9OuCUf7Op0tx7.FM61VPcZl5RNW.7r.hiADh.1.', 'Homme', './image_profil/Default.png', 'Aucune information disponible.', 2);
 
 -- --------------------------------------------------------
 
@@ -95,14 +95,14 @@ INSERT INTO `profil` (`Id_profil`, `Pseudo_profil`, `Mail_profil`, `MotDePasse_p
 DROP TABLE IF EXISTS `question`;
 CREATE TABLE IF NOT EXISTS `question` (
   `Id_question` int(11) NOT NULL AUTO_INCREMENT,
-  `Titre_question` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `Titre_question` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `Date_creation_question` date NOT NULL,
   `#Id_profil` int(11) NOT NULL,
   `#Id_categorie` int(11) NOT NULL,
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `question`
@@ -127,14 +127,14 @@ INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question
 DROP TABLE IF EXISTS `reponse`;
 CREATE TABLE IF NOT EXISTS `reponse` (
   `Id_reponse` int(11) NOT NULL AUTO_INCREMENT,
-  `Contenu_reponse` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `Contenu_reponse` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `Date_reponse` date NOT NULL,
   `#Id_profil` int(11) NOT NULL,
   `#Id_question` int(11) NOT NULL,
   PRIMARY KEY (`Id_reponse`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_question` (`#Id_question`)
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `reponse`
@@ -161,9 +161,9 @@ INSERT INTO `reponse` (`Id_reponse`, `Contenu_reponse`, `Date_reponse`, `#Id_pro
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `Id_role` int(11) NOT NULL AUTO_INCREMENT,
-  `Libelle_role` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `Libelle_role` varchar(50) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`Id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `role`
