@@ -15,7 +15,7 @@ body{
     box-sizing: border-box;
 }
 
-footer{
+.pF{
     margin-top: 10%;
 }
 .mauvais {
@@ -32,11 +32,22 @@ footer{
     left: 0; 
     right: 0
 }
-.cardP{
-    background-color: white;
-    margin-left: 25%;
-    border: 2px solid black;
+
+@media screen and (min-width: 990px){
+    .cardP{
+        margin-left: 25%;
+        width: 50%;
+        background-color: white;
+        border: 2px solid black;
+    }
 }
+@media screen and (max-width: 990px){
+    .cardP{
+        background-color: white;
+        border: 2px solid black;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -125,8 +136,6 @@ html {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
 }
 .bloc3{
     background-color: #F8F9FD;
@@ -529,9 +538,20 @@ html {
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-.font-page{
-    background-image: url(../image/abstract.jpg);
-    background-size: cover;
+.pCard{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-left: 39%;
+    margin-top: 9%;
+    width: 26%;
 }
 .form-row1{
     display: -ms-flexbox;
@@ -572,6 +592,23 @@ html {
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 22%;
+}
+.carde5{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 1%;
+    text-align: center;
 }
 .masquer{
     display: none;
@@ -697,6 +734,29 @@ button[aria-expanded="false"] .fa-caret-right
 .inputfile + label {
 	cursor: pointer; 
 }
+
+.pBtn{
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #31BCE7;
+    border: 1px solid transparent;
+    border: transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    height: 5ex;
+    margin-left: 1%;
+    width: 30%;
+}
 .btn-flex{
     display: flex;
 }
@@ -712,6 +772,7 @@ button[aria-expanded="false"] .fa-caret-right
         margin-left: 10%;   
         font-size: 3vmin;   
     }
+    
 
     #tvit{
         margin-left: 30%;
@@ -731,10 +792,6 @@ button[aria-expanded="false"] .fa-caret-right
     }
     .form-image-edit{
         width: 45%;
-    }
-    .carde5{
-        margin-left: 0%;
-        margin-right: 0%;
     }
     .profil_information{
         margin-left: 5%;
@@ -811,10 +868,6 @@ button[aria-expanded="false"] .fa-caret-right
     .btn-edit{
         padding-right: 14%;
     }
-    .carde5{
-        margin-left: 5%;
-        margin-right: 5%;
-    }
 
 }
         @media screen and (max-width: 992px){
@@ -826,9 +879,7 @@ button[aria-expanded="false"] .fa-caret-right
             .responsive-bootstrap-card {
                 width: 80%;
             }
-            .cardP{
-                margin-right: 10%;
-            }
+
            
         }
 
@@ -838,6 +889,7 @@ button[aria-expanded="false"] .fa-caret-right
                 margin-left: 0%;
             }
 
+            
             .responsive-bootstrap-card {
                 width: 100%;
             }
@@ -868,8 +920,8 @@ button[aria-expanded="false"] .fa-caret-right
                 border-bottom-left-radius: 17% ;
                 border-bottom-right-radius: 17% ;
                 height: 80ex 
-
             }
+            
             .texte1{
                 width: 83%;
             }
@@ -933,66 +985,78 @@ button[aria-expanded="false"] .fa-caret-right
             .description h3{
                 margin-left: 19% ;
             }
-        }
+        
+    }
+
+@media screen and (max-width : 700px ){
+    .pCard{
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+         margin-left: 0; 
+         margin-top: 0; 
+        width: 100%;
+    }
+    .carde5{
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-top: 1%;
+        text-align: center;
+    }
+    .pBtn {
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: #31BCE7;
+        border: 1px solid transparent;
+        border: transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        height: 5ex;
+        margin-left: 1%;
+        width: 81%;
+    }
+    .pF {
+        margin-top: 35%;
+    }
+
+
+}
+
 .back{
     background-color: #E8E5E4;
 }
-.carde5{
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-top: 1%;
-    text-align: center;
-}
-.pBtn{
-    display: inline-block;
-    font-weight: 400;
-    color: #212529;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: #31BCE7;
-    border: 1px solid transparent;
-    border: transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    height: 5ex;
-    margin-left: 1%;
-    width: 30%;
-}
 
-.pCard{
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-    margin-left: 39%;
-    margin-top: 9%;
-    width: 26%;
-}
+
+
 
 .bgP{
     background-color: #E8E5E4;

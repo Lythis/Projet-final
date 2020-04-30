@@ -1,4 +1,4 @@
-    <footer>
+    <footer class="pF">
         <div class="creux"></div>
         <div class="footer">
             <div class="footer_container">	

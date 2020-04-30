@@ -1,7 +1,7 @@
 <body class="bgP">
     <div>
-        <div class="cardP w-50 mr-md-9 responsive-bootstrap-card m-card shadow-lg p-3 " id="questionpose<?php echo $idQuestion ?>" >
-            <h5 class="card-header " id="reponse<?php echo $idQuestion; ?>"><a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><b><?php echo $users["Pseudo_profil"]; ?></a></b> a posé la question :</h5>
+        <div class="cardP w-md-50 mr-md-9 responsive-bootstrap-card m-card shadow-lg p-3 " id="questionpose<?php echo $idQuestion ?>" >
+            <h5 class=" card-header bg-white border-0" id="reponse<?php echo $idQuestion; ?>"><a class="text-dark float-right" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>"></a> <p> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><b><?php echo $users["Pseudo_profil"]; ?></a></b> a posé la question :</h5></p>
             <div class="card-body">
                 <h5 class="card-title">Catégorie : <?php echo $categorie["Libelle_categorie"]; ?></h5>
                 <p class="card-text"><?php echo $question["Titre_question"]; ?></p>
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="cardP w-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="repondre">
+        <div class="cardP w-md-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="repondre">
             <div class="card-body">
                 <form class="needs-validation" method="post" action="./QuestionsReponses.php?question=<?php echo $questionStatus[0]; ?>">
                     <div >
@@ -53,7 +53,7 @@
                     
                 </div>
                 
-                <div class="cardP w-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="question<?php echo $idQuestion; ?>">
+                <div class="cardP w-md-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="question<?php echo $idQuestion; ?>">
                     <div class="card-body">
                         <div>
                             
@@ -71,9 +71,12 @@
                 <?php
             }
         }
-        else {
-            echo '<div class="ml-4">Wow, such empty.</div>';
-        }
+        else { ?>
+        </div>
+            <div class="cardP w-md-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse text-center" id="question<?php echo $idquestion; ?>">
+                <p class="card-body">Il n'y a pas de réponses pour l'instant.</p>
+            </div>
+       <?php }
         ?>
         
     </div>
