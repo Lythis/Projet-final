@@ -1,4 +1,4 @@
-
+/* paramétrage des pages */
 html{
     height: 100%;
     box-sizing: border-box;
@@ -17,59 +17,7 @@ body{
     box-sizing: border-box;
 }
 
-.pF{
-    margin-top: 10%;
-}
-
-.mauvais {
-    color:#cc0000;
-  }
-
-.presque {
-    color: orange;
-  }
-
-/* Question */
-.bas-page footer {
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    right: 0
-}
-
-
-.question-text{
-    font-size: 100%;
-    font-family: inherit;
-    background-color: inherit;
-    border: 0;
-    
-    padding-left: 15%;
-}
-
-.pseudo-card{
-    padding-left: 15%;
-}
-
-.card-headerP{
-    box-shadow: 3px 3px 3px black;
-}
-
-.btn-profil{
-    margin-bottom: 1%;
-}
-
-.p-card{
-    margin-left: 27%;
-    margin-right: 27%;
-    background-color: white;
-    margin-top: 1%;
-}
-
-.couleur{
-    background-color: #192D34;
-}
-
+/* Style navbar connecté */
 .btn-nav{
     background-color:#31BCE7 ;
     border: none;
@@ -78,18 +26,6 @@ body{
 
 .navbar-text{
     margin-left: 65%;
-}
-
-.titre{
-    margin-left: 5%;
-}
-
-.boutton{
-    border-radius: 10%;
-    background-color: #ED008C;
-    border: none;
-    width: 100%;
-    height: 5ex;
 }
 
 .bouttonC{
@@ -101,6 +37,45 @@ body{
     margin-left: 25%;
 }
 
+
+
+/* Couleur initial de la navbar/footer non connecté */
+.couleur{
+    background-color: #192D34;
+}
+
+/* Navbar non connecté */
+.titre{
+    margin-left: 5%;
+}
+
+.boutton{
+    border-radius: 5%;
+    background-color: #ED008C;
+    border: none;
+    width: 100%;
+    height: 5ex;
+}
+
+/* Limite de caractère pour poser des Questions/Descriptions/Reponses */
+.mauvais {
+    color:#cc0000;
+  }
+
+.presque {
+    color: orange;
+  }
+
+/* Question */
+.question-text{
+    font-size: 100%;
+    font-family: inherit;
+    background-color: inherit;
+    border: 0;   
+    padding-left: 15%;
+}
+
+/* style de la page d'Accueil non connecté premier grand bloc */
 .hAcceuil{
     background-color: #192D34;
     border-bottom-left-radius: 45%;
@@ -121,7 +96,7 @@ body{
 .bloc2{
     margin-top: 8%;
 }
-
+/* Second grand bloc */
 .rowe{
     display: -ms-flexbox;
     display: flex;
@@ -130,12 +105,6 @@ body{
     width: 75%;   
 }
 
-.rowe2{
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
 
 .bloc3{
     background-color: #F8F9FD;
@@ -309,30 +278,7 @@ body{
     display: none;
 }
 
-.form-group {
-    text-align: center;
-}
-
-.center {
-    width: 50%;
-    margin-left: 25%;
-}
-
-.picture-user-small {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    object-fit: cover; 
-}
-
-.picture-user {
-    height: 200px;
-    width: 200px;
-    object-fit: cover; 
-}
-
-
-/* Accueil */
+/* Accueil partie bas */
 
 
 .useless{
@@ -367,6 +313,7 @@ body{
     font-size: 3em;
 }
 
+/* Bloc avec les différentes marques */
 .marque1{
     background-color: white;
     display: flex;
@@ -408,6 +355,7 @@ body{
     font-size: 1em;
 }
 
+/* FAQ page non connecté */
 .titre_faq{
     font-size: 3em;
 }
@@ -441,8 +389,61 @@ body{
     text-align: center;
 }
 
+.question_btn{
+    margin-left: 20%;
+}
 
-/* Footer */
+/* card des questions posées dans la FAQ */
+.card-text{
+    font-size: 2vmin;
+    width: 80%;
+}
+
+.card-align{
+    display: flex;
+}
+
+.card-head{
+    padding: .50rem .50rem;
+    margin-bottom: 0;
+    border: 1px solid rgba(0,0,0,.125);
+}
+/* Aligne de toutes les forms */
+.form-group {
+    text-align: center;
+}
+/* Permet de centrer des éléments */
+.center {
+    width: 50%;
+    margin-left: 25%;
+}
+
+/* Permet au image d'avoir une taille définie sur toute les pages et d'être zoomer si celle-ci n'est pas carré */
+.picture-user-small {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover; 
+}
+
+.picture-user {
+    height: 200px;
+    width: 200px;
+    object-fit: cover; 
+}
+
+
+
+
+/*Positionnement footer */
+.bas-page footer {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0
+}
+
+/* Footer log & unlog */
 .footer-log{
     bottom:0;
     position: relative;
@@ -456,6 +457,11 @@ body{
     text-align: center;
 }
 
+/* Permet de mettre une margin entre le footer et certain élément de page */
+.pF{
+    margin-top: 10%;
+}
+
 .footer{
     background-color: #1a2d34;
     margin-top: 2%;
@@ -467,7 +473,7 @@ body{
     background-color:  #1a2d34;
     text-align: center;
 }
-
+ /* Contenu du footer */
 .footer_container{
     width: 60%;
     margin-left: 20%;
@@ -483,10 +489,7 @@ body{
     color: white;
 }
 
-.copyright{
-    width: 80%;
-}
-
+/* Positionnemt des icones dans le footer log & unlog */
 .icon{
     color: white;
     display: flex;
@@ -508,21 +511,6 @@ body{
 #bar{
     border-color: grey;
     height: 1px;
-}
-
-.card-text{
-    font-size: 2vmin;
-    width: 80%;
-}
-
-.card-align{
-    display: flex;
-}
-
-.card-head{
-    padding: .50rem .50rem;
-    margin-bottom: 0;
-    border: 1px solid rgba(0,0,0,.125);
 }
 
 .btn-lien{
@@ -587,6 +575,14 @@ body{
     margin-left: -5px;
 }
 
+/* Connexion/Inscription */
+.rowe2{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
 .card4{
     position: relative;
     display: -ms-flexbox;
@@ -620,7 +616,7 @@ body{
     margin-right: 20%;
     margin-top: 22%;
 }
-
+/* card poser affichage des questions */
 .carde5{
     position: relative;
     display: -ms-flexbox;
@@ -639,10 +635,7 @@ body{
     text-align: center;
 }
 
-.masquer{
-    display: none;
-}
-
+/* aria expanded changement du contenu des bouttons en fonction de ce qu'il retourne */
 button[aria-expanded="true"] .fa-caret-right
 {
     display: none;
@@ -666,6 +659,7 @@ button[aria-expanded="false"] .fa-caret-right
 .card-faq{
     margin-left: 25%;
     margin-right: 25%;
+    margin-top: 5px;
 }
 
 button[aria-expanded="true"] .afficher
@@ -688,9 +682,6 @@ button[aria-expanded="false"] .afficher
     display: block;
 }
 
-.question_btn{
-    margin-left: 20%;
-}
 
 /* Profil */
 .profil{
@@ -698,6 +689,22 @@ button[aria-expanded="false"] .afficher
     margin-top: 3%;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+/* Card profil */
+.card-headerP{
+    box-shadow: 3px 3px 3px black;
+}
+
+.p-card{
+    margin-left: 27%;
+    margin-right: 27%;
+    background-color: white;
+    margin-top: 1%;
+}
+
+.btn-profil{
+    margin-bottom: 1%;
 }
 
 .card_profil{
@@ -715,6 +722,7 @@ button[aria-expanded="false"] .afficher
     padding-top:3% ;
 }
 
+/* Permet au image d'être ronde */
 .rond_profil{
     border-radius: 50%;
     border: 3px solid black;
@@ -726,6 +734,7 @@ button[aria-expanded="false"] .afficher
     margin-top: 1%;
 }
 
+/* Affichage des photos de profil dans les questions */
 .image-questions{
     width: 110px;
     height: 110px;
@@ -741,11 +750,13 @@ button[aria-expanded="false"] .afficher
     margin-right: 5%;
 }
 
+/* liens vers images  et l'édition de profil */
 .link-height{
     height: 210px;
     position: absolute;
 }
 
+/* Page edit-prodil */
 .edit-profil{
     margin-left: 25%;
     margin-right: 25%;
@@ -783,63 +794,40 @@ button[aria-expanded="false"] .afficher
     padding-bottom: 8px;
     border-radius: 2%;
 }
-
-.label-file {
-    cursor: pointer;
-    color: white;
-    background-color: #31BCE7;
-    border-radius: 2%;
-    width: 10%;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    text-align: center;
-}
-
-.label-file:hover {
-    color: blue;
-}
-
-.input-file {
-    display: none;
-}
-
-.inputfile + label {
-	cursor: pointer; 
-}
-
+ /* Boutton utilisé sur beaucoup de page */
 .pBtn{
-    display: inline-block;
-    font-weight: 400;
+
     color: #212529;
     text-align: center;
     vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     background-color: #31BCE7;
-    border: 1px solid transparent;
-    border: transparent;
-    padding: .375rem .75rem;
+    border: none;
     font-size: 1rem;
-    line-height: 1.5;
     border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     height: 5ex;
     margin-left: 1%;
     width: 30%;
 }
 
+/* met en ligne le boutton edit et supprimer */
 .btn-flex{
     display: flex;
 }
 
-.back{
+/* Background des pages */
+.bgP{
     background-color: #E8E5E4;
 }
 
-.bgP{
-    background-color: #E8E5E4;
+.cardP{
+    margin-left: 25%;
+    width: 50%;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.navbar-expand-lg .btn-nav{
+    display: none;
 }
 
 @media screen and (max-width: 1100px){
@@ -847,6 +835,11 @@ button[aria-expanded="false"] .afficher
         padding-top: 40%;
         padding-bottom: 40%;
         font-size: 2em;
+        
+    }
+
+    .navbar-expand-lg .btn-nav{
+        display: block;
     }
 
     .faq-text{
@@ -904,20 +897,9 @@ button[aria-expanded="false"] .afficher
     }
 
     .carde5 {
-        position: relative;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        background-color: #fff;
-        background-clip: border-box;
-        border: 1px solid rgba(0,0,0,.125);
-        border-radius: .25rem;
-        margin-left: 0%;
+        margin-left: 10%;
+        width: 80%;
         margin-top: 0%;
-        text-align: center;
     }
     
     .bouttonC{
@@ -931,56 +913,31 @@ button[aria-expanded="false"] .afficher
     .cardP {
         background-color: white;
         border: 2px solid black;
-        margin-left: 9%;
-        margin-right: 9%;
+        margin-left: 10%;
+        width: 80%;
     }
     .card4{
-        position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-     margin-left: 0%; 
-     margin-right: 0%; 
-    margin-top: 14%;
+        margin-left: 0%; 
+        margin-right: 0%; 
+        margin-top: 14%;
     }
     .card4-2{
-        position: relative;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        background-color: #fff;
-        background-clip: border-box;
-        border: 1px solid rgba(0,0,0,.125);
-        border-radius: .25rem;
-         margin-left: 0%; 
-         margin-right: 0%; 
+        margin-left: 0%; 
+        margin-right: 0%; 
         margin-top: 22%;
         margin-bottom: 18%;
     }
     .pCard{
-        position: relative;
-        display: -ms-flexbox;
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        background-color: #fff;
-        background-clip: border-box;
-        border: 1px solid rgba(0,0,0,.125);
-        border-radius: .25rem;
         margin-left: 24%;
         margin-top: 9%;
         width: 50%;
+    }
+}
+
+@media screen and (max-width: 992px){
+    .center {
+        width: 80%;
+        margin-left: 10%;
     }
 }
 
@@ -1001,14 +958,8 @@ button[aria-expanded="false"] .afficher
         display: flex;
         margin-left: 10%;
         margin-right: 10%;
-
         border-color: grey;
         height: 1px;
-    }
-
-    .responsive-bootstrap-card {
-        position: relative;
-        width: 50%;
     }
 
     .edit-profil{
@@ -1032,20 +983,10 @@ button[aria-expanded="false"] .afficher
     .picture-user{
         height: 63px;
         width: 63px;
-        margin-top: 50%;
     }
 }
 
-@media screen and (max-width: 992px){
-    .center {
-        width: 80%;
-        margin-left: 10%;
-    }
 
-    .responsive-bootstrap-card {
-         width: 100%;
-    }
-}
 
 @media screen and (max-width: 576px){
     .center {
@@ -1075,12 +1016,6 @@ button[aria-expanded="false"] .afficher
         padding-left: 8% ;
         padding-top: 8% ;
     }
-
-    .cardP{
-        background-color: white;
-        border: 2px solid black;
-    }
-    
 }
 
 @media screen and (min-width : 700px) and (max-width: 1300px){
@@ -1177,7 +1112,7 @@ button[aria-expanded="false"] .afficher
 
     .carde5{
         margin-left: 0%;
-        margin-right: 0%;
+        width: 100%;
         margin-top: 1%;
     }
 
@@ -1189,59 +1124,25 @@ button[aria-expanded="false"] .afficher
         margin-top: 35%;
     }
     .card4{
-        position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-     margin-left: 0%; 
-     margin-right: 0%; 
-    margin-top: 14%;
+        margin-left: 0%; 
+        margin-right: 0%; 
+        margin-top: 14%;
     }
     .card4-2{
-        position: relative;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        background-color: #fff;
-        background-clip: border-box;
-        border: 1px solid rgba(0,0,0,.125);
-        border-radius: .25rem;
-         margin-left: 0%; 
-         margin-right: 0%; 
+        margin-left: 0%; 
+        margin-right: 0%; 
         margin-top: 22%;
         margin-bottom: 18%;
     }
 
     .cardP {
         background-color: white;
-        border: 2px solid black;
+        border: 2px solid black; 
+        width: 100%; 
         margin-left: 0%;
-        margin-right: 0%;    
     }
 }
 
-@media screen and (min-width: 990px){
-    .cardP{
-        margin-left: 25%;
-        width: 50%;
-        background-color: white;
-        border: 2px solid black;
-    }
-
-    .navbar-expand-lg .btn-nav{
-        display: none;
-    }
-}
 
 @media screen and (max-width: 900px){
     .profil{
