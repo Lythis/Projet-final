@@ -1,18 +1,18 @@
 <?php
     require_once('./fonctions/fonctions.php');
-    $startedsession = startSessionHere();
+    $startedSession = startSessionHere();
 
     if(!empty($_SESSION['utilisateur'])) {
         if(isset($_POST['profil'])) {
-            $todelete = $_POST['profil'];
-            $title = 'Supprimer le profil '.$todelete;
+            $toDelete = $_POST['profil'];
+            $title = 'Supprimer le profil '.$toDelete;
 
-            if($_SESSION['utilisateur']['id'] == $todelete || $_SESSION['utilisateur']['role'] == 1) {
-                deleteProfil($todelete);
+            if($_SESSION['utilisateur']['id'] == $toDelete || $_SESSION['utilisateur']['role'] == 1) {
+                deleteProfil($toDelete);
 
                 $success = true;
 
-                if($_SESSION['utilisateur']['id'] == $todelete) {
+                if($_SESSION['utilisateur']['id'] == $toDelete) {
                     session_unset();
 		            session_destroy();
                 }
@@ -20,13 +20,13 @@
         }
 
         elseif(isset($_POST['question'])) {
-            $todelete = $_POST['question'];
-            $title = 'Supprimer la question '.$todelete;
+            $toDelete = $_POST['question'];
+            $title = 'Supprimer la question '.$toDelete;
 
-            $userquestion = selectFromQuestion($todelete, "DESC");
+            $userquestion = selectFromQuestion($toDelete, "DESC");
 
             if($_SESSION['utilisateur']['id'] == $userquestion['#Id_profil'] || $_SESSION['utilisateur']['role'] == 1) {
-                deleteQuestion($todelete);
+                deleteQuestion($toDelete);
 
                 $success = true;
             }

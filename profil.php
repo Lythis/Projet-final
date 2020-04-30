@@ -1,34 +1,34 @@
 <?php
     require_once('./fonctions/fonctions.php');
-    $startedsession = startSessionHere();
+    $startedSession = startSessionHere();
     //L'utilisateur est-il bien connecté?
     if(estConnecte() == true) {
 
         //On a bien recupéré des données en GET
         if(!empty($_GET['profil'])) {
-            $profilstatus = $_GET['profil'];
+            $profilStatus = $_GET['profil'];
             //Séparation du GET en 2 à partir de la virgule (création d'un tableau à 2 colonnes si on a bien une virgule, sinon une seule colonne)
-            $profilstatus = explode(',', $profilstatus);
+            $profilStatus = explode(',', $profilStatus);
         }
 
-        //Ici $profilstatus[0] == la première colonne du tableau qu'on a recupéré (donc de notre GET) || Est-ce qu'on a bien un profil présent dans le GET?
-        if(isset($profilstatus[0])) {
-            $users = selectFromProfil($profilstatus[0]);
+        //Ici $profilStatus[0] == la première colonne du tableau qu'on a recupéré (donc de notre GET) || Est-ce qu'on a bien un profil présent dans le GET?
+        if(isset($profilStatus[0])) {
+            $users = selectFromProfil($profilStatus[0]);
         }
 
         //Notre GET n'est pas vide et on a récupéré les informations de l'utilisateur présent dans notre GET (ici présent dans $users, donc si $users n'est pas vide)
         if(!empty($_GET['profil']) && !empty($users)) {
-            $idprofil = $users["Id_profil"];
+            $idProfil = $users["Id_profil"];
             $role = $users["#Id_role"];
 
-            $questions = selectFromQuestionWithIdProfil($idprofil, "DESC");
+            $questions = selectFromQuestionWithidProfil($idProfil, "DESC");
 
             $title ='Profil de '.$users["Pseudo_profil"];
             require_once('includes/header.php');
         }
 
-        //Notre tableau GET ($profilstatus) ne contient qu'une seule colonne
-        if(!empty($_GET['profil']) && !empty($users) && !isset($profilstatus[1])) {
+        //Notre tableau GET ($profilStatus) ne contient qu'une seule colonne
+        if(!empty($_GET['profil']) && !empty($users) && !isset($profilStatus[1])) {
 
             navBar();
             require_once('./includes/profil.php');
@@ -36,13 +36,13 @@
       
         }
 
-        //Une requête pour modifier le profil est présente (on a donc 2 colonnes dans notre GET ($profilstatus))
-        elseif(!empty($_GET['profil']) && !empty($users) && isset($profilstatus[1])) {
+        //Une requête pour modifier le profil est présente (on a donc 2 colonnes dans notre GET ($profilStatus))
+        elseif(!empty($_GET['profil']) && !empty($users) && isset($profilStatus[1])) {
             //La requête est-elle bien égale à "edit"?
-            if($profilstatus[1] == "edit") {
+            if($profilStatus[1] == "edit") {
 
                 //Le profil demandé est le profil actuel de la session ou la session est administrateur
-                if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) {
+                if($_SESSION['utilisateur']['id'] == $profilStatus[0] || $_SESSION['utilisateur']['role'] == 1) {
                     $title = 'Modification du profil de '.$users["Pseudo_profil"];
                     $success = [
                         'pseudo' => "false",
@@ -52,12 +52,12 @@
                         'genre' => "false",
                     ];
                     if(isset($_POST['image']) && !empty($_POST['image'])) {
-                        editImage($profilstatus[0]);
-                        $users = selectFromProfil($profilstatus[0]);
+                        editImage($profilStatus[0]);
+                        $users = selectFromProfil($profilStatus[0]);
                     }
                     elseif(!empty($_POST)) {
-                        $success = editProfil($profilstatus[0], $success);
-                        $users = selectFromProfil($profilstatus[0]);
+                        $success = editProfil($profilStatus[0], $success);
+                        $users = selectFromProfil($profilStatus[0]);
                     }
                     require_once('includes/header.php');
                     navBar();
@@ -99,9 +99,9 @@
             }
         
             //La requête est-elle bien égale à "supp"?
-            elseif($profilstatus[1] == "supp") {
+            elseif($profilStatus[1] == "supp") {
                 //Le profil demandé est le profil actuel de la session ou la session est administrateur
-                if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) {
+                if($_SESSION['utilisateur']['id'] == $profilStatus[0] || $_SESSION['utilisateur']['role'] == 1) {
                     $title = 'Suppression du profil de '.$users["Pseudo_profil"];
                     require_once('includes/header.php');
                     navBar();

@@ -1,6 +1,6 @@
 <?php
     require_once('./fonctions/fonctions.php');
-    if(isset($startedsession) && $startedsession == true) {
+    if(isset($startedSession) && $startedSession == true) {
         connexionDeconnexion(true);
     }
     else {
