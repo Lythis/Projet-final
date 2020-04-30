@@ -3,7 +3,7 @@
     if(isset($toDelete) && $success == true) {
         ?>
         
-        <div class="card d-flex">
+        <div class="pCard d-flex">
             <div class="card-body ">
                 <img src="image/sad2.gif" class="card-img-top w-50" alt="triste">
                 <p class="card-text float-right pl-3 w-50">Suppression réussi. <a href="index.php">Revenir à l'accueil</a>.</p>
