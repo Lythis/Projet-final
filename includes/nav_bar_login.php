@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg shadow p-3 mb-5 bg-white rounded sticky-top">
     <a class="titre text-dark" href="./index.php">LiveQuestion</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="btn-nav " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse text-white" id="navbarNavDropdown">
@@ -18,4 +18,5 @@
             </ul>
         </span>
     </div>
+    
 </nav>

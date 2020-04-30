@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg couleur">
+<nav class="navbar navbar-expand-lg couleur ">
     <a class="titre text-white" href="./index.php">Saint Vincent BTS 1</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
