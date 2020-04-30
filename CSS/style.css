@@ -658,7 +658,7 @@ button[aria-expanded="false"] .fa-caret-right
 .card-faq{
     margin-left: 25%;
     margin-right: 25%;
-    margin-top: 5px;
+    margin-top: 6px;
 }
 
 button[aria-expanded="true"] .afficher
@@ -972,7 +972,6 @@ button[aria-expanded="false"] .afficher
         margin-left: 10%;
         margin-right: 10%;
         border-color: grey;
-        height: 1px;
     }
 
     .edit-profil{
@@ -1015,7 +1014,14 @@ button[aria-expanded="false"] .afficher
     .responsive-bootstrap-card {
         width: 100%;
     }
+    .container_haut{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .container_bas{
+        margin-right: 0%;
 
+    }
 
 }
 
@@ -1152,9 +1158,6 @@ button[aria-expanded="false"] .afficher
         margin-top: 22%;
         margin-bottom: 18%;
     }
-    .card{
-        margin-top: -10%;
-    }
 
     .cardP {
         background-color: white;
@@ -1177,7 +1180,6 @@ button[aria-expanded="false"] .afficher
         margin-left: 0%;
     }
     .card{
-        margin-top: -4%;
         margin-left: 17%;
         margin-right: 17%;
     }
@@ -1186,7 +1188,6 @@ button[aria-expanded="false"] .afficher
     .card{
         margin-left: 29%;
         margin-right: 29%;
-        margin-top: -2%;
     }
 }
 @media screen and (min-width: 700px) and (max-width : 1300px){
