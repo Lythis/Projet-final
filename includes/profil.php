@@ -20,7 +20,7 @@
                             <p><?php echo $users["Description_profil"]; ?></p>
                         </div>
                         <div class="btn-flex">
-                            <?php if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) { ?>
+                            <?php if($_SESSION['utilisateur']['id'] == $profilStatus[0] || $_SESSION['utilisateur']['role'] == 1) { ?>
 
                                 
                                 <form action="./profil.php" method="get">

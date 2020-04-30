@@ -9,27 +9,17 @@
                     <button class="btn-edit text-white">Envoyer l'image</button>
                 </div>
             </form>
-            
-            
-<<<<<<< HEAD
-            <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
-                <button class=" text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
-=======
+                      
             <form method="post" action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit">
-                <button class="btn-edit text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
->>>>>>> ad903a580a4b294c73572644da63991521558786
+                <button class=" text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
             </form>
         </div>
     </div>
     <div class="edit-profil">
         <div class="card-body">
-<<<<<<< HEAD
-            <form action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit" method="post">
-                <div class="mb-3">
-=======
             <form action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit" method="post">
-                <div>
->>>>>>> ad903a580a4b294c73572644da63991521558786
+                <div class="mb-3">
+
                     <label >Pseudo : </label> <?php if($success['pseudo'] == "true") {?> <i class="fas fa-check"></i> Modification réussi <?php } elseif($success['pseudo'] == "failpseudo") { ?> <i class="fas fa-times"></i> Modification impossible <?php } ?>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pseudo" value="<?php echo $users["Pseudo_profil"]; ?>" required>
                 </div>
