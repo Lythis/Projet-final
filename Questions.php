@@ -11,7 +11,7 @@
     ?>
         <div class="card">
             <div class="card-body">
-                <p class="card-text"><img src="image/check.gif" style="width: 48%; margin-right: 6%;" class="" alt="pouve en l\'air"><p>Votre question a bien été envoyé. <a href="./index.php">Voir les questions</a>.</p></p>
+                <p class="card-text" style="margin-left: 28%;"><img src="image/check.gif" style="width: 48%; margin-right: 6%;" class="" alt="pouve en l\'air"><p style="margin-left: 22%;">Votre question a bien été envoyé. <a href="./index.php">Voir les questions</a>.</p></p>
             </div>
         </div>
     <?php
@@ -25,7 +25,7 @@
     ?>
         <div class="card">
             <div class="card-body" style="display: flex;">
-                <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%; margin-right: 6%;" class="" alt="facher"><h6>Vous devez être <a href="./connexion_inscription.php">connecté</a> pour poser une question!</h6></p>
+                <p class="card-text w-25"> <img src="image/tenor.gif" style="  width: 90%; margin-right: 6%;" class="" alt="facher"><h6 style="margin-top: 8%;">Vous devez être <a href="./connexion_inscription.php">connecté</a> pour poser une question!</h6></p>
             </div>
         </div>
     <?php
