@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg shadow p-3 mb-5 bg-white rounded sticky-top">
     <a class="titre text-dark" href="./index.php">LiveQuestion</a>
-    <button class="btn-nav " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon pt-1" ></span>
+    <button class="btn-nav cc_pointer" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon cc_pointer" ></span>
     </button>
     <div class="collapse navbar-collapse text-white" id="navbarNavDropdown">
         <span class="navbar-text">

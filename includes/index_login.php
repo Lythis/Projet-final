@@ -53,7 +53,7 @@
                 
                 $users = selectFromProfilWithidReponse($idQuestion, $idReponse);
                 ?>
-                <div class="card responsive-bootstrap-card collapse " id="question<?php echo $idQuestion; ?>">
+                <div class="cardR mb-5 responsive-bootstrap-card collapse " id="question<?php echo $idQuestion; ?>">
                     <div class="card-body">
                         <div class="text-dark">
                             
