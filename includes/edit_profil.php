@@ -9,19 +9,15 @@
                     <button class="btn-edit text-white">Envoyer l'image</button>
                 </div>
             </form>
-            
-            
-            <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
-                <button class=" text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
+                      
             <form method="post" action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit">
-                <button class="btn-edit text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
-
+                <button class=" text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
             </form>
         </div>
     </div>
     <div class="edit-profil">
         <div class="card-body">
-            <form action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit" method="post">
+            <form action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit" method="post">
                 <div class="mb-3">
 
                     <label >Pseudo : </label> <?php if($success['pseudo'] == "true") {?> <i class="fas fa-check"></i> Modification réussi <?php } elseif($success['pseudo'] == "failpseudo") { ?> <i class="fas fa-times"></i> Modification impossible <?php } ?>
