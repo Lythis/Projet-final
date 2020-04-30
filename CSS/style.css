@@ -915,8 +915,8 @@ button[aria-expanded="false"] .afficher
         background-clip: border-box;
         border: 1px solid rgba(0,0,0,.125);
         border-radius: .25rem;
-        margin-left: 9%;
-        margin-top: 1%;
+        margin-left: 0%;
+        margin-top: 0%;
         text-align: center;
     }
     
@@ -933,6 +933,54 @@ button[aria-expanded="false"] .afficher
         border: 2px solid black;
         margin-left: 9%;
         margin-right: 9%;
+    }
+    .card4{
+        position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+     margin-left: 0%; 
+     margin-right: 0%; 
+    margin-top: 14%;
+    }
+    .card4-2{
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+         margin-left: 0%; 
+         margin-right: 0%; 
+        margin-top: 22%;
+        margin-bottom: 18%;
+    }
+    .pCard{
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+        margin-left: 24%;
+        margin-top: 9%;
+        width: 50%;
     }
 }
 
@@ -1139,6 +1187,39 @@ button[aria-expanded="false"] .afficher
 
     .pF {
         margin-top: 35%;
+    }
+    .card4{
+        position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+     margin-left: 0%; 
+     margin-right: 0%; 
+    margin-top: 14%;
+    }
+    .card4-2{
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+         margin-left: 0%; 
+         margin-right: 0%; 
+        margin-top: 22%;
+        margin-bottom: 18%;
     }
 
     .cardP {

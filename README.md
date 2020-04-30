@@ -20,9 +20,9 @@ Le site comporte 2 grandes parties : La partie *non-connecté*, avec une page de
 - Télécharger le projet en .zip,
 - Démarrer WAMP, dans le dossier www : exporter tout le .zip (à l'exception de fixtures.sql et README.md),
 - Créer un nouveau Virtual Host avec un nom au choix et le répertoire www du projet téléchargé,
-- Sur phpMyAdmin, créer une base de données en utf-8 et importer la base de données fixtures.sql,
+- Sur phpMyAdmin, créer une base de données en utf-8 **avec le nom _live_question_** et importer la base de données fixtures.sql,
 - Le site est maintenant fonctionnel.
-- **_Si_ un problème avec la base de données survient : modifiez vos identifiants de connexion dans _db/base_PDO.php_**.
+- **_Si_ un problème avec la base de données survient : modifiez vos identifiants de connexion ou le nom de la base de données dans _db/base_PDO.php_**.
 
 ## Membres du projet :
 
