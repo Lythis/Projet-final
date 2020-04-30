@@ -846,11 +846,10 @@ button[aria-expanded="false"] .afficher
         width: 60px;
         height: 60px;
     }
-<<<<<<< HEAD
     .btn-profil {
         margin-left: 13%;
     }
-=======
+
     .carde5 {
         position: relative;
         display: -ms-flexbox;
@@ -896,7 +895,6 @@ button[aria-expanded="false"] .afficher
         margin-left: 9%;
         margin-right: 9%;
     
->>>>>>> 70e026768d6c0853d8db8fcabf3aea5700faa45f
     }
 
 }
