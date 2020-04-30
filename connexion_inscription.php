@@ -19,7 +19,6 @@
         
         // Tant qu'on est pas arrivé à la fin du tableau $profil et qu'on a pas trouvé le profil
         while ($ind < count($profil) && $connexionvalide == false) {
-            
             // Si on trouve, on arrête le while et entre les informations dans la session
             if($profil[$ind]['Mail_profil'] == $email && password_verify($mdp, $profil[$ind]['MotDePasse_profil'])) {
                 $connexionvalide = true;
@@ -29,7 +28,6 @@
             else {
                 $ind = $ind + 1;
             }
-            
         }
     }
 
