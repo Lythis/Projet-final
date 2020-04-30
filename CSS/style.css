@@ -479,12 +479,6 @@ html {
     height: 1px;
 
 }
-
-.card{
-    margin-left: 34%;
-    margin-right: 34%;
-    margin-top: 1%;
-}
 .card-text{
     font-size: 2vmin;
     width: 80%;
@@ -609,6 +603,8 @@ button[aria-expanded="false"] .fa-caret-right
 .profil{
     background-color: #E8E5E4;
     margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .card_profil{
     box-shadow: 3px 3px 3px black;
@@ -634,8 +630,8 @@ button[aria-expanded="false"] .fa-caret-right
     margin-top: 1%;
 }
 .image-questions{
-    width: 80px;
-    height: 80px;
+    width: 110px;
+    height: 110px;
     margin-left: 2%;
     object-fit: cover; 
 }
@@ -663,7 +659,6 @@ button[aria-expanded="false"] .fa-caret-right
     display: flex;
 }
 .form-image-edit{
-    display: flex;
     width: 20%;
     margin-top: 2%;
 }
@@ -671,15 +666,16 @@ button[aria-expanded="false"] .fa-caret-right
     background-color: #31BCE7;
     border: none;
     border-radius: 2%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 5%;
-}
-.delete-btn{
-    margin-top: 14%;
     padding-top: 8px;
     padding-bottom: 8px;
-    margin-left: 5%;
+    margin-bottom: 5%;
+    padding-right: 7%;
+}
+.delete-btn{
+    background-color: #31BCE7;
+    border: none;    
+    padding-top: 8px;
+    padding-bottom: 8px;
     border-radius: 2%;
 }
 .label-file {
@@ -701,11 +697,13 @@ button[aria-expanded="false"] .fa-caret-right
 .inputfile + label {
 	cursor: pointer; 
 }
+.btn-flex{
+    display: flex;
+}
+.btn-supp{
+    margin-top: -14px;
+}
 @media screen and (max-width: 1100px){
-    .card{
-        margin-right: 10%;
-        margin-left: 10%;
-    }
     .play{
         padding-top: 40%;
         padding-bottom: 40%;
@@ -726,32 +724,101 @@ button[aria-expanded="false"] .fa-caret-right
         margin-left: 22%;
         margin-right: 22%;
     }
+    .edit-profil{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .image-edit{
+        margin-left: 5%;
+    }
+    .form-image-edit{
+        width: 45%;
+    }
+    .carde5{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .profil_information{
+        margin-left: 5%;
+        padding-top: 0%;
+    }
+    .rond_profil{
+        height: 100px;
+        width: 100px;
+        }
+    .responsive-bootstrap-card{
+        margin-left:0%;
+        margin-right: 0%;
+    }
+    .profil{
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-bottom: 20%;
+    }
+    .p-card{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .card-headerP{
+        height: 150px;
+    }
+    .image-questions{
+        width: 60px;
+        height: 60px;
+    }
+
+    }
 
 
-    @media screen and (max-width: 700px){
-        .card-text{
-            font-size: 4vmin;
-        }
-        .faq-text{
-            font-size: 4vmin;
-        }
-        .titre_rose{
-            font-size: 2em;
-        }
-        .container_haut{
-            display: flex;
-            margin-left: 10%;
-            margin-right: 10%;
 
-            border-color: grey;
-            height: 1px;
-        }
+@media screen and (max-width: 700px){
+    .card-text{
+        font-size: 4vmin;
+    }
+    .faq-text{
+        font-size: 4vmin;
+    }
+    .titre_rose{
+        font-size: 2em;
+    }
+    .container_haut{
+        display: flex;
+        margin-left: 10%;
+        margin-right: 10%;
 
-        .responsive-bootstrap-card {
-            position: relative;
-            width: 50%;
-        }
+        border-color: grey;
+        height: 1px;
+    }
 
+    .responsive-bootstrap-card {
+        position: relative;
+        width: 50%;
+    }
+    .edit-profil{
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 30%;
+    }
+    .image-edit{
+        margin-left: 5%;
+    }
+    .picture-user{
+        height: 100px;
+        width: 100px;
+    }
+    .form-image-edit{
+        width: 50%;
+        margin-bottom: 3%;
+    }
+    .btn-edit{
+        padding-right: 14%;
+    }
+    .carde5{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+}
         @media screen and (max-width: 992px){
             .center {
                 width: 80%;
@@ -761,6 +828,10 @@ button[aria-expanded="false"] .fa-caret-right
             .responsive-bootstrap-card {
                 width: 80%;
             }
+            .cardP{
+                margin-right: 10%;
+            }
+           
         }
 
         @media screen and (max-width: 576px){
@@ -772,7 +843,11 @@ button[aria-expanded="false"] .fa-caret-right
             .responsive-bootstrap-card {
                 width: 100%;
             }
-
+            .picture-user{
+                height: 75px;
+                width: 75px;
+            }
+            
         }
         @media screen and (max-width: 990px) {
             .hAcceuil{
@@ -861,9 +936,6 @@ button[aria-expanded="false"] .fa-caret-right
                 margin-left: 19% ;
             }
         }
-    }
-}
-
 .back{
     background-color: #E8E5E4;
 }
