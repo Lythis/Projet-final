@@ -1151,6 +1151,15 @@ button[aria-expanded="false"] .afficher
         background-color: white;
     }
 }
+@media screen and (max-width : 990px){
+    .cardR{
+        margin-top: -3%;
+        margin-left: 16%;
+        width: 66%;
+        background-color: white;
+
+    }
+}
 @media screen and (max-width : 700px ){
     .pCard{
          margin-left: 0; 
@@ -1188,7 +1197,7 @@ button[aria-expanded="false"] .afficher
     }
 
     .cardR{
-        margin-top: -10%;
+        margin-top: -5%;
         margin-left: 0%;
         width: 100%;
         background-color: white;
@@ -1207,7 +1216,7 @@ button[aria-expanded="false"] .afficher
     .cardR{
         margin-left: 29%;
         margin-right: 29%;
-        margin-top: -2%;
+        margin-top: -3%;
         background-color: white;
 
     }
