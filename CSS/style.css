@@ -883,9 +883,6 @@ button[aria-expanded="false"] .fa-caret-right
                 width: 80%;
             }
 
-            .cardP{
-                margin-right: 10%;
-            }
            
         }
 
@@ -1049,6 +1046,9 @@ button[aria-expanded="false"] .fa-caret-right
         height: 5ex;
         margin-left: 1%;
         width: 81%;
+    }
+    .pF {
+        margin-top: 35%;
     }
 
 
