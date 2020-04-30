@@ -1152,6 +1152,9 @@ button[aria-expanded="false"] .afficher
         margin-top: 22%;
         margin-bottom: 18%;
     }
+    .card{
+        margin-top: -10%;
+    }
 
     .cardP {
         background-color: white;
@@ -1173,12 +1176,17 @@ button[aria-expanded="false"] .afficher
     .bouttonC{
         margin-left: 0%;
     }
+    .card{
+        margin-top: -4%;
+        margin-left: 17%;
+        margin-right: 17%;
+    }
 }
 @media screen and (min-width: 1200px){
     .card{
-        margin-left: 25% ;
-        margin-right: 25% ;
-
+        margin-left: 29%;
+        margin-right: 29%;
+        margin-top: -2%;
     }
 }
 @media screen and (min-width: 700px) and (max-width : 1300px){
