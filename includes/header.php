@@ -1,5 +1,7 @@
 <?php
+    // Fonctions PHP
     require_once('./fonctions/fonctions.php');
+    // Si $startedSession est set à true alors on ne démarre pas la session (car elle a déjà démarré avant)
     if(isset($startedSession) && $startedSession == true) {
         connexionDeconnexion(true);
     }

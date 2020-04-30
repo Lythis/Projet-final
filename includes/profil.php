@@ -1,6 +1,6 @@
 <body class="bgP">
     <div class="profil">
-        <div >
+        <div>
             <div class="row_ligne card_profil ">
                 <div class="container_profil">
                     <div class="col-2 link-height">
@@ -61,14 +61,14 @@
                 }
             }
             else {
-                echo'<div class="card">
-                    <div class="card-headerP ">
+            ?>
+                <div class="card">
+                    <div class="card-headerP">
                         <p>Wow, such empty.</p>
                     </div>
-                </div>';
-            }
+                </div>
+            <?php
+                }
             ?>
             
         </div>
-        
-        

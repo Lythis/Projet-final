@@ -1,12 +1,14 @@
 <?php
+    // Appel aux fonctions PHP & titre & header & navbar
     require_once('./fonctions/fonctions.php');
     $title ='Poser une Question';
     require_once('includes/header.php');
-
     navBar();
 
+    // Si nos POST no sont pas vide (qu'une question a donc été posée)
     if (!empty($_POST['question']) && !empty($_POST['categorie']) && $_POST['poserquestion'] == 'valide') {
 
+        // On crée la question et affiche un message
         insertIntoQuestion($_POST['question'], obtenirDate(), $_SESSION['utilisateur']['id'], $_POST['categorie']);
     ?>
         <div class="card">
@@ -17,10 +19,12 @@
     <?php
         }
 
+    // Sinon si l'utilisateur est connecté, on met le formulaire de question
     elseif (estConnecte() == true) {
         require_once('./includes/poser_question.php');
     }
 
+    // Sinon, accès refusé
     else {
     ?>
         <div class="card">
@@ -30,6 +34,6 @@
         </div>
     <?php
     }
-
+    // footer
     footer()
 ?>
