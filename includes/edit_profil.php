@@ -12,7 +12,7 @@
             
             
             <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
-                <button class=" text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>=======
+                <button class=" text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
             <form method="post" action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit">
                 <button class="btn-edit text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
 
