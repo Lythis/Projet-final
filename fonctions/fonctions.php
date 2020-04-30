@@ -241,7 +241,7 @@
         $query->execute();
     }
 
-    #Fonction pour modifier un profil de la base de données, retourne un tableau "success" définit auparavent
+    #Fonction pour modifier un profil de la base de données (on vérifie à chaque fois ce qui a été saisie, si c'est égal aux données actuelles ou vide, on ne modifie rien), retourne un tableau "success" définit auparavent
     function editProfil($idProfil, $success) {
         $con = connexionBdd();
         $users = selectFromProfil($idProfil);
@@ -363,6 +363,7 @@
         return false;
     }
 
+    #Fonction pour modifier l'image de profil d'un utilisateur, ne retourne rien
     function editImage($idProfil) {
         $con = connexionBdd();
         $users = selectFromProfil($idProfil);

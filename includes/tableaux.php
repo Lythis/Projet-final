@@ -1,5 +1,5 @@
 <?php
-    /* Tableaux PHP */
+    /* Tableaux PHP pour la page d'accueil */
     $questions = [
         'question1' => [
             'question' => 'Can i upgrade later?',

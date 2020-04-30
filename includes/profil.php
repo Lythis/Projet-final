@@ -1,6 +1,6 @@
 <body class="bgP">
     <div class="profil">
-        <div >
+        <div>
             <div class="row_ligne card_profil ">
                 <div class="container_profil">
                     <div class="col-2 link-height">
@@ -40,7 +40,7 @@
                 foreach ($questions as $question) {
                     ?>
                     <div class=" p-card">
-                        <div class="card-headerP">
+                        <div >
                             <img class="rond_profil float-left  image-questions" src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>">
                             
                             <h5 class="card-title pseudo-card"> <?php echo $users["Pseudo_profil"]; ?> :</h5>
@@ -61,14 +61,14 @@
                 }
             }
             else {
-                echo'<div class="card">
-                    <div class="card-headerP ">
+            ?>
+                <div class="card">
+                    <div class="card-headerP">
                         <p>Wow, such empty.</p>
                     </div>
-                </div>';
-            }
+                </div>
+            <?php
+                }
             ?>
             
         </div>
-        
-        

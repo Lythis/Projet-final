@@ -5,6 +5,7 @@
     
     
     <?php
+    // Affichage de toutes les questions
     $questions = selectAllQuestions("DESC");
     
     foreach ($questions as $question) {
@@ -45,6 +46,7 @@
         </div>
         
         <?php
+        // Affichage de toutes les réponses (si il y en a)
         if (!empty($reponses)) {
             foreach ($reponses as $reponse) {
                 $idReponse = $reponse["Id_reponse"];
