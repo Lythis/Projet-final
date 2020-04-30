@@ -1,7 +1,7 @@
 <body class="bgP">
     <div class="profil">
-        <div class="card responsive-bootstrap-card mx-5">
-            <div class="row_ligne card_profil card-headerP">
+        <div class="card ">
+            <div class="row_ligne card_profil ">
                 <div class="container_profil">
                     <div class="col-2 link-height">
                         <a  href="<?php echo $users["Image_profil"]; ?>">
@@ -19,11 +19,13 @@
                             <p> Description :  </p>
                             <p><?php echo $users["Description_profil"]; ?></p>
                         </div>
-                        <div>
-                            <?php if($_SESSION['utilisateur']['id'] == $profilStatus[0] || $_SESSION['utilisateur']['role'] == 1) { ?>
+                        <div class="btn-flex">
+                            <?php if($_SESSION['utilisateur']['id'] == $profilstatus[0] || $_SESSION['utilisateur']['role'] == 1) { ?>
+
+                                
                                 <form action="./profil.php" method="get">
-                                    <button class="btn bg-primary text-white " name="profil" value="<?php echo $users["Id_profil"]; ?>,edit">Editer le profil</button>
-                                    <button class="btn bg-danger text-white" name="profil" value="<?php echo $users["Id_profil"]; ?>,supp">Supprimer le profil</button>
+                                    <button class="btn btn-edit bg-primary text-white " name="profil" value="<?php echo $users["Id_profil"]; ?>,edit">Editer le profil</button>
+                                    <button class="btn btn-supp bg-danger text-white" name="profil" value="<?php echo $users["Id_profil"]; ?>,supp">Supprimer profil</button>
                                 </form>
                                 <?php } ?>
                             </div>
