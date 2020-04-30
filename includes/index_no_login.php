@@ -193,7 +193,7 @@
             require_once('includes/tableaux.php');
             foreach ($questions as $ask) {
                 ?>
-                <div class="card">
+                <div class="card card-faq">
                     <div class="card-head" id="<?php echo $ask ['idcard']?>">
                         <h2 class="mb-0">
                             <div class="card-align">

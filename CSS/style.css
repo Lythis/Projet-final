@@ -632,6 +632,26 @@ button[aria-expanded="false"] .fa-caret-right
 {
     display: block;
 }
+.card-faq{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+button[aria-expanded="true"] .afficher
+{
+    display: none;
+}
+button[aria-expanded="true"] .masquer
+{
+    display: block;
+}
+button[aria-expanded="false"] .masquer
+{
+    display: none;
+}
+button[aria-expanded="false"] .afficher
+{
+    display: block;
+}
 .question_btn{
     margin-left: 20%;
 }
@@ -877,7 +897,7 @@ button[aria-expanded="false"] .fa-caret-right
             }
 
             .responsive-bootstrap-card {
-                width: 80%;
+                width: 100%;
             }
 
            
@@ -896,6 +916,7 @@ button[aria-expanded="false"] .fa-caret-right
             .picture-user{
                 height: 75px;
                 width: 75px;
+                margin-top: 20%;
             }
             
         }
