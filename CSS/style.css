@@ -12,7 +12,8 @@ body{
     min-height: 100%;
 }
 
-* {-moz-box-sizing: border-box; 
+* {
+    -moz-box-sizing: border-box; 
     box-sizing: border-box;
 }
 
@@ -76,7 +77,7 @@ body{
 }
 
 .navbar-text{
-    margin-left: 70%;
+    margin-left: 65%;
 }
 
 .titre{
@@ -97,7 +98,7 @@ body{
     border: none;
     width: 100%;
     height: 5ex;
-    margin-left: 30%;
+    margin-left: 25%;
 }
 
 .hAcceuil{
@@ -729,7 +730,7 @@ button[aria-expanded="false"] .afficher
     width: 110px;
     height: 110px;
     margin-left: 2%;
-    margin-right: 5%    ;
+    margin-right: 5%;
     object-fit: cover; 
 }
 
@@ -859,7 +860,6 @@ button[aria-expanded="false"] .afficher
     }
 
     .container_haut{
-
         display: flex;
         margin-left: 22%;
         margin-right: 22%;
@@ -883,19 +883,9 @@ button[aria-expanded="false"] .afficher
         padding-top: 0%;
     }
 
-    .rond_profil{
-        height: 100px;
-        width: 100px;
-        }
-
-    .responsive-bootstrap-card{
-        margin-left:0%;
-        margin-right: 0%;
-    }
-
     .profil{
-        margin-left: 0%;
-        margin-right: 0%;
+        margin-left: 10%;
+        margin-right: 10%;
         margin-bottom: 20%;
     }
 
@@ -929,7 +919,11 @@ button[aria-expanded="false"] .afficher
         margin-top: 1%;
         text-align: center;
     }
-
+    
+    .bouttonC{
+        margin-left: 0%;
+        margin-top: 10%;
+    }
     .pBtn {
         width: 38%;
     }
@@ -939,7 +933,6 @@ button[aria-expanded="false"] .afficher
         border: 2px solid black;
         margin-left: 9%;
         margin-right: 9%;
-    
     }
 }
 
@@ -980,11 +973,6 @@ button[aria-expanded="false"] .afficher
         margin-left: 5%;
     }
 
-    .picture-user{
-        height: 100px;
-        width: 100px;
-    }
-
     .form-image-edit{
         width: 50%;
         margin-bottom: 3%;
@@ -992,6 +980,11 @@ button[aria-expanded="false"] .afficher
 
     .btn-edit{
         padding-right: 14%;
+    }
+    .picture-user{
+        height: 63px;
+        width: 63px;
+        margin-top: 50%;
     }
 }
 
@@ -1015,12 +1008,6 @@ button[aria-expanded="false"] .afficher
     .responsive-bootstrap-card {
         width: 100%;
     }
-
-    .picture-user{
-        height: 75px;
-        width: 75px;
-        margin-top: 20%;
-    }
 }
 
 @media screen and (max-width: 990px) {
@@ -1040,13 +1027,25 @@ button[aria-expanded="false"] .afficher
         padding-left: 8% ;
         padding-top: 8% ;
     }
+
+    .cardP{
+        background-color: white;
+        border: 2px solid black;
+    }
+    
 }
 
+@media screen and (min-width : 700px) and (max-width: 1300px){
+    .picture-user{
+        height: 130px;
+        width: 130px;
+}
+}
 @media screen and (max-width: 600px) {
     .hAcceuil{
         border-bottom-left-radius: 17% ;
         border-bottom-right-radius: 17% ;
-        height: 80ex 
+        height: 80ex;
     }
 
     .texte1{
@@ -1123,8 +1122,8 @@ button[aria-expanded="false"] .afficher
 
 @media screen and (max-width : 700px ){
     .pCard{
-         margin-left: 0; 
-         margin-top: 0; 
+        margin-left: 0; 
+        margin-top: 0; 
         width: 100%;
     }
 
@@ -1163,9 +1162,9 @@ button[aria-expanded="false"] .afficher
     }
 }
 
-@media screen and (max-width: 990px){
-    .cardP{
-        background-color: white;
-        border: 2px solid black;
+@media screen and (max-width: 900px){
+    .profil{
+        margin-left: 0%;
+        margin-right: 0%;
     }
 }
