@@ -40,6 +40,9 @@ body{
         background-color: white;
         border: 2px solid black;
     }
+    .navbar-expand-lg .btn-nav{
+        display: none;
+    }
 }
 @media screen and (max-width: 990px){
     .cardP{
@@ -67,7 +70,6 @@ html {
     box-shadow: 3px 3px 3px black;
 }
 .btn-profil{
-    margin-left: 5%;
     margin-bottom: 1%;
 }
 
@@ -83,8 +85,14 @@ html {
 .couleur{
     background-color: #192D34;
 }
+.btn-nav{
+    background-color:#31BCE7 ;
+    border: none;
+    border-radius:2px ;
+}
 .navbar-text{
-    margin-left: 60%;
+    margin-left: 70%;
+    margin-right: 20%;
 }
 .titre{
     margin-left: 5%;
@@ -105,7 +113,6 @@ html {
     border: none;
     width: 100%;
     height: 5ex;
-    margin-left: 126%;
 }
 .hAcceuil{
     background-color: #192D34;
@@ -690,6 +697,7 @@ button[aria-expanded="false"] .afficher
     width: 110px;
     height: 110px;
     margin-left: 2%;
+    margin-right: 5%    ;
     object-fit: cover; 
 }
 .image-edit{
@@ -834,14 +842,13 @@ button[aria-expanded="false"] .afficher
         margin-left: 0%;
         margin-right: 0%;
     }
-    .card-headerP{
-        height: 150px;
-    }
     .image-questions{
         width: 60px;
         height: 60px;
     }
-
+    .btn-profil {
+        margin-left: 13%;
+    }
     }
 
 
