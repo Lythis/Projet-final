@@ -43,20 +43,7 @@ body{
     background-color: #192D34;
 }
 
-<<<<<<< HEAD
 /* Navbar non connecté */
-=======
-.btn-nav{
-    background-color:#31BCE7 ;
-    border: none;
-    border-radius:2px ;
-}
-
-.navbar-text{
-    margin-left: 60%;
-}
-
->>>>>>> fb5e936fba677906304eec43207b16dd49e665e7
 .titre{
     margin-left: 5%;
 }
@@ -69,7 +56,6 @@ body{
     height: 5ex;
 }
 
-<<<<<<< HEAD
 /* Limite de caractère pour poser des Questions/Descriptions/Reponses */
 .mauvais {
     color:#cc0000;
@@ -86,15 +72,6 @@ body{
     background-color: inherit;
     border: 0;   
     padding-left: 15%;
-=======
-.bouttonC{
-    border-radius: 5%;
-    background-color: #31BCE7 ;
-    border: none;
-    width: 100%;
-    height: 5ex;
-    margin-left: 30%;
->>>>>>> fb5e936fba677906304eec43207b16dd49e665e7
 }
 
 /* style de la page d'Accueil non connecté premier grand bloc */
@@ -942,14 +919,8 @@ button[aria-expanded="false"] .afficher
     .cardP {
         background-color: white;
         border: 2px solid black;
-<<<<<<< HEAD
         margin-left: 10%;
         width: 80%;
-=======
-        margin-left: 0%;
-        margin-right: 0%;
-    
->>>>>>> fb5e936fba677906304eec43207b16dd49e665e7
     }
     .card4{
         margin-left: 0%; 
@@ -1020,13 +991,10 @@ button[aria-expanded="false"] .afficher
     .btn-edit{
         padding-right: 14%;
     }
-<<<<<<< HEAD
     .picture-user{
         height: 63px;
         width: 63px;
     }
-=======
->>>>>>> fb5e936fba677906304eec43207b16dd49e665e7
 }
 
 
