@@ -6,20 +6,20 @@
     
     foreach ($questions as $question) {
         
-        $idquestion = $question["Id_question"];
-        $idprofil = $question["#Id_profil"];
-        $idcategorie = $question["#Id_categorie"];
+        $idQuestion = $question["Id_question"];
+        $idProfil = $question["#Id_profil"];
+        $idCategorie = $question["#Id_categorie"];
         
-        $reponses = selectFromReponseWithIdQuestion($idquestion, "DESC");
+        $reponses = selectFromReponseWithidQuestion($idQuestion, "DESC");
         
-        $users = selectFromProfilWithIdQuestion($idquestion, $idprofil);
+        $users = selectFromProfilWithidQuestion($idQuestion, $idProfil);
         
-        $categorie = selectFromCategorieWithIdQuestion($idquestion, $idcategorie);
+        $categorie = selectFromCategorieWithidQuestion($idQuestion, $idCategorie);
         
-        $nombrereponses = getNombreReponses($reponses);
+        $nombreReponses = getnombreReponses($reponses);
         ?>
-        <div class="carde5 responsive-bootstrap-card m-card shadow-lg p-3 mb-5" id="questionpose<?php echo $idquestion ?>">
-            <h5  id="reponse<?php echo $idquestion; ?>"><a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><img class="picture-user-small " src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><b><?php echo $users["Pseudo_profil"]; ?></a></b> a posé la question :</h5>
+        <div class="carde5 responsive-bootstrap-card m-card shadow-lg p-3 mb-5" id="questionpose<?php echo $idQuestion ?>">
+            <h5  id="reponse<?php echo $idQuestion; ?>"><a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><img class="picture-user-small " src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><b><?php echo $users["Pseudo_profil"]; ?></a></b> a posé la question :</h5>
             <div class="card-body">
                 <h5 class="card-title">Catégorie : <?php echo $categorie["Libelle_categorie"]; ?></h5>
                 <span><?php echo $question["Titre_question"]; ?></span>
@@ -30,10 +30,10 @@
                 
                 
                 <form action="./QuestionsReponses.php" method="get">
-                    <button class="pBtn" name="question" value="<?php echo $idquestion ?>">Accéder à la question</button>
+                    <button class="pBtn" name="question" value="<?php echo $idQuestion ?>">Accéder à la question</button>
                 </form>
-                <button class="pBtn toggle-btn mt-3" type="button" data-toggle="collapse" data-target="#question<?php echo $idquestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idquestion; ?>">
-                    <span class="afficher">Afficher les réponses (<?php echo $nombrereponses; ?>)</span>
+                <button class="pBtn toggle-btn mt-3" type="button" data-toggle="collapse" data-target="#question<?php echo $idQuestion; ?>" aria-expanded="false" aria-controls="question<?php echo $idQuestion; ?>">
+                    <span class="afficher">Afficher les réponses (<?php echo $nombreReponses; ?>)</span>
                     
                     <span class="masquer">Masquer les réponses</span>
                 </button>
@@ -43,11 +43,11 @@
         <?php
         if (!empty($reponses)) {
             foreach ($reponses as $reponse) {
-                $idreponse = $reponse["Id_reponse"];
+                $idReponse = $reponse["Id_reponse"];
                 
-                $users = selectFromProfilWithIdReponse($idquestion, $idreponse);
+                $users = selectFromProfilWithidReponse($idQuestion, $idReponse);
                 ?>
-                <div class="card responsive-bootstrap-card collapse " id="question<?php echo $idquestion; ?>">
+                <div class="card responsive-bootstrap-card collapse " id="question<?php echo $idQuestion; ?>">
                     <div class="card-body">
                         <div class="text-dark">
                             
@@ -69,7 +69,7 @@
         else {
             ?>
             
-            <div class="card responsive-bootstrap-card collapse shadow-lg p-3 mb-5" id="question<?php echo $idquestion; ?>">
+            <div class="card responsive-bootstrap-card collapse shadow-lg p-3 mb-5" id="question<?php echo $idQuestion; ?>">
                 <p>Wow, such empty.</p>
             </div>
             

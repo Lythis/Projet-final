@@ -2,7 +2,7 @@
     <div id="change-image">
         <img class="image-edit  img-top picture-user" src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>">
         <div class="form-image-edit">
-            <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
+            <form method="post" action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit">
                 <div>
                     <label >URL de l'image : </label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="image" value="<?php echo $users["Image_profil"]; ?>">
@@ -11,14 +11,14 @@
             </form>
             
             
-            <form method="post" action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit">
+            <form method="post" action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit">
                 <button class="btn-edit text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
             </form>
         </div>
     </div>
     <div class="edit-profil">
         <div class="card-body">
-            <form action="./profil.php?profil=<?php echo $profilstatus[0]; ?>%2Cedit" method="post">
+            <form action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit" method="post">
                 <div>
                     <label >Pseudo : </label> <?php if($success['pseudo'] == "true") {?> <i class="fas fa-check"></i> Modification réussi <?php } elseif($success['pseudo'] == "failpseudo") { ?> <i class="fas fa-times"></i> Modification impossible <?php } ?>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pseudo" value="<?php echo $users["Pseudo_profil"]; ?>" required>

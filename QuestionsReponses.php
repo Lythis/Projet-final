@@ -1,48 +1,48 @@
 <?php
     require_once('fonctions/fonctions.php');
-    $startedsession = startSessionHere();
+    $startedSession = startSessionHere();
 
     if(estConnecte() == true) {
 
         if(!empty($_GET['question'])) {
-            $questionstatus = $_GET['question'];
-            $questionstatus = explode(',', $questionstatus);
+            $questionStatus = $_GET['question'];
+            $questionStatus = explode(',', $questionStatus);
         }
 
-        if(isset($questionstatus[0]) && !empty($questionstatus[0])) {
-            $question = selectFromQuestion($questionstatus[0], "");
+        if(isset($questionStatus[0]) && !empty($questionStatus[0])) {
+            $question = selectFromQuestion($questionStatus[0], "");
 
             if(isset($_POST['reponse']) && !empty($_POST['reponse'])) {
-                insertIntoReponse($_POST['reponse'], obtenirDate(), $_SESSION['utilisateur']['id'], $questionstatus[0]);
+                insertIntoReponse($_POST['reponse'], obtenirDate(), $_SESSION['utilisateur']['id'], $questionStatus[0]);
             }
         }
 
-        if(isset($question) && !empty($question) && !isset($questionstatus[1])) {
+        if(isset($question) && !empty($question) && !isset($questionStatus[1])) {
 
-            $idquestion = $question["Id_question"];
-            $idprofil = $question["#Id_profil"];
-            $idcategorie = $question["#Id_categorie"];
+            $idQuestion = $question["Id_question"];
+            $idProfil = $question["#Id_profil"];
+            $idCategorie = $question["#Id_categorie"];
 
-            $reponses = selectFromReponseWithIdQuestion($idquestion, "DESC");
+            $reponses = selectFromReponseWithidQuestion($idQuestion, "DESC");
 
-            $users = selectFromProfilWithIdQuestion($idquestion, $idprofil);
+            $users = selectFromProfilWithidQuestion($idQuestion, $idProfil);
 
-            $categorie = selectFromCategorieWithIdQuestion($idquestion, $idcategorie);
+            $categorie = selectFromCategorieWithidQuestion($idQuestion, $idCategorie);
 
             $title ='Question de '.$users["Pseudo_profil"];
             require_once('includes/header.php');
 
-            $nombrereponses = getNombreReponses($reponses);
+            $nombreReponses = getnombreReponses($reponses);
 
             navBar($_SESSION['utilisateur']);
 
             require_once('./includes/affichage_question_reponse.php');
         }
 
-        elseif(isset($questionstatus[1])) {
+        elseif(isset($questionStatus[1])) {
             $title = 'Suppression de la question';
             require_once('includes/header.php');
-            require_once('includes/nav-bar-login.php');
+            require_once('includes/nav_bar_login.php');
             require_once('./includes/suppression_question.php');
         }
 
@@ -65,7 +65,7 @@
     else {
         $title = 'Accès refusé';
         require_once('includes/header.php');
-        require_once('includes/nav-bar.php');
+        require_once('includes/nav_bar.php');
     ?>
         <div class="card">
             <div class="card-body" style="display: flex;">

@@ -1,6 +1,6 @@
 <body class="bgP">
     <?php
-    if(isset($todelete) && $success == true) {
+    if(isset($toDelete) && $success == true) {
         ?>
         
         <div class="card d-flex">
