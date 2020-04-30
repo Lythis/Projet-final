@@ -1,6 +1,6 @@
 <body class="bgP">
     <div class="profil">
-        <div class="card ">
+        <div >
             <div class="row_ligne card_profil ">
                 <div class="container_profil">
                     <div class="col-2 link-height">
