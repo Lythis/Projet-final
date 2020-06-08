@@ -98,11 +98,15 @@
         return $query->fetchAll();
     }
 
-    #Sélectionner toutes les questions de la base de données en donnant l'ordre de triage, retourne les questions en tableau
-    function selectAllQuestions($order) {
+    #Sélectionner toutes les questions de la base de données en donnant l'ordre de triage et les limites de sélection, retourne les questions en tableau
+    function selectAllQuestions($order, $limit, $offset) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM question ORDER BY `Date_creation_question` $order");
+        $requete = "SELECT * FROM question ORDER BY `Date_creation_question` $order, `Id_question` $order";
+        if ($limit != null) {
+            $requete = $requete." LIMIT $limit OFFSET $offset";
+        }
+        $query = $con->prepare($requete);
         $query->execute();
         return $query->fetchAll();
     }
@@ -120,7 +124,7 @@
     function selectFromQuestion($idQuestion, $order) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $idQuestion ORDER BY `Date_creation_question` $order");
+        $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $idQuestion ORDER BY `Date_creation_question`");
         $query->execute();
         return $query->fetch();
     }
