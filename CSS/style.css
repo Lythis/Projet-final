@@ -574,6 +574,10 @@ body{
     margin-left: -5px;
 }
 
+.center-pages {
+    margin-left: 47%;
+}
+
 /* Connexion/Inscription */
 .rowe2{
     display: -ms-flexbox;
