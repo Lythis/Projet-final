@@ -29,6 +29,12 @@
                                     <option value="9">K-Pop</option>
                                     <option value="10">Japon</option>
                                 </select>
+                                <?php if($_SESSION['utilisateur']['id'] == $toDelete || $_SESSION['utilisateur']['role'] == 1){?>
+                                <div style="margin-top: 2%;">
+                                <textarea id="categQuestion" type="text" class="form-control autoExpand w-100 h-50" placeholder="ajouter une categorie" name="categQuestion" maxlength="150" required></textarea>
+                                <p style="text-align:right" id="compteur2">0 mots | 0 Caractere / 150</p>
+                                </div>
+                                <?php } ?>
                                 <div class="invalid-feedback mb-2">
                                     Veuillez selectionner une categorie.
                                 </div>
