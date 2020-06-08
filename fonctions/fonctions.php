@@ -107,6 +107,15 @@
         return $query->fetchAll();
     }
 
+    #selectionner toutes les categories de la base de donnée en donnant l'ordre de triage, retourne les categorie en tableau
+    function selectAllCategories($order) {
+        $con = connexionBdd();
+        
+        $query = $con->prepare("SELECT * FROM categorie ORDER BY `Id_categorie` $order");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
     #Sélectionner une question en précisant son ID et l'ordre de triage, retourne la question en tableau
     function selectFromQuestion($idQuestion, $order) {
         $con = connexionBdd();
@@ -194,14 +203,12 @@
     }
 
     #Fonction pour insérer une réponse dans la base de données, ne retourne rien
-    function insertIntoReponse($reponse, $date, $utilisateur, $question) {
+    function insertIntoCategorie($libelle) {
         $con = connexionBdd();
             
-        $query = $con->prepare('INSERT INTO `reponse`(`Contenu_reponse`, `Date_reponse`, `#Id_profil`, `#Id_question`) VALUES (:reponse, :dateajd, :id_user, :id_question)');
-        $query->bindParam(':reponse', $reponse);
-        $query->bindParam(':dateajd', $date);
-        $query->bindParam(':id_user', $utilisateur);
-        $query->bindParam(':id_question', $question);
+        $query = $con->prepare('INSERT INTO `categorie`(`Libelle_categorie`) VALUES (:libelle)');
+        $query->bindParam(':libelle', $libelle);
+        
         $query->execute();
     }
 
