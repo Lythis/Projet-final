@@ -1,7 +1,7 @@
 <body class="bgP">
 
     <?php
-    if(estConnecte($_SESSION) && empty($_POST)) {
+    if(estConnecte() && empty($_POST)) {
 
         ?>
         <div class="pCard">
