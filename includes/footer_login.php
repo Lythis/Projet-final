@@ -73,9 +73,21 @@
                 var msg = ' ' + nombreMots + ' mot(s) | ' + nombreCaractere + ' Caractere(s) / 250';
                 $('#compteur').text(msg);
                 
-                if(nombreCaractere == 250 ){{  $('#compteur').addClass("mauvais"); $('#compteur').removeClass("presque");} }else{ if (nombreCaractere > 199 && nombreCaractere < 250) { $('#compteur').addClass("presque"); } else { $('#compteur').removeClass("presque"); $('#compteur').removeClass("mauvais"); }
+                if(nombreCaractere == 250 ){{  $('#compteur').addClass("mauvais"); $('#compteur').removeClass("presque");} }else{ if (nombreCaractere > 199 && nombreCaractere < 250) { $('#compteur').addClass("presque"); } else { $('#compteur').removeClass("presque"); $('#compteur').removeClass("mauvais"); }  
+            }}) 
+            $('#categQuestion').keyup(function() {
                 
+                var nombreCaractere = $(this).val().length;
                 
+                var nombreMots = jQuery.trim($(this).val()).split(' ').length;
+                if($(this).val() === '') {
+                    nombreMots = 0;
+                }   
+                
+                var msg = ' ' + nombreMots + ' mot(s) | ' + nombreCaractere + ' Caractere(s) / 150';
+                $('#compteur2').text(msg);
+                
+                if(nombreCaractere == 150 ){{  $('#compteur2').addClass("mauvais"); $('#compteur2').removeClass("presque");} }else{ if (nombreCaractere > 99 && nombreCaractere < 150) { $('#compteur2').addClass("presque"); } else { $('#compteur2').removeClass("presque"); $('#compteur2').removeClass("mauvais"); }  
             }})  
             
             
