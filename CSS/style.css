@@ -574,6 +574,10 @@ body{
     margin-left: -5px;
 }
 
+.center-pages {
+    margin-left: 47%;
+}
+
 /* Connexion/Inscription */
 .rowe2{
     display: -ms-flexbox;
@@ -1216,7 +1220,7 @@ button[aria-expanded="false"] .afficher
     .cardR{
         margin-left: 29%;
         margin-right: 29%;
-        margin-top: -3%;
+        margin-top: -2%;
         background-color: white;
 
     }
