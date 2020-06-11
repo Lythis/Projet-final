@@ -94,11 +94,11 @@
         }
         ?>
         <!-- Compteur de page -->
-        <div class="center-pages">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                    <a class="page-link" href="../index.php?page=1" aria-label="Previous">
+        <div class="center-pages ">
+            <nav aria-label="Page navigation example ">
+                <ul class="pagination justify-content-center"">
+                    <li id="retirer" class="page-item border border-secondary">
+                    <a class="page-link text-dark" href="../index.php?page=1" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -107,21 +107,21 @@
                         if ($_GET['page'] != 1)
                         {
                             ?>
-                            <li class="page-item"><a class="page-link" href="../index.php?page=<?php echo $_GET['page'] - 1; ?>"><?php echo $_GET['page'] - 1; ?></a></li>
+                            <li class="page-item border border-secondary"><a class="page-link text-dark" href="../index.php?page=<?php echo $_GET['page'] - 1; ?>"><?php echo $_GET['page'] - 1; ?></a></li>
                             <?php
                         }
                     ?>
-                    <li class="page-item"><a class="page-link" href="../index.php?page=<?php echo $_GET['page']; ?>"><b><?php echo $_GET['page']; ?></b></a></li>
+                    <li class="page-item border border-secondary"><a class="page-link text-dark" href="../index.php?page=<?php echo $_GET['page']; ?>"><b><?php echo $_GET['page']; ?></b></a></li>
                     <?php
                         if ($_GET['page'] != $pageCounter)
                         {
                             ?>
-                            <li class="page-item"><a class="page-link" href="../index.php?page=<?php echo $_GET['page'] + 1; ?>"><?php echo $_GET['page'] + 1; ?></a></li>
+                            <li class="page-item border border-secondary"><a class="page-link text-dark" href="../index.php?page=<?php echo $_GET['page'] + 1; ?>"><?php echo $_GET['page'] + 1; ?></a></li>
                             <?php
                         }
                     ?>
-                    <li class="page-item">
-                    <a class="page-link" href="../index.php?page=<?php echo $pageCounter; ?>" aria-label="Next">
+                    <li class="page-item border border-secondary">
+                    <a class="page-link text-dark" href="../index.php?page=<?php echo $pageCounter; ?>" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
