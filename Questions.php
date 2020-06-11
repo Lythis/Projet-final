@@ -19,14 +19,14 @@
     <?php
         }
         // Si nos POST no sont pas vide (qu'une categorie a donc été posée)
-        elseif (!empty($_POST['ajoutCategorie'] == 'valide') && !empty($_POST['newCategorie'])) {
+        elseif (($_POST['ajoutCategorie'] == 'valide') && !empty($_POST['newCategorie'])) {
 
             // On crée la categorie et affiche un message
             insertIntoCategorie($_POST['newCategorie']);
         ?>
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text" style="margin-left: 28%;"><img src="image/check.gif" style="width: 48%; margin-right: 6%;" class="" alt="pouve en l\'air"><p style="margin-left: 22%;">Votre categorie à bien etait enrengistré. <a href="./index.php">Voir les questions</a>.</p></p>
+                    <p class="card-text" style="margin-left: 28%;"><img src="image/check.gif" style="width: 48%; margin-right: 6%;" class="" alt="pouve en l\'air"><p style="margin-left: 22%;">Votre catégorie à bien était enregistré. <a href="./index.php">Voir les questions</a>.</p></p>
                 </div>
             </div>
         <?php
