@@ -29,7 +29,8 @@
                                 </select>
                                 <?php if($_SESSION['utilisateur']['role'] == 1){?>
                                 <div style="margin-top: 2%;">
-                                <textarea id="categQuestion" type="text" class="form-control autoExpand w-100 h-50" placeholder="ajouter une categorie" name="newCategorie" maxlength="150" required></textarea>
+                                <label for="validationTooltip01">Ajouter une catégorie :</label>
+                                <textarea id="categQuestion" type="text" class="form-control autoExpand w-100 h-50" placeholder="Cette catégorie sera utilisable une fois ajoutée. Une catégorie ne peut être ajoutée que par un administrateur." name="newCategorie" maxlength="150" required></textarea>
                                 <p style="text-align:right" id="compteur2">0 mots | 0 Caractere / 150</p>
                                 </div>
                                 <?php } ?>

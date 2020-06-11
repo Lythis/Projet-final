@@ -10,12 +10,8 @@
         $_GET["page"] = 1;
     }
     $ind = 1;
-    $limit = 5;
-    while ($ind < $_GET['page']) {
-        // Nombre de questions par page (ici 5)
-        $limit = $limit + 5;
-        $ind = $ind + 1;
-    }
+    // Nombre de questions par page (ici 5)
+    $limit = $_GET['page'] * 5;
     $pageCounter = selectAllQuestions("DESC", null, 0);
     $pageCounter = ceil(count($pageCounter) / 5);
     $questions = selectAllQuestions("DESC", $limit, ($limit - 5));
@@ -98,39 +94,41 @@
         }
         ?>
         <!-- Compteur de page -->
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item">
-                <a class="page-link" href="http://projet-final/index.php?page=1" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                </li>
-                <?php
-                    if ($_GET['page'] != 1)
-                    {
-                        ?>
-                        <li class="page-item"><a class="page-link" href="http://projet-final/index.php?page=<?php echo $_GET['page'] - 1; ?>"><?php echo $_GET['page'] - 1; ?></a></li>
-                        <?php
-                    }
-                ?>
-                <li class="page-item"><a class="page-link" href="http://projet-final/index.php?page=<?php echo $_GET['page']; ?>"><b><?php echo $_GET['page']; ?></b></a></li>
-                <?php
-                    if ($_GET['page'] != $pageCounter)
-                    {
-                        ?>
-                        <li class="page-item"><a class="page-link" href="http://projet-final/index.php?page=<?php echo $_GET['page'] + 1; ?>"><?php echo $_GET['page'] + 1; ?></a></li>
-                        <?php
-                    }
-                ?>
-                <li class="page-item">
-                <a class="page-link" href="http://projet-final/index.php?page=<?php echo $pageCounter; ?>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-                </li>
-            </ul>
-        </nav>
+        <div class="center-pages">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                    <a class="page-link" href="../index.php?page=1" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    </li>
+                    <?php
+                        if ($_GET['page'] != 1)
+                        {
+                            ?>
+                            <li class="page-item"><a class="page-link" href="../index.php?page=<?php echo $_GET['page'] - 1; ?>"><?php echo $_GET['page'] - 1; ?></a></li>
+                            <?php
+                        }
+                    ?>
+                    <li class="page-item"><a class="page-link" href="../index.php?page=<?php echo $_GET['page']; ?>"><b><?php echo $_GET['page']; ?></b></a></li>
+                    <?php
+                        if ($_GET['page'] != $pageCounter)
+                        {
+                            ?>
+                            <li class="page-item"><a class="page-link" href="../index.php?page=<?php echo $_GET['page'] + 1; ?>"><?php echo $_GET['page'] + 1; ?></a></li>
+                            <?php
+                        }
+                    ?>
+                    <li class="page-item">
+                    <a class="page-link" href="../index.php?page=<?php echo $pageCounter; ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
         <?php
     }
     else {
