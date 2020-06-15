@@ -100,6 +100,13 @@
             });
         });
     </script>
+    <script>
+        function url() {
+            addresse = window.location.href;
+        if( adresse == "./index")
+            alert("page acceuil ok"+ window.location.href);
+        }
+    </script>
 </footer>
 </body>
 </html>
