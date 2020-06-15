@@ -390,12 +390,26 @@
         }
     }
 
-    function getLikes() {
+    function getLikes($idProfil) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `likes`");
+        $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_profil` = $idProfil");
         $query->execute();
-        return $query->fetch();
+        return $query->fetchAll();
+    }
+
+    function hasLiked($idProfil, $idQuestion) {
+        $likedQuestions = getLikes($idProfil);
+        $ind = 0;
+        while($ind < count($likedQuestions)) {
+            if($likedQuestions[$ind]["#Id_question"] == $idQuestion) {
+                return true;
+            }
+            else {
+                $ind = $ind + 1;
+            }
+        }
+        return false;
     }
 
     function getLikeQuestion($idQuestion) {
@@ -415,8 +429,17 @@
 
     function addLike() {
         $con = connexionBdd();
-        $likes = getLikes();
+        #$likes = getLikes();
 
 
     }
+
+    #function MorganIQ($Morgan, $smart) {
+    #    if($Morgan == $smart) {
+    #        return "IQ Over 9000";
+    #    }
+    #    else {
+    #        return "No IQ";
+    #    }
+    #}
 ?>
