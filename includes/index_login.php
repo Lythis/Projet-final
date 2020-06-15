@@ -16,9 +16,6 @@
     $pageCounter = ceil(count($pageCounter) / 30);
     $questions = selectAllQuestions("DESC", $limit, ($limit - 30));
 
-    // <i class="far fa-heart"></i>
-    // <i class="fas fa-heart"></i>
-
     if (!empty($questions)) {
     
         foreach ($questions as $question) {
@@ -34,6 +31,10 @@
             $categorie = selectFromCategorieWithidQuestion($idQuestion, $idCategorie);
             
             $nombreReponses = getnombreReponses($reponses);
+
+            $nombreLikes = getLikeQuestion($idQuestion);
+
+            $hasLiked = hasLiked($_SESSION["utilisateur"]["id"], $idQuestion);
             ?>
 
             <div class="carde5 responsive-bootstrap-card m-card shadow-lg p-3 mb-5" id="questionpose<?php echo $idQuestion ?>">
@@ -41,9 +42,21 @@
                 <div class="card-body">
                     <h5 class="card-title">Catégorie : <?php echo $categorie["Libelle_categorie"]; ?></h5>
                     <span><?php echo $question["Titre_question"]; ?></span>
+                    <?php
+                        if($hasLiked == true) {
+                            ?>
+                            <i class="fas fa-heart"></i>
+                            <?php
+                        }
+                        else {
+                            ?>
+                            <i class="far fa-heart"></i>
+                            <?php
+                        }
+                    ?>
                     
                     <blockquote class="blockquote mb-2">
-                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".getLikeQuestion($idQuestion); ?></footer>
+                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".$nombreLikes; ?></footer>
                     </blockquote>
                     
                     
