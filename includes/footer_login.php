@@ -101,11 +101,12 @@
         });
     </script>
     <script>
-        function url() {
-            addresse = window.location.href;
-        if( adresse == "./index")
-            alert("page acceuil ok"+ window.location.href);
-        }
+         jQuery(document).ready(function($){
+            page1=window.location.href;
+            if( window.location.href == "index.php")
+                alert("page acceuil ok"+ window.location.href);
+            
+         });
     </script>
 </footer>
 </body>
