@@ -389,4 +389,34 @@
             $_SESSION['utilisateur']['image'] = $users['Image_profil'];
         }
     }
+
+    function getLikes() {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT * FROM `likes`");
+        $query->execute();
+        return $query->fetch();
+    }
+
+    function getLikeQuestion($idQuestion) {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT * FROM `likes` WHERE 'Id_question' = $idQuestion");
+        $query->execute();
+        $query->fetch();
+        $numLike = 0;
+
+        foreach($query as $like) {
+            $numLike++;
+        }
+
+        return $numLike;
+    }
+
+    function addLike() {
+        $con = connexionBdd();
+        $likes = getLikes();
+
+
+    }
 ?>

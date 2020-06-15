@@ -10,11 +10,14 @@
         $_GET["page"] = 1;
     }
     $ind = 1;
-    // Nombre de questions par page (ici 5)
-    $limit = $_GET['page'] * 5;
+    // Nombre de questions par page (ici 30)
+    $limit = $_GET['page'] * 30;
     $pageCounter = selectAllQuestions("DESC", null, 0);
-    $pageCounter = ceil(count($pageCounter) / 5);
-    $questions = selectAllQuestions("DESC", $limit, ($limit - 5));
+    $pageCounter = ceil(count($pageCounter) / 30);
+    $questions = selectAllQuestions("DESC", $limit, ($limit - 30));
+
+    // <i class="far fa-heart"></i>
+    // <i class="fas fa-heart"></i>
 
     if (!empty($questions)) {
     
@@ -40,7 +43,7 @@
                     <span><?php echo $question["Titre_question"]; ?></span>
                     
                     <blockquote class="blockquote mb-2">
-                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]; ?></footer>
+                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".getLikeQuestion($idQuestion); ?></footer>
                     </blockquote>
                     
                     
