@@ -100,14 +100,6 @@
             });
         });
     </script>
-    <script>
-         jQuery(document).ready(function($){
-            page1=window.location.href;
-            if( window.location.href == "index.php")
-                alert("page acceuil ok"+ window.location.href);
-            
-         });
-    </script>
 </footer>
 </body>
 </html>

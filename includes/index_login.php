@@ -99,8 +99,20 @@
         <!-- Compteur de page -->
         <div class="center-pages ">
             <nav aria-label="Page navigation example ">
-                <ul class="pagination justify-content-center"">
-                    <li id="retirer" class="page-item border border-secondary">
+                <ul class="pagination justify-content-center">
+                <li id="retirer" class="page-item border border-secondary">
+                        <?php
+                        if ($_GET['page'] ==1){
+                            ?>
+                            <li id="retirer" class="page-item disabled border border-secondary">
+                            
+                        <?php
+                        }else{
+                          ?>
+                          <li id="retirer" class="page-item border border-secondary">
+                          <?php  
+                        }
+                        ?>  
                     <a class="page-link text-dark" href="../index.php?page=1" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
