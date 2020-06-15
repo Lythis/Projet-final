@@ -34,6 +34,8 @@
             $categorie = selectFromCategorieWithidQuestion($idQuestion, $idCategorie);
             
             $nombreReponses = getnombreReponses($reponses);
+
+            $nombreLikes = getLikeQuestion($idQuestion);
             ?>
 
             <div class="carde5 responsive-bootstrap-card m-card shadow-lg p-3 mb-5" id="questionpose<?php echo $idQuestion ?>">
@@ -43,7 +45,7 @@
                     <span><?php echo $question["Titre_question"]; ?></span>
                     
                     <blockquote class="blockquote mb-2">
-                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".getLikeQuestion($idQuestion); ?></footer>
+                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".$nombreLikes; ?></footer>
                     </blockquote>
                     
                     

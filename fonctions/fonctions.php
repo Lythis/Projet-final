@@ -401,13 +401,13 @@
     function getLikeQuestion($idQuestion) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `likes` WHERE 'Id_question' = $idQuestion");
+        $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_question` = $idQuestion");
         $query->execute();
-        $query->fetch();
+        $likeArray = $query->fetchAll();
         $numLike = 0;
 
-        foreach($query as $like) {
-            $numLike++;
+        for($ind = 0; $ind < count($likeArray); $ind++) {
+            $numLike = $numLike + 1;
         }
 
         return $numLike;
