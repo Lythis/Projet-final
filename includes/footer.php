@@ -59,6 +59,7 @@
             this.rows = minRows + rows;
         });
     </script>
+    <script src="../script./like.js"></script>
 </footer>
 </body>
 </html>

@@ -16,6 +16,9 @@
     $pageCounter = ceil(count($pageCounter) / 30);
     $questions = selectAllQuestions("DESC", $limit, ($limit - 30));
 
+    // <i class="far fa-heart"></i>
+    // <i class="fas fa-heart"></i>
+
     if (!empty($questions)) {
     
         foreach ($questions as $question) {
@@ -40,7 +43,7 @@
                     <span><?php echo $question["Titre_question"]; ?></span>
                     
                     <blockquote class="blockquote mb-2">
-                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]; ?></footer>
+                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".getLikeQuestion($idQuestion); ?></footer>
                     </blockquote>
                     
                     
