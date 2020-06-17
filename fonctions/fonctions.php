@@ -427,13 +427,6 @@
         return $numLike;
     }
 
-    function addLike() {
-        $con = connexionBdd();
-        #$likes = getLikes();
-
-
-    }
-
     #function MorganIQ($Morgan, $smart) {
     #    if($Morgan == $smart) {
     #        return "IQ Over 9000";

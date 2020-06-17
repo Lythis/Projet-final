@@ -45,12 +45,16 @@
                     <?php
                         if($hasLiked == true) {
                             ?>
-                            <i class="fas fa-heart"></i>
+                            <div class="liked">
+                                <i class="fas fa-heart"></i>
+                            </div>
                             <?php
                         }
                         else {
                             ?>
-                            <i class="far fa-heart"></i>
+                            <div class="notliked">
+                                <i class="far fa-heart"></i>
+                            </div>
                             <?php
                         }
                     ?>
