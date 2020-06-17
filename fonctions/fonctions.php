@@ -415,6 +415,7 @@
     function getLikeQuestion($idQuestion) {
         $con = connexionBdd();
 
+        #count(*) GROUP BY
         $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_question` = $idQuestion");
         $query->execute();
         $likeArray = $query->fetchAll();
