@@ -1,14 +1,20 @@
 <body class="bgP">
+    <?php
+         require_once ("./fonctions/fonctions.php");
+         if ( isset($_FILES['fic']) )
+         {
+             transfert();
+         }
+      ?>
     <div id="change-image">
         <img class="image-edit  img-top picture-user" src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>">
         <div class="form-image-edit">
-            <form method="post" action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit">
-                <div>
-                    <label >URL de l'image : </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="image" value="<?php echo $users["Image_profil"]; ?>">
-                    <button class="btn-edit text-white">Envoyer l'image</button>
-                </div>
-            </form>
+        <h3>Envoi d'une image</h3>
+      <form enctype="multipart/form-data" action="#" method="post">
+         <input type="hidden" name="MAX_FILE_SIZE" value="250000" />
+         <input type="file" name="fic" size=50 />
+         <input type="submit" value="Envoyer" />
+      </form>
                       
             <form method="post" action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit">
                 <button class=" text-white delete-btn" name="image" value="./image_profil/Default.png">Supprimer l'image</button>
