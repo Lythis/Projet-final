@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
--- Client :  127.0.0.1
--- Généré le :  Jeu 11 Juin 2020 à 16:37
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  lun. 15 juin 2020 à 13:06
+-- Version du serveur :  5.7.26
+-- Version de PHP :  7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -51,6 +51,28 @@ INSERT INTO `categorie` (`Id_categorie`, `Libelle_categorie`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `likes`
+--
+
+DROP TABLE IF EXISTS `likes`;
+CREATE TABLE IF NOT EXISTS `likes` (
+  `#Id_profil` int(11) NOT NULL,
+  `#Id_question` int(11) NOT NULL,
+  KEY `#Id_profil` (`#Id_profil`),
+  KEY `#Id_question` (`#Id_question`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Déchargement des données de la table `likes`
+--
+
+INSERT INTO `likes` (`#Id_profil`, `#Id_question`) VALUES
+(1, 167),
+(65, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `profil`
 --
 
@@ -65,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `profil` (
   `#Id_role` int(11) NOT NULL,
   PRIMARY KEY (`Id_profil`),
   KEY `#Id_role` (`#Id_role`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=69 ;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Contenu de la table `profil`
@@ -97,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=175 ;
+) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Contenu de la table `question`
@@ -112,6 +134,9 @@ INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question
 (6, 'Ceci est un test', '2020-04-05', 2, 1),
 (45, 'Pourquoi je suis aussi beau?', '2020-04-06', 55, 3),
 (46, 'Pourquoi Nico Nico Nii me harcèle même dans mes rêves?', '2020-04-15', 57, 1),
+(47, 'Bonjour à tous :)', '2020-06-08', 64, 4),
+(48, 'test', '2020-06-08', 64, 3),
+(49, 'Salut!', '2020-06-08', 64, 2),
 (61, 'Esse qui pariatur est et temporibus enim quaerat. Sint quos quia at possimus vel?', '2020-06-11', 2, 2),
 (62, 'Earum ex voluptas eum provident placeat. Ut laborum asperiores doloribus. Maxime fugiat velit molestias eaque numquam sit ad est?', '2020-06-11', 2, 2),
 (63, 'Iste odit adipisci rerum qui maxime sunt consectetur earum. Sint et velit velit incidunt?', '2020-06-11', 2, 6),
@@ -242,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   PRIMARY KEY (`Id_reponse`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_question` (`#Id_question`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=94 ;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Contenu de la table `reponse`
@@ -283,6 +308,13 @@ INSERT INTO `role` (`Id_role`, `Libelle_role`) VALUES
 --
 -- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `likes`
+--
+ALTER TABLE `likes`
+  ADD CONSTRAINT `#Id_profil` FOREIGN KEY (`#Id_profil`) REFERENCES `profil` (`Id_profil`),
+  ADD CONSTRAINT `#Id_question` FOREIGN KEY (`#Id_question`) REFERENCES `question` (`Id_question`);
 
 --
 -- Contraintes pour la table `profil`

@@ -421,9 +421,56 @@
                                 "'" . $img_taille . "', " .
                                 "'" . $img_type . "', " .
                                 "'" . addslashes ($img_blob) . "') ";
-                $ret = mysql_query ($req) or die (mysql_error ());
+                #$ret = mysql_query ($req) or die (mysql_error ());
                 return true;
             }
+        }
     }
-}
+
+    function getLikes($idProfil) {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_profil` = $idProfil");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    function hasLiked($idProfil, $idQuestion) {
+        $likedQuestions = getLikes($idProfil);
+        $ind = 0;
+        while($ind < count($likedQuestions)) {
+            if($likedQuestions[$ind]["#Id_question"] == $idQuestion) {
+                return true;
+            }
+            else {
+                $ind = $ind + 1;
+            }
+        }
+        return false;
+    }
+
+    function getLikeQuestion($idQuestion) {
+        $con = connexionBdd();
+
+        #count(*) GROUP BY
+        $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_question` = $idQuestion");
+        $query->execute();
+        $likeArray = $query->fetchAll();
+        $numLike = 0;
+
+        for($ind = 0; $ind < count($likeArray); $ind++) {
+            $numLike = $numLike + 1;
+        }
+
+        return $numLike;
+    }
+
+    #function MorganIQ($Morgan, $smart) {
+    #    if($Morgan == $smart) {
+    #        return "IQ Over 9000";
+    #    }
+    #    else {
+    #        return "No IQ";
+    #    }
+    #}
 ?>

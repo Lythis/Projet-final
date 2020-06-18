@@ -10,11 +10,11 @@
         $_GET["page"] = 1;
     }
     $ind = 1;
-    // Nombre de questions par page (ici 5)
-    $limit = $_GET['page'] * 5;
+    // Nombre de questions par page (ici 30)
+    $limit = $_GET['page'] * 30;
     $pageCounter = selectAllQuestions("DESC", null, 0);
-    $pageCounter = ceil(count($pageCounter) / 5);
-    $questions = selectAllQuestions("DESC", $limit, ($limit - 5));
+    $pageCounter = ceil(count($pageCounter) / 30);
+    $questions = selectAllQuestions("DESC", $limit, ($limit - 30));
 
     if (!empty($questions)) {
     
@@ -31,6 +31,10 @@
             $categorie = selectFromCategorieWithidQuestion($idQuestion, $idCategorie);
             
             $nombreReponses = getnombreReponses($reponses);
+
+            $nombreLikes = getLikeQuestion($idQuestion);
+
+            $hasLiked = hasLiked($_SESSION["utilisateur"]["id"], $idQuestion);
             ?>
 
             <div class="carde5 responsive-bootstrap-card m-card shadow-lg p-3 mb-5" id="questionpose<?php echo $idQuestion ?>">
@@ -38,9 +42,25 @@
                 <div class="card-body">
                     <h5 class="card-title">Catégorie : <?php echo $categorie["Libelle_categorie"]; ?></h5>
                     <span><?php echo $question["Titre_question"]; ?></span>
+                    <?php
+                        if($hasLiked == true) {
+                            ?>
+                            <div class="liked">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <?php
+                        }
+                        else {
+                            ?>
+                            <div class="notliked">
+                                <i class="far fa-heart"></i>
+                            </div>
+                            <?php
+                        }
+                    ?>
                     
                     <blockquote class="blockquote mb-2">
-                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]; ?></footer>
+                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".$nombreLikes; ?></footer>
                     </blockquote>
                     
                     

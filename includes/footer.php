@@ -59,6 +59,18 @@
             this.rows = minRows + rows;
         });
     </script>
+    <script>
+    $(document).ready(function(){
+        $('div.notliked').click(function() {
+            alert('Success.');
+            $.ajax({
+                url: "fonctions/addLike.php",
+                method: "post",
+                body: $idQuestion,
+            });
+        });
+    });
+    </script>
 </footer>
 </body>
 </html>
