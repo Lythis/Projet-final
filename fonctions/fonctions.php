@@ -374,23 +374,90 @@
         return false;
     }
 
-    #Fonction pour modifier l'image de profil d'un utilisateur, ne retourne rien
+    #Fonction pour modifier l'image de profil d'un utilisateur, retourne une erreur s'il y en a une, sinon vrai
     function editImage($idProfil) {
         $con = connexionBdd();
         $users = selectFromProfil($idProfil);
 
-        $nouvelleImage = $_POST['image'];
-        $query = $con->prepare("UPDATE `profil` SET `Image_profil` = :newimage WHERE `Id_profil` = $idProfil");
-        $query->bindParam(':newimage', $nouvelleImage);
-        $query->execute();
+        $nomImage = $_FILES['image']['name'];
+        $tmpNameImage = $_FILES['image']['tmp_name'];
+        $sizeImage = $_FILES['image']['size'];
+        $errorImage = $_FILES['image']['error'];
+        $typeImage = $_FILES['image']['type'];
 
-        if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
-            $users = selectFromProfil($idProfil);
-            $_SESSION['utilisateur']['image'] = $users['Image_profil'];
+        $nomImageExt = explode('.', $nomImage);
+        $nomImageExt = end($nomImageExt);
+        $nomImageExt = strtolower($nomImageExt);
+        $allowed = array('jpg', 'jpeg', 'png', 'gif');
+
+        if(in_array($nomImageExt, $allowed)) {
+            if($errorImage === 0) {
+                if($sizeImage < 10000000) {
+                    $query = $con->prepare("SELECT `Image_profil` FROM `profil` WHERE `Id_profil` = $idProfil");
+                    $query->execute();
+                    $deleteImage = $query->fetch();
+                    $defaultPicture = "./image_profil/Default.png";
+                    if($deleteImage['Image_profil'] != $defaultPicture) {
+                        unlink($deleteImage['Image_profil']);
+                    }
+
+                    $nomUpload = $users["Id_profil"].".".$nomImageExt;
+                    $fileUpload = "./image_profil/".$nomUpload;
+                    move_uploaded_file($tmpNameImage, $fileUpload);
+
+                    $query = $con->prepare("UPDATE `profil` SET `Image_profil` = :newimage WHERE `Id_profil` = $idProfil");
+                    $query->bindParam(':newimage', $fileUpload);
+                    $query->execute();
+
+                    if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
+                        $users = selectFromProfil($idProfil);
+                        $_SESSION['utilisateur']['image'] = $users['Image_profil'];
+                    }
+
+                    return true;
+                }
+                else {
+                    return "La taille de votre image ne doit pas dépasser 10Mo!";
+                }
+            }
+            else {
+                return "Erreur lors de l'upload de l'image. Veuillez réessayer.";
+            }
+        }
+        else {
+            return "Type de fichier non pris en charge. Veuillez choisir un fichier d'extension .jpg, .jpeg, .png ou .gif.";
         }
     }
 
-    function getLikes($idProfil) {
+    #Fonction pour supprimer une image (et mettre celle de défaut), retourne vrai si la suppression a bien eu lieu, rien sinon
+    function suppImage($idProfil) {
+        $con = connexionBdd();
+        $users = selectFromProfil($idProfil);
+        $defaultPicture = "./image_profil/Default.png";
+        $deleteSuccess = false;
+
+        $query = $con->prepare("SELECT `Image_profil` FROM `profil` WHERE `Id_profil` = $idProfil");
+        $query->execute();
+        $checkDefault = $query->fetch();
+
+        if($checkDefault['Image_profil'] != $defaultPicture) {
+            $deleteSuccess = unlink($checkDefault['Image_profil']);
+
+            $query = $con->prepare("UPDATE `profil` SET `Image_profil` = :newimage WHERE `Id_profil` = $idProfil");
+            $query->bindParam(':newimage', $defaultPicture);
+            $query->execute();
+
+            if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
+                $users = selectFromProfil($idProfil);
+                $_SESSION['utilisateur']['image'] = $users['Image_profil'];
+            }
+        }
+
+        return $deleteSuccess;
+    }
+
+    #Fonction pour savoir quelles questions ont été like par un utilisateur, retourne le tableau des questions
+    function getLikeProfil($idProfil) {
         $con = connexionBdd();
 
         $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_profil` = $idProfil");
@@ -398,42 +465,28 @@
         return $query->fetchAll();
     }
 
+    #Fonction pour savoir si un utilisateur a like une question, retourne vrai ou faux
     function hasLiked($idProfil, $idQuestion) {
-        $likedQuestions = getLikes($idProfil);
-        $ind = 0;
-        while($ind < count($likedQuestions)) {
-            if($likedQuestions[$ind]["#Id_question"] == $idQuestion) {
-                return true;
-            }
-            else {
-                $ind = $ind + 1;
-            }
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_question` = $idQuestion AND `#Id_profil` = $idProfil");
+        $query->execute();
+        $result = $query->fetch();
+        if(empty($result)) {
+            return false;
         }
-        return false;
+        else {
+            return true;
+        }
     }
 
+    #Fonction pour savoir combien de likes une question a, retourne le nombre de like de la question
     function getLikeQuestion($idQuestion) {
         $con = connexionBdd();
 
         #count(*) GROUP BY
-        $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_question` = $idQuestion");
+        $query = $con->prepare("SELECT count(`#Id_question`) as likecounter FROM `likes` WHERE `#Id_question` = $idQuestion");
         $query->execute();
-        $likeArray = $query->fetchAll();
-        $numLike = 0;
-
-        for($ind = 0; $ind < count($likeArray); $ind++) {
-            $numLike = $numLike + 1;
-        }
-
-        return $numLike;
+        return $query->fetch();
     }
-
-    #function MorganIQ($Morgan, $smart) {
-    #    if($Morgan == $smart) {
-    #        return "IQ Over 9000";
-    #    }
-    #    else {
-    #        return "No IQ";
-    #    }
-    #}
 ?>
