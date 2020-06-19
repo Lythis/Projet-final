@@ -42,22 +42,25 @@
                 <div class="card-body">
                     <h5 class="card-title">Catégorie : <?php echo $categorie["Libelle_categorie"]; ?></h5>
                     <span><?php echo $question["Titre_question"]; ?></span>
+                    <div class="heart">
                     <?php
                         if($hasLiked == true) {
                             ?>
-                            <div class="liked">
-                                <i class="fas fa-heart"></i>
-                            </div>
+                            <a class="liked">
+                                <i class="fas fa-heart heart1"></i>
+                        </a>
                             <?php
                         }
                         else {
                             ?>
-                            <div class="notliked">
-                                <i class="far fa-heart"></i>
-                            </div>
+                            <a class="notliked">
+                                <i class="far fa-heart heart2"></i>
+                            </a>
                             <?php
                         }
                     ?>
+                    </div>
+                    
                     
                     <blockquote class="blockquote mb-2">
                         <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".$nombreLikes; ?></footer>
