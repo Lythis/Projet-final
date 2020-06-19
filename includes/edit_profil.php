@@ -87,4 +87,6 @@
             </form>
         </div>
     </div>
-    <?php footer()?>
+<?php 
+footer()
+?>
