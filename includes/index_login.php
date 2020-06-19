@@ -63,7 +63,7 @@
                     
                     
                     <blockquote class="blockquote mb-2">
-                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".$nombreLikes; ?></footer>
+                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".$nombreLikes["likecounter"]; ?></footer>
                     </blockquote>
                     
                     

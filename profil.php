@@ -59,8 +59,12 @@
                         'genre' => "false",
                     ];
                     // Si on a une requête pour modifier l'image
-                    if(isset($_POST['image']) && !empty($_POST['image'])) {
-                        editImage($profilStatus[0]);
+                    if(isset($_FILES['image']) && !empty($_FILES['image'])) {
+                        $editImageSuccess = editImage($profilStatus[0]);
+                        $users = selectFromProfil($profilStatus[0]);
+                    }
+                    elseif(isset($_POST['suppImage'])) {
+                        $suppImageSuccess = suppImage($profilStatus[0]);
                         $users = selectFromProfil($profilStatus[0]);
                     }
                     // Sinon si notre POST n'est pas vide (donc requête pour modifier le profil)
