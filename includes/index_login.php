@@ -2,7 +2,35 @@
     <div class=" justify-content-center">
         <h3 class="d-md-flex justify-content-center">Envie de poser une question? Venez la poser&nbsp;<a href="./Questions.php">ici</a>!</h3>
     </div>
-    
+    <div style="display: flex;">
+    <select class="listDeTri" style="margin-left: 19%; margin-right:1%;">
+        <option selected>trier les questions</option>
+        <option value="1">nombre de like +</i></option>
+        <option value="2">nombre de like -</i></option>
+        <option value="3">date +</i></option>
+        <option value="4">date -</i></option>
+        <option value="5">nombre de réponse +</i></option>
+        <option value="6">nombre de réponse -</i></option>
+    </select>
+    <select class="listDeTri 2" style="width: 19%;">
+        <option selected class="defaut">triage avancer</option>
+        <option value="7">sélectionner une categorie</i></option>
+        <option value="8">question posé pas des amis</i></option>
+    </select>
+    <select class="listDeTri  categ "style="display: none;"  placeholder="Categorie" name="categorie" required>
+        <option value="">Selectionner une catégorie</option>
+        <?php
+            $categ = selectAllCategories("DESC");
+                foreach($categ as $categorie){
+        ?>
+        <option value="<?php echo $categorie['Id_categorie']; ?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
+        <?php
+            }
+        ?>
+    </select>
+    <button type="submit" class="pBtn" style="width: 10%;" name="validerTri" value="valide">Trier</button>
+    <button  type="reset" class="pBtn reset" style="width: 14%;" name="reset" value="reset">rénitialiser le triage avancer</button>
+    </div>
     
     <?php
     // Affichage de toutes les questions en fonction de la page sur laquelle l'utilisateur se trouve

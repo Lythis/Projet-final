@@ -101,6 +101,26 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function(){
+      $("select.listDeTri").change(function(){
+        var listDeTri = $(this).children("option:selected").val();
+        if(listDeTri == 7){
+            $("select.categ").css("display","block")
+            $("select.2").css("display","none")
+}
+      });
+    });
+    </script>
+    <script>
+         $(function(){
+            var defaultValue = $("option.defaut").val();
+            $("button.reset").click(function () {
+                $("select.2").val(defaultValue).css("display","block");
+                $("select.categ").css("display","none");
+            });
+        });
+    </script>
     
 </footer>
 </body>

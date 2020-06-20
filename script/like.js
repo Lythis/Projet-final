@@ -17,10 +17,3 @@ $(document).ready(function(){
 });
 
 
-
-$(document).ready(function(){
-    $("div.heart").click(function(){
-      $("a.unliked").css("display","none")
-      $("a.liked").css("display","block")
-    });
-  });

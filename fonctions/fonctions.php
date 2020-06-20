@@ -206,7 +206,7 @@
         $query->execute();
     }
 
-    #Fonction pour insérer une réponse dans la base de données, ne retourne rien
+    #Fonction pour insérer une catégorie dans la base de données, ne retourne rien
     function insertIntoCategorie($libelle) {
         $con = connexionBdd();
             
@@ -249,6 +249,14 @@
 
         $query = $con->prepare('DELETE FROM `question` WHERE `Id_question` = :id');
         $query->bindParam(':id', $idQuestion);
+        $query->execute();
+    }
+    #Fonction pour supprimer une categorie de la base de données, ne retourne rien
+    function deleteCategorie($idCategorie) {
+        $con = connexionBdd();
+
+        $query = $con->prepare('DELETE FROM `categorie` WHERE `#Id_categorie` = :id');
+        $query->bindParam(':id', $idCategorie);
         $query->execute();
     }
 
