@@ -23,6 +23,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
     <script type="text/javascript" src="./reponses.js"></script>
+    <script type="text/javascript" src="./script/like.js"></script>
     <!-- Scripts pour le bootstrap + compte de caractères dans les textarea -->
     <script>
         (function() {
@@ -100,6 +101,27 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function(){
+      $("select.listDeTri").change(function(){
+        var listDeTri = $(this).children("option:selected").val();
+        if(listDeTri == 7){
+            $("select.categ").css("display","block")
+            $("select.2").css("display","none")
+}
+      });
+    });
+    </script>
+    <script>
+         $(function(){
+            var defaultValue = $("option.defaut").val();
+            $("button.reset").click(function () {
+                $("select.2").val(defaultValue).css("display","block");
+                $("select.categ").css("display","none");
+            });
+        });
+    </script>
+    
 </footer>
 </body>
 </html>

@@ -39,6 +39,10 @@
                 $success = true;
             }
         }
+        /*elseif(isset($_POST['categorie'])) {
+            $toDelete = $_POST['categorie'];
+            $title = 'Supprimer la categorie '.$toDelete;
+        }*/
     }
 
     // Header & navbar & message & footer (la page n'est pas vraiment graphique, c'est surtout pour la requête)

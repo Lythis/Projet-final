@@ -28,18 +28,36 @@
                                     ?>
                                 </select>
                                 <?php if($_SESSION['utilisateur']['role'] == 1){?>
-                                <div style="margin-top: 2%;">
-                                <label for="validationTooltip01">Ajouter une catégorie :</label>
-                                <textarea id="categQuestion" type="text" class="form-control autoExpand w-100 h-50" placeholder="Cette catégorie sera utilisable une fois ajoutée. Une catégorie ne peut être ajoutée que par un administrateur." name="newCategorie" maxlength="150" required></textarea>
-                                <p style="text-align:right" id="compteur2">0 mots | 0 Caractere / 150</p>
+                                
+                                <p>Tu n'as pas trouvé une catégorie qui te correspond ? <br>Alors clique <a data-toggle="modal" data-target="#newCateg" class="text-primary"> ici</a> pour rajouter ta catégorie.</p>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="newCateg" tabindex="-1" role="dialog" aria-labelledby="newCategLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered " role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="newCategLabel">nouvelle catégorie</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div style="margin-top: 2%;">
+                                            <label for="validationTooltip01">Ajouter une catégorie :</label>
+                                            <textarea id="categQuestion" type="text" class="form-control autoExpand w-100 h-50" placeholder="Cette catégorie sera utilisable une fois ajoutée." name="newCategorie" maxlength="150" required></textarea>
+                                            <p style="text-align:right" id="compteur2">0 mots | 0 Caractere / 150</p>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="pBtn w-50" name="ajoutCategorie" value="valide">Ajouter une catégorie</button>
+                                    </div>
+                                    </div>
+                                </div>
                                 </div>
                                 <?php } ?>
                                 
                             </div>
                             <button type="submit" class="pBtn " name="poserquestion" value="valide">Envoyer</button>
-                            <?php if($_SESSION['utilisateur']['role'] == 1){?>
-                            <button type="submit" class="pBtn " name="ajoutCategorie" value="valide">Ajouter une categorie</button>
-                            <?php } ?>
                         </div>
                     </form>
                 </div>

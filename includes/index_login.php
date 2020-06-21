@@ -2,7 +2,35 @@
     <div class=" justify-content-center">
         <h3 class="d-md-flex justify-content-center">Envie de poser une question? Venez la poser&nbsp;<a href="./Questions.php">ici</a>!</h3>
     </div>
-    
+    <div style="display: flex;">
+    <select class="listDeTri" style="margin-left: 19%; margin-right:1%;">
+        <option selected>trier les questions</option>
+        <option value="1">nombre de like +</i></option>
+        <option value="2">nombre de like -</i></option>
+        <option value="3">date +</i></option>
+        <option value="4">date -</i></option>
+        <option value="5">nombre de réponse +</i></option>
+        <option value="6">nombre de réponse -</i></option>
+    </select>
+    <select class="listDeTri 2" style="width: 19%;">
+        <option selected class="defaut">triage avancer</option>
+        <option value="7">sélectionner une categorie</i></option>
+        <option value="8">question posé pas des amis</i></option>
+    </select>
+    <select class="listDeTri  categ "style="display: none;"  placeholder="Categorie" name="categorie" required>
+        <option value="">Selectionner une catégorie</option>
+        <?php
+            $categ = selectAllCategories("DESC");
+                foreach($categ as $categorie){
+        ?>
+        <option value="<?php echo $categorie['Id_categorie']; ?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
+        <?php
+            }
+        ?>
+    </select>
+    <button type="submit" class="pBtn" style="width: 10%;" name="validerTri" value="valide">Trier</button>
+    <button  type="reset" class="pBtn reset" style="width: 14%;" name="reset" value="reset">rénitialiser le triage avancer</button>
+    </div>
     
     <?php
     // Affichage de toutes les questions en fonction de la page sur laquelle l'utilisateur se trouve
@@ -42,22 +70,25 @@
                 <div class="card-body">
                     <h5 class="card-title">Catégorie : <?php echo $categorie["Libelle_categorie"]; ?></h5>
                     <span><?php echo $question["Titre_question"]; ?></span>
+                    <div class="heart">
                     <?php
                         if($hasLiked == true) {
                             ?>
-                            <div class="liked">
-                                <i class="fas fa-heart"></i>
-                            </div>
+                            <a class="liked">
+                                <i class="fas fa-heart heart1"></i>
+                        </a>
                             <?php
                         }
                         else {
                             ?>
-                            <div class="notliked">
-                                <i class="far fa-heart"></i>
-                            </div>
+                            <a class="notliked">
+                                <i class="far fa-heart heart2"></i>
+                            </a>
                             <?php
                         }
                     ?>
+                    </div>
+                    
                     
                     <blockquote class="blockquote mb-2">
                         <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".$nombreLikes["likecounter"]; ?></footer>
@@ -116,8 +147,20 @@
         <!-- Compteur de page -->
         <div class="center-pages ">
             <nav aria-label="Page navigation example ">
-                <ul class="pagination justify-content-center"">
-                    <li id="retirer" class="page-item border border-secondary">
+                <ul class="pagination justify-content-center">
+                <li id="retirer" class="page-item border border-secondary">
+                        <?php
+                        if ($_GET['page'] ==1){
+                            ?>
+                            <li id="retirer" class="page-item disabled border border-secondary">
+                            
+                        <?php
+                        }else{
+                          ?>
+                          <li id="retirer" class="page-item border border-secondary">
+                          <?php  
+                        }
+                        ?>  
                     <a class="page-link text-dark" href="../index.php?page=1" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
