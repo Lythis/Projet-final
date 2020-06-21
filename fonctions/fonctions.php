@@ -489,4 +489,27 @@
         $query->execute();
         return $query->fetch();
     }
+
+    function demandeAmiRecu($idProfil) {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT * FROM `demande_ami` WHERE `#Id_profil` = $idProfil");
+        $query->execute();
+        $result = $query->fetchAll();
+
+        if(empty($result)) {
+            return false;
+        }
+        else {
+            return $result;
+        }
+    }
+
+    function getAmi($idProfil) {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )");
+        $query->execute();
+        return $query->fetchAll();
+    }
 ?>
