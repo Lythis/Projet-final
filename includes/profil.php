@@ -27,10 +27,31 @@
                                     <button class="btn btn-supp bg-danger text-white" name="profil" value="<?php echo $users["Id_profil"]; ?>,supp">Supprimer profil</button>
                                 </form>
                             <?php } ?>
-                            <?php if($_SESSION['utilisateur']['id'] != $profilStatus[0]) { ?>
-                                <form>
-                                    <button class="btn btn-edit bg-success text-white" name="profil" value="ami">Ajouter en ami</button>
-                                </form>
+                            <?php if($_SESSION['utilisateur']['id'] != $profilStatus[0]) {
+                                if(areFriends($_GET["profil"], $_SESSION['utilisateur']['id']) == true) { ?>
+                                    <form>
+                                        <button class="btn btn-edit bg-danger text-white" name="profil" value="ami">Supprimer de la liste d'amis</button>
+                                    </form>
+                                <?php } else {
+                                    if(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "demandeCurrent") { ?>
+                                        <form>
+                                            <button class="btn btn-edit bg-success text-white" name="profil" value="ami">Accepter la demande d'ami</button>
+                                            <button class="btn btn-edit bg-danger text-white" name="profil" value="ami">Refuser la demande d'ami</button>
+                                        </form>
+                                    <?php } elseif(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "demandeUtilisateur") { ?>
+                                        <form>
+                                            <button class="btn btn-edit bg-danger text-white" name="profil" value="ami">Annuler la demande d'ami</button>
+                                        </form>
+                                    <?php } elseif(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "erreur") { ?>
+                                        <p>Problème dans la base de données!</p>
+                                    <?php }
+                                    else { ?>
+                                        <form>
+                                            <button class="btn btn-edit bg-success text-white" name="profil" value="ami">Ajouter en ami</button>
+                                        </form>
+                                    <?php }
+                                }
+                                ?>
                             <?php } ?>
                             </div>
                         </div>
