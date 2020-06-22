@@ -105,7 +105,7 @@
                     <div class="card">
                         <div class="card-body" style="display: flex;">
                             <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
-                            <h6>Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                            <h6>Vous n'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l'accueil</a>.</h6></p>
                         </div>
                     </div>
                 <?php
@@ -130,7 +130,7 @@
                     <div class="card">
                         <div class="card-body" style="display: flex;">
                             <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
-                            <h6>Vous n\'avez pas le droit de supprimer ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                            <h6>Vous n'avez pas le droit de supprimer ce profil. <a href="./index.php">Revenir à l'accueil</a>.</h6></p>
                         </div>
                     </div>
                 <?php
@@ -145,7 +145,7 @@
                 <div class="card">
                     <div class="card-body" style="display: flex;">
                         <p class="card-text w-25"> <img src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
-                        <h6>Problème lors de votre requête. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                        <h6>Problème lors de votre requête. <a href="./index.php">Revenir à l'accueil</a>.</h6></p>
                     </div>
                 </div>
             <?php
@@ -161,7 +161,7 @@
             <div class="card">
                 <div class="card-body" style="display: flex;">
                     <p class="card-text w-25"> <img src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
-                    <h6>Profil introuvable. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                    <h6>Profil introuvable. <a href="./index.php">Revenir à l'accueil</a>.</h6></p>
                 </div>
             </div>
         <?php

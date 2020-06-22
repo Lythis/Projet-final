@@ -29,25 +29,25 @@
                             <?php } ?>
                             <?php if($_SESSION['utilisateur']['id'] != $profilStatus[0]) {
                                 if(areFriends($_GET["profil"], $_SESSION['utilisateur']['id']) == true) { ?>
-                                    <form>
-                                        <button class="btn btn-edit bg-danger text-white" name="profil" value="ami">Supprimer de la liste d'amis</button>
+                                    <form action="./notifications.php" method="post">
+                                        <button class="btn btn-edit bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Supprimer">Supprimer de la liste d'amis</button>
                                     </form>
                                 <?php } else {
                                     if(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "demandeCurrent") { ?>
-                                        <form>
-                                            <button class="btn btn-edit bg-success text-white" name="profil" value="ami">Accepter la demande d'ami</button>
-                                            <button class="btn btn-edit bg-danger text-white" name="profil" value="ami">Refuser la demande d'ami</button>
+                                        <form action="./notifications.php" method="post">
+                                            <button class="btn btn-edit bg-success text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Ajouter">Accepter la demande d'ami</button>
+                                            <button class="btn btn-edit bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Rejeter">Refuser la demande d'ami</button>
                                         </form>
                                     <?php } elseif(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "demandeUtilisateur") { ?>
-                                        <form>
-                                            <button class="btn btn-edit bg-danger text-white" name="profil" value="ami">Annuler la demande d'ami</button>
+                                        <form action="./notifications.php" method="post">
+                                            <button class="btn btn-edit bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Annuler">Annuler la demande d'ami</button>
                                         </form>
                                     <?php } elseif(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "erreur") { ?>
                                         <p>Problème dans la base de données!</p>
                                     <?php }
                                     else { ?>
-                                        <form>
-                                            <button class="btn btn-edit bg-success text-white" name="profil" value="ami">Ajouter en ami</button>
+                                        <form action="./notifications.php" method="post">
+                                            <button class="btn btn-edit bg-success text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Envoyer">Ajouter en ami</button>
                                         </form>
                                     <?php }
                                 }
