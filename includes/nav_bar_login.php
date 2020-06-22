@@ -11,6 +11,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $_SESSION['utilisateur']['id']; ?>"><img class="picture-user-small" src="<?php echo $_SESSION['utilisateur']['image']; ?>" alt="<?php echo $_SESSION['utilisateur']['pseudo']; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $_SESSION['utilisateur']['id']; ?>"><b><?php echo $_SESSION['utilisateur']['pseudo']; ?></a></b>
+                    <?php if(demandeAmiRecu($_SESSION['utilisateur']['id']) == false) { ?>
+                        <i class="far fa-bell" style="color: black">0</i>
+                    <?php } else { ?>
+                        <i class="fas fa-bell" style="color: black"><?php echo count(demandeAmiRecu($_SESSION['utilisateur']['id'])); ?></i>
+                    <?php } ?>
                 </li>
                 <form action="./index.php" method="post">
                     <button type="submit" class="bouttonC text-white" name="deconnexion" value="valide">Déconnexion</button>
@@ -18,5 +23,4 @@
             </ul>
         </span>
     </div>
-    
 </nav>

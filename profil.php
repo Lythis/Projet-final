@@ -18,6 +18,7 @@
         if(isset($profilStatus[0])) {
             // On récupère le profil demandé en GET (dans notre tableau $profilStatus à la première ligne) dans un tableau $users
             $users = selectFromProfil($profilStatus[0]);
+            $amis = getAmi($profilStatus[0]);
         }
 
         //Notre GET n'est pas vide et on a récupéré les informations de l'utilisateur présent dans notre GET (ici présent dans $users, donc si $users n'est pas vide)

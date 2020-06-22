@@ -500,4 +500,64 @@
         $query->execute();
         return $query->fetch();
     }
+
+    #Fonction pour savoir si quelqu'un a une demande d'ami en attente (notification), retourne le tableau avec les demandes si il y en a au moins une, faux sinon
+    function demandeAmiRecu($idProfil) {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT * FROM `demande_ami` WHERE `#Id_profil` = $idProfil");
+        $query->execute();
+        $result = $query->fetchAll();
+
+        if(empty($result)) {
+            return false;
+        }
+        else {
+            return $result;
+        }
+    }
+
+    #Fonction pour récupérer tous les amis de quelqu'un, retourne le tableau avec Id_profil, Pseudo_profil, Image_profil
+    function getAmi($idProfil) {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT Id_profil, Pseudo_profil, Image_profil FROM `profil` WHERE `Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    #Fonction pour savoir qui demande qui en ami, retourne différent résultats en fonction de la situation
+    function getDemandeStatus($idProfilCurrent, $idProfilUtilisateur) {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT * FROM `demande_ami` WHERE (`Id_profil` = $idProfilCurrent AND `#Id_profil` = $idProfilUtilisateur) OR (`Id_profil` = $idProfilUtilisateur AND `#Id_profil` = $idProfilCurrent)");
+        $query->execute();
+        $result = $query->fetch();
+
+        if(!empty($result)) {
+            if($result["Id_profil"] == $idProfilCurrent) {
+                return "demandeCurrent";
+            }
+            elseif($result["#Id_profil"] == $idProfilCurrent) {
+                return "demandeUtilisateur";
+            }
+            else {
+                return "Erreur";
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+    #Fonction pour savoir si deux personnes sont amis, retourne vrai si oui, faux sinon ($idProfilUtilisateur est l'utilisateur actuel de la session)
+    function areFriends($idProfilCurrent, $idProfilUtilisateur) {
+        $amis = getAmi($idProfilCurrent);
+        foreach($amis as $ami) {
+            if(in_array($idProfilUtilisateur, $ami, false) == true) {
+                return true;
+            }
+        }
+        return false;
+    }
 ?>
