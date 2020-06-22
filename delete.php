@@ -39,9 +39,9 @@
                 $success = true;
             }
         }
-        /*elseif(isset($_POST['categorie'])) {
-            $toDelete = $_POST['categorie'];
-            $title = 'Supprimer la categorie '.$toDelete;
+        /*elseif(isset($_POST['Categorie'])) {
+            $toDelete = $_POST['Categorie'];
+            deleteCategorie($toDelete);
         }*/
     }
 

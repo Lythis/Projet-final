@@ -30,8 +30,8 @@
                                 <?php if($_SESSION['utilisateur']['role'] == 1){?>
                                 
                                 <p>Tu n'as pas trouvé une catégorie qui te correspond ? <br>Alors clique <a data-toggle="modal" data-target="#newCateg" class="text-primary"> ici</a> pour rajouter ta catégorie.</p>
-
-                                <!-- Modal -->
+                                <p>C'est toujours pas ce que tu veux faire. Tu veux supprimer une categorie alors? <br>Clique <a data-toggle="modal" data-target="#suppCateg" class="text-danger"> ici</a> pour supprimer une catégorie.</p></p>
+                                <!-- Modal ajout categorie -->
                                 <div class="modal fade" id="newCateg" tabindex="-1" role="dialog" aria-labelledby="newCategLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered " role="document">
                                     <div class="modal-content">
@@ -50,6 +50,40 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="pBtn w-50" name="ajoutCategorie" value="valide">Ajouter une catégorie</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- Modal supp categorie -->
+                                <div class="modal fade" id="suppCateg" tabindex="-1" role="dialog" aria-labelledby="suppCategLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered " role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="suppCategLabel">nouvelle catégorie</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div style="margin-top: 2%;">
+                                            <label for="validationTooltip01">Supprimer une catégorie :</label>
+                                            <select class="custom-select mb-2" id="validationTooltip02" placeholder="Categorie" name="suppCategorie" required>
+                                                <option value="">Selectionner une catégorie</option>
+                                                <?php
+                                                $categ = selectAllCategories("DESC");
+                                                foreach($categ as $categorie){
+                                                    ?>
+                                                    <option value="<?php echo $categorie['Id_categorie']; ?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <form action="./delete.php" method="post">
+                                        <button class="btn btn-danger mt-3" name="categorie" value="<?php echo $categorie['Id_categorie']; ?>"style="margin-left: 36%;" >Supprimer</button>
+                                    </form>
                                     </div>
                                     </div>
                                 </div>
