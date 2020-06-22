@@ -708,8 +708,8 @@ button[aria-expanded="false"] .afficher
 /* Profil */
 
 .listeamiprofil {
-    width: 50%;
-    float: left;
+    width: 25%;
+    float: right;
 }
 
 .amiafficher {
@@ -717,8 +717,8 @@ button[aria-expanded="false"] .afficher
 }
 
 .questionsrecentes {
-    width: 50%;
-    float: right;
+  
+    margin-right: 15%;
 }
 
 .profil{
@@ -737,8 +737,7 @@ button[aria-expanded="false"] .afficher
 
 
 .p-card{
-    margin-left: 27%;
-    margin-right: 27%;
+    margin-right: 18%;
     background-color: white;
     box-shadow: 3px 3px 3px black;
     margin-top: 1%;
@@ -779,6 +778,13 @@ button[aria-expanded="false"] .afficher
 .image-questions{
     width: 110px;
     height: 110px;
+    margin-left: 2%;
+    margin-right: 5%    ;
+    object-fit: cover; 
+}
+.image-ami{
+    width: 30px;
+    height: 30px;
     margin-left: 2%;
     margin-right: 5%    ;
     object-fit: cover; 
