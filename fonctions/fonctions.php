@@ -547,7 +547,7 @@
         }
     }
 
-    #Fonction pour savoir si deux personnes sont amis, retourne vrai si oui, faux sinon ($idProfilUtilisateur est l'utilisateur actuel de la session)
+    #Fonction pour savoir si deux personnes sont amis, retourne vrai si oui, faux sinon
     function areFriends($idProfilCurrent, $idProfilUtilisateur) {
         $amis = getAmi($idProfilCurrent);
         foreach($amis as $ami) {
@@ -556,5 +556,60 @@
             }
         }
         return false;
+    }
+
+    #Fonction pour ajouter un ami suite à une requête envoyée, retourne un message en fonction de ce qui a été demandé
+    function gererAmi($idProfilCurrent, $idProfilUtilisateur, $status) {
+        $con = connexionBdd();
+        
+        if($status == "Envoyer") {
+            $query = $con->prepare("INSERT INTO `demande_ami`(`Id_profil`, `#Id_profil`) VALUES (:idProfilUtilisateur, :idProfilCurrent)");
+            $query->bindParam(':idProfilUtilisateur', $idProfilUtilisateur);
+            $query->bindParam(':idProfilCurrent', $idProfilCurrent);
+            $query->execute();
+            return "Demande envoyée.";
+        }
+        elseif($status == "Ajouter") {
+            $query = $con->prepare("DELETE FROM `demande_ami` WHERE `Id_profil` = $idProfilCurrent AND `#Id_profil` = $idProfilUtilisateur");
+            $query->execute();
+
+            $query = $con->prepare("INSERT INTO `ami`(`Id_profil`, `#Id_profil`) VALUES (:idProfilUtilisateur, :idProfilCurrent)");
+            $query->bindParam(':idProfilUtilisateur', $idProfilUtilisateur);
+            $query->bindParam(':idProfilCurrent', $idProfilCurrent);
+            $query->execute();
+            return "Demande acceptée.";
+        }
+        elseif($status == "Annuler") {
+            $query = $con->prepare("DELETE FROM `demande_ami` WHERE `Id_profil` = $idProfilUtilisateur AND `#Id_profil` = $idProfilCurrent");
+            $query->execute();
+            return "Demande annulée.";
+        }
+        elseif($status == "Rejeter") {
+            $query = $con->prepare("DELETE FROM `demande_ami` WHERE `Id_profil` = $idProfilCurrent AND `#Id_profil` = $idProfilUtilisateur");
+            $query->execute();
+            return "Demande rejetée.";
+        }
+        elseif($status == "Supprimer") {
+            $query = $con->prepare("DELETE FROM `ami` WHERE (`Id_profil` = $idProfilCurrent OR `#Id_profil` = $idProfilCurrent) AND (`#Id_profil` = $idProfilUtilisateur OR `Id_profil` = $idProfilUtilisateur)");
+            $query->execute();
+            return "Ami supprimé.";
+        }
+        else {
+            return "Erreur lors du traitement.";
+        }
+    }
+
+    #Fonction pour savoir si l'utilisateur a des demandes, $sent = true si on veut les demandes envoyées, false sinon, retourne un tableau contenant les demandes
+    function getDemande($idProfil, $sent) {
+        $con = connexionBdd();
+
+        if($sent == true) {
+            $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = (SELECT `#Id_profil` FROM `demande_ami` WHERE `Id_profil` = $idProfil)");
+        }
+        else {
+            $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = (SELECT `Id_profil` FROM `demande_ami` WHERE `#Id_profil` = $idProfil)");
+        }
+        $query->execute();
+        return $query->fetchAll();
     }
 ?>
