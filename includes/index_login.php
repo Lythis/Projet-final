@@ -3,33 +3,35 @@
         <h3 class="d-md-flex justify-content-center">Envie de poser une question? Venez la poser&nbsp;<a href="./Questions.php">ici</a>!</h3>
     </div>
     <div style="display: flex;">
-    <select class="listDeTri" style="margin-left: 19%; margin-right:1%;">
-        <option selected>trier les questions</option>
-        <option value="1">nombre de like +</i></option>
-        <option value="2">nombre de like -</i></option>
-        <option value="3">date +</i></option>
-        <option value="4">date -</i></option>
-        <option value="5">nombre de réponse +</i></option>
-        <option value="6">nombre de réponse -</i></option>
-    </select>
-    <select class="listDeTri 2" style="width: 19%;">
-        <option selected class="defaut">triage avancer</option>
-        <option value="7">sélectionner une categorie</i></option>
-        <option value="8">question posé pas des amis</i></option>
-    </select>
-    <select class="listDeTri  categ "style="display: none;"  placeholder="Categorie" name="categorie" required>
-        <option value="">Selectionner une catégorie</option>
-        <?php
-            $categ = selectAllCategories("DESC");
-                foreach($categ as $categorie){
-        ?>
-        <option value="<?php echo $categorie['Id_categorie']; ?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
-        <?php
-            }
-        ?>
-    </select>
-    <button type="submit" class="pBtn" style="width: 10%;" name="validerTri" value="valide">Trier</button>
-    <button  type="reset" class="pBtn reset" style="width: 14%;" name="reset" value="reset">rénitialiser le triage avancer</button>
+        <form action="./index.php" method="post">
+            <select class="listDeTri" name="triage" style="margin-left: 19%; margin-right:1%;">
+                <option selected value="0">Aucun triage</option>
+                <option value="likeA">Nombre de likes - Ascendants</i></option>
+                <option value="likeD">Nombre de likes - Descendants</i></option>
+                <option value="dateA">Date - Ascendantes</i></option>
+                <option value="dateD">Date - Descendantes</i></option>
+                <option value="reponseA">Nombre de réponses - Ascendantes</i></option>
+                <option value="reponseD">Nombre de réponses - Descendantes</i></option>
+            </select>
+            <select class="listDeTri 2" name="triagea" style="width: 19%;">
+                <option selected class="defaut" value="0">Pas de triage avancé</option>
+                <option value="categ">Sélectionner une catégorie</i></option>
+                <option value="qamis">Questions posées par mes amis</i></option>
+            </select>
+            <select class="listDeTri categ" style="display: none;" placeholder="Categorie" name="categorie">
+                <option value="null">Selectionner une catégorie</option>
+                <?php
+                    $categ = selectAllCategories("DESC");
+                    foreach($categ as $categorie){
+                ?>
+                    <option value="categ<?php echo $categorie['Id_categorie']; ?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
+                <?php
+                    }
+                ?>
+            </select>
+            <button type="submit" class="pBtn" style="width: 10%;" name="validerTriage" value="valide">Trier</button>
+            <button type="reset" class="pBtn reset" style="width: 14%;" name="reset" value="reset">Réinitialiser le triage avancé</button>
+        </form>
     </div>
     
     <?php
@@ -40,9 +42,35 @@
     $ind = 1;
     // Nombre de questions par page (ici 30)
     $limit = $_GET['page'] * 30;
-    $pageCounter = selectAllQuestions("DESC", null, 0);
+    $order = "ORDER BY `Date_creation_question` DESC";
+    if(isset($_COOKIE["triage"])) {
+        switch($_COOKIE["triage"]) {
+            case "likeA":
+                $order = "ORDER BY `Date_creation_question` DESC";
+                break;
+            case "likeD":
+                $order = "ORDER BY `Date_creation_question` DESC";
+                break;
+            case "dateA":
+                $order = "ORDER BY `Date_creation_question` ASC";
+                break;
+            case "dateD":
+                $order = "ORDER BY `Date_creation_question` DESC";
+                break;
+            case "reponseA":
+                $order = "ORDER BY `Date_creation_question` DESC";
+                break;
+            case "reponseD":
+                $order = "ORDER BY `Date_creation_question` DESC";
+                break;
+            default:
+                $order = "ORDER BY `Date_creation_question` DESC";
+        }
+    }
+    $pageCounter = selectAllQuestions(null, $order, null, 0);
     $pageCounter = ceil(count($pageCounter) / 30);
-    $questions = selectAllQuestions("DESC", $limit, ($limit - 30));
+    
+    $questions = selectAllQuestions(null, $order, $limit, ($limit - 30));
 
     if (!empty($questions)) {
     

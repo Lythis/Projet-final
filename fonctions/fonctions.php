@@ -52,6 +52,15 @@
     #Fonction pour savoir quel accueil afficher en fonction de l'état de la session, ne retourne rien
     function accueil() {
         if (!empty($_SESSION)) {
+            if(isset($_POST["triage"])) {
+                setcookie("triage", $_POST["triage"]);
+            }
+            if(isset($_POST["triagea"])) {
+                setcookie("triagea", $_POST["triagea"]);
+            }
+            if(isset($_POST["triage"]) || isset($_POST["triagea"])) {
+                header('Location: ./index.php');;
+            }
             require_once('./includes/index_login.php');
         }
         else {
@@ -99,10 +108,14 @@
     }
 
     #Sélectionner toutes les questions de la base de données en donnant l'ordre de triage et les limites de sélection, retourne les questions en tableau
-    function selectAllQuestions($order, $limit, $offset) {
+    function selectAllQuestions($where, $order, $limit, $offset) {
         $con = connexionBdd();
 
-        $requete = "SELECT * FROM question ORDER BY `Date_creation_question` $order, `Id_question` $order";
+        $requete = "SELECT * FROM question";
+        if($where != null) {
+            $requete = $requete." WHERE $where";
+        }
+        $requete = $requete." $order";
         if ($limit != null) {
             $requete = $requete." LIMIT $limit OFFSET $offset";
         }
