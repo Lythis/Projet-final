@@ -1,7 +1,7 @@
 <body class="bgP">
     <div class="cardP mr-md-9 m-card shadow-lg p-3">
         <div class="card-body">
-            <div>
+            <div id="rafraiche">
                 <div class="form-group">
                     <form clas  method="post" action="Questions.php" novalidate>
                         <div class="form-group">
@@ -31,6 +31,8 @@
                                 
                                 <p>Tu n'as pas trouvé une catégorie qui te correspond ? <br>Alors clique <a data-toggle="modal" data-target="#newCateg" class="text-primary"> ici</a> pour rajouter ta catégorie.</p>
                                 <p>C'est toujours pas ce que tu veux faire. Tu veux supprimer une categorie alors? <br>Clique <a data-toggle="modal" data-target="#suppCateg" class="text-danger"> ici</a> pour supprimer une catégorie.</p></p>
+                                <button type="submit" class="pBtn " name="poserquestion" value="valide">Envoyer</button>
+                                </form>
                                 <!-- Modal ajout categorie -->
                                 <div class="modal fade" id="newCateg" tabindex="-1" role="dialog" aria-labelledby="newCategLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered " role="document">
@@ -64,6 +66,7 @@
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
+                                    <form action="./delete.php" method="post">
                                     <div class="modal-body">
                                         <div style="margin-top: 2%;">
                                             <label for="validationTooltip01">Supprimer une catégorie :</label>
@@ -73,7 +76,7 @@
                                                 $categ = selectAllCategories("DESC");
                                                 foreach($categ as $categorie){
                                                     ?>
-                                                    <option value="<?php echo $categorie['Id_categorie']; ?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
+                                                    <option value="<?php echo $categorie['Id_categorie'];?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
                                                     <?php
                                                 }
                                                 ?>
@@ -81,19 +84,23 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                    <form action="./delete.php" method="post">
-                                        <button class="btn btn-danger mt-3" name="categorie" value="<?php echo $categorie['Id_categorie']; ?>"style="margin-left: 36%;" >Supprimer</button>
-                                    </form>
+                                    
+                                        <button id="supp" type="submit" class="btn btn-danger mt-3"  name="supprimer" value=" <?php echo $_POST['suppCategorie'];?> ">Supprimer</button>
+                                        </form>
                                     </div>
                                     </div>
                                 </div>
                                 </div>
-                                <?php } ?>
+                                            <?php } 
+                                            var_dump($_POST['suppCategorie']);
+                                            
+                                           ?>
+                                            
                                 
                             </div>
-                            <button type="submit" class="pBtn " name="poserquestion" value="valide">Envoyer</button>
+                            
                         </div>
-                    </form>
+                    
                 </div>
             </div>
         </div>

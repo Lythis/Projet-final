@@ -17,7 +17,7 @@
         <option value="7">sélectionner une categorie</i></option>
         <option value="8">question posé pas des amis</i></option>
     </select>
-    <select class="listDeTri  categ "style="display: none;"  placeholder="Categorie" name="categorie" required>
+    <select class="listDeTri  categ "style="display: none;"  placeholder="Categorie" name="categorie" >
         <option value="">Selectionner une catégorie</option>
         <?php
             $categ = selectAllCategories("DESC");
