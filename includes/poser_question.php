@@ -3,7 +3,7 @@
         <div class="card-body">
             <div id="rafraiche">
                 <div class="form-group">
-                    <form clas  method="post" action="Questions.php" novalidate>
+                    <form method="post" action="Questions.php" novalidate>
                         <div class="form-group">
                             <div class="col-lg ">
                                 <label for="validationTooltip01">Votre question :</label>

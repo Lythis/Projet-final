@@ -3,33 +3,35 @@
         <h3 class="d-md-flex justify-content-center">Envie de poser une question? Venez la poser&nbsp;<a href="./Questions.php">ici</a>!</h3>
     </div>
     <div style="display: flex;">
-    <select class="listDeTri" style="margin-left: 19%; margin-right:1%;">
-        <option selected>trier les questions</option>
-        <option value="1">nombre de like +</i></option>
-        <option value="2">nombre de like -</i></option>
-        <option value="3">date +</i></option>
-        <option value="4">date -</i></option>
-        <option value="5">nombre de réponse +</i></option>
-        <option value="6">nombre de réponse -</i></option>
-    </select>
-    <select class="listDeTri 2" style="width: 19%;">
-        <option selected class="defaut">triage avancer</option>
-        <option value="7">sélectionner une categorie</i></option>
-        <option value="8">question posé pas des amis</i></option>
-    </select>
-    <select class="listDeTri  categ "style="display: none;"  placeholder="Categorie" name="categorie" >
-        <option value="">Selectionner une catégorie</option>
-        <?php
-            $categ = selectAllCategories("DESC");
-                foreach($categ as $categorie){
-        ?>
-        <option value="<?php echo $categorie['Id_categorie']; ?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
-        <?php
-            }
-        ?>
-    </select>
-    <button type="submit" class="pBtn" style="width: 10%;" name="validerTri" value="valide">Trier</button>
-    <button  type="reset" class="pBtn reset" style="width: 14%;" name="reset" value="reset">rénitialiser le triage avancer</button>
+        <form action="./index.php" method="post">
+            <select class="listDeTri" name="triage" style="margin-left: 19%; margin-right:1%;">
+                <option <?php if(!isset($_COOKIE["triage"])) { echo "selected"; } ?> value="0">Aucun triage</option>
+                <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "likeA") { echo "selected"; } ?> value="likeA">Nombre de likes - Ascendants</i></option>
+                <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "likeD") { echo "selected"; } ?> value="likeD">Nombre de likes - Descendants</i></option>
+                <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "dateA") { echo "selected"; } ?> value="dateA">Date - Ascendantes</i></option>
+                <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "dateD") { echo "selected"; } ?> value="dateD">Date - Descendantes</i></option>
+                <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "reponseA") { echo "selected"; } ?> value="reponseA">Nombre de réponses - Ascendantes</i></option>
+                <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "reponseD") { echo "selected"; } ?> value="reponseD">Nombre de réponses - Descendantes</i></option>
+            </select>
+            <select class="listDeTri 2" name="triagea" style="width: 19%;">
+                <option selected class="defaut" value="0">Pas de triage avancé</option>
+                <option value="categ">Sélectionner une catégorie</i></option>
+                <option value="qamis">Questions posées par mes amis</i></option>
+            </select>
+            <select class="listDeTri categ" style="display: none;" placeholder="Categorie" name="categorie">
+                <option value="null">Selectionner une catégorie</option>
+                <?php
+                    $categ = selectAllCategories("DESC");
+                    foreach($categ as $categorie){
+                ?>
+                    <option value="categ<?php echo $categorie['Id_categorie']; ?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
+                <?php
+                    }
+                ?>
+            </select>
+            <button type="submit" class="pBtn" style="width: 10%;" name="validerTriage" value="valide">Trier</button>
+            <button type="reset" class="pBtn reset" style="width: 14%;" name="reset" value="reset">Réinitialiser le triage avancé</button>
+        </form>
     </div>
     
     <?php
@@ -39,10 +41,40 @@
     }
     $ind = 1;
     // Nombre de questions par page (ici 30)
-    $limit = $_GET['page'] * 30;
-    $pageCounter = selectAllQuestions("DESC", null, 0);
+    $limit = 30;
+    $startLimit = ($_GET["page"] - 1) * $limit;
+    $order = "ORDER BY `Date_creation_question` DESC";
+    if(isset($_COOKIE["triage"])) {
+        switch($_COOKIE["triage"]) {
+            case "likeA":
+                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                break;
+            case "likeD":
+                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                break;
+            case "dateA":
+                $order = "ORDER BY `Date_creation_question` ASC";
+                $totalRequest = false;
+                break;
+            case "dateD":
+                $order = "ORDER BY `Date_creation_question` DESC";
+                $totalRequest = false;
+                break;
+            case "reponseA":
+                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                break;
+            case "reponseD":
+                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                break;
+            default:
+                $order = "ORDER BY `Date_creation_question` DESC";
+                $totalRequest = false;
+        }
+    }
+    $pageCounter = selectAllQuestions(null, $order, null, 0, false);
     $pageCounter = ceil(count($pageCounter) / 30);
-    $questions = selectAllQuestions("DESC", $limit, ($limit - 30));
+    
+    $questions = selectAllQuestions(null, $order, $limit, $startLimit, $totalRequest);
 
     if (!empty($questions)) {
     
