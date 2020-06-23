@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 22 juin 2020 à 13:22
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Généré le :  mar. 23 juin 2020 à 14:49
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.4.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS `ami` (
 INSERT INTO `ami` (`Id_profil`, `#Id_profil`) VALUES
 (2, 57),
 (1, 55),
-(64, 1);
+(64, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -89,13 +90,6 @@ CREATE TABLE IF NOT EXISTS `demande_ami` (
   KEY `Id_profil_send` (`Id_profil`),
   KEY `Id_profil_receive` (`#Id_profil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-
---
--- Déchargement des données de la table `demande_ami`
---
-
-INSERT INTO `demande_ami` (`Id_profil`, `#Id_profil`) VALUES
-(1, 2);
 
 -- --------------------------------------------------------
 

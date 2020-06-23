@@ -108,16 +108,21 @@
     }
 
     #Sélectionner toutes les questions de la base de données en donnant l'ordre de triage et les limites de sélection, retourne les questions en tableau
-    function selectAllQuestions($where, $order, $limit, $offset) {
+    function selectAllQuestions($where, $order, $limit, $offset, $totalRequest) {
         $con = connexionBdd();
 
-        $requete = "SELECT * FROM question";
-        if($where != null) {
-            $requete = $requete." WHERE $where";
+        if($totalRequest == false) {
+            $requete = "SELECT * FROM question";
+            if($where != null) {
+                $requete = $requete." WHERE $where";
+            }
+            $requete = $requete." $order";
+            if ($limit != null) {
+                $requete = $requete." LIMIT $limit OFFSET $offset";
+            }
         }
-        $requete = $requete." $order";
-        if ($limit != null) {
-            $requete = $requete." LIMIT $limit OFFSET $offset";
+        else {
+            $requete = $totalRequest. " LIMIT $limit OFFSET $offset";
         }
         $query = $con->prepare($requete);
         $query->execute();
