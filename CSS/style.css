@@ -73,7 +73,19 @@ body{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    
+    margin-left: 19%;
+     margin-right:1%;
+}
+.list2{
+    width: 19%;
+    margin-left: 0%;
+}
+.categ{
+    display: none;
+    margin-left: 0%;
+}
+.forme{
+    display: contents;
 }
 /* Limite de caractère pour poser des Questions/Descriptions/Reponses */
 .mauvais {
@@ -703,6 +715,8 @@ button[aria-expanded="false"] .afficher
 {
     display: block;
 }
+
+
 
 
 /* Profil */

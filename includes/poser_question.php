@@ -92,7 +92,7 @@
                                 </div>
                                 </div>
                                             <?php } 
-                                            var_dump($_POST['suppCategorie']);
+                                            
                                             
                                            ?>
                                             

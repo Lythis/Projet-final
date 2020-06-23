@@ -3,8 +3,8 @@
         <h3 class="d-md-flex justify-content-center">Envie de poser une question? Venez la poser&nbsp;<a href="./Questions.php">ici</a>!</h3>
     </div>
     <div style="display: flex;">
-        <form action="./index.php" method="post">
-            <select class="listDeTri" name="triage" style="margin-left: 19%; margin-right:1%;">
+        <form class="forme" action="./index.php" method="post">
+            <select class="listDeTri" name="triage" >
                 <option <?php if(!isset($_COOKIE["triage"])) { echo "selected"; } ?> value="0">Aucun triage</option>
                 <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "likeA") { echo "selected"; } ?> value="likeA">Nombre de likes - Ascendants</i></option>
                 <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "likeD") { echo "selected"; } ?> value="likeD">Nombre de likes - Descendants</i></option>
@@ -13,12 +13,12 @@
                 <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "reponseA") { echo "selected"; } ?> value="reponseA">Nombre de réponses - Ascendantes</i></option>
                 <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "reponseD") { echo "selected"; } ?> value="reponseD">Nombre de réponses - Descendantes</i></option>
             </select>
-            <select class="listDeTri 2" name="triagea" style="width: 19%;">
+            <select class="listDeTri list2" name="triagea" >
                 <option selected class="defaut" value="0">Pas de triage avancé</option>
                 <option value="categ">Sélectionner une catégorie</i></option>
                 <option value="qamis">Questions posées par mes amis</i></option>
             </select>
-            <select class="listDeTri categ" style="display: none;" placeholder="Categorie" name="categorie">
+            <select class="listDeTri categ"  placeholder="Categorie" name="categorie">
                 <option value="null">Selectionner une catégorie</option>
                 <?php
                     $categ = selectAllCategories("DESC");
