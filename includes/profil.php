@@ -39,14 +39,14 @@
                                             <button class="btn  bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Rejeter">Refuser la demande d'ami</button>
                                         </form>
                                     <?php } elseif(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "demandeUtilisateur") { ?>
-                                        <form action="./notifications.php" method="post">
+                                        <form action="./notifications.php" method="post" class="btn-edit">
                                             <button class="btn  bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Annuler">Annuler la demande d'ami</button>
                                         </form>
                                     <?php } elseif(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "erreur") { ?>
                                         <p>Problème dans la base de données!</p>
                                     <?php }
                                     else { ?>
-                                        <form action="./notifications.php" method="post">
+                                        <form action="./notifications.php" method="post" class="btn-edit">
                                             <button class="btn  bg-success text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Envoyer">Ajouter en ami</button>
                                         </form>
                                     <?php }
@@ -91,12 +91,13 @@
                 <p class="titre_post">
                     Questions recentes de <?php echo $users["Pseudo_profil"]; ?>
                 </p>
-                
-               
+                <?php
+                if (!empty($questions)) {
+                    ?>
                         <div class="p-card">
                             <div >
                             <?php
-                if (!empty($questions)) {
+                
                     foreach ($questions as $question) {
                         ?>
                                 <img class="rounded-circle float-left  image-profil " src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>">
@@ -119,15 +120,16 @@
                             
                                 ?>
                             </div>
-                        </div>
+                        
                 <?php
                } else {
                 ?>
-                    <div class="card">
+                    <div class="p-card">
                         <div class="card-headerP">
                             <p>Wow, such empty.</p>
                         </div>
                     </div>
+                    
                 <?php
                     }
                 ?>
