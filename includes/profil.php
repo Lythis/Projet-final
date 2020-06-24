@@ -23,31 +23,31 @@
                         <div class="btn-flex">
                             <?php if($_SESSION['utilisateur']['id'] == $profilStatus[0] || $_SESSION['utilisateur']['role'] == 1) { ?>
                                 <form action="./profil.php" method="get">
-                                    <button class="btn btn-edit bg-primary text-white " name="profil" value="<?php echo $users["Id_profil"]; ?>,edit">Editer le profil</button>
+                                    <button class="btn bg-primary text-white " name="profil" value="<?php echo $users["Id_profil"]; ?>,edit">Editer le profil</button>
                                     <button class="btn btn-supp bg-danger text-white" name="profil" value="<?php echo $users["Id_profil"]; ?>,supp">Supprimer profil</button>
                                 </form>
                             <?php } ?>
                             <?php if($_SESSION['utilisateur']['id'] != $profilStatus[0]) {
                                 if(areFriends($_GET["profil"], $_SESSION['utilisateur']['id']) == true) { ?>
-                                    <form action="./notifications.php" method="post">
-                                        <button class="btn btn-edit bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Supprimer">Supprimer de la liste d'amis</button>
+                                    <form action="./notifications.php" method="post" class="btn-edit">
+                                        <button class="btn  bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Supprimer">Supprimer de la liste d'amis</button>
                                     </form>
                                 <?php } else {
                                     if(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "demandeCurrent") { ?>
                                         <form action="./notifications.php" method="post">
-                                            <button class="btn btn-edit bg-success text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Ajouter">Accepter la demande d'ami</button>
-                                            <button class="btn btn-edit bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Rejeter">Refuser la demande d'ami</button>
+                                            <button class="btn  bg-success text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Ajouter">Accepter la demande d'ami</button>
+                                            <button class="btn  bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Rejeter">Refuser la demande d'ami</button>
                                         </form>
                                     <?php } elseif(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "demandeUtilisateur") { ?>
                                         <form action="./notifications.php" method="post">
-                                            <button class="btn btn-edit bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Annuler">Annuler la demande d'ami</button>
+                                            <button class="btn  bg-danger text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Annuler">Annuler la demande d'ami</button>
                                         </form>
                                     <?php } elseif(getDemandeStatus($_GET["profil"], $_SESSION['utilisateur']['id']) == "erreur") { ?>
                                         <p>Problème dans la base de données!</p>
                                     <?php }
                                     else { ?>
                                         <form action="./notifications.php" method="post">
-                                            <button class="btn btn-edit bg-success text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Envoyer">Ajouter en ami</button>
+                                            <button class="btn  bg-success text-white" name="ami" value="<?php echo $_GET["profil"]; ?>,Envoyer">Ajouter en ami</button>
                                         </form>
                                     <?php }
                                 }
@@ -64,18 +64,21 @@
                 </p>
                 
                             <div class="p-card amiafficher">
-                                <div>
+                                <div >
                                 <?php
                     if(!empty($amis)) 
                         foreach ($amis as $ami) {
                             ?>
-                                    <img class="rounded-circle float-left image-ami" src="<?php echo $ami["Image_profil"]; ?>" alt="<?php echo $ami["Pseudo_profil"]; ?>">
+                            <div class="list-ami">
+                            <img class="rounded-circle float-left image-profil" src="<?php echo $ami["Image_profil"]; ?>" alt="<?php echo $ami["Pseudo_profil"]; ?>">
                                     
                                     <div class="cardbody">
                                         <blockquote class="blockquote mb-0">
-                                            <a href="profil.php?profil=<?php echo $ami["Id_profil"]; ?>"><h5 class="card-title pseudo-card"> <?php echo $ami["Pseudo_profil"]; ?></h5></a>
+                                            <a href="profil.php?profil=<?php echo $ami["Id_profil"]; ?>"><h5 class="card-title pseudo-card-ami"> <?php echo $ami["Pseudo_profil"]; ?></h5></a>
                                         </blockquote>
                                     </div>
+                            </div>
+                                    
                                     <?php
                         }
                     
@@ -96,13 +99,13 @@
                 if (!empty($questions)) {
                     foreach ($questions as $question) {
                         ?>
-                                <img class="rounded-circle float-left  image-questions " src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>">
+                                <img class="rounded-circle float-left  image-profil " src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>">
                                 
                                 <h5 class="card-title pseudo-card"> <?php echo $users["Pseudo_profil"]; ?> :</h5>
                                 
                                 <div class="cardbody">
                                     <blockquote class="blockquote mb-0">
-                                        <p class="card-text question-text"><?php echo $question["Titre_question"]; ?></p>
+                                        <p class="card-text-profil question-text"><?php echo $question["Titre_question"]; ?></p>
                                         <form action="./QuestionsReponses.php" method="get">
                                             <button  class="btn btn-profil btn-primary mr-4 toggle-btn" name="question" value="<?php echo $question["Id_question"] ?>"> 
                                                 Voir la question
