@@ -103,11 +103,12 @@
     </script>
     <script>
         $(document).ready(function(){
-      $("select.listDeTri").change(function(){
+      $("select.list2").change(function(){
         var listDeTri = $(this).children("option:selected").val();
-        if(listDeTri == 7){
+        if(listDeTri == "categ"){
             $("select.categ").css("display","block")
-            $("select.2").css("display","none")
+            $("select.list2").css("display","none")
+            
 }
       });
     });

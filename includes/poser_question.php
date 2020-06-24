@@ -1,7 +1,7 @@
 <body class="bgP">
     <div class="cardP mr-md-9 m-card shadow-lg p-3">
         <div class="card-body">
-            <div>
+            <div id="rafraiche">
                 <div class="form-group">
                     <form method="post" action="Questions.php" novalidate>
                         <div class="form-group">
@@ -30,8 +30,10 @@
                                 <?php if($_SESSION['utilisateur']['role'] == 1){?>
                                 
                                 <p>Tu n'as pas trouvé une catégorie qui te correspond ? <br>Alors clique <a data-toggle="modal" data-target="#newCateg" class="text-primary"> ici</a> pour rajouter ta catégorie.</p>
-
-                                <!-- Modal -->
+                                <p>C'est toujours pas ce que tu veux faire. Tu veux supprimer une categorie alors? <br>Clique <a data-toggle="modal" data-target="#suppCateg" class="text-danger"> ici</a> pour supprimer une catégorie.</p></p>
+                                <button type="submit" class="pBtn " name="poserquestion" value="valide">Envoyer</button>
+                                </form>
+                                <!-- Modal ajout categorie -->
                                 <div class="modal fade" id="newCateg" tabindex="-1" role="dialog" aria-labelledby="newCategLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered " role="document">
                                     <div class="modal-content">
@@ -54,12 +56,51 @@
                                     </div>
                                 </div>
                                 </div>
-                                <?php } ?>
+                                <!-- Modal supp categorie -->
+                                <div class="modal fade" id="suppCateg" tabindex="-1" role="dialog" aria-labelledby="suppCategLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered " role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="suppCategLabel">nouvelle catégorie</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form action="./delete.php" method="post">
+                                    <div class="modal-body">
+                                        <div style="margin-top: 2%;">
+                                            <label for="validationTooltip01">Supprimer une catégorie :</label>
+                                            <select class="custom-select mb-2" id="validationTooltip02" placeholder="Categorie" name="suppCategorie" required>
+                                                <option value="">Selectionner une catégorie</option>
+                                                <?php
+                                                $categ = selectAllCategories("DESC");
+                                                foreach($categ as $categorie){
+                                                    ?>
+                                                    <option value="<?php echo $categorie['Id_categorie'];?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    
+                                        <button id="supp" type="submit" class="btn btn-danger mt-3"  name="supprimer" value=" <?php echo $_POST['suppCategorie'];?> ">Supprimer</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                                            <?php } 
+                                            
+                                            
+                                           ?>
+                                            
                                 
                             </div>
-                            <button type="submit" class="pBtn " name="poserquestion" value="valide">Envoyer</button>
+                            
                         </div>
-                    </form>
+                    
                 </div>
             </div>
         </div>

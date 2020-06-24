@@ -40,7 +40,7 @@
             // Affichage normal du profil demandé
             navBar();
             require_once('./includes/profil.php');
-            footer();
+            
         }
 
         //Une requête pour modifier le profil est présente (on a donc 2 colonnes dans notre GET ($profilStatus))
@@ -76,7 +76,7 @@
                     require_once('includes/header.php');
                     navBar();
                     require_once('./includes/edit_profil.php');
-                    footer();
+                    
                     if(!empty($_POST)) {
                         $success = [
                             'pseudo' => "false",
@@ -180,5 +180,5 @@
         </div>
     <?php
     }
-    footer()
+    
 ?>
