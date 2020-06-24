@@ -637,7 +637,6 @@ body{
     margin-top: 1%;
     text-align: center;
 }
-
 /* aria expanded changement du contenu des bouttons en fonction de ce qu'il retourne */
 button[aria-expanded="true"] .fa-caret-right
 {

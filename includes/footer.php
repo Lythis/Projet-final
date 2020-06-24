@@ -59,18 +59,23 @@
             this.rows = minRows + rows;
         });
     </script>
+    <script type="text/javascript" src="script/like.js"></script>
     <script>
-    $(document).ready(function(){
-        $('div.notliked').click(function() {
-            alert('Success.');
-            $.ajax({
-                url: "fonctions/addLike.php",
-                method: "post",
-                body: $idQuestion,
-            });
+        $(document).ready(function(){
+    $('.fa-heart').click(function(){     
+        var idQuestion = $(this).parent().data('id');
+    $.ajax({
+            url: "./fonctions/addlike.php",
+            method: "post",
+            data: {"idQuestion" : idQuestion},
+            success: function(result)
+            {
+                $('.fa-heart').css('color', 'red');
+            }
         });
     });
-    </script>
+});
+</script>
 </footer>
 </body>
 </html>

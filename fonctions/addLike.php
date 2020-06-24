@@ -1,5 +1,5 @@
 <?php
-    #require_once('./fonctions/fonctions.php');
+    require_once('./fonctions/fonctions.php');
     $con = connexionBdd();
 
     $query = $con->prepare('INSERT INTO likes (`#Id_profil`, `#Id_question`) VALUES (:idprofil, :idquestion)');
