@@ -71,6 +71,9 @@
                 $totalRequest = false;
         }
     }
+    else {
+        $totalRequest = false;
+    }
     $pageCounter = selectAllQuestions(null, $order, null, 0, false);
     $pageCounter = ceil(count($pageCounter) / 30);
     
