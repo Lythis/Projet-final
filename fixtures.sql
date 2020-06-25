@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 23 juin 2020 à 14:49
+-- Généré le :  mer. 24 juin 2020 à 17:52
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `Id_categorie` int(11) NOT NULL AUTO_INCREMENT,
   `Libelle_categorie` varchar(255) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `categorie`
@@ -71,11 +71,9 @@ INSERT INTO `categorie` (`Id_categorie`, `Libelle_categorie`) VALUES
 (5, 'Coronavirus'),
 (6, 'Politique'),
 (7, 'VM'),
-(8, 'Idols'),
 (9, 'K-Pop'),
 (10, 'Japon'),
-(11, 'test'),
-(12, 'test2');
+(13, 'Autre');
 
 -- --------------------------------------------------------
 
@@ -112,7 +110,9 @@ CREATE TABLE IF NOT EXISTS `likes` (
 INSERT INTO `likes` (`#Id_profil`, `#Id_question`) VALUES
 (1, 167),
 (65, 1),
-(57, 167);
+(57, 167),
+(2, 170),
+(2, 120);
 
 -- --------------------------------------------------------
 
@@ -165,18 +165,18 @@ CREATE TABLE IF NOT EXISTS `question` (
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `question`
 --
 
 INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES
-(1, 'Qui est la meilleure waifu/meilleur husbando?', '2020-04-03', 2, 1),
+(1, 'Qui est la meilleure waifu/meilleur husbando?', '2020-04-03', 2, 13),
 (2, 'J\'aime TELLEMENT les VM, j\'en fais tout les jours, suis-je addicte?', '2020-04-04', 2, 7),
 (3, 'Why is Japan such a peaceful land?', '2020-04-04', 1, 10),
 (4, 'Comment faire pour que Morgan soit plus intelligent?', '2020-04-05', 1, 5),
-(5, 'Who\'s the best idol?', '2020-04-05', 1, 8),
+(5, 'Who\'s the best idol?', '2020-04-05', 1, 13),
 (6, 'Ceci est un test', '2020-04-05', 2, 1),
 (45, 'Pourquoi je suis aussi beau?', '2020-04-06', 55, 3),
 (46, 'Pourquoi Nico Nico Nii me harcèle même dans mes rêves?', '2020-04-15', 57, 1),
@@ -191,17 +191,17 @@ INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question
 (69, 'Et soluta qui vel ea. Labore corporis voluptas velit. Quo est velit eaque eum commodi qui debitis. Eos asperiores omnis excepturi maiores corporis facilis suscipit?', '2020-06-11', 2, 2),
 (70, 'Placeat vel tenetur deleniti voluptas. Mollitia vel sapiente recusandae autem eum error perferendis. Nesciunt veniam ea qui hic vero est suscipit?', '2020-06-11', 2, 1),
 (71, 'Officiis recusandae nam et recusandae ipsa perferendis. Ea rerum nemo et non magni dolorem labore harum. Quisquam voluptas labore quos iusto. Iusto vel qui corporis?', '2020-06-11', 2, 5),
-(72, 'Sunt ut reiciendis dolorem quo reprehenderit. Aut quia voluptate quaerat aliquid incidunt officiis ipsa. Natus assumenda iure dolor voluptas dolorum. Ut est delectus deleniti iusto repudiandae?', '2020-06-11', 2, 8),
-(73, 'Sunt ut reiciendis dolorem quo reprehenderit. Aut quia voluptate quaerat aliquid incidunt officiis ipsa. Natus assumenda iure dolor voluptas dolorum. Ut est delectus deleniti iusto repudiandae?', '2020-06-11', 2, 8),
+(72, 'Sunt ut reiciendis dolorem quo reprehenderit. Aut quia voluptate quaerat aliquid incidunt officiis ipsa. Natus assumenda iure dolor voluptas dolorum. Ut est delectus deleniti iusto repudiandae?', '2020-06-11', 2, 13),
+(73, 'Sunt ut reiciendis dolorem quo reprehenderit. Aut quia voluptate quaerat aliquid incidunt officiis ipsa. Natus assumenda iure dolor voluptas dolorum. Ut est delectus deleniti iusto repudiandae?', '2020-06-11', 2, 13),
 (74, 'Dolorem in eius molestiae dolorem voluptas. Aut nihil eos rerum porro quos. Esse quaerat vel consectetur quibusdam rerum?', '2020-06-11', 2, 5),
 (75, 'Itaque harum consequuntur tempora accusamus. Provident placeat sed esse rerum ex perferendis dolorem. Ut fuga expedita molestiae doloremque tempora accusamus nulla?', '2020-06-11', 2, 2),
 (76, 'Asperiores vel aspernatur rerum mollitia et ea est nesciunt. Voluptatem odit vel reiciendis perferendis iusto veniam delectus. Qui vel quis et ipsum reiciendis. Vel explicabo qui occaecati?', '2020-06-11', 2, 6),
 (77, 'Ex dolores vitae explicabo odio voluptatem libero sunt aut. Illo est aut et alias culpa non laboriosam omnis. Aut eius a alias eos?', '2020-06-11', 2, 4),
 (78, 'A voluptatem culpa repellat quis magni officia. Aut et blanditiis saepe vero blanditiis vel hic pariatur. Sint animi sed et?', '2020-06-11', 2, 3),
 (79, 'Officiis doloribus aut amet omnis quas. Odit eaque animi quod. Et ea exercitationem in nisi optio?', '2020-06-11', 2, 6),
-(80, 'Ut et voluptatem qui et corrupti. Dolorem aliquid eaque voluptas dolores. Ut earum dolores cupiditate repellendus recusandae. Iusto et est voluptate eveniet modi?', '2020-06-11', 2, 8),
+(80, 'Ut et voluptatem qui et corrupti. Dolorem aliquid eaque voluptas dolores. Ut earum dolores cupiditate repellendus recusandae. Iusto et est voluptate eveniet modi?', '2020-06-11', 2, 13),
 (81, 'Sequi dolorem harum repellendus voluptas consequatur et officia. Numquam quibusdam accusantium sint sint. Et est nam qui non aut. Et quis facere possimus veniam facilis?', '2020-06-11', 2, 3),
-(82, 'Quibusdam rerum assumenda delectus cumque. Possimus aut sit voluptatem id. Similique omnis veritatis commodi non?', '2020-06-11', 2, 8),
+(82, 'Quibusdam rerum assumenda delectus cumque. Possimus aut sit voluptatem id. Similique omnis veritatis commodi non?', '2020-06-11', 2, 13),
 (83, 'Veritatis nulla tempora sint fuga mollitia fugiat. Voluptas earum ad accusantium. Aut tempore odit excepturi?', '2020-06-11', 2, 2),
 (84, 'Possimus amet sit debitis aut similique nihil magni perferendis. Necessitatibus ut aut dolorem adipisci aut. Pariatur non voluptatem necessitatibus repellendus?', '2020-06-11', 2, 2),
 (85, 'Distinctio nihil ad qui quis rerum sed. Maiores et inventore doloremque aliquam. Harum quod hic corrupti consequatur dolores aliquam est quibusdam. Ut sapiente rerum commodi minus corporis?', '2020-06-11', 2, 3),
@@ -242,7 +242,7 @@ INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question
 (120, 'Aut debitis quis ut sint sint eligendi. Quae dolorem consequatur aliquid laboriosam deleniti error. In explicabo modi necessitatibus incidunt et officiis. Aut et sequi corporis mollitia?', '2020-06-11', 2, 6),
 (121, 'Laborum dolores quibusdam dolores. Et in doloribus voluptatum eos aspernatur in. Necessitatibus aut velit sit ratione quis vitae?', '2020-06-11', 2, 9),
 (122, 'Voluptas dolor voluptatem ipsum beatae qui. Quia soluta voluptatem explicabo eos. Laboriosam aliquam numquam suscipit unde ut?', '2020-06-11', 2, 9),
-(123, 'Nihil voluptates distinctio corporis et nobis et vel facilis. Nulla voluptates consequatur aut quo perspiciatis molestias. Nobis quia tempora deleniti ea et?', '2020-06-11', 2, 8),
+(123, 'Nihil voluptates distinctio corporis et nobis et vel facilis. Nulla voluptates consequatur aut quo perspiciatis molestias. Nobis quia tempora deleniti ea et?', '2020-06-11', 2, 13),
 (124, 'Ad libero corrupti et nobis voluptas quasi eum. Fugit sapiente aut dignissimos totam nulla officia id. Qui pariatur ab dolores modi porro. Ipsam molestiae alias aliquam delectus?', '2020-06-11', 2, 9),
 (125, 'Asperiores sed repellat a recusandae alias eveniet. Et aperiam repellat voluptatem magnam eos debitis et. Molestias nemo voluptatibus est dolores molestias nemo et.', '2020-06-11', 2, 3),
 (126, 'Et odit eos neque occaecati. Debitis dolorem cupiditate aut magni magnam quo. Dolore beatae exercitationem nihil cupiditate. Rerum quae placeat aperiam?', '2020-06-11', 2, 10),
@@ -252,11 +252,11 @@ INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question
 (130, 'Distinctio qui quidem nihil quos. Aliquid enim omnis et voluptatem magni. Eos non illum maiores autem eum magnam quis nam?', '2020-06-11', 2, 7),
 (131, 'Id nam ab sint earum. Molestias nihil eos eum illum. Optio debitis atque perspiciatis reiciendis ullam exercitationem. Enim blanditiis aut nisi nihil est pariatur?\r\n', '2020-06-11', 2, 7),
 (132, 'Odit ipsam aut ut. Enim fugiat eveniet fugiat delectus placeat non doloremque aut. Architecto architecto omnis sunt et illum voluptatem. Nam delectus optio perferendis. Quam dolores sequi dolor?', '2020-06-11', 2, 6),
-(133, 'Quia doloribus vel in. Et eum et molestiae fuga illum iure laboriosam nobis. Assumenda id voluptas non iste. Iure eos odio labore ducimus. Praesentium et unde blanditiis et ut vel quis?', '2020-06-11', 2, 8),
+(133, 'Quia doloribus vel in. Et eum et molestiae fuga illum iure laboriosam nobis. Assumenda id voluptas non iste. Iure eos odio labore ducimus. Praesentium et unde blanditiis et ut vel quis?', '2020-06-11', 2, 13),
 (134, 'Consequuntur porro vel tenetur officiis quae quia suscipit. Fugiat est eos nobis voluptas aperiam provident et laudantium. Est tempore numquam labore quo maiores. Doloribus qui hic et quam?', '2020-06-11', 2, 7),
 (135, 'Ipsa autem qui et fugiat unde necessitatibus error voluptate. Voluptatibus et dolorem quaerat dicta omnis quasi. Eum cumque laborum voluptas ut?', '2020-06-11', 2, 2),
 (136, 'Consequatur placeat vitae et velit velit. Eos dolorum laboriosam quidem. Cupiditate voluptas totam recusandae maiores ut laboriosam iste et. Ut sed ea minima incidunt est?', '2020-06-11', 2, 1),
-(137, 'Velit velit molestiae suscipit fugiat consequatur. Consequatur odit odio tempore. Odio eum voluptatem alias. Iure et officia voluptatum est delectus voluptatem non?', '2020-06-11', 2, 8),
+(137, 'Velit velit molestiae suscipit fugiat consequatur. Consequatur odit odio tempore. Odio eum voluptatem alias. Iure et officia voluptatum est delectus voluptatem non?', '2020-06-11', 2, 13),
 (138, 'A aut odio nihil pariatur consequatur explicabo id qui. Dignissimos et quis dolor qui aut. Aut quod dolores totam laborum velit maxime ut?', '2020-06-11', 2, 9),
 (139, 'Quia et repellendus quae. Odit et voluptatibus totam optio et rerum?', '2020-06-11', 2, 10),
 (140, 'Ex commodi quidem ratione ducimus dolor alias aut. Nihil id nesciunt laboriosam et aliquid consectetur at?', '2020-06-11', 2, 5),
@@ -284,16 +284,19 @@ INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question
 (162, 'Nesciunt fugiat assumenda fugit totam fugit quod. Qui in facilis nemo. Esse dolores harum nihil ratione eum. Sed vitae tempore cumque similique cumque libero molestiae?', '2020-06-11', 2, 3),
 (163, 'Vitae culpa nobis cupiditate iusto suscipit delectus. Facere accusantium error voluptate et quo facere autem omnis. Aliquid soluta sed necessitatibus et sint. A nemo dolorem non?', '2020-06-11', 2, 1),
 (164, 'Quaerat reiciendis velit id rem a quisquam. Modi quia provident optio voluptas voluptas et ut. Libero dolorem earum temporibus corporis ipsam. Eveniet quae qui officia omnis?', '2020-06-11', 2, 6),
-(165, 'Velit molestiae ea harum sapiente natus. Aspernatur cum veniam perferendis a voluptatem. Quibusdam rerum consectetur maxime?', '2020-06-11', 2, 8),
-(166, 'Ratione est architecto quas nihil deleniti ab placeat. Debitis ex unde nulla. Aut qui id neque?', '2020-06-11', 2, 8),
+(165, 'Velit molestiae ea harum sapiente natus. Aspernatur cum veniam perferendis a voluptatem. Quibusdam rerum consectetur maxime?', '2020-06-11', 2, 13),
+(166, 'Ratione est architecto quas nihil deleniti ab placeat. Debitis ex unde nulla. Aut qui id neque?', '2020-06-11', 2, 13),
 (167, 'Voluptatem sit reiciendis eaque et aut quisquam fuga sed. Nihil omnis sit eligendi est possimus. Voluptas maxime in ullam repellat?', '2020-06-11', 2, 2),
 (168, 'Nisi velit ut sed provident consequuntur quia sint. Ad quas et cupiditate placeat consequatur voluptas rerum repellat. Sit ut ducimus est quos. Velit fuga et ut ab dicta?', '2020-06-11', 2, 5),
 (169, 'Ratione impedit est est omnis praesentium vitae fuga voluptas. Consequatur voluptatem molestiae illo distinctio adipisci in est. Sit ut placeat modi perferendis suscipit ea?', '2020-06-11', 2, 6),
 (170, 'In veniam omnis repudiandae reiciendis repudiandae velit deserunt numquam. Aliquam accusamus qui dolores eum maiores ullam dolore?', '2020-06-11', 2, 1),
 (171, 'Placeat et quo eaque quod qui repellat omnis et. Dolor officiis qui alias architecto unde ut dolor. Rerum et quisquam voluptatem impedit blanditiis ea deserunt. Magnam quo adipisci ex ducimus nihil?', '2020-06-11', 2, 4),
-(172, 'Expedita nihil perspiciatis eos non repellat non recusandae aperiam. Magnam cupiditate ad sapiente et. In tenetur ipsum repudiandae sit temporibus. Consequatur beatae qui consequuntur ad omnis?', '2020-06-11', 2, 8),
+(172, 'Expedita nihil perspiciatis eos non repellat non recusandae aperiam. Magnam cupiditate ad sapiente et. In tenetur ipsum repudiandae sit temporibus. Consequatur beatae qui consequuntur ad omnis?', '2020-06-11', 2, 13),
 (173, 'Rerum voluptas qui qui rem omnis quia voluptatem. Excepturi asperiores in voluptatem delectus incidunt similique ut dolore?', '2020-06-11', 2, 2),
-(174, 'Quam assumenda non voluptas voluptatem consequuntur. Quaerat ullam quas exercitationem ut sint numquam et. Doloribus nostrum eaque dolorum id autem. Id aut ad quia aut?', '2020-06-11', 2, 8);
+(174, 'Quam assumenda non voluptas voluptatem consequuntur. Quaerat ullam quas exercitationem ut sint numquam et. Doloribus nostrum eaque dolorum id autem. Id aut ad quia aut?', '2020-06-11', 2, 13),
+(175, 'salut', '2020-06-24', 1, 13),
+(176, 'salut2', '2020-06-24', 1, 13),
+(177, 'ok', '2020-06-24', 1, 13);
 
 -- --------------------------------------------------------
 

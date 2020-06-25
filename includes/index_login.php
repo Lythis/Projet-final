@@ -33,7 +33,12 @@
             <button type="reset" class="pBtn reset" style="width: 14%;" name="reset" value="reset">Réinitialiser le triage avancé</button>
         </form>
     </div>
-    
+    <div id="scrollUp">
+        <a href="#top"><img src="image/to_top.png"/></a>
+    </div>
+    <div id="scrollDown">
+        <a href="#bot"><img src="image/to_top.png"/></a>
+    </div>
     <?php
     // Affichage de toutes les questions en fonction de la page sur laquelle l'utilisateur se trouve
     if (empty($_GET['page'])) {
@@ -47,35 +52,93 @@
     if(isset($_COOKIE["triage"])) {
         switch($_COOKIE["triage"]) {
             case "likeA":
-                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` WHERE `#Id_categorie` = $whereCookie GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                }
+                else {
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                }
+                $where = null;
                 break;
             case "likeD":
-                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` WHERE `#Id_categorie` = $whereCookie GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                }
+                else {
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                }
+                $where = null;
                 break;
             case "dateA":
                 $order = "ORDER BY `Date_creation_question` ASC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $where = "`#Id_categorie` = $whereCookie";
+                }
+                else {
+                    $where = null;
+                }
                 $totalRequest = false;
                 break;
             case "dateD":
                 $order = "ORDER BY `Date_creation_question` DESC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $where = "`#Id_categorie` = $whereCookie";
+                }
+                else {
+                    $where = null;
+                }
                 $totalRequest = false;
                 break;
             case "reponseA":
-                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` WHERE `#Id_categorie` = $whereCookie GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                }
+                else {
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                }
+                $where = null;
                 break;
             case "reponseD":
-                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` WHERE `#Id_categorie` = $whereCookie GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                }
+                else {
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                }
+                $where = null;
                 break;
             default:
                 $order = "ORDER BY `Date_creation_question` DESC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $where = "`#Id_categorie` = $whereCookie";
+                }
+                else {
+                    $where = null;
+                }
                 $totalRequest = false;
         }
     }
-    $pageCounter = selectAllQuestions(null, $order, null, 0, false);
+    else {
+        $totalRequest = false;
+        if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+            $whereCookie = $_COOKIE ["categorie"];
+            $where = "`#Id_categorie` = $whereCookie";
+        }
+        else {
+            $where = null;
+        }
+    }
+    $pageCounter = selectAllQuestions($where, $order, null, 0, $totalRequest);
     $pageCounter = ceil(count($pageCounter) / 30);
     
-    $questions = selectAllQuestions(null, $order, $limit, $startLimit, $totalRequest);
-
+    $questions = selectAllQuestions($where, $order, $limit, $startLimit, $totalRequest);
     if (!empty($questions)) {
     
         foreach ($questions as $question) {
@@ -106,24 +169,25 @@
                     <?php
                         if($hasLiked == true) {
                             ?>
-                            <a class="liked">
+                            <button class="liked press-button" name="liked" id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
                                 <i class="fas fa-heart heart1"></i>
-                        </a>
+                            </button>
                             <?php
                         }
                         else {
                             ?>
-                            <a class="notliked">
+                            <button class="notliked press-button" name="notliked"  id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
                                 <i class="far fa-heart heart2"></i>
-                            </a>
+                            </button>
                             <?php
                         }
                     ?>
                     </div>
                     
-                    
                     <blockquote class="blockquote mb-2">
-                        <footer class="blockquote-footer">Le <?php echo $question["Date_creation_question"]." Nombre de like : ".$nombreLikes["likecounter"]; ?></footer>
+                        
+                       <footer class="blockquote-footer" ">Le <?php echo $question["Date_creation_question"]." Nombre de like : "?>  <div id="reload"> <?php echo $nombreLikes["likecounter"]; ?></div></footer>
+                     
                     </blockquote>
                     
                     

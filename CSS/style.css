@@ -49,7 +49,28 @@ body{
 .titre{
     margin-left: 5%;
 }
-
+#scrollUp img
+{
+    margin-top: -4%;
+    margin-left: 96%;
+    position: fixed;
+    opacity: 1;
+    height: 30px;
+    width: 30px;
+}
+#scrollDown img{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    margin-top: 35%;
+    margin-left: 96%;
+    position: fixed;
+    height: 30px;
+    width: 30px;
+    opacity: 1;
+}
 .boutton{
     border-radius: 5%;
     background-color: #ED008C;
@@ -124,7 +145,7 @@ body{
     background-color: inherit;
     border: 0;   
     padding-left: 15%;
-    margin-left: -5%;
+    margin-bottom: 3%;
 }
 
 /* style de la page d'Accueil non connecté premier grand bloc */
@@ -792,8 +813,8 @@ button[aria-expanded="false"] .afficher
 }
 
 .btn-profil{
-    margin-bottom: 1%;
-    margin-left: 13%;
+    margin-bottom: 2%;
+    margin-left: 14%;
 }
 
 .card_profil{
@@ -822,13 +843,16 @@ button[aria-expanded="false"] .afficher
     text-align: center;
     margin-top: 1%;
 }
-
+.pseudo-card{
+    padding-top: 1%;
+}
 /* Affichage des photos de profil dans les questions */
 .image-questions{
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
+    margin-top: 1%;
     margin-left: 2%;
-    margin-right: 5%    ;
+    margin-right: 5%;
     object-fit: cover; 
 }
 .image-profil{
