@@ -52,6 +52,15 @@
     #Fonction pour savoir quel accueil afficher en fonction de l'état de la session, ne retourne rien
     function accueil() {
         if (!empty($_SESSION)) {
+            if(isset($_POST["triage"])) {
+                setcookie("triage", $_POST["triage"]);
+            }
+            if(isset($_POST["triagea"])) {
+                setcookie("triagea", $_POST["triagea"]);
+            }
+            if(isset($_POST["triage"]) || isset($_POST["triagea"])) {
+                header('Location: ./index.php');;
+            }
             require_once('./includes/index_login.php');
         }
         else {
@@ -99,12 +108,21 @@
     }
 
     #Sélectionner toutes les questions de la base de données en donnant l'ordre de triage et les limites de sélection, retourne les questions en tableau
-    function selectAllQuestions($order, $limit, $offset) {
+    function selectAllQuestions($where, $order, $limit, $offset, $totalRequest) {
         $con = connexionBdd();
 
-        $requete = "SELECT * FROM question ORDER BY `Date_creation_question` $order, `Id_question` $order";
-        if ($limit != null) {
-            $requete = $requete." LIMIT $limit OFFSET $offset";
+        if($totalRequest == false) {
+            $requete = "SELECT * FROM question";
+            if($where != null) {
+                $requete = $requete." WHERE $where";
+            }
+            $requete = $requete." $order";
+            if ($limit != null) {
+                $requete = $requete." LIMIT $limit OFFSET $offset";
+            }
+        }
+        else {
+            $requete = $totalRequest. " LIMIT $limit OFFSET $offset";
         }
         $query = $con->prepare($requete);
         $query->execute();
@@ -206,7 +224,7 @@
         $query->execute();
     }
 
-    #Fonction pour insérer une réponse dans la base de données, ne retourne rien
+    #Fonction pour insérer une catégorie dans la base de données, ne retourne rien
     function insertIntoCategorie($libelle) {
         $con = connexionBdd();
             
@@ -250,6 +268,20 @@
         $query = $con->prepare('DELETE FROM `question` WHERE `Id_question` = :id');
         $query->bindParam(':id', $idQuestion);
         $query->execute();
+    }
+    #Fonction pour supprimer une categorie de la base de données, ne retourne rien
+    function deleteCategorie($idCategorie , $idSupp) {
+        $con = connexionBdd();
+        $query = $con->prepare('DELETE FROM `categorie` WHERE `Id_categorie` = :id');
+        $query->bindParam(':id', $idCategorie);
+        $query->execute();
+        
+        $query = $con->prepare('UPDATE `question` SET `#Id_categorie`= :supp WHERE `#Id_categorie`= :id');
+        $query->bindParam(':id', $idCategorie);
+        $query->bindParam(':supp', $idSupp);
+        $query->execute();
+        
+
     }
 
     #Fonction pour modifier un profil de la base de données (on vérifie à chaque fois ce qui a été saisie, si c'est égal aux données actuelles ou vide, on ne modifie rien), retourne un tableau "success" définit auparavent
@@ -374,60 +406,90 @@
         return false;
     }
 
-    #Fonction pour modifier l'image de profil d'un utilisateur, ne retourne rien
+    #Fonction pour modifier l'image de profil d'un utilisateur, retourne une erreur s'il y en a une, sinon vrai
     function editImage($idProfil) {
         $con = connexionBdd();
         $users = selectFromProfil($idProfil);
 
-        $nouvelleImage = $_POST['image'];
-        $query = $con->prepare("UPDATE `profil` SET `Image_profil` = :newimage WHERE `Id_profil` = $idProfil");
-        $query->bindParam(':newimage', $nouvelleImage);
-        $query->execute();
+        $nomImage = $_FILES['image']['name'];
+        $tmpNameImage = $_FILES['image']['tmp_name'];
+        $sizeImage = $_FILES['image']['size'];
+        $errorImage = $_FILES['image']['error'];
+        $typeImage = $_FILES['image']['type'];
 
-        if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
-            $users = selectFromProfil($idProfil);
-            $_SESSION['utilisateur']['image'] = $users['Image_profil'];
-        }
+        $nomImageExt = explode('.', $nomImage);
+        $nomImageExt = end($nomImageExt);
+        $nomImageExt = strtolower($nomImageExt);
+        $allowed = array('jpg', 'jpeg', 'png', 'gif');
 
-        function transfert(){
-            $ret        = false;
-            $img_blob   = '';
-            $img_taille = 0;
-            $img_type   = '';
-            $img_nom    = '';
-            $taille_max = 250000;
-            $ret        = is_uploaded_file($_FILES['fic']['tmp_name']);
-            
-            if (!$ret) {
-                echo "Problème de transfert";
-                return false;
-            } else {
-                // Le fichier a bien été reçu
-                $img_taille = $_FILES['fic']['size'];
-                
-                if ($img_taille > $taille_max) {
-                    echo "Trop gros !";
-                    return false;
+        if(in_array($nomImageExt, $allowed)) {
+            if($errorImage === 0) {
+                if($sizeImage < 10000000) {
+                    $query = $con->prepare("SELECT `Image_profil` FROM `profil` WHERE `Id_profil` = $idProfil");
+                    $query->execute();
+                    $deleteImage = $query->fetch();
+                    $defaultPicture = "./image_profil/Default.png";
+                    if($deleteImage['Image_profil'] != $defaultPicture) {
+                        unlink($deleteImage['Image_profil']);
+                    }
+
+                    $nomUpload = $users["Id_profil"].".".$nomImageExt;
+                    $fileUpload = "./image_profil/".$nomUpload;
+                    move_uploaded_file($tmpNameImage, $fileUpload);
+
+                    $query = $con->prepare("UPDATE `profil` SET `Image_profil` = :newimage WHERE `Id_profil` = $idProfil");
+                    $query->bindParam(':newimage', $fileUpload);
+                    $query->execute();
+
+                    if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
+                        $users = selectFromProfil($idProfil);
+                        $_SESSION['utilisateur']['image'] = $users['Image_profil'];
+                    }
+
+                    return true;
                 }
-    
-                $img_type = $_FILES['fic']['type'];
-                $img_nom  = $_FILES['fic']['name'];
-                include ("Base_PDO.php");
-                $img_blob = file_get_contents ($_FILES['fic']['tmp_name']);
-                $req = "INSERT INTO images (" . 
-                                "img_nom, img_taille, img_type, img_blob " .
-                                ") VALUES (" .
-                                "'" . $img_nom . "', " .
-                                "'" . $img_taille . "', " .
-                                "'" . $img_type . "', " .
-                                "'" . addslashes ($img_blob) . "') ";
-                #$ret = mysql_query ($req) or die (mysql_error ());
-                return true;
+                else {
+                    return "La taille de votre image ne doit pas dépasser 10Mo!";
+                }
             }
+            else {
+                return "Erreur lors de l'upload de l'image. Veuillez réessayer.";
+            }
+        }
+        else {
+            return "Type de fichier non pris en charge. Veuillez choisir un fichier d'extension .jpg, .jpeg, .png ou .gif.";
         }
     }
 
-    function getLikes($idProfil) {
+    #Fonction pour supprimer une image (et mettre celle de défaut), retourne vrai si la suppression a bien eu lieu, rien sinon
+    function suppImage($idProfil) {
+        $con = connexionBdd();
+        $users = selectFromProfil($idProfil);
+        $defaultPicture = "./image_profil/Default.png";
+        $deleteSuccess = false;
+
+        $query = $con->prepare("SELECT `Image_profil` FROM `profil` WHERE `Id_profil` = $idProfil");
+        $query->execute();
+        $checkDefault = $query->fetch();
+
+        if($checkDefault['Image_profil'] != $defaultPicture) {
+            $deleteSuccess = unlink($checkDefault['Image_profil']);
+
+            $query = $con->prepare("UPDATE `profil` SET `Image_profil` = :newimage WHERE `Id_profil` = $idProfil");
+            $query->bindParam(':newimage', $defaultPicture);
+            $query->execute();
+
+            if($_SESSION['utilisateur']['id'] == $users['Id_profil']) {
+                $users = selectFromProfil($idProfil);
+                $_SESSION['utilisateur']['image'] = $users['Image_profil'];
+            }
+        }
+
+        return $deleteSuccess;
+    }
+
+    #Fonction pour savoir quelles questions ont été like par un utilisateur, retourne le tableau des questions
+    function getLikeProfil($idProfil) {
         $con = connexionBdd();
 
         $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_profil` = $idProfil");
@@ -435,42 +497,144 @@
         return $query->fetchAll();
     }
 
+    #Fonction pour savoir si un utilisateur a like une question, retourne vrai ou faux
     function hasLiked($idProfil, $idQuestion) {
-        $likedQuestions = getLikes($idProfil);
-        $ind = 0;
-        while($ind < count($likedQuestions)) {
-            if($likedQuestions[$ind]["#Id_question"] == $idQuestion) {
-                return true;
+        $con = connexionBdd();
+        
+        $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_question` = $idQuestion AND `#Id_profil` = $idProfil");
+        $query->execute();
+        $result = $query->fetch();
+        if(empty($result)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    #Fonction pour savoir combien de likes une question a, retourne le nombre de like de la question
+    function getLikeQuestion($idQuestion) {
+        $con = connexionBdd();
+
+        #count(*) GROUP BY
+        $query = $con->prepare("SELECT count(`#Id_question`) as likecounter FROM `likes` WHERE `#Id_question` = $idQuestion");
+        $query->execute();
+        return $query->fetch();
+    }
+        
+
+    #Fonction pour savoir si quelqu'un a une demande d'ami en attente (notification), retourne le tableau avec les demandes si il y en a au moins une, faux sinon
+    function demandeAmiRecu($idProfil) {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT * FROM `demande_ami` WHERE `#Id_profil` = $idProfil");
+        $query->execute();
+        $result = $query->fetchAll();
+
+        if(empty($result)) {
+            return false;
+        }
+        else {
+            return $result;
+        }
+    }
+
+    #Fonction pour récupérer tous les amis de quelqu'un, retourne le tableau avec Id_profil, Pseudo_profil, Image_profil
+    function getAmi($idProfil) {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT Id_profil, Pseudo_profil, Image_profil FROM `profil` WHERE `Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    #Fonction pour savoir qui demande qui en ami, retourne différent résultats en fonction de la situation
+    function getDemandeStatus($idProfilCurrent, $idProfilUtilisateur) {
+        $con = connexionBdd();
+
+        $query = $con->prepare("SELECT * FROM `demande_ami` WHERE (`Id_profil` = $idProfilCurrent AND `#Id_profil` = $idProfilUtilisateur) OR (`Id_profil` = $idProfilUtilisateur AND `#Id_profil` = $idProfilCurrent)");
+        $query->execute();
+        $result = $query->fetch();
+
+        if(!empty($result)) {
+            if($result["Id_profil"] == $idProfilCurrent) {
+                return "demandeCurrent";
+            }
+            elseif($result["#Id_profil"] == $idProfilCurrent) {
+                return "demandeUtilisateur";
             }
             else {
-                $ind = $ind + 1;
+                return "Erreur";
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+    #Fonction pour savoir si deux personnes sont amis, retourne vrai si oui, faux sinon
+    function areFriends($idProfilCurrent, $idProfilUtilisateur) {
+        $amis = getAmi($idProfilCurrent);
+        foreach($amis as $ami) {
+            if(in_array($idProfilUtilisateur, $ami, false) == true) {
+                return true;
             }
         }
         return false;
     }
 
-    function getLikeQuestion($idQuestion) {
+    #Fonction pour ajouter un ami suite à une requête envoyée, retourne un message en fonction de ce qui a été demandé
+    function gererAmi($idProfilCurrent, $idProfilUtilisateur, $status) {
         $con = connexionBdd();
-
-        #count(*) GROUP BY
-        $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_question` = $idQuestion");
-        $query->execute();
-        $likeArray = $query->fetchAll();
-        $numLike = 0;
-
-        for($ind = 0; $ind < count($likeArray); $ind++) {
-            $numLike = $numLike + 1;
+        
+        if($status == "Envoyer") {
+            $query = $con->prepare("INSERT INTO `demande_ami`(`Id_profil`, `#Id_profil`) VALUES (:idProfilUtilisateur, :idProfilCurrent)");
+            $query->bindParam(':idProfilUtilisateur', $idProfilUtilisateur);
+            $query->bindParam(':idProfilCurrent', $idProfilCurrent);
+            $query->execute();
+            return "Demande envoyée.";
         }
+        elseif($status == "Ajouter") {
+            $query = $con->prepare("DELETE FROM `demande_ami` WHERE `Id_profil` = $idProfilCurrent AND `#Id_profil` = $idProfilUtilisateur");
+            $query->execute();
 
-        return $numLike;
+            $query = $con->prepare("INSERT INTO `ami`(`Id_profil`, `#Id_profil`) VALUES (:idProfilUtilisateur, :idProfilCurrent)");
+            $query->bindParam(':idProfilUtilisateur', $idProfilUtilisateur);
+            $query->bindParam(':idProfilCurrent', $idProfilCurrent);
+            $query->execute();
+            return "Demande acceptée.";
+        }
+        elseif($status == "Annuler") {
+            $query = $con->prepare("DELETE FROM `demande_ami` WHERE `Id_profil` = $idProfilUtilisateur AND `#Id_profil` = $idProfilCurrent");
+            $query->execute();
+            return "Demande annulée.";
+        }
+        elseif($status == "Rejeter") {
+            $query = $con->prepare("DELETE FROM `demande_ami` WHERE `Id_profil` = $idProfilCurrent AND `#Id_profil` = $idProfilUtilisateur");
+            $query->execute();
+            return "Demande rejetée.";
+        }
+        elseif($status == "Supprimer") {
+            $query = $con->prepare("DELETE FROM `ami` WHERE (`Id_profil` = $idProfilCurrent OR `#Id_profil` = $idProfilCurrent) AND (`#Id_profil` = $idProfilUtilisateur OR `Id_profil` = $idProfilUtilisateur)");
+            $query->execute();
+            return "Ami supprimé.";
+        }
+        else {
+            return "Erreur lors du traitement.";
+        }
     }
 
-    #function MorganIQ($Morgan, $smart) {
-    #    if($Morgan == $smart) {
-    #        return "IQ Over 9000";
-    #    }
-    #    else {
-    #        return "No IQ";
-    #    }
-    #}
+    #Fonction pour savoir si l'utilisateur a des demandes, $sent = true si on veut les demandes envoyées, false sinon, retourne un tableau contenant les demandes
+    function getDemande($idProfil, $sent) {
+        $con = connexionBdd();
+
+        if($sent == true) {
+            $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = (SELECT `#Id_profil` FROM `demande_ami` WHERE `Id_profil` = $idProfil)");
+        }
+        else {
+            $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = (SELECT `Id_profil` FROM `demande_ami` WHERE `#Id_profil` = $idProfil)");
+        }
+        $query->execute();
+        return $query->fetchAll();
+    }
 ?>

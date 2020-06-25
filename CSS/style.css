@@ -47,7 +47,28 @@ body{
 .titre{
     margin-left: 5%;
 }
-
+#scrollUp img
+{
+    margin-top: -4%;
+    margin-left: 96%;
+    position: fixed;
+    opacity: 1;
+    height: 30px;
+    width: 30px;
+}
+#scrollDown img{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    margin-top: 35%;
+    margin-left: 96%;
+    position: fixed;
+    height: 30px;
+    width: 30px;
+    opacity: 1;
+}
 .boutton{
     border-radius: 5%;
     background-color: #ED008C;
@@ -55,7 +76,38 @@ body{
     width: 100%;
     height: 5ex;
 }
-
+/*list de trie*/
+.listDeTri{
+    width: 16%;
+    display: inline-block;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem 1.75rem .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-left: 19%;
+     margin-right:1%;
+}
+.list2{
+    width: 19%;
+    margin-left: 0%;
+}
+.categ{
+    display: none;
+    margin-left: 0%;
+}
+.forme{
+    display: contents;
+}
 /* Limite de caractère pour poser des Questions/Descriptions/Reponses */
 .mauvais {
     color:#cc0000;
@@ -72,6 +124,7 @@ body{
     background-color: inherit;
     border: 0;   
     padding-left: 15%;
+    margin-bottom: 3%;
 }
 
 /* style de la page d'Accueil non connecté premier grand bloc */
@@ -637,6 +690,7 @@ body{
     margin-top: 1%;
     text-align: center;
 }
+
 /* aria expanded changement du contenu des bouttons en fonction de ce qu'il retourne */
 button[aria-expanded="true"] .fa-caret-right
 {
@@ -685,7 +739,24 @@ button[aria-expanded="false"] .afficher
 }
 
 
+
+
 /* Profil */
+
+.listeamiprofil {
+    width: 25%;
+    float: right;
+}
+
+.amiafficher {
+    height: 125px;
+}
+
+.questionsrecentes {
+  
+    margin-right: 15%;
+}
+
 .profil{
     background-color: #E8E5E4;
     margin-top: 3%;
@@ -702,15 +773,15 @@ button[aria-expanded="false"] .afficher
 
 
 .p-card{
-    margin-left: 27%;
-    margin-right: 27%;
+    margin-right: 18%;
     background-color: white;
     box-shadow: 3px 3px 3px black;
     margin-top: 1%;
 }
 
 .btn-profil{
-    margin-bottom: 1%;
+    margin-bottom: 2%;
+    margin-left: 14%;
 }
 
 .card_profil{
@@ -739,11 +810,21 @@ button[aria-expanded="false"] .afficher
     text-align: center;
     margin-top: 1%;
 }
-
+.pseudo-card{
+    padding-top: 1%;
+}
 /* Affichage des photos de profil dans les questions */
 .image-questions{
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
+    margin-top: 1%;
+    margin-left: 2%;
+    margin-right: 5%;
+    object-fit: cover; 
+}
+.image-ami{
+    width: 30px;
+    height: 30px;
     margin-left: 2%;
     margin-right: 5%    ;
     object-fit: cover; 
