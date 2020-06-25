@@ -52,34 +52,93 @@
     if(isset($_COOKIE["triage"])) {
         switch($_COOKIE["triage"]) {
             case "likeA":
-                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` WHERE `#Id_categorie` = $whereCookie GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                }
+                else {
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                }
+                $where = null;
                 break;
             case "likeD":
-                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` WHERE `#Id_categorie` = $whereCookie GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                }
+                else {
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                }
+                $where = null;
                 break;
             case "dateA":
                 $order = "ORDER BY `Date_creation_question` ASC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $where = "`#Id_categorie` = $whereCookie";
+                }
+                else {
+                    $where = null;
+                }
                 $totalRequest = false;
                 break;
             case "dateD":
                 $order = "ORDER BY `Date_creation_question` DESC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $where = "`#Id_categorie` = $whereCookie";
+                }
+                else {
+                    $where = null;
+                }
                 $totalRequest = false;
                 break;
             case "reponseA":
-                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` WHERE `#Id_categorie` = $whereCookie GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                }
+                else {
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                }
+                $where = null;
                 break;
             case "reponseD":
-                $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` WHERE `#Id_categorie` = $whereCookie GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                }
+                else {
+                    $totalRequest = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                }
+                $where = null;
                 break;
             default:
                 $order = "ORDER BY `Date_creation_question` DESC";
+                if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+                    $whereCookie = $_COOKIE ["categorie"];
+                    $where = "`#Id_categorie` = $whereCookie";
+                }
+                else {
+                    $where = null;
+                }
                 $totalRequest = false;
         }
     }
-    $pageCounter = selectAllQuestions(null, $order, null, 0, false);
+    else {
+        $totalRequest = false;
+        if(isset($_COOKIE["triagea"]) && isset($_COOKIE["categorie"]) && $_COOKIE["triagea"] == "categ") {
+            $whereCookie = $_COOKIE ["categorie"];
+            $where = "`#Id_categorie` = $whereCookie";
+        }
+        else {
+            $where = null;
+        }
+    }
+    $pageCounter = selectAllQuestions($where, $order, null, 0, $totalRequest);
     $pageCounter = ceil(count($pageCounter) / 30);
     
-    $questions = selectAllQuestions(null, $order, $limit, $startLimit, $totalRequest);
+    $questions = selectAllQuestions($where, $order, $limit, $startLimit, $totalRequest);
     if (!empty($questions)) {
     
         foreach ($questions as $question) {
@@ -182,7 +241,7 @@
         }
         ?>
         <!-- Compteur de page -->
-        <div class="center-pages " id="bot">
+        <div class="center-pages ">
             <nav aria-label="Page navigation example ">
                 <ul class="pagination justify-content-center">
                 <li id="retirer" class="page-item border border-secondary">

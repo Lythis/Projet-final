@@ -57,9 +57,15 @@
             }
             if(isset($_POST["triagea"])) {
                 setcookie("triagea", $_POST["triagea"]);
+                if(isset($_POST["categorie"])) {
+                    setcookie("categorie", $_POST["categorie"]);
+                }
+                elseif(isset($_POST["qamis"])) {
+                    setcookie("categorie", $_POST["qamis"]);
+                }
             }
             if(isset($_POST["triage"]) || isset($_POST["triagea"])) {
-                header('Location: ./index.php');;
+                header('Location: ./index.php');
             }
             require_once('./includes/index_login.php');
         }
@@ -122,7 +128,12 @@
             }
         }
         else {
-            $requete = $totalRequest. " LIMIT $limit OFFSET $offset";
+            if ($limit != null) {
+                $requete = $totalRequest. " LIMIT $limit OFFSET $offset";
+            }
+            else {
+                $requete = $totalRequest;
+            }
         }
         $query = $con->prepare($requete);
         $query->execute();
@@ -272,16 +283,18 @@
     #Fonction pour supprimer une categorie de la base de données, ne retourne rien
     function deleteCategorie($idCategorie , $idSupp) {
         $con = connexionBdd();
-        $query = $con->prepare('DELETE FROM `categorie` WHERE `Id_categorie` = :id');
-        $query->bindParam(':id', $idCategorie);
-        $query->execute();
-        
         $query = $con->prepare('UPDATE `question` SET `#Id_categorie`= :supp WHERE `#Id_categorie`= :id');
         $query->bindParam(':id', $idCategorie);
         $query->bindParam(':supp', $idSupp);
         $query->execute();
-        
 
+        $query = $con->prepare('DELETE FROM `categorie` WHERE `Id_categorie` = :id');
+        $query->bindParam(':id', $idCategorie);
+        $query->execute();
+
+        if(isset($_COOKIE["categorie"]) && $_COOKIE["categorie"] == $idCategorie) {
+            setcookie("categorie", null, time() - 3600);
+        }
     }
 
     #Fonction pour modifier un profil de la base de données (on vérifie à chaque fois ce qui a été saisie, si c'est égal aux données actuelles ou vide, on ne modifie rien), retourne un tableau "success" définit auparavent
@@ -500,7 +513,7 @@
     #Fonction pour savoir si un utilisateur a like une question, retourne vrai ou faux
     function hasLiked($idProfil, $idQuestion) {
         $con = connexionBdd();
-        
+
         $query = $con->prepare("SELECT * FROM `likes` WHERE `#Id_question` = $idQuestion AND `#Id_profil` = $idProfil");
         $query->execute();
         $result = $query->fetch();
@@ -521,7 +534,6 @@
         $query->execute();
         return $query->fetch();
     }
-        
 
     #Fonction pour savoir si quelqu'un a une demande d'ami en attente (notification), retourne le tableau avec les demandes si il y en a au moins une, faux sinon
     function demandeAmiRecu($idProfil) {

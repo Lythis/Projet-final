@@ -18,6 +18,7 @@
         if(isset($profilStatus[0])) {
             // On récupère le profil demandé en GET (dans notre tableau $profilStatus à la première ligne) dans un tableau $users
             $users = selectFromProfil($profilStatus[0]);
+            $amis = getAmi($profilStatus[0]);
         }
 
         //Notre GET n'est pas vide et on a récupéré les informations de l'utilisateur présent dans notre GET (ici présent dans $users, donc si $users n'est pas vide)
@@ -39,7 +40,7 @@
             // Affichage normal du profil demandé
             navBar();
             require_once('./includes/profil.php');
-            footer();
+            
         }
 
         //Une requête pour modifier le profil est présente (on a donc 2 colonnes dans notre GET ($profilStatus))
@@ -59,8 +60,12 @@
                         'genre' => "false",
                     ];
                     // Si on a une requête pour modifier l'image
-                    if(isset($_POST['image']) && !empty($_POST['image'])) {
-                        editImage($profilStatus[0]);
+                    if(isset($_FILES['image']) && !empty($_FILES['image'])) {
+                        $editImageSuccess = editImage($profilStatus[0]);
+                        $users = selectFromProfil($profilStatus[0]);
+                    }
+                    elseif(isset($_POST['suppImage'])) {
+                        $suppImageSuccess = suppImage($profilStatus[0]);
                         $users = selectFromProfil($profilStatus[0]);
                     }
                     // Sinon si notre POST n'est pas vide (donc requête pour modifier le profil)
@@ -71,7 +76,7 @@
                     require_once('includes/header.php');
                     navBar();
                     require_once('./includes/edit_profil.php');
-                    footer();
+                    
                     if(!empty($_POST)) {
                         $success = [
                             'pseudo' => "false",
@@ -100,7 +105,7 @@
                     <div class="card">
                         <div class="card-body" style="display: flex;">
                             <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
-                            <h6>Vous n\'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                            <h6>Vous n'avez pas le droit de modifier ce profil. <a href="./index.php">Revenir à l'accueil</a>.</h6></p>
                         </div>
                     </div>
                 <?php
@@ -125,7 +130,7 @@
                     <div class="card">
                         <div class="card-body" style="display: flex;">
                             <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
-                            <h6>Vous n\'avez pas le droit de supprimer ce profil. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                            <h6>Vous n'avez pas le droit de supprimer ce profil. <a href="./index.php">Revenir à l'accueil</a>.</h6></p>
                         </div>
                     </div>
                 <?php
@@ -140,7 +145,7 @@
                 <div class="card">
                     <div class="card-body" style="display: flex;">
                         <p class="card-text w-25"> <img src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
-                        <h6>Problème lors de votre requête. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                        <h6>Problème lors de votre requête. <a href="./index.php">Revenir à l'accueil</a>.</h6></p>
                     </div>
                 </div>
             <?php
@@ -156,7 +161,7 @@
             <div class="card">
                 <div class="card-body" style="display: flex;">
                     <p class="card-text w-25"> <img src="image/tenor.gif" style=" width: 90%; margin-right: 6%;" class="" alt="facher">
-                    <h6>Profil introuvable. <a href="./index.php">Revenir à l\'accueil</a>.</h6></p>
+                    <h6>Profil introuvable. <a href="./index.php">Revenir à l'accueil</a>.</h6></p>
                 </div>
             </div>
         <?php
@@ -175,5 +180,5 @@
         </div>
     <?php
     }
-    footer()
+    
 ?>

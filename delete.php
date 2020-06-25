@@ -24,6 +24,13 @@
                 }
             }
         }
+        elseif(isset($_POST['suppCategorie'])) {
+            $toDelete = $_POST['suppCategorie'];
+            $supp = '13';
+            $title = 'Supprimer la categorie '.$toDelete;
+            deleteCategorie($toDelete ,$supp);
+            $success = true;
+     }
 
         // Sinon si c'est une question
         elseif(isset($_POST['question'])) {
@@ -39,6 +46,16 @@
                 $success = true;
             }
         }
+        elseif(isset($_POST['suppCategorie'])) {
+            $toDelete = $_POST['suppCategorie'];
+            $supp = '13';
+            $title = 'Supprimer la categorie '.$toDelete;
+            deleteCategorie($toDelete ,$supp);
+            $success = true;
+            
+     }
+        
+        
     }
 
     // Header & navbar & message & footer (la page n'est pas vraiment graphique, c'est surtout pour la requête)

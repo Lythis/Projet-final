@@ -90,13 +90,12 @@
                 </p>
                 
                
-                        
+                        <div class="p-card">
+                            <div >
                             <?php
                 if (!empty($questions)) {
                     foreach ($questions as $question) {
                         ?>
-                        <div class="p-card">
-                            <div >
                                 <img class="rounded-circle float-left  image-questions " src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>">
                                 
                                 <h5 class="card-title pseudo-card"> <?php echo $users["Pseudo_profil"]; ?> :</h5>
@@ -111,14 +110,13 @@
                                         </form>
                                     </blockquote>
                                 </div>
-                                </div>
-                        </div>
                                 <?php
                                 
                              }
                             
                                 ?>
-                           
+                            </div>
+                        </div>
                 <?php
                } else {
                 ?>
@@ -132,5 +130,3 @@
                 ?>
             </div>
         </div>
-
-        
