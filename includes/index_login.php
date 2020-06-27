@@ -14,12 +14,16 @@
                 <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "reponseD") { echo "selected"; } ?> value="reponseD">Nombre de réponses - Descendantes</i></option>
             </select>
             <select class="listDeTri list2" name="triagea" >
+<<<<<<< HEAD
             <option <?php if(!isset($_COOKIE["triagea"])) { echo "selected"; } ?> class="defaut" value="0">Pas de triage avancé</option>
+=======
+                <option <?php if(!isset($_COOKIE["triagea"])) { echo "selected"; } ?> class="defaut" value="0">Pas de triage avancé</option>
+>>>>>>> c7625c1da1e6a56f6c6b89dbece86e67245a9eb3
                 <option <?php if(isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] == "categ") { echo "selected"; } ?> value="categ">Sélectionner une catégorie</i></option>
                 <option <?php if(isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] == "qamis") { echo "selected"; } ?> value="qamis">Questions posées par mes amis</i></option>
             </select>
-            <select class="listDeTri categ"  placeholder="Categorie" name="categorie">
-                <option value="null">Selectionner une catégorie</option>
+            <select class="listDeTri categ" placeholder="Categorie" name="categorie">
+                <option <?php if(!isset($_COOKIE["categorie"])) { echo "selected"; } ?> value="null">Selectionner une catégorie</option>
                 <?php
                     $categ = selectAllCategories("DESC");
                     foreach($categ as $categorie){
