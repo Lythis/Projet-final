@@ -118,11 +118,7 @@
             var defaultValue = $("option.defaut").val();
             $("button.reset").click(function () {
                 $("select.list2").val(defaultValue).css("display","block");
-<<<<<<< HEAD
-                $("select.categ").css("display","none");
-=======
                 $("select.categ").css("display","none",);
->>>>>>> c7625c1da1e6a56f6c6b89dbece86e67245a9eb3
             });
         });
     </script>
@@ -132,14 +128,6 @@
                 var textCateg = $(this).children("option:selected").text();
             });
         laCategorie = GetCookie("categorie");
-<<<<<<< HEAD
-            if( laCategorie != 'null'){
-                $("select.list2").css("display","none")
-                $("select.categ").css("display","block").val(laCategorie).text(textCateg)
-        }
-        });  
-    </script>
-=======
         leTriagea = GetCookie("triagea");
         if(leTriagea =='0' || laCategorie.val === null){
             $("select.list2").val(defaultValue).css("display","block");
@@ -151,11 +139,10 @@
                 $("select.categ").css("display","block").val(laCategorie).text(textCateg)
                 }
 
-            
-        });  
+
+        });
     </script>
     
->>>>>>> c7625c1da1e6a56f6c6b89dbece86e67245a9eb3
     <script>
         function getCookieVal(offset) {
     var endstr=document.cookie.indexOf (";", offset);
