@@ -131,7 +131,10 @@
             if( laCategorie != 'null'){
                 $("select.list2").css("display","none")
                 $("select.categ").css("display","block").val(laCategorie).text(textCateg)
-        }
+            }else{
+                $("select.list2").val(defaultValue).css("display","block");
+                $("select.categ").css("display","none");
+            }
         });  
     </script>
     <script>
