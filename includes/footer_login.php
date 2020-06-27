@@ -103,18 +103,18 @@
     </script>
     <script>
         $(document).ready(function(){
-      $("select.list2").change(function(){
+    $("select.list2").change(function(){
         var listDeTri = $(this).children("option:selected").val();
         if(listDeTri == "categ"){
             $("select.categ").css("display","block")
             $("select.list2").css("display","none")
             
 }
-      });
+    });
     });
     </script>
     <script>
-         $(function(){
+        $(function(){
             var defaultValue = $("option.defaut").val();
             $("button.reset").click(function () {
                 $("select.list2").val(defaultValue).css("display","block");
@@ -139,8 +139,8 @@
                 $("select.categ").css("display","block").val(laCategorie).text(textCateg)
                 }
 
-            
-        });  
+
+        });
     </script>
     
     <script>

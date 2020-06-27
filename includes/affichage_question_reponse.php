@@ -26,43 +26,52 @@
                 </div>
             </div>
         </div>
-         <!-- Modal -->
-         <div class="modal fade" id="modifCAteg" tabindex="-1" role="dialog" aria-labelledby="modifCAtegLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modifCAtegLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+        <!-- Modal -->
+            <div class="modal fade" id="modifCAteg" tabindex="-1" role="dialog" aria-labelledby="modifCAtegLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modifCAtegLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="validationTooltip01">categorie actuel:</label>
+                        
+                            <p value=""><?php echo $categorie["Libelle_categorie"]; ?></p>
+                             
+                        
+                        <label for="validationTooltip01">nouvelle categorie</label>
+                    <form action="" method="POST">
+                    <select class="custom-select mb-2" id="validationTooltip02" placeholder="Categorie" name="remplaceCateg" required>
+                        <option value="">Selectionner une catégorie</option>
+                                <?php
+                                    $categ = selectAllCategories("DESC");
+                                    foreach($categ as $categorie){
+                                ?>
+                                 <option value="<?php echo $categorie['Id_categorie'];?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
+                                <?php
+                                    }
+                                ?>
+                        </select>
                     </div>
-                    <div class="modal-body">
-                        <label for="validationTooltip01">categorie actuel:</label>
-                            
-                                <p value=""><?php echo $categorie["Libelle_categorie"]; ?></p>
-                                 
-                            
-                            <label for="validationTooltip01">nouvelle categorie</label>
-                        <form action="" method="POST">
-                        <select class="custom-select mb-2" id="validationTooltip02" placeholder="Categorie" name="remplaceCateg" required>
-                            <option value="">Selectionner une catégorie</option>
-                                    <?php
-                                        $categ = selectAllCategories("DESC");
-                                        foreach($categ as $categorie){
-                                    ?>
-                                     <option value="<?php echo $categorie['Id_categorie'];?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
-                                    <?php
-                                        }
-                                    ?>
-                            </select>
-                        </div>
-                    
-                    <div class="modal-footer">
-                        <button  type="submit" value="<?php echo $_POST['remplaceCateg']; ?>" class="btn btn-primary">changer la categorie</button>
-                        </div>
+                
+                <div class="modal-footer">
+                    <button  type="submit" value="<?php echo $_POST['remplaceCateg']; ?>" class="btn btn-primary">changer la categorie</button>
                     </div>
-                    </div>
-                    </div>
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <?php
+                    $idQuestion;
+                    $idCategorie = $_POST['remplaceCateg'];
+                    updateCategQuestion($idQuestion, $idCategorie);
+
+                ?>
+                </form>
         <div class="cardP w-md-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="repondre">
             <div class="card-body">
                 <form class="needs-validation" method="post" action="./QuestionsReponses.php?question=<?php echo $questionStatus[0]; ?>">
@@ -74,7 +83,6 @@
                             <div class="invalid-feedback">
                                 Veuillez saisir une réponse.
                             </div>
-                        </div>
                     </div>
                     <button type="submit" class="btn bg-primary text-white">Envoyer</button>
                     <?php
@@ -84,7 +92,10 @@
 
                 ?>
                 </form>
+                
             </div>
+            
+
             
             <?php
             
