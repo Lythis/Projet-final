@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="modal-footer">
                                     
-                                        <button id="supp" type="submit" class="btn btn-danger mt-3"  name="supprimer" value=" <?php echo $_POST['suppCategorie'];?> ">Supprimer</button>
+                                        <button id="supp" type="submit" class="btn btn-danger mt-3"  name="supprimer" value="">Supprimer</button>
                                         </form>
                                     </div>
                                     </div>
