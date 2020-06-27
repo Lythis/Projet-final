@@ -55,6 +55,13 @@
             if(isset($_POST["triage"])) {
                 setcookie("triage", $_POST["triage"]);
             }
+            if(isset($_POST["triagea"]) || isset($_COOKIE["triage"])) {
+                if((isset($_POST["categorie"]) && $_POST["categorie"] == "null") || (isset($_COOKIE["categorie"]) && $_COOKIE["categorie"] == "null")) {
+                    setcookie("triagea", null, time() - 3600);
+                    setcookie("categorie", null, time() - 3600);
+                    header('Location: ./index.php');
+                }
+            }
             if(isset($_POST["triagea"])) {
                 setcookie("triagea", $_POST["triagea"]);
                 if(isset($_POST["categorie"])) {
@@ -284,6 +291,10 @@
         $con = connexionBdd();
 
         $query = $con->prepare('DELETE FROM `reponse` WHERE `#Id_question` = :id');
+        $query->bindParam(':id', $idQuestion);
+        $query->execute();
+
+        $query = $con->prepare('DELETE FROM `likes` WHERE `#Id_question` = :id');
         $query->bindParam(':id', $idQuestion);
         $query->execute();
 
