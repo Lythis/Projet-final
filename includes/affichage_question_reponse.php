@@ -58,7 +58,7 @@
                     </div>
                 
                 <div class="modal-footer">
-                    <button  type="submit" value="<?php echo $_POST['remplaceCateg']; ?>" class="btn btn-primary">changer la categorie</button>
+                    <button  type="submit" value="if(isset())" class="btn btn-primary">changer la categorie</button>
                     </div>
                 </div>
                 </div>
