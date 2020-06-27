@@ -29,6 +29,7 @@
                     }
                 ?>
             </select>
+            
             <button type="submit" class="pBtn" style="width: 10%;" name="validerTriage" value="valide">Trier</button>
             <button type="reset" class="pBtn reset" style="width: 14%;" name="reset" value="reset">Réinitialiser le triage avancé</button>
         </form>
@@ -139,6 +140,7 @@
     $pageCounter = ceil(count($pageCounter) / 30);
     
     $questions = selectAllQuestions($where, $order, $limit, $startLimit, $totalRequest);
+
     if (!empty($questions)) {
     
         foreach ($questions as $question) {
@@ -169,7 +171,7 @@
                     <?php
                         if($hasLiked == true) {
                             ?>
-                            <button class="press-button" name="liked" id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
+                            <button class="liked1 press-button" name="liked" id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
                                 <i class="fas fa-heart heart1"></i>
                             </button>
                             <?php

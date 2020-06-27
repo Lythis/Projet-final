@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $(".press-button").click(function(){
+    $(".notliked1").click(function(){
         var like = $( ".notliked1" ).first().attr( "id" ).split(',');
         var questionId = like[0];
         var connexionId = like[1]; 
@@ -12,7 +12,6 @@ $(document).ready(function(){
                 console.log(data);
                 $("i.heart1").css("color", 'red');
                 $("i.heart1").css("display","true");
-
                 location.reload();
             },
             error: function (data) {

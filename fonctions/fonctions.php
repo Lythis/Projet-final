@@ -253,6 +253,18 @@
         $query->execute();
     }
 
+    #Fonnction permetant de modifier la categorie d'une question
+    function updateCategQuestion($idQuestion, $idCategorie) {
+        $con = connexionBdd();
+
+        $query = $con->prepare('UPDATE `question` SET `#Id_categorie` = :id_categorie WHERE `question`.`Id_question` = :id_Question');
+        $query->bindParam(':id_Question', $idQuestion);
+        $query->bindParam(':id_categorie', $idCategorie);
+        $query->execute();
+    }
+    
+
+
     #Fonction pour insérer une catégorie dans la base de données, ne retourne rien
     function insertIntoCategorie($libelle) {
         $con = connexionBdd();
