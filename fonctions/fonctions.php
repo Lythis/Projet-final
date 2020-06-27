@@ -55,6 +55,13 @@
             if(isset($_POST["triage"])) {
                 setcookie("triage", $_POST["triage"]);
             }
+            if(isset($_POST["triagea"]) || isset($_COOKIE["triage"])) {
+                if((isset($_POST["categorie"]) && $_POST["categorie"] == "null") || (isset($_COOKIE["categorie"]) && $_COOKIE["categorie"] == "null")) {
+                    setcookie("triagea", null, time() - 3600);
+                    setcookie("categorie", null, time() - 3600);
+                    header('Location: ./index.php');
+                }
+            }
             if(isset($_POST["triagea"])) {
                 setcookie("triagea", $_POST["triagea"]);
                 if(isset($_POST["categorie"])) {
@@ -234,6 +241,18 @@
         $query->bindParam(':id_categorie', $categorie);
         $query->execute();
     }
+
+    #Fonnction permetant de modifier la categorie d'une question
+    function updateCategQuestion($idQuestion, $idCategorie) {
+        $con = connexionBdd();
+
+        $query = $con->prepare('UPDATE `question` SET `#Id_categorie` = :id_categorie WHERE `question`.`Id_question` = :id_Question');
+        $query->bindParam(':id_Question', $idQuestion);
+        $query->bindParam(':id_categorie', $idCategorie);
+        $query->execute();
+    }
+    
+
 
     #Fonction pour insérer une catégorie dans la base de données, ne retourne rien
     function insertIntoCategorie($libelle) {

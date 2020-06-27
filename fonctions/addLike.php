@@ -8,5 +8,4 @@
     $query->bindParam(':idprofil', $_POST["idConnect"]);
     $query->bindParam(':idquestion',  $_POST["id"]);
     $query->execute();
-
 ?>

@@ -5,8 +5,8 @@
             <form enctype="multipart/form-data" method="post" action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit">
                 <div>
                     <label>Choisir une image : </label>
-                    <input type="file" class="form-control" name="image" size=50>
-                    <button class="btn-edit text-white">Envoyer l'image</button>
+                    <button class="btn-dlImage"> <input type="file" class="dlimage" name="image" size="50" > </input> <p class="choix-image"><a> Choix image</a></p></button>
+                    <button class="ajout-btn text-white">  Envoyer l'image</button>
                     <?php
                         if(isset($editImageSuccess)) {
                             if($editImageSuccess === true) {
@@ -25,7 +25,7 @@
             </form>
                       
             <form method="post" action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit">
-                <button class=" text-white delete-btn" name="suppImage">Supprimer l'image</button>
+                <button class=" text-white delete-btn" name="suppImage">Supprimer image</button>
                 <?php
                     if(isset($suppImageSuccess) && $suppImageSuccess === true) {
                         ?>

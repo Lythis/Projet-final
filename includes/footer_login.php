@@ -1,4 +1,4 @@
-footer class="pF">
+<footer class="pF">
     <div class="footer-log">
         <div class="icon-log">
             <i class="fab fa-dribbble"></i>
@@ -103,26 +103,57 @@ footer class="pF">
     </script>
     <script>
         $(document).ready(function(){
-      $("select.list2").change(function(){
+    $("select.list2").change(function(){
         var listDeTri = $(this).children("option:selected").val();
         if(listDeTri == "categ"){
             $("select.categ").css("display","block")
             $("select.list2").css("display","none")
             
 }
-      });
+    });
     });
     </script>
     <script>
-         $(function(){
+        $(function(){
             var defaultValue = $("option.defaut").val();
             $("button.reset").click(function () {
-                $("select.2").val(defaultValue).css("display","block");
+                $("select.list2").val(defaultValue).css("display","block");
                 $("select.categ").css("display","none");
             });
         });
     </script>
-    
+    <script>
+    $(document).ready(function(){
+        $("select.categ").change(function(){
+                var textCateg = $(this).children("option:selected").text();
+            });
+        laCategorie = GetCookie("categorie");
+            if( laCategorie != 'null'){
+                $("select.list2").css("display","none")
+                $("select.categ").css("display","block").val(laCategorie).text(textCateg)
+        }
+        });  
+    </script>
+    <script>
+        function getCookieVal(offset) {
+    var endstr=document.cookie.indexOf (";", offset);
+    if (endstr==-1) endstr=document.cookie.length;
+    return unescape(document.cookie.substring(offset, endstr));
+}
+function GetCookie (name) {
+    var arg=name+"=";
+    var alen=arg.length;
+    var clen=document.cookie.length;
+    var i=0;
+    while (i<clen) {
+    var j=i+alen;
+    if (document.cookie.substring(i, j)==arg) return getCookieVal (j);
+    i=document.cookie.indexOf(" ",i)+1;
+    if (i==0) break;
+    }
+    return null;
+}
+    </script>  
 </footer>
 </body>
 </html>
