@@ -169,14 +169,14 @@
                     <?php
                         if($hasLiked == true) {
                             ?>
-                            <button class="liked press-button" name="liked" id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
+                            <button class="press-button" name="liked" id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
                                 <i class="fas fa-heart heart1"></i>
                             </button>
                             <?php
                         }
                         else {
                             ?>
-                            <button class="notliked press-button" name="notliked"  id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
+                            <button class="notliked1 press-button" name="notliked"  id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
                                 <i class="far fa-heart heart2"></i>
                             </button>
                             <?php
