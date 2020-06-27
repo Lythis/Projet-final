@@ -22,9 +22,7 @@ body{
     border: none;
     border-radius:2px ;
 }
-.nav-item{
-    margin-top: 1%;
-}
+
 .navbar-text{
     margin-left: 65%;
 }
@@ -77,25 +75,6 @@ body{
     border: none;
     width: 100%;
     height: 5ex;
-}
-
-/*style des notifs*/
-.notif{
-    width: 45%;
-}
-.notif h2{
-    padding-top: 2%;
-}
-.p-card-notif{
-    margin-right: 18%;
-    background-color: white;
-    box-shadow: 3px 3px 3px black;
-    margin-top: 1%;
-    width: 100%;
-    height: 15ex;
-}
-.p-card-notif p{
-    padding-top: 4%;
 }
 /*list de trie*/
 .listDeTri{
@@ -471,10 +450,6 @@ body{
     font-size: 2vmin;
     width: 80%;
 }
-.card-text-profil{
-    font-size: 2vmin;
-    
-}
 
 .card-align{
     display: flex;
@@ -772,17 +747,9 @@ button[aria-expanded="false"] .afficher
     width: 25%;
     float: right;
 }
-.list-ami{
-    width: 60%;
-    float: left;
-    margin-top: 2%;
-    margin-bottom: 3%;
-}
 
 .amiafficher {
-    display: inline-block;
-    width: 100%;
-
+    height: 125px;
 }
 
 .questionsrecentes {
@@ -855,9 +822,9 @@ button[aria-expanded="false"] .afficher
     margin-right: 5%;
     object-fit: cover; 
 }
-.image-profil{
-    width: 60px;
-    height: 60px;
+.image-ami{
+    width: 30px;
+    height: 30px;
     margin-left: 2%;
     margin-right: 5%    ;
     object-fit: cover; 
@@ -868,10 +835,6 @@ button[aria-expanded="false"] .afficher
     border-radius: 50%;
     margin-bottom: 2%;
     margin-right: 5%;
-}
-/* affichage pseudo ami*/
-.pseudo-card-ami{
-    padding-top: 6%;
 }
 
 /* liens vers images  et l'édition de profil */
@@ -902,7 +865,13 @@ button[aria-expanded="false"] .afficher
 }
 
 .btn-edit{
-    margin-left: 1%;
+    background-color: #31BCE7;
+    border: none;
+    border-radius: 2%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 
 .delete-btn{

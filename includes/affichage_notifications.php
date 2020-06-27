@@ -3,7 +3,7 @@
         <label><i class="fas fa-check"></i> <?php echo $resultAmi; ?></label>
     <?php }
 ?>
-<div class="notif mx-auto">
+<div>
     <h2>Amis :</h2>
     <?php
         $amis = getAmi($_SESSION["utilisateur"]["id"]);
@@ -19,7 +19,7 @@
                                 <a href="profil.php?profil=<?php echo $ami["Id_profil"]; ?>"><h5 class="card-title pseudo-card"> <?php echo $ami["Pseudo_profil"]; ?></h5></a>
                             </blockquote>
                             <form action="./notifications.php" method="post">
-                                <button class="btn  bg-danger text-white" name="ami" value="<?php echo $ami["Id_profil"]; ?>,Supprimer">Supprimer de la liste d'amis</button>
+                                <button class="btn btn-edit bg-danger text-white" name="ami" value="<?php echo $ami["Id_profil"]; ?>,Supprimer">Supprimer de la liste d'amis</button>
                             </form>
                         </div>
                     </div>
@@ -46,22 +46,16 @@
                                 <a href="profil.php?profil=<?php echo $demande["Id_profil"]; ?>"><h5 class="card-title pseudo-card"> <?php echo $demande["Pseudo_profil"]; ?></h5></a>
                             </blockquote>
                             <form action="./notifications.php" method="post">
-                                <button class="btn  bg-success text-white" name="ami" value="<?php echo $demande["Id_profil"]; ?>,Ajouter">Accepter la demande d'ami</button>
-                                <button class="btn  bg-danger text-white" name="ami" value="<?php echo $demande["Id_profil"]; ?>,Rejeter">Refuser la demande d'ami</button>
+                                <button class="btn btn-edit bg-success text-white" name="ami" value="<?php echo $demande["Id_profil"]; ?>,Ajouter">Accepter la demande d'ami</button>
+                                <button class="btn btn-edit bg-danger text-white" name="ami" value="<?php echo $demande["Id_profil"]; ?>,Rejeter">Refuser la demande d'ami</button>
                             </form>
                         </div>
                     </div>
                 </div>
             <?php }
         } else { ?>
-        <div class="p-card-notif ">
-                    <div>
-                        <div class="cardbody">
-                        <p>Aucune demande en attente.</p>
-                        </div>
-                    </div>
-                </div>
-        
+
+        <p>Aucune demande en attente.</p>
 
     <?php } ?>
 
@@ -80,7 +74,7 @@
                                 <a href="profil.php?profil=<?php echo $demande["Id_profil"]; ?>"><h5 class="card-title pseudo-card"> <?php echo $demande["Pseudo_profil"]; ?></h5></a>
                             </blockquote>
                             <form action="./notifications.php" method="post">
-                                <button class="btn  bg-danger text-white" name="ami" value="<?php echo $demande["Id_profil"]; ?>,Annuler">Annuler la demande d'ami</button>
+                                <button class="btn btn-edit bg-danger text-white" name="ami" value="<?php echo $demande["Id_profil"]; ?>,Annuler">Annuler la demande d'ami</button>
                             </form>
                         </div>
                     </div>

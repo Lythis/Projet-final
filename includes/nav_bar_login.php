@@ -9,7 +9,7 @@
                 <li class="nav-item">
                     <a class="nav-link active text-dark" href="./Questions.php">Poser une question</a>
                 </li>
-                <li >
+                <li class="nav-item">
                     <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $_SESSION['utilisateur']['id']; ?>"><img class="picture-user-small" src="<?php echo $_SESSION['utilisateur']['image']; ?>" alt="<?php echo $_SESSION['utilisateur']['pseudo']; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $_SESSION['utilisateur']['id']; ?>"><b><?php echo $_SESSION['utilisateur']['pseudo']; ?></a></b>
                     <?php if(demandeAmiRecu($_SESSION['utilisateur']['id']) == false) { ?>
                         <a href="./notifications.php"><i class="far fa-bell" style="color: black">0</i></a>
