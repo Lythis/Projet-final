@@ -128,15 +128,22 @@
                 var textCateg = $(this).children("option:selected").text();
             });
         laCategorie = GetCookie("categorie");
-            if( laCategorie != 'null'){
+        leTriage = GetCookie("triage");
+        leTriagea = GetCookie("triagea");
+        if(leTriagea =='0' || laCategorie.val === null){
+            $("select.list2").val(defaultValue).css("display","block");
+                $("select.categ").css("display","none");
+
+            }
+            else{
                 $("select.list2").css("display","none")
                 $("select.categ").css("display","block").val(laCategorie).text(textCateg)
-            }else{
-                $("select.list2").val(defaultValue).css("display","block");
-                $("select.categ").css("display","none");
-            }
+                }
+
+            
         });  
     </script>
+    
     <script>
         function getCookieVal(offset) {
     var endstr=document.cookie.indexOf (";", offset);

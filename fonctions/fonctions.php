@@ -241,6 +241,17 @@
         $query->bindParam(':id_categorie', $categorie);
         $query->execute();
     }
+    #Fonction pour insérer une réponse dans la base de données, ne retourne rien
+    function insertIntoReponse($reponse, $date, $utilisateur, $question) {
+        $con = connexionBdd();
+
+        $query = $con->prepare('INSERT INTO `reponse`(`Contenu_reponse`, `Date_reponse`, `#Id_profil`, `#Id_question`) VALUES (:reponse, :dateajd, :id_user, :id_question)');
+        $query->bindParam(':reponse', $reponse);
+        $query->bindParam(':dateajd', $date);
+        $query->bindParam(':id_user', $utilisateur);
+        $query->bindParam(':id_question', $question);
+        $query->execute();
+    }
 
     #Fonnction permetant de modifier la categorie d'une question
     function updateCategQuestion($idQuestion, $idCategorie) {
