@@ -254,14 +254,7 @@
     }
 
     #Fonnction permetant de modifier la categorie d'une question
-    function updateCategQuestion($idQuestion, $idCategorie) {
-        $con = connexionBdd();
-
-        $query = $con->prepare('UPDATE `question` SET `#Id_categorie` = :id_categorie WHERE `question`.`Id_question` = :id_Question');
-        $query->bindParam(':id_Question', $idQuestion);
-        $query->bindParam(':id_categorie', $idCategorie);
-        $query->execute();
-    }
+    
     
 
 
@@ -319,7 +312,7 @@
         $con = connexionBdd();
         $query = $con->prepare('UPDATE `question` SET `#Id_categorie`= :supp WHERE `#Id_categorie`= :id');
         $query->bindParam(':id', $idCategorie);
-        $query->bindParam(':supp', $idSupp);
+       $query->bindParam(':supp', $idSupp);
         $query->execute();
 
         $query = $con->prepare('DELETE FROM `categorie` WHERE `Id_categorie` = :id');
@@ -329,6 +322,15 @@
         if(isset($_COOKIE["categorie"]) && $_COOKIE["categorie"] == $idCategorie) {
             setcookie("categorie", null, time() - 3600);
         }
+    }
+    #Fonnction permetant de modifier la categorie d'une question
+    function updateCategQuestion($idQuestion, $idCategorie) {
+        $con = connexionBdd();
+
+        $query = $con->prepare('UPDATE `question` SET `#Id_categorie` = :id_categorie WHERE `question`.`Id_question` = :id_Question');
+        $query->bindParam(':id_Question', $idQuestion);
+        $query->bindParam(':id_categorie', $idCategorie);
+        $query->execute();
     }
 
     #Fonction pour modifier un profil de la base de données (on vérifie à chaque fois ce qui a été saisie, si c'est égal aux données actuelles ou vide, on ne modifie rien), retourne un tableau "success" définit auparavent

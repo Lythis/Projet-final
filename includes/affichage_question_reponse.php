@@ -85,6 +85,12 @@
                             </div>
                     </div>
                     <button type="submit" class="btn bg-primary text-white">Envoyer</button>
+                    <?php
+                    $idQuestion;
+                    $idCategorie = $_POST['remplaceCateg'];
+                    updateCategQuestion($idQuestion, $idCategorie);
+
+                ?>
                 </form>
                 
             </div>
