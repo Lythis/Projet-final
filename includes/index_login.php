@@ -14,17 +14,17 @@
                 <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "reponseD") { echo "selected"; } ?> value="reponseD">Nombre de réponses - Descendantes</i></option>
             </select>
             <select class="listDeTri list2" name="triagea" >
-                <option selected class="defaut" value="0">Pas de triage avancé</option>
-                <option value="categ">Sélectionner une catégorie</i></option>
-                <option value="qamis">Questions posées par mes amis</i></option>
+                <option <?php if(!isset($_COOKIE["triagea"])) { echo "selected"; } ?> class="defaut" value="0">Pas de triage avancé</option>
+                <option <?php if(isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] == "categ") { echo "selected"; } ?> value="categ">Sélectionner une catégorie</i></option>
+                <option <?php if(isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] == "qamis") { echo "selected"; } ?> value="qamis">Questions posées par mes amis</i></option>
             </select>
-            <select class="listDeTri categ"  placeholder="Categorie" name="categorie">
-                <option value="null">Selectionner une catégorie</option>
+            <select class="listDeTri categ" placeholder="Categorie" name="categorie">
+                <option <?php if(!isset($_COOKIE["categorie"])) { echo "selected"; } ?> value="null">Selectionner une catégorie</option>
                 <?php
                     $categ = selectAllCategories("DESC");
                     foreach($categ as $categorie){
                 ?>
-                    <option value="categ<?php echo $categorie['Id_categorie']; ?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
+                    <option <?php if(isset($_COOKIE["categorie"]) && $_COOKIE["categorie"] == $categorie['Id_categorie']) { echo "selected"; } ?> value="<?php echo $categorie['Id_categorie']; ?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
                 <?php
                     }
                 ?>
