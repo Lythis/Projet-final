@@ -117,8 +117,8 @@
          $(function(){
             var defaultValue = $("option.defaut").val();
             $("button.reset").click(function () {
-                $("select.2").val(defaultValue).css("display","block");
-                $("select.categ").css("display","none");
+                $("select.list2").val(defaultValue).css("display","block");
+                $("select.categ").css("display","none",);
             });
         });
     </script>
@@ -128,7 +128,6 @@
                 var textCateg = $(this).children("option:selected").text();
             });
         laCategorie = GetCookie("categorie");
-        leTriage = GetCookie("triage");
         leTriagea = GetCookie("triagea");
         if(leTriagea =='0' || laCategorie.val === null){
             $("select.list2").val(defaultValue).css("display","block");
