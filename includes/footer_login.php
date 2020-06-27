@@ -123,23 +123,14 @@
         });
     </script>
     <script>
+    $(document).ready(function(){
         $("select.categ").change(function(){
                 var textCateg = $(this).children("option:selected").text();
-                
             });
-    </script>
-    <script>
-    $(document).ready(function(){
         laCategorie = GetCookie("categorie");
-        if(empty(laCategorie)){
-            $("select.list2").val(defaultValue).css("display","block");
-            $("select.categ").css("display","none");
-        }
-        else{
             if( laCategorie != 'null'){
                 $("select.list2").css("display","none")
                 $("select.categ").css("display","block").val(laCategorie).text(textCateg)
-        }
         }
         });  
     </script>
