@@ -5,7 +5,7 @@ $(document).ready(function(){
         var connexionId = like[1]; 
         console.log(like);      
         $.ajax({
-            url: './fonctions/addlike.php',
+            url: 'fonctions/addlike.php',
             type: "POST",
             data: {'id' : questionId, 'idConnect' : connexionId},  
             success: function (data) {
