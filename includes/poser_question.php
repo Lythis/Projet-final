@@ -27,10 +27,10 @@
                                     }
                                     ?>
                                 </select>
-                                <label for="validationTooltip02">Mettre la Question :</label>
-                                <select class="custom-select mb-2" id="validationTooltip02" placeholder="Privée" name="privée" required>
-                                    <option value="public">public</option>
-                                    <option value="prive">privée (ami uniquement)</option>
+                                <label for="validationTooltip02">La question sera :</label>
+                                <select class="custom-select mb-2" id="validationTooltip02" placeholder="Privée" name="visible" required>
+                                    <option value="publique">Publique</option>
+                                    <option value="ami">Amis uniquement</option>
                                 </select>
                                 <?php if($_SESSION['utilisateur']['role'] == 1){?>
                                 

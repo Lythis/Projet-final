@@ -123,9 +123,10 @@
     #Sélectionner toutes les questions de la base de données en donnant l'ordre de triage et les limites de sélection, retourne les questions en tableau
     function selectAllQuestions($where, $order, $limit, $offset, $totalRequest) {
         $con = connexionBdd();
+        $idProfil = $_SESSION["utilisateur"]["id"];
 
         if($totalRequest == false) {
-            $requete = "SELECT * FROM question";
+            $requete = "SELECT * FROM `question` UNION SELECT * FROM `question_ami` WHERE `#Id_profil` IN( SELECT `Id_profil` FROM `profil` WHERE `Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR `#Id_profil` = $idProfil ";
             if($where != null) {
                 $requete = $requete." WHERE $where";
             }
@@ -142,6 +143,7 @@
                 $requete = $totalRequest;
             }
         }
+        var_dump($requete);
         $query = $con->prepare($requete);
         $query->execute();
         return $query->fetchAll();
@@ -160,7 +162,7 @@
     function selectFromQuestion($idQuestion, $order) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $idQuestion ORDER BY `Date_creation_question`");
+        $query = $con->prepare("SELECT * FROM (SELECT * FROM `question` UNION SELECT * FROM `question_ami`) as question WHERE question.`Id_question` = $idQuestion ORDER BY `Date_creation_question`");
         $query->execute();
         return $query->fetch();
     }
@@ -178,7 +180,7 @@
     function selectFromQuestionWithidProfil($idProfil, $order) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `question` WHERE `#Id_profil` = $idProfil ORDER BY `Date_creation_question` $order");
+        $query = $con->prepare("SELECT * FROM (SELECT * FROM `question` UNION SELECT * FROM `question_ami`) as question WHERE question.`#Id_profil` = $idProfil ORDER BY question.`Date_creation_question` $order");
         $query->execute();
         return $query->fetchAll();
     }
@@ -196,7 +198,7 @@
     function selectFromProfilWithidQuestion($idQuestion, $idProfil) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `question` WHERE `Id_question` = $idQuestion AND `#Id_profil` = $idProfil )");
+        $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `question` WHERE `Id_question` = $idQuestion AND `#Id_profil` = $idProfil ) OR ( SELECT `#Id_profil` FROM `question_ami` WHERE `Id_question` = $idQuestion AND `#Id_profil` = $idProfil )");
         $query->execute();
         return $query->fetch();
     }
@@ -214,7 +216,7 @@
     function selectFromCategorieWithidQuestion($idQuestion, $idCategorie) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = ( SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idQuestion AND `#Id_categorie` = $idCategorie )");
+        $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = (SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idQuestion UNION SELECT `#Id_categorie` FROM `question_ami` WHERE `Id_question` = $idQuestion)");
         $query->execute();
         return $query->fetch();
     }
@@ -231,16 +233,22 @@
     }
 
     #Fonction pour insérer une question dans la base de données, ne retourne rien
-    function insertIntoQuestion($question, $date, $utilisateur, $categorie) {
+    function insertIntoQuestion($question, $date, $utilisateur, $categorie, $visible) {
         $con = connexionBdd();
 
-        $query = $con->prepare('INSERT INTO `question`(`Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES (:question, :dateajd, :id_user, :id_categorie)');
+        if($visible == "publique") {
+            $query = $con->prepare('INSERT INTO `question`(`Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES (:question, :dateajd, :id_user, :id_categorie)');
+        }
+        elseif($visible == "ami") {
+            $query = $con->prepare('INSERT INTO `question_ami`(`Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES (:question, :dateajd, :id_user, :id_categorie)');
+        }
         $query->bindParam(':question', $question);
         $query->bindParam(':dateajd', $date);
         $query->bindParam(':id_user', $utilisateur);
         $query->bindParam(':id_categorie', $categorie);
         $query->execute();
     }
+
     #Fonction pour insérer une réponse dans la base de données, ne retourne rien
     function insertIntoReponse($reponse, $date, $utilisateur, $question) {
         $con = connexionBdd();
@@ -252,11 +260,6 @@
         $query->bindParam(':id_question', $question);
         $query->execute();
     }
-
-    #Fonnction permetant de modifier la categorie d'une question
-    
-    
-
 
     #Fonction pour insérer une catégorie dans la base de données, ne retourne rien
     function insertIntoCategorie($libelle) {
@@ -307,6 +310,7 @@
         $query->bindParam(':id', $idQuestion);
         $query->execute();
     }
+
     #Fonction pour supprimer une categorie de la base de données, ne retourne rien
     function deleteCategorie($idCategorie , $idSupp) {
         $con = connexionBdd();
@@ -323,6 +327,7 @@
             setcookie("categorie", null, time() - 3600);
         }
     }
+
     #Fonnction permetant de modifier la categorie d'une question
     function updateCategQuestion($idQuestion, $idCategorie) {
         $con = connexionBdd();
