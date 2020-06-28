@@ -565,7 +565,6 @@ body{
 #white{
     color: white;
 }
-
 /* Positionnemt des icones dans le footer log & unlog */
 .icon{
     color: white;
@@ -584,7 +583,16 @@ body{
     margin-right: 25%;
     padding-top: 10px;
 }
-
+.liked1{
+    color: red;
+}
+.heart{
+    display: flex;
+    margin-left: 49%;
+}
+#reload{
+    margin-top: 14px;
+}
 #bar{
     border-color: grey;
     height: 1px;

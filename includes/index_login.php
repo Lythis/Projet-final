@@ -172,23 +172,25 @@
                         if($hasLiked == true) {
                             ?>
                             <button class="liked1 press-button" name="liked" id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
-                                <i class="fas fa-heart heart1"></i>
+                                <i class="fas fa-heart heart1"> </i>
                             </button>
                             <?php
                         }
                         else {
                             ?>
                             <button class="notliked1 press-button" name="notliked"  id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
-                                <i class="far fa-heart heart2"></i>
+                                <i class="far fa-heart heart2"> </div></i>
                             </button>
+                            
                             <?php
                         }
                     ?>
+                    <div id="reload"> <p> <?php echo $nombreLikes["likecounter"]; ?></p></div>
                     </div>
                     
                     <blockquote class="blockquote mb-2">
                         
-                       <footer class="blockquote-footer" ">Le <?php echo $question["Date_creation_question"]." Nombre de like : "?>  <div id="reload"> <?php echo $nombreLikes["likecounter"]; ?></div></footer>
+                       <footer class="blockquote-footer" ">Le <?php echo $question["Date_creation_question"]?>  </footer>
                      
                     </blockquote>
                     

@@ -10,9 +10,8 @@ $(document).ready(function(){
             data: {'id' : questionId, 'idConnect' : connexionId},  
             success: function (data) {
                 console.log(data);
-                $("i.heart1").css("color", 'red');
-                $("i.heart1").css("display","true");
-                $("i.heart2").css("display", "none");
+                $("i.liked1").css("display","true");
+                $("i.notliked1").css("display", "none");
                 location.reload();
                  },                    
             });
@@ -30,9 +29,8 @@ $(document).ready(function(){
             data: {'id' : questionId, 'idConnect' : connexionId},  
             success: function (data) {
                 console.log(data);
-                $("i.heart2").css("color", 'black');
-                $("i.heart1").css("display","none");
-                $("i.heart2").css("display", "true");
+                $("i.notliked1").css("display","none");
+                $("i.liked1").css("display", "true");
                 location.reload();
                  },                    
             });
