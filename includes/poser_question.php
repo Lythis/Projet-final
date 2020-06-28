@@ -27,6 +27,11 @@
                                     }
                                     ?>
                                 </select>
+                                <label for="validationTooltip02">Mettre la Question :</label>
+                                <select class="custom-select mb-2" id="validationTooltip02" placeholder="Privée" name="privée" required>
+                                    <option value="public">public</option>
+                                    <option value="prive">privée (ami uniquement)</option>
+                                </select>
                                 <?php if($_SESSION['utilisateur']['role'] == 1){?>
                                 
                                 <p>Tu n'as pas trouvé de catégorie qui te correspond? <br>Alors clique <a data-toggle="modal" data-target="#newCateg" class="text-primary"> ici</a> pour rajouter une catégorie.</p>
