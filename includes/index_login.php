@@ -38,7 +38,7 @@
         <a href="#top"><img src="image/to_top.png"/></a>
     </div>
     <div id="scrollDown">
-        <a href="#bot"><img src="image/to_top.png"/></a>
+        <a href="#center-pages"><img src="image/to_top.png"/></a>
     </div>
     <?php
     // Affichage de toutes les questions en fonction de la page sur laquelle l'utilisateur se trouve
@@ -243,9 +243,9 @@
         }
         ?>
         <!-- Compteur de page -->
-        <div class="center-pages ">
+        <div class="center-pages" id="center-pages">
             <nav aria-label="Page navigation example ">
-                <ul class="pagination justify-content-center">
+                <ul class="pagination">
                 <li id="retirer" class="page-item border border-secondary">
                         <?php
                         if ($_GET['page'] ==1){
