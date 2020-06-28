@@ -166,6 +166,3 @@ function GetCookie (name) {
 </footer>
 </body>
 </html>
-
-
-

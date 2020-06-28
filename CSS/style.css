@@ -953,7 +953,10 @@ button[aria-expanded="false"] .afficher
     margin-left: 1%;
     width: 30%;
 }
-
+.press-button{
+    border: none;
+    background-color: white;
+}
 /* met en ligne le boutton edit et supprimer */
 .btn-flex{
     display: flex;

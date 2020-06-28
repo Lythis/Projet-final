@@ -14,11 +14,7 @@
                 <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "reponseD") { echo "selected"; } ?> value="reponseD">Nombre de réponses - Descendantes</i></option>
             </select>
             <select class="listDeTri list2" name="triagea" >
-<<<<<<< HEAD
             <option <?php if(!isset($_COOKIE["triagea"])) { echo "selected"; } ?> class="defaut" value="0">Pas de triage avancé</option>
-=======
-                <option <?php if(!isset($_COOKIE["triagea"])) { echo "selected"; } ?> class="defaut" value="0">Pas de triage avancé</option>
->>>>>>> c7625c1da1e6a56f6c6b89dbece86e67245a9eb3
                 <option <?php if(isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] == "categ") { echo "selected"; } ?> value="categ">Sélectionner une catégorie</i></option>
                 <option <?php if(isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] == "qamis") { echo "selected"; } ?> value="qamis">Questions posées par mes amis</i></option>
             </select>
@@ -42,7 +38,7 @@
         <a href="#top"><img src="image/to_top.png"/></a>
     </div>
     <div id="scrollDown">
-        <a href="#bot"><img src="image/to_top.png"/></a>
+        <a href="#center-pages"><img src="image/to_top.png"/></a>
     </div>
     <?php
     // Affichage de toutes les questions en fonction de la page sur laquelle l'utilisateur se trouve
@@ -247,9 +243,9 @@
         }
         ?>
         <!-- Compteur de page -->
-        <div class="center-pages ">
+        <div class="center-pages" id="center-pages">
             <nav aria-label="Page navigation example ">
-                <ul class="pagination justify-content-center">
+                <ul class="pagination">
                 <li id="retirer" class="page-item border border-secondary">
                         <?php
                         if ($_GET['page'] ==1){
