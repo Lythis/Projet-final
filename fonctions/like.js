@@ -3,7 +3,7 @@ $(document).ready(function(){
         var like = $( ".notliked1" ).first().attr( "id" ).split(',');
         var questionId = like[0];
         var connexionId = like[1]; 
-        console.log(like);      
+        console.log(like);
         $.ajax({
             url: 'fonctions/addlike.php',
             type: "POST",
@@ -32,7 +32,10 @@ $(document).ready(function(){
                 $("i.notliked1").css("display","none");
                 $("i.liked1").css("display", "true");
                 location.reload();
-                 },                    
-            });
+            },
+            error: function (data) {
+                alert("Problème lors de la requête. Veuillez réessayer ultérieurement.");
+            },
+        });
     });
 });

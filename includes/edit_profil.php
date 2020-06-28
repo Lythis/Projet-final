@@ -5,8 +5,8 @@
             <form enctype="multipart/form-data" method="post" action="./profil.php?profil=<?php echo $profilStatus[0]; ?>%2Cedit">
                 <div>
                     <label>Choisir une image : </label>
-                    <button class="btn-dlImage"> <input type="file" class="dlimage" name="image" size="50" > </input> <p class="choix-image"><a> Choix image</a></p></button>
-                    <button class="ajout-btn text-white">  Envoyer l'image</button>
+                    <button class="btn-dlImage"> <input type="file" class="dlimage" name="image" size="50" > </input> <p class="choix-image"><a> Parcourir</a></p></button>
+                    <button class="ajout-btn text-white"> Envoyer l'image</button>
                     <?php
                         if(isset($editImageSuccess)) {
                             if($editImageSuccess === true) {

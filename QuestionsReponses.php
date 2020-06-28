@@ -33,6 +33,11 @@
             $idProfil = $question["#Id_profil"];
             $idCategorie = $question["#Id_categorie"];
 
+            if(isset($_POST['remplaceCateg'])) {
+                $idCategorie = $_POST['remplaceCateg'];
+                updateCategQuestion($idQuestion, $idCategorie);
+            }
+
             // On récupère les réponses à la question dans $reponses, l'utilisateur qui a posté la question dans $users et la categorie de la question dans $categorie
             $reponses = selectFromReponseWithidQuestion($idQuestion, "DESC");
             $users = selectFromProfilWithidQuestion($idQuestion, $idProfil);

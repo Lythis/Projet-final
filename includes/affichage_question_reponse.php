@@ -17,7 +17,7 @@
                         <span class="masquer">Masquer les réponses</span>
                     </button>
                     <?php if($idProfil == $_SESSION['utilisateur']['id'] || $_SESSION['utilisateur']['role'] == 1) { ?>
-                        <button type="submit" class="btn bg-primary text-white ml-4"  data-toggle="modal" data-target="#modifCAteg">modif de la categorie</button>
+                        <button type="submit" class="btn bg-primary text-white ml-4"  data-toggle="modal" data-target="#modifCAteg">Modifier la catégorie</button>
                         <form action="./QuestionsReponses.php" method="get">
                             <button class="btn btn-danger ml-4" name="question" value="<?php echo $idQuestion; ?>,supp">Supprimer la question</button>
                         </form>
@@ -31,18 +31,18 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modifCAtegLabel">Modal title</h5>
+                    <h5 class="modal-title" id="modifCAtegLabel">Changer la catégorie</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label for="validationTooltip01">categorie actuel:</label>
+                    <label for="validationTooltip01">Catégorie actuelle :</label>
                         
                             <p value=""><?php echo $categorie["Libelle_categorie"]; ?></p>
                              
                         
-                        <label for="validationTooltip01">nouvelle categorie</label>
+                        <label for="validationTooltip01">Nouvelle categorie</label>
                     <form action="" method="POST">
                     <select class="custom-select mb-2" id="validationTooltip02" placeholder="Categorie" name="remplaceCateg" required>
                         <option value="">Selectionner une catégorie</option>
@@ -58,19 +58,13 @@
                     </div>
                 
                 <div class="modal-footer">
-                    <button  type="submit" value="if(isset())" class="btn btn-primary">changer la categorie</button>
+                    <button type="submit" value="" class="btn btn-primary">Changer la catégorie</button>
                     </div>
                 </div>
                 </div>
                 </div>
             </div>
             </div>
-            <?php
-                    $idQuestion;
-                    $idCategorie = $_POST['remplaceCateg'];
-                    updateCategQuestion($idQuestion, $idCategorie);
-
-                ?>
                 </form>
         <div class="cardP w-md-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="repondre">
             <div class="card-body">
@@ -85,12 +79,6 @@
                             </div>
                     </div>
                     <button type="submit" class="btn bg-primary text-white">Envoyer</button>
-                    <?php
-                    $idQuestion;
-                    $idCategorie = $_POST['remplaceCateg'];
-                    updateCategQuestion($idQuestion, $idCategorie);
-
-                ?>
                 </form>
                 
             </div>

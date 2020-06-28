@@ -27,10 +27,15 @@
                                     }
                                     ?>
                                 </select>
+                                <label for="validationTooltip02">Mettre la Question :</label>
+                                <select class="custom-select mb-2" id="validationTooltip02" placeholder="Privée" name="privée" required>
+                                    <option value="public">public</option>
+                                    <option value="prive">privée (ami uniquement)</option>
+                                </select>
                                 <?php if($_SESSION['utilisateur']['role'] == 1){?>
                                 
-                                <p>Tu n'as pas trouvé une catégorie qui te correspond ? <br>Alors clique <a data-toggle="modal" data-target="#newCateg" class="text-primary"> ici</a> pour rajouter ta catégorie.</p>
-                                <p>C'est toujours pas ce que tu veux faire. Tu veux supprimer une categorie alors? <br>Clique <a data-toggle="modal" data-target="#suppCateg" class="text-danger"> ici</a> pour supprimer une catégorie.</p></p>
+                                <p>Tu n'as pas trouvé de catégorie qui te correspond? <br>Alors clique <a data-toggle="modal" data-target="#newCateg" class="text-primary"> ici</a> pour rajouter une catégorie.</p>
+                                <p>Une catégorie ne te plait pas? <br>Clique <a data-toggle="modal" data-target="#suppCateg" class="text-danger"> ici</a> pour supprimer une catégorie.</p></p>
                                 <button type="submit" class="pBtn " name="poserquestion" value="valide">Envoyer</button>
                                 </form>
                                 <!-- Modal ajout categorie -->
@@ -38,7 +43,7 @@
                                 <div class="modal-dialog modal-dialog-centered " role="document">
                                     <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="newCategLabel">nouvelle catégorie</h5>
+                                        <h5 class="modal-title" id="newCategLabel">Créer catégorie</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
@@ -61,7 +66,7 @@
                                 <div class="modal-dialog modal-dialog-centered " role="document">
                                     <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="suppCategLabel">nouvelle catégorie</h5>
+                                        <h5 class="modal-title" id="suppCategLabel">Supprimer catégorie</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
@@ -75,9 +80,11 @@
                                                 <?php
                                                 $categ = selectAllCategories("DESC");
                                                 foreach($categ as $categorie){
+                                                    if($categorie['Id_categorie'] != 13) {
                                                     ?>
-                                                    <option value="<?php echo $categorie['Id_categorie'];?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
+                                                        <option value="<?php echo $categorie['Id_categorie'];?>"><?php echo $categorie['Libelle_categorie']; ?> </option>
                                                     <?php
+                                                    }
                                                 }
                                                 ?>
                                             </select>
@@ -85,23 +92,16 @@
                                     </div>
                                     <div class="modal-footer">
                                     
-                                        <button id="supp" type="submit" class="btn btn-danger mt-3"  name="supprimer" value=" <?php echo $_POST['suppCategorie'];?> ">Supprimer</button>
+                                        <button id="supp" type="submit" class="btn btn-danger mt-3"  name="supprimer" value="">Supprimer</button>
                                         </form>
                                     </div>
-                                    </div>
                                 </div>
-                                </div>
-                                            <?php } 
-                                            
-                                            
-                                           ?>
-                                            
-                                
                             </div>
-                            
                         </div>
-                    
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

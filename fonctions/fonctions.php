@@ -299,6 +299,10 @@
         $query->bindParam(':id', $idQuestion);
         $query->execute();
 
+        $query = $con->prepare('DELETE FROM `likes` WHERE `#Id_question` = :id');
+        $query->bindParam(':id', $idQuestion);
+        $query->execute();
+
         $query = $con->prepare('DELETE FROM `question` WHERE `Id_question` = :id');
         $query->bindParam(':id', $idQuestion);
         $query->execute();
