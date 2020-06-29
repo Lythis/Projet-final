@@ -56,8 +56,13 @@
                 setcookie("triage", $_POST["triage"]);
             }
             if(isset($_POST["triagea"]) || isset($_COOKIE["triage"])) {
-                if((isset($_POST["categorie"]) && $_POST["categorie"] == "null") || (isset($_COOKIE["categorie"]) && $_COOKIE["categorie"] == "null")) {
+                if((isset($_POST["triagea"]) && $_POST["triagea"] == "0") || (isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] == "0")) {
                     setcookie("triagea", null, time() - 3600);
+                    setcookie("categorie", null, time() - 3600);
+                    setcookie("qamis", null, time() - 3600);
+                    header('Location: ./index.php');
+                }
+                if((isset($_POST["categorie"]) && $_POST["categorie"] == "null") || (isset($_COOKIE["categorie"]) && $_COOKIE["categorie"] == "null")) {
                     setcookie("categorie", null, time() - 3600);
                     header('Location: ./index.php');
                 }
@@ -66,9 +71,11 @@
                 setcookie("triagea", $_POST["triagea"]);
                 if(isset($_POST["categorie"])) {
                     setcookie("categorie", $_POST["categorie"]);
+                    setcookie("qamis", null, time() - 3600);
                 }
                 elseif(isset($_POST["qamis"])) {
-                    setcookie("categorie", $_POST["qamis"]);
+                    setcookie("qamis", $_POST["qamis"]);
+                    setcookie("categorie", null, time() - 3600);
                 }
             }
             if(isset($_POST["triage"]) || isset($_POST["triagea"])) {
@@ -126,9 +133,17 @@
         $idProfil = $_SESSION["utilisateur"]["id"];
 
         if($totalRequest == false) {
-            $requete = "SELECT * FROM `question` UNION SELECT * FROM `question_ami` WHERE `#Id_profil` IN( SELECT `Id_profil` FROM `profil` WHERE `Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR `#Id_profil` = $idProfil ";
-            if($where != null) {
-                $requete = $requete." WHERE $where";
+            $requete = "SELECT * FROM `question` WHERE (`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil)";
+            if($where != null && $where != "qamis") {
+                echo "here1";
+                $requete = "SELECT * FROM `question` WHERE (((`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil)) AND $where)";
+            }
+            elseif($where != null && $where == "qamis") {
+                echo "here2";
+                $requete = "SELECT * FROM `question` WHERE `Type` = 1 AND (`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami`) OR (`#Id_profil` = $idProfil))";
+            }
+            else {
+                echo "here3";
             }
             $requete = $requete." $order";
             if ($limit != null) {
@@ -159,10 +174,10 @@
     }
 
     #Sélectionner une question en précisant son ID et l'ordre de triage, retourne la question en tableau
-    function selectFromQuestion($idQuestion, $order) {
+    function selectFromQuestion($idQuestion) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM (SELECT * FROM `question` UNION SELECT * FROM `question_ami`) as question WHERE question.`Id_question` = $idQuestion ORDER BY `Date_creation_question`");
+        $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $idQuestion");
         $query->execute();
         return $query->fetch();
     }
@@ -180,7 +195,12 @@
     function selectFromQuestionWithidProfil($idProfil, $order) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM (SELECT * FROM `question` UNION SELECT * FROM `question_ami`) as question WHERE question.`#Id_profil` = $idProfil ORDER BY question.`Date_creation_question` $order");
+        if($_SESSION["utilisateur"]["id"] == $idProfil) {
+            $query = $con->prepare("SELECT * FROM `question` WHERE `#Id_profil` = $idProfil ORDER BY `Date_creation_question` $order");
+        }
+        else {
+            $query = $con->prepare("SELECT * FROM `question` WHERE (`Type` = 0 AND `#Id_profil` = $idProfil) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) ORDER BY `Date_creation_question` $order");
+        }
         $query->execute();
         return $query->fetchAll();
     }
@@ -198,7 +218,7 @@
     function selectFromProfilWithidQuestion($idQuestion, $idProfil) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `question` WHERE `Id_question` = $idQuestion AND `#Id_profil` = $idProfil ) OR ( SELECT `#Id_profil` FROM `question_ami` WHERE `Id_question` = $idQuestion AND `#Id_profil` = $idProfil )");
+        $query = $con->prepare("SELECT * FROM `profil` WHERE `Id_profil` = ( SELECT `#Id_profil` FROM `question` WHERE `Id_question` = $idQuestion AND `#Id_profil` = $idProfil )");
         $query->execute();
         return $query->fetch();
     }
@@ -213,10 +233,10 @@
     }
 
     #Sélectionner une catégorie en précisant l'ID de la question, retourne la catégorie en tableau
-    function selectFromCategorieWithidQuestion($idQuestion, $idCategorie) {
+    function selectFromCategorieWithidQuestion($idQuestion) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = (SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idQuestion UNION SELECT `#Id_categorie` FROM `question_ami` WHERE `Id_question` = $idQuestion)");
+        $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = (SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idQuestion)");
         $query->execute();
         return $query->fetch();
     }
@@ -236,14 +256,10 @@
     function insertIntoQuestion($question, $date, $utilisateur, $categorie, $visible) {
         $con = connexionBdd();
 
-        if($visible == "publique") {
-            $query = $con->prepare('INSERT INTO `question`(`Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES (:question, :dateajd, :id_user, :id_categorie)');
-        }
-        elseif($visible == "ami") {
-            $query = $con->prepare('INSERT INTO `question_ami`(`Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES (:question, :dateajd, :id_user, :id_categorie)');
-        }
+        $query = $con->prepare('INSERT INTO `question`(`Titre_question`, `Date_creation_question`, `Type`, `#Id_profil`, `#Id_categorie`) VALUES (:question, :dateajd, :typeQ, :id_user, :id_categorie)');
         $query->bindParam(':question', $question);
         $query->bindParam(':dateajd', $date);
+        $query->bindParam(':typeQ', $visible);
         $query->bindParam(':id_user', $utilisateur);
         $query->bindParam(':id_categorie', $categorie);
         $query->execute();

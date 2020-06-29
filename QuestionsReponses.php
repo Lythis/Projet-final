@@ -17,7 +17,7 @@
         // Si on a bien quelque chose dans la première ligne de notre tableau $questionStatus
         if(isset($questionStatus[0]) && !empty($questionStatus[0])) {
             // On prend la question de la base de données qui correspond à la première ligne de notre tableau $questionStatus et la met dans un tableau $question
-            $question = selectFromQuestion($questionStatus[0], "");
+            $question = selectFromQuestion($questionStatus[0]);
 
             // Si on a bien une réponse qui a été envoyé en méthode POST
             if(isset($_POST['reponse']) && !empty($_POST['reponse'])) {

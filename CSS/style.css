@@ -661,7 +661,7 @@ body{
 }
 
 .center-pages {
-    margin-left: 47%;
+    margin-left: 46%;
 }
 
 /* Connexion/Inscription */
@@ -1066,7 +1066,7 @@ button[aria-expanded="false"] .afficher
     }
 
     .pBtn {
-        width: 38%;
+        width: 60%;
     }
 
     .cardP {
@@ -1281,6 +1281,10 @@ button[aria-expanded="false"] .afficher
     .description h3{
         margin-left: 19% ;
     }
+
+    .center-pages {
+        margin-left: 45%;
+    }
 }
 
 
@@ -1331,7 +1335,7 @@ button[aria-expanded="false"] .afficher
     }
 
     .pBtn {
-        width: 81%;
+        width: 100%;
     }
 
     .pF {
