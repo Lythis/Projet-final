@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 24 juin 2020 à 17:52
+-- Généré le :  lun. 29 juin 2020 à 06:49
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `Id_categorie` int(11) NOT NULL AUTO_INCREMENT,
   `Libelle_categorie` varchar(255) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `categorie`
@@ -112,7 +112,82 @@ INSERT INTO `likes` (`#Id_profil`, `#Id_question`) VALUES
 (65, 1),
 (57, 167),
 (2, 170),
-(2, 120);
+(2, 120),
+(1, 1),
+(1, 120),
+(1, 170),
+(1, 139),
+(1, 176),
+(1, 175),
+(1, 174),
+(1, 172),
+(1, 166),
+(1, 165),
+(1, 137),
+(1, 133),
+(1, 123),
+(1, 82),
+(1, 80),
+(1, 73),
+(1, 72),
+(1, 5),
+(1, 87),
+(1, 87),
+(1, 87),
+(1, 87),
+(1, 87),
+(1, 87),
+(1, 87),
+(1, 112),
+(1, 112),
+(1, 112),
+(1, 112),
+(1, 112),
+(1, 112),
+(1, 112),
+(1, 112),
+(1, 112),
+(1, 5),
+(1, 71),
+(1, 4),
+(1, 3),
+(1, 2),
+(1, 88),
+(1, 103),
+(1, 104),
+(1, 105),
+(1, 106),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 88),
+(1, 107),
+(1, 107),
+(1, 107),
+(1, 107),
+(1, 107),
+(1, 108),
+(1, 109),
+(1, 110),
+(1, 111),
+(1, 113),
+(1, 102),
+(1, 101),
+(1, 100),
+(1, 89),
+(1, 90);
 
 -- --------------------------------------------------------
 
@@ -165,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `question`
@@ -295,8 +370,33 @@ INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question
 (173, 'Rerum voluptas qui qui rem omnis quia voluptatem. Excepturi asperiores in voluptatem delectus incidunt similique ut dolore?', '2020-06-11', 2, 2),
 (174, 'Quam assumenda non voluptas voluptatem consequuntur. Quaerat ullam quas exercitationem ut sint numquam et. Doloribus nostrum eaque dolorum id autem. Id aut ad quia aut?', '2020-06-11', 2, 13),
 (175, 'salut', '2020-06-24', 1, 13),
-(176, 'salut2', '2020-06-24', 1, 13),
-(177, 'ok', '2020-06-24', 1, 13);
+(176, 'salut2', '2020-06-24', 1, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `question_ami`
+--
+
+DROP TABLE IF EXISTS `question_ami`;
+CREATE TABLE IF NOT EXISTS `question_ami` (
+  `Id_question` int(11) NOT NULL AUTO_INCREMENT,
+  `Titre_question` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `Date_creation_question` date NOT NULL,
+  `#Id_profil` int(11) NOT NULL,
+  `#Id_categorie` int(11) NOT NULL,
+  PRIMARY KEY (`Id_question`),
+  KEY `#Id_categorie` (`#Id_categorie`),
+  KEY `#Id_profil_question` (`#Id_profil`)
+) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Déchargement des données de la table `question_ami`
+--
+
+INSERT INTO `question_ami` (`Id_question`, `Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES
+(178, 'Bonjour à mes amis!', '2020-06-28', 1, 7),
+(179, 'test', '2020-06-28', 1, 9);
 
 -- --------------------------------------------------------
 
@@ -314,7 +414,7 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   PRIMARY KEY (`Id_reponse`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_question` (`#Id_question`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `reponse`
@@ -390,6 +490,13 @@ ALTER TABLE `profil`
 ALTER TABLE `question`
   ADD CONSTRAINT `FK_#Id_categorie` FOREIGN KEY (`#Id_categorie`) REFERENCES `categorie` (`Id_categorie`),
   ADD CONSTRAINT `FK_#Id_profil` FOREIGN KEY (`#Id_profil`) REFERENCES `profil` (`Id_profil`);
+
+--
+-- Contraintes pour la table `question_ami`
+--
+ALTER TABLE `question_ami`
+  ADD CONSTRAINT `#Id_categorie` FOREIGN KEY (`#Id_categorie`) REFERENCES `categorie` (`Id_categorie`),
+  ADD CONSTRAINT `#Id_profil_question` FOREIGN KEY (`#Id_profil`) REFERENCES `profil` (`Id_profil`);
 
 --
 -- Contraintes pour la table `reponse`
