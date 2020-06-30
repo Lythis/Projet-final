@@ -62,30 +62,25 @@
                 <p class="titre_post" style="margin-top: 4%;">
                     Liste d'amis de <?php echo $users["Pseudo_profil"]; ?>
                 </p>
-                
-                            <div class="p-card amiafficher">
-                                <div >
-                                <?php
+                <div class="p-card amiafficher">
+                    <div>
+                    <?php
                     if(!empty($amis)) 
                         foreach ($amis as $ami) {
                             ?>
-                            <div class="list-ami">
-                            <img class="rounded-circle float-left image-profil" src="<?php echo $ami["Image_profil"]; ?>" alt="<?php echo $ami["Pseudo_profil"]; ?>">
-                                    
-                                    <div class="cardbody">
-                                        <blockquote class="blockquote mb-0">
-                                            <a href="profil.php?profil=<?php echo $ami["Id_profil"]; ?>"><h5 class="card-title pseudo-card-ami"> <?php echo $ami["Pseudo_profil"]; ?></h5></a>
-                                        </blockquote>
-                                    </div>
+                        <div class="list-ami">
+                            <img class="rounded-circle float-left image-profil" src="<?php echo $ami["Image_profil"]; ?>" alt="<?php echo $ami["Pseudo_profil"]; ?>">    
+                            <div class="cardbody">
+                                <blockquote class="blockquote mb-0">
+                                    <a href="profil.php?profil=<?php echo $ami["Id_profil"]; ?>"><h5 class="card-title pseudo-card-ami"> <?php echo $ami["Pseudo_profil"]; ?></h5></a>
+                                </blockquote>
                             </div>
-                                    
-                                    <?php
+                        </div>          
+                        <?php
                         }
-                    
-             ?>
-                                </div>
-                            </div>
-                           
+                        ?>
+                    </div>
+                </div>
             </div>
             <div class="questionsrecentes">
                 <p class="titre_post">
@@ -94,17 +89,13 @@
                 <?php
                 if (!empty($questions)) {
                     ?>
-                        
-                            <?php
-                
+                    <?php
                     foreach ($questions as $question) {
-                        ?>
+                    ?>
                         <div <?php if($question["Type"] == 1) { ?> style="background-color: #ECDCEC;" <?php } ?> class="p-card">
-                            <div >
+                            <div>
                                 <img class="rounded-circle float-left  image-profil " src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>">
-                                
                                 <h5 class="card-title pseudo-card"> <?php echo $users["Pseudo_profil"]; ?> :</h5>
-                                
                                 <div class="cardbody">
                                     <blockquote class="blockquote mb-0">
                                         <p class="card-text-profil question-text"><?php echo $question["Titre_question"]; ?></p>
@@ -115,26 +106,22 @@
                                         </form>
                                     </blockquote>
                                 </div>
-                                </div>
-        </div>
-                                <?php
-                                
-                             }
-                            
-                                ?>
                             </div>
-                        
-                <?php
-               } else {
-                ?>
-                    <div class="p-card">
-                        <div class="card-headerP">
-                            <p>Wow, such empty.</p>
                         </div>
-                    </div>
-                    
-                <?php
+                    <?php
                     }
-                    footer();
-                ?>
+                    ?>
+            </div>
+            <?php
+            } else {
+            ?>
+            <div class="p-card">
+                <div class="card-headerP">
+                    <p>Wow, such empty.</p>
+                </div>
+            </div>
+            <?php
+                }
+                footer();
+            ?>
          

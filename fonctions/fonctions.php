@@ -273,15 +273,16 @@
     }
 
     #Sélectionner une question en précisant l'ID du profil auteur et l'ordre de triage, retourne la question en tableau
-    function selectFromQuestionWithidProfil($idProfil, $order) {
+    function selectFromQuestionWithidProfil($idProfil) {
         $con = connexionBdd();
 
+        // Un admin peut voir toute les questions (même privées)
         if($_SESSION["utilisateur"]["id"] == $idProfil || $_SESSION["utilisateur"]["role"] == 1) {
-            $query = $con->prepare("SELECT * FROM `question` WHERE `#Id_profil` = $idProfil ORDER BY `Date_creation_question` $order");
+            $query = $con->prepare("SELECT * FROM `question` WHERE `#Id_profil` = $idProfil ORDER BY `Date_creation_question`");
         }
         else {
             $currentUser = $_SESSION["utilisateur"]["id"];
-            $query = $con->prepare("SELECT * FROM `question` WHERE (`Type` = 0 AND `#Id_profil` = $idProfil) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $currentUser THEN `Id_profil` WHEN `Id_profil` = $currentUser THEN `#Id_profil` END FROM `ami` )) ORDER BY `Date_creation_question` $order");
+            $query = $con->prepare("SELECT * FROM `question` WHERE (`Type` = 0 AND `#Id_profil` = $idProfil) OR (`Type` = 1 AND `#Id_profil` = $idProfil AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $currentUser THEN `Id_profil` WHEN `Id_profil` = $currentUser THEN `#Id_profil` END FROM `ami` )) ORDER BY `Date_creation_question` DESC");
         }
         $query->execute();
         return $query->fetchAll();
@@ -414,7 +415,7 @@
         $con = connexionBdd();
         $query = $con->prepare('UPDATE `question` SET `#Id_categorie`= :supp WHERE `#Id_categorie`= :id');
         $query->bindParam(':id', $idCategorie);
-       $query->bindParam(':supp', $idSupp);
+        $query->bindParam(':supp', $idSupp);
         $query->execute();
 
         $query = $con->prepare('DELETE FROM `categorie` WHERE `Id_categorie` = :id');
@@ -426,7 +427,7 @@
         }
     }
 
-    #Fonnction permetant de modifier la categorie d'une question
+    #Fonction permetant de modifier la categorie d'une question, ne retourne rien
     function updateCategQuestion($idQuestion, $idCategorie) {
         $con = connexionBdd();
 

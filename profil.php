@@ -28,7 +28,7 @@
             $role = $users["#Id_role"];
 
             // On récupère les questions posées par le profil actuel dans un tableau $questions
-            $questions = selectFromQuestionWithidProfil($idProfil, "DESC");
+            $questions = selectFromQuestionWithidProfil($idProfil);
 
             // Title & header
             $title ='Profil de '.$users["Pseudo_profil"];

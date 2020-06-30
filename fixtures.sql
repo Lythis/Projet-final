@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 30 juin 2020 à 11:55
+-- Généré le :  mar. 30 juin 2020 à 15:58
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -44,7 +44,10 @@ INSERT INTO `ami` (`Id_profil`, `#Id_profil`) VALUES
 (2, 57),
 (1, 55),
 (64, 1),
-(1, 2);
+(1, 2),
+(64, 65),
+(66, 64),
+(65, 66);
 
 -- --------------------------------------------------------
 
@@ -115,85 +118,32 @@ CREATE TABLE IF NOT EXISTS `likes` (
 --
 
 INSERT INTO `likes` (`#Id_profil`, `#Id_question`) VALUES
-(65, 1),
-(57, 167),
-(2, 170),
-(2, 120),
-(1, 1),
-(1, 120),
-(1, 170),
-(1, 139),
-(1, 176),
+(1, 180),
 (1, 175),
-(1, 174),
-(1, 172),
-(1, 166),
-(1, 165),
-(1, 137),
-(1, 133),
-(1, 123),
-(1, 82),
-(1, 80),
-(1, 73),
-(1, 72),
-(1, 5),
-(1, 87),
-(1, 87),
-(1, 87),
-(1, 87),
-(1, 87),
-(1, 87),
-(1, 87),
-(1, 112),
-(1, 112),
-(1, 112),
-(1, 112),
-(1, 112),
-(1, 112),
-(1, 112),
-(1, 112),
-(1, 112),
-(1, 5),
+(1, 176),
 (1, 71),
+(1, 74),
 (1, 4),
-(1, 3),
-(1, 2),
-(1, 88),
-(1, 103),
-(1, 104),
-(1, 105),
-(1, 106),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 88),
-(1, 107),
-(1, 107),
-(1, 107),
-(1, 107),
-(1, 107),
-(1, 108),
-(1, 109),
-(1, 110),
-(1, 111),
-(1, 113),
-(1, 102),
-(1, 101),
-(1, 100),
-(1, 89),
-(1, 90);
+(1, 5),
+(1, 1),
+(2, 181),
+(2, 180),
+(2, 176),
+(2, 175),
+(2, 5),
+(2, 6),
+(2, 2),
+(2, 88),
+(2, 45),
+(2, 71),
+(2, 100),
+(64, 180),
+(64, 176),
+(64, 175),
+(64, 85),
+(64, 4),
+(64, 5),
+(64, 1);
 
 -- --------------------------------------------------------
 
@@ -226,7 +176,7 @@ INSERT INTO `profil` (`Id_profil`, `Pseudo_profil`, `Mail_profil`, `MotDePasse_p
 (56, 'Leo', 'leo@stvincent.net', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Hélicoptère d\'attaque', './image_profil/Default.png', 'Aucune information disponible.', 2),
 (57, 'Nico Nico Nii', 'nico@stvincent.net', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Non-binaire', './image_profil/57.jpg', 'Aucune information disponible.', 2),
 (63, 'test', 'me@test', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Femme', './image_profil/Default.png', 'Aucune information disponible.', 2),
-(64, 'Jeff', 'jeff@jeff.jeff', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', './image_profil/Default.png', 'Super prof des BTS 1 (ils travaillent mais que des fois).', 2),
+(64, 'Jeff', 'jeff@jeff.jeff', '$2y$10$k/bxo39LFYjt28bx3oNM/ePoDjriiygJBNXviYvVJSRusLn/.Emyq', 'Homme', './image_profil/Default.png', 'Super prof des BTS 1 (bientôt 2).', 2),
 (65, 'Christopher', 'christopher@gmail.com', '$2y$10$gec1euS8zD7C3iQdZRyiouncOUUdmDfwhozHaLTtyVUT6WAqjxJna', 'Homme', './image_profil/Default.png', 'Aucune information disponible.', 2),
 (66, 'Mikaël', 'mikael@mika.fr', '$2y$10$NW9XY69pN37hi/9OuCUf7Op0tx7.FM61VPcZl5RNW.7r.hiADh.1.', 'Homme', './image_profil/Default.png', 'Aucune information disponible.', 2);
 
