@@ -3,18 +3,17 @@
         <div class="card-body">
             <div id="rafraiche">
                 <div class="form-group">
-                    <form method="post" action="Questions.php" novalidate>
+                    <form class="needs-validation" method="post" action="Questions.php" novalidate>
                         <div class="form-group">
                             <div class="col-lg ">
                                 <label for="validationTooltip01">Votre question :</label>
                                 <textarea id="question" type="text" class="form-control autoExpand w-100 h-50" placeholder="" name="question" maxlength="250" required></textarea>
-                                
                                 <p style="text-align:right" id="compteur">0 mots | 0 Caractere / 250</p>
                                 <div class="invalid-feedback mb-2">
                                     Veuillez saisir une question.
                                 </div>
                             </div>
-                            <div class="col-lg needs-validation">
+                            <div class="col-lg">
                                 <label for="validationTooltip02">Catégorie :</label>
                                 <select class="custom-select mb-2" id="validationTooltip02" placeholder="Categorie" name="categorie" required>
                                     <option value="">Selectionner une catégorie</option>
@@ -27,12 +26,12 @@
                                     }
                                     ?>
                                 </select>
-                                <label for="validationTooltip02">Mettre la Question :</label>
-                                <select class="custom-select mb-2" id="validationTooltip02" placeholder="Privée" name="privée" required>
-                                    <option value="public">public</option>
-                                    <option value="prive">privée (ami uniquement)</option>
+                                <label for="validationTooltip02">La question sera :</label>
+                                <select class="custom-select mb-2" id="validationTooltip02" placeholder="Privée" name="visible" required>
+                                    <option value="0">Publique</option>
+                                    <option value="1">Amis uniquement</option>
                                 </select>
-                                <?php if($_SESSION['utilisateur']['role'] == 1){?>
+                                <?php if($_SESSION['utilisateur']['role'] == 1) { ?>
                                 
                                 <p>Tu n'as pas trouvé de catégorie qui te correspond? <br>Alors clique <a data-toggle="modal" data-target="#newCateg" class="text-primary"> ici</a> pour rajouter une catégorie.</p>
                                 <p>Une catégorie ne te plait pas? <br>Clique <a data-toggle="modal" data-target="#suppCateg" class="text-danger"> ici</a> pour supprimer une catégorie.</p></p>
@@ -98,6 +97,9 @@
                                 </div>
                             </div>
                         </div>
+                        <?php } else { ?>
+                            <button type="submit" class="pBtn " name="poserquestion" value="valide">Envoyer</button>
+                            </form>
                         <?php } ?>
                     </div>
                 </div>

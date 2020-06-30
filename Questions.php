@@ -9,7 +9,7 @@
     if (!empty($_POST['question']) && !empty($_POST['categorie']) && $_POST['poserquestion'] == 'valide') {
 
         // On crée la question et affiche un message
-        insertIntoQuestion($_POST['question'], obtenirDate(), $_SESSION['utilisateur']['id'], $_POST['categorie']);
+        insertIntoQuestion($_POST['question'], obtenirDate(), $_SESSION['utilisateur']['id'], $_POST['categorie'], $_POST["visible"]);
     ?>
         <div class="card">
             <div class="card-body">

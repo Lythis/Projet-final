@@ -1,30 +1,13 @@
+
 $(document).ready(function(){
-    $(".notliked1").click(function(){
+    if($(".liked1").is(':visible')){
+    $(".liked1").click(function(){ 
         var like = $(this).first().attr( "id" ).split(',');
         var questionId = like[0];
-        var connexionId = like[1]; 
-        console.log(like);
-        $.ajax({
-            url: 'fonctions/addlike.php',
-            type: "POST",
-            data: {'id' : questionId, 'idConnect' : connexionId},  
-            success: function (data) {
-                console.log(data);
-                $("i.liked1").css("display","true");
-                $("i.notliked1").css("display", "none");
-                location.reload();
-                 },                    
-            });
-    });
-});
-$(document).ready(function(){
-    $(".liked1").click(function(){
-        var like = $(this).first().attr( "id" ).split(',');
-        var questionId = like[0];
-        var connexionId = like[1]; 
+        var connexionId = like[1];                 
         console.log(like);      
         $.ajax({
-            url: 'fonctions/deleteLike.php',
+            url: 'fonctions/addLike.php',
             type: "POST",
             data: {'id' : questionId, 'idConnect' : connexionId},  
             success: function (data) {
@@ -33,9 +16,26 @@ $(document).ready(function(){
                 $("i.liked1").css("display", "true");
                 location.reload();
             },
-            error: function (data) {
-                alert("Problème lors de la requête. Veuillez réessayer ultérieurement.");
-            },
         });
     });
+        }
+        if($(".notliked1").is(':visible')){
+        $(".notliked1").click(function(){
+            var like = $(this).first().attr( "id" ).split(',');
+            var questionId = like[0];
+            var connexionId = like[1];   
+            console.log(like);
+            $.ajax({
+                url: 'fonctions/addlike.php',
+                type: "POST",
+                data: {'id' : questionId, 'idConnect' : connexionId},  
+                success: function (data) {
+                    console.log(data);
+                    $("i.liked1").css("display","true");
+                    $("i.notliked1").css("display", "none");
+                    location.reload();
+                     },                 
+                });
+            });
+        }
 });

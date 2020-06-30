@@ -37,7 +37,7 @@
             $toDelete = $_POST['question'];
             $title = 'Supprimer la question '.$toDelete;
             // On récupère l'auteur de la question pour vérification
-            $userquestion = selectFromQuestion($toDelete, "DESC");
+            $userquestion = selectFromQuestion($toDelete);
 
             // Si l'utilisateur est celui qui a posé la question OU que l'utilisateur est administrateur
             if($_SESSION['utilisateur']['id'] == $userquestion['#Id_profil'] || $_SESSION['utilisateur']['role'] == 1) {

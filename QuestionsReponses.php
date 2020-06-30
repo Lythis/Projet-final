@@ -17,7 +17,7 @@
         // Si on a bien quelque chose dans la première ligne de notre tableau $questionStatus
         if(isset($questionStatus[0]) && !empty($questionStatus[0])) {
             // On prend la question de la base de données qui correspond à la première ligne de notre tableau $questionStatus et la met dans un tableau $question
-            $question = selectFromQuestion($questionStatus[0], "");
+            $question = selectFromQuestion($questionStatus[0]);
 
             // Si on a bien une réponse qui a été envoyé en méthode POST
             if(isset($_POST['reponse']) && !empty($_POST['reponse'])) {
@@ -33,25 +33,64 @@
             $idProfil = $question["#Id_profil"];
             $idCategorie = $question["#Id_categorie"];
 
-            if(isset($_POST['remplaceCateg'])) {
-                $idCategorie = $_POST['remplaceCateg'];
-                updateCategQuestion($idQuestion, $idCategorie);
+            if($question["Type"] == 1) {
+                if($_SESSION["utilisateur"]["id"] == $idProfil || areFriends($_SESSION["utilisateur"]["id"], $idProfil) == true || $_SESSION["utilisateur"]["role"] == 1) {
+                    if(isset($_POST['remplaceCateg'])) {
+                        $idCategorie = $_POST['remplaceCateg'];
+                        updateCategQuestion($idQuestion, $idCategorie);
+                    }
+        
+                    // On récupère les réponses à la question dans $reponses, l'utilisateur qui a posté la question dans $users et la categorie de la question dans $categorie
+                    $reponses = selectFromReponseWithidQuestion($idQuestion, "DESC");
+                    $users = selectFromProfilWithidQuestion($idQuestion, $idProfil);
+                    $categorie = selectFromCategorieWithidQuestion($idQuestion, $idCategorie);
+        
+                    // Titre & header
+                    $title ='Question de '.$users["Pseudo_profil"];
+                    require_once('includes/header.php');
+        
+                    // On obtient le nombre de réponses à la question dans un tableau $nombreReponses & appel de la navbar
+                    $nombreReponses = getnombreReponses($reponses);
+                    navBar();
+        
+                    require_once('./includes/affichage_question_reponse.php');
+                }
+                else {
+                    // Titre & header
+                    $title ='Accès non autorisé';
+                    require_once('includes/header.php');
+                    navBar();
+                    ?>
+                    <div class="card">
+                        <div class="card-body" style="display: flex;">
+                            <p class="card-text w-25"> <img class="mt-2" src="image/tenor.gif" style="  width: 90%; margin-right: 6%;" class="" alt="facher">
+                            <h6 class="mt-5">Vous n'avez pas accès à cette question! <a href="./index.php">Retour à l'accueil</a>.</h6></p>
+                        </div>
+                    </div>
+                    <?php
+                }
             }
-
-            // On récupère les réponses à la question dans $reponses, l'utilisateur qui a posté la question dans $users et la categorie de la question dans $categorie
-            $reponses = selectFromReponseWithidQuestion($idQuestion, "DESC");
-            $users = selectFromProfilWithidQuestion($idQuestion, $idProfil);
-            $categorie = selectFromCategorieWithidQuestion($idQuestion, $idCategorie);
-
-            // Titre & header
-            $title ='Question de '.$users["Pseudo_profil"];
-            require_once('includes/header.php');
-
-            // On obtient le nombre de réponses à la question dans un tableau $nombreReponses & appel de la navbar
-            $nombreReponses = getnombreReponses($reponses);
-            navBar();
-
-            require_once('./includes/affichage_question_reponse.php');
+            else {
+                if(isset($_POST['remplaceCateg'])) {
+                    $idCategorie = $_POST['remplaceCateg'];
+                    updateCategQuestion($idQuestion, $idCategorie);
+                }
+    
+                // On récupère les réponses à la question dans $reponses, l'utilisateur qui a posté la question dans $users et la categorie de la question dans $categorie
+                $reponses = selectFromReponseWithidQuestion($idQuestion, "DESC");
+                $users = selectFromProfilWithidQuestion($idQuestion, $idProfil);
+                $categorie = selectFromCategorieWithidQuestion($idQuestion, $idCategorie);
+    
+                // Titre & header
+                $title ='Question de '.$users["Pseudo_profil"];
+                require_once('includes/header.php');
+    
+                // On obtient le nombre de réponses à la question dans un tableau $nombreReponses & appel de la navbar
+                $nombreReponses = getnombreReponses($reponses);
+                navBar();
+    
+                require_once('./includes/affichage_question_reponse.php');
+            }
         }
 
         // Sinon si on a une deuxième ligne dans notre tableau $questionStatus (donc qu'une virgule était bien présente == requête pour supprimer la question)

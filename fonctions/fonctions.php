@@ -53,25 +53,41 @@
     function accueil() {
         if (!empty($_SESSION)) {
             if(isset($_POST["triage"])) {
-                setcookie("triage", $_POST["triage"]);
-            }
-            if(isset($_POST["triagea"]) || isset($_COOKIE["triage"])) {
-                if((isset($_POST["categorie"]) && $_POST["categorie"] == "null") || (isset($_COOKIE["categorie"]) && $_COOKIE["categorie"] == "null")) {
-                    setcookie("triagea", null, time() - 3600);
-                    setcookie("categorie", null, time() - 3600);
-                    header('Location: ./index.php');
+                if($_POST["triage"] == "null") {
+                    setcookie("triage", "null", time() - 3600);
+                }
+                else {
+                    setcookie("triage", $_POST["triage"]);
                 }
             }
             if(isset($_POST["triagea"])) {
-                setcookie("triagea", $_POST["triagea"]);
-                if(isset($_POST["categorie"])) {
-                    setcookie("categorie", $_POST["categorie"]);
+                if($_POST["triagea"] == "null") {
+                    setcookie("triagea", "null", time() - 3600);
+                    setcookie("qamis", "null", time() - 3600);
+                    setcookie("categorie", "null", time() - 3600);
                 }
-                elseif(isset($_POST["qamis"])) {
-                    setcookie("categorie", $_POST["qamis"]);
+                else {
+                    if($_POST["triagea"] == "qamis") {
+                        setcookie("qamis", $_POST["triagea"]);
+                        setcookie("triagea", $_POST["triagea"]);
+                        setcookie("categorie", null, time() - 3600);
+                    }
+                    elseif(isset($_POST["categorie"])) {
+                        if($_POST["categorie"] == "null") {
+                            setcookie("triagea", "null", time() - 3600);
+                            setcookie("qamis", "null", time() - 3600);
+                            setcookie("categorie", "null", time() - 3600);
+                        }
+                        else {
+                            setcookie("categorie", $_POST["categorie"]);
+                            setcookie("triagea", $_POST["triagea"]);
+                            setcookie("qamis", null, time() - 3600);
+                        }
+                    }
                 }
             }
             if(isset($_POST["triage"]) || isset($_POST["triagea"])) {
+                //var_dump($_POST);
                 header('Location: ./index.php');
             }
             require_once('./includes/index_login.php');
@@ -121,28 +137,110 @@
     }
 
     #Sélectionner toutes les questions de la base de données en donnant l'ordre de triage et les limites de sélection, retourne les questions en tableau
-    function selectAllQuestions($where, $order, $limit, $offset, $totalRequest) {
+    function selectAllQuestions($limit) {
         $con = connexionBdd();
+        $idProfil = $_SESSION["utilisateur"]["id"];
 
-        if($totalRequest == false) {
-            $requete = "SELECT * FROM question";
-            if($where != null) {
-                $requete = $requete." WHERE $where";
+        if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] != "null" && isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] != "null") {
+            if($_COOKIE["triagea"] == "categorie" && isset($_COOKIE["categorie"]) && $_COOKIE["categorie"] != "null") {
+                $categ = $_COOKIE["categorie"];
+                switch($_COOKIE["triage"]) {
+                    case "likeA":
+                        $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` WHERE ((`#Id_categorie` = $categ) AND ((`Type` = 0) OR (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` ))) OR (`question`.`#Id_profil` = $idProfil)) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                    break;
+                    case "likeD":
+                        $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` WHERE ((`#Id_categorie` = $categ) AND ((`Type` = 0) OR (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` ))) OR (`question`.`#Id_profil` = $idProfil)) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                    break;
+                    case "dateA":
+                        $request = "SELECT * FROM `question` WHERE ((`Type` = 0 AND `#Id_categorie` = $categ) OR (`Type` = 1 AND `#Id_categorie` = $categ AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = 1 THEN `#Id_profil` END FROM `ami`)) OR (`#Id_profil` = $idProfil AND `#Id_categorie` = $categ)) ORDER BY `Date_creation_question` ASC";
+                    break;
+                    case "dateD":
+                        $request = "SELECT * FROM `question` WHERE ((`Type` = 0 AND `#Id_categorie` = $categ) OR (`Type` = 1 AND `#Id_categorie` = $categ AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = 1 THEN `#Id_profil` END FROM `ami`)) OR (`#Id_profil` = $idProfil AND `#Id_categorie` = $categ)) ORDER BY `Date_creation_question` DESC";
+                    break;
+                    case "reponseA":
+                        $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` WHERE ((`#Id_categorie` = $categ) AND ((`Type` = 0) OR (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` ))) OR (`question`.`#Id_profil` = $idProfil)) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                    break;
+                    case "reponseD":
+                        $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` WHERE ((`#Id_categorie` = $categ) AND ((`Type` = 0) OR (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` ))) OR (`question`.`#Id_profil` = $idProfil)) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                    break;
+                    default:
+                    $request = "SELECT * FROM `question` WHERE (`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil) ORDER BY `Date_creation_question` DESC";
+                }
             }
-            $requete = $requete." $order";
-            if ($limit != null) {
-                $requete = $requete." LIMIT $limit OFFSET $offset";
+            elseif($_COOKIE["triagea"] == "qamis" && isset($_COOKIE["qamis"])) {
+                switch($_COOKIE["triage"]) {
+                    case "likeA":
+                        $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` WHERE (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`Type` = 1 AND `question`.`#Id_profil` = $idProfil) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                    break;
+                    case "likeD":
+                        $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` WHERE (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`Type` = 1 AND `question`.`#Id_profil` = $idProfil) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                    break;
+                    case "dateA":
+                        $request = "SELECT * FROM `question` WHERE (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`Type` = 1 AND `#Id_profil` = $idProfil) ORDER BY `Date_creation_question` ASC";
+                    break;
+                    case "dateD":
+                        $request = "SELECT * FROM `question` WHERE (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`Type` = 1 AND `#Id_profil` = $idProfil) ORDER BY `Date_creation_question` DESC";
+                    break;
+                    case "reponseA":
+                        $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` WHERE (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`Type` = 1 AND `question`.`#Id_profil` = $idProfil) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                    break;
+                    case "reponseD":
+                        $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` WHERE (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`Type` = 1 AND `question`.`#Id_profil` = $idProfil) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                    break;
+                    default:
+                    $request = "SELECT * FROM `question` WHERE (`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil) ORDER BY `Date_creation_question` DESC";
+                }
+            }
+            else {
+                $request = "SELECT * FROM `question` WHERE (`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil) ORDER BY `Date_creation_question` DESC";
+            }
+        }
+        elseif(isset($_COOKIE["triage"]) && $_COOKIE["triage"] != "null" && (!isset($_COOKIE["triagea"]) || $_COOKIE["triagea"] == "null")) {
+            switch($_COOKIE["triage"]) {
+                case "likeA":
+                    $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` WHERE (`Type` = 0) OR (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`question`.`#Id_profil` = $idProfil) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                break;
+                case "likeD":
+                    $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `likes` ON `Id_question` = `#Id_question` WHERE (`Type` = 0) OR (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`question`.`#Id_profil` = $idProfil) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                break;
+                case "dateA":
+                    $request = "SELECT * FROM `question` WHERE (`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil) ORDER BY `Date_creation_question` ASC";
+                break;
+                case "dateD":
+                    $request = "SELECT * FROM `question` WHERE (`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil) ORDER BY `Date_creation_question` DESC";
+                break;
+                case "reponseA":
+                    $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` WHERE (`Type` = 0) OR (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`question`.`#Id_profil` = $idProfil) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) ASC";
+                break;
+                case "reponseD":
+                    $request = "SELECT `Id_question`, `Titre_question`, `Date_creation_question`, `Type`, `question`.`#Id_profil`, `#Id_categorie`, `#Id_question` FROM `question` LEFT JOIN `reponse` ON `Id_question` = `#Id_question` WHERE (`Type` = 0) OR (`Type` = 1 AND `question`.`#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`question`.`#Id_profil` = $idProfil) GROUP BY `#Id_question`, `Id_question` ORDER BY count(`#Id_question`) DESC";
+                break;
+                default:
+                $request = "SELECT * FROM `question` WHERE (`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil) ORDER BY `Date_creation_question` DESC";
+            }
+        }
+        elseif(isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] != "null" && (!isset($_COOKIE["triage"]) || $_COOKIE["triage"] == "null")) {
+            if($_COOKIE["triagea"] == "categorie" && isset($_COOKIE["categorie"]) && $_COOKIE["categorie"] != "null") {
+                $categ = $_COOKIE["categorie"];
+                $request = "SELECT * FROM `question` WHERE ((`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil)) AND `#Id_categorie` = $categ ORDER BY `Date_creation_question` DESC";
+            }
+            elseif($_COOKIE["triagea"] == "qamis" && isset($_COOKIE["qamis"])) {
+                $request = "SELECT * FROM `question` WHERE (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`Type` = 1 AND `#Id_profil` = $idProfil) ORDER BY `Date_creation_question` DESC";
+            }
+            else {
+                $request = "SELECT * FROM `question` WHERE (`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil) ORDER BY `Date_creation_question` DESC";
             }
         }
         else {
-            if ($limit != null) {
-                $requete = $totalRequest. " LIMIT $limit OFFSET $offset";
-            }
-            else {
-                $requete = $totalRequest;
-            }
+            $request = "SELECT * FROM `question` WHERE (`Type` = 0) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $idProfil THEN `Id_profil` WHEN `Id_profil` = $idProfil THEN `#Id_profil` END FROM `ami` )) OR (`#Id_profil` = $idProfil) ORDER BY `Date_creation_question` DESC";
         }
-        $query = $con->prepare($requete);
+
+        if($limit != null) {
+            $offset = $limit * ($_GET["page"] - 1);
+            $request = $request." LIMIT $limit OFFSET $offset";
+        }
+        
+        $query = $con->prepare($request);
         $query->execute();
         return $query->fetchAll();
     }
@@ -157,10 +255,10 @@
     }
 
     #Sélectionner une question en précisant son ID et l'ordre de triage, retourne la question en tableau
-    function selectFromQuestion($idQuestion, $order) {
+    function selectFromQuestion($idQuestion) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $idQuestion ORDER BY `Date_creation_question`");
+        $query = $con->prepare("SELECT * FROM question WHERE `Id_question` = $idQuestion");
         $query->execute();
         return $query->fetch();
     }
@@ -178,7 +276,13 @@
     function selectFromQuestionWithidProfil($idProfil, $order) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `question` WHERE `#Id_profil` = $idProfil ORDER BY `Date_creation_question` $order");
+        if($_SESSION["utilisateur"]["id"] == $idProfil || $_SESSION["utilisateur"]["role"] == 1) {
+            $query = $con->prepare("SELECT * FROM `question` WHERE `#Id_profil` = $idProfil ORDER BY `Date_creation_question` $order");
+        }
+        else {
+            $currentUser = $_SESSION["utilisateur"]["id"];
+            $query = $con->prepare("SELECT * FROM `question` WHERE (`Type` = 0 AND `#Id_profil` = $idProfil) OR (`Type` = 1 AND `#Id_profil` IN( SELECT CASE WHEN `#Id_profil` = $currentUser THEN `Id_profil` WHEN `Id_profil` = $currentUser THEN `#Id_profil` END FROM `ami` )) ORDER BY `Date_creation_question` $order");
+        }
         $query->execute();
         return $query->fetchAll();
     }
@@ -211,10 +315,10 @@
     }
 
     #Sélectionner une catégorie en précisant l'ID de la question, retourne la catégorie en tableau
-    function selectFromCategorieWithidQuestion($idQuestion, $idCategorie) {
+    function selectFromCategorieWithidQuestion($idQuestion) {
         $con = connexionBdd();
 
-        $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = ( SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idQuestion AND `#Id_categorie` = $idCategorie )");
+        $query = $con->prepare("SELECT * FROM `categorie` WHERE `Id_categorie` = (SELECT `#Id_categorie` FROM `question` WHERE `Id_question` = $idQuestion)");
         $query->execute();
         return $query->fetch();
     }
@@ -231,16 +335,18 @@
     }
 
     #Fonction pour insérer une question dans la base de données, ne retourne rien
-    function insertIntoQuestion($question, $date, $utilisateur, $categorie) {
+    function insertIntoQuestion($question, $date, $utilisateur, $categorie, $visible) {
         $con = connexionBdd();
 
-        $query = $con->prepare('INSERT INTO `question`(`Titre_question`, `Date_creation_question`, `#Id_profil`, `#Id_categorie`) VALUES (:question, :dateajd, :id_user, :id_categorie)');
+        $query = $con->prepare('INSERT INTO `question`(`Titre_question`, `Date_creation_question`, `Type`, `#Id_profil`, `#Id_categorie`) VALUES (:question, :dateajd, :typeQ, :id_user, :id_categorie)');
         $query->bindParam(':question', $question);
         $query->bindParam(':dateajd', $date);
+        $query->bindParam(':typeQ', $visible);
         $query->bindParam(':id_user', $utilisateur);
         $query->bindParam(':id_categorie', $categorie);
         $query->execute();
     }
+
     #Fonction pour insérer une réponse dans la base de données, ne retourne rien
     function insertIntoReponse($reponse, $date, $utilisateur, $question) {
         $con = connexionBdd();
@@ -252,11 +358,6 @@
         $query->bindParam(':id_question', $question);
         $query->execute();
     }
-
-    #Fonnction permetant de modifier la categorie d'une question
-    
-    
-
 
     #Fonction pour insérer une catégorie dans la base de données, ne retourne rien
     function insertIntoCategorie($libelle) {
@@ -307,6 +408,7 @@
         $query->bindParam(':id', $idQuestion);
         $query->execute();
     }
+
     #Fonction pour supprimer une categorie de la base de données, ne retourne rien
     function deleteCategorie($idCategorie , $idSupp) {
         $con = connexionBdd();
@@ -323,6 +425,7 @@
             setcookie("categorie", null, time() - 3600);
         }
     }
+
     #Fonnction permetant de modifier la categorie d'une question
     function updateCategQuestion($idQuestion, $idCategorie) {
         $con = connexionBdd();
