@@ -1,7 +1,7 @@
 <body class="bgP">
     <div>
-        <div class="cardP w-md-50 mr-md-9 responsive-bootstrap-card m-card shadow-lg p-3 " id="questionpose<?php echo $idQuestion ?>" >
-            <h5 class=" card-header bg-white border-0" id="reponse<?php echo $idQuestion; ?>"><a class="text-dark float-sm-left float-right mr-md-5" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>"></a> <p> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><b><?php echo $users["Pseudo_profil"]; ?></a></b> a posé la question :</h5></p>
+        <div <?php if($question["Type"] == 1) { ?> style="background-color: #ECDCEC;" <?php } ?> class="cardP w-md-50 mr-md-9 responsive-bootstrap-card m-card shadow-lg p-3 " id="questionpose<?php echo $idQuestion ?>" >
+            <h5 <?php if($question["Type"] == 1) { ?> style="background-color: #ECDCEC;" <?php } else { ?> style="background-color: white;" <?php } ?> class=" card-header border-0" id="reponse<?php echo $idQuestion; ?>"><a class="text-dark float-sm-left float-right mr-md-5" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>"></a> <p> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><b><?php echo $users["Pseudo_profil"]; ?></a></b> a posé la question <?php if($question["Type"] == 1) { ?> à ses amis <?php } ?> :</h5></p>
             <div class="card-body">
                 <h5 class="card-title">Catégorie : <?php echo $categorie["Libelle_categorie"]; ?></h5>
                 <p class="card-text"><?php echo $question["Titre_question"]; ?></p>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <!-- Modal -->
-            <div class="modal fade" id="modifCAteg" tabindex="-1" role="dialog" aria-labelledby="modifCAtegLabel" aria-hidden="true">
+        <div class="modal fade" id="modifCAteg" tabindex="-1" role="dialog" aria-labelledby="modifCAtegLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -61,12 +61,10 @@
                     <button type="submit" value="" class="btn btn-primary">Changer la catégorie</button>
                     </div>
                 </div>
-                </div>
-                </div>
             </div>
-            </div>
-                </form>
-        <div class="cardP w-md-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="repondre">
+        </div>
+        </form>
+        <div <?php if($question["Type"] == 1) { ?> style="background-color: #ECDCEC;" <?php } ?> class="cardP w-md-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="repondre">
             <div class="card-body">
                 <form class="needs-validation" method="post" action="./QuestionsReponses.php?question=<?php echo $questionStatus[0]; ?>">
                     <div >
@@ -80,11 +78,8 @@
                     </div>
                     <button type="submit" class="btn bg-primary text-white">Envoyer</button>
                 </form>
-                
             </div>
-            
-
-            
+        </div>
             <?php
             
             if (!empty($reponses)) {
@@ -93,10 +88,8 @@
                     
                     $users = selectFromProfilWithidReponse($idQuestion, $idReponse);
                     ?>
-                    
-                </div>
                 
-                <div class="cardP w-md-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="question<?php echo $idQuestion; ?>">
+                <div <?php if($question["Type"] == 1) { ?> style="background-color: #ECDCEC;" <?php } ?> class="cardP w-md-50 responsive-bootstrap-card shadow-lg p-3 mt-2 collapse "  id="question<?php echo $idQuestion; ?>">
                     <div class="card-body">
                         <div>
                             <h5><a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><img class="picture-user-small" src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><b><?php echo $users["Pseudo_profil"]; ?></a></b> a répondu :</h5>

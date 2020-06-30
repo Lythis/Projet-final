@@ -32,7 +32,7 @@
                                     <option value="0">Publique</option>
                                     <option value="1">Amis uniquement</option>
                                 </select>
-                                <?php if($_SESSION['utilisateur']['role'] == 1){?>
+                                <?php if($_SESSION['utilisateur']['role'] == 1) { ?>
                                 
                                 <p>Tu n'as pas trouvé de catégorie qui te correspond? <br>Alors clique <a data-toggle="modal" data-target="#newCateg" class="text-primary"> ici</a> pour rajouter une catégorie.</p>
                                 <p>Une catégorie ne te plait pas? <br>Clique <a data-toggle="modal" data-target="#suppCateg" class="text-danger"> ici</a> pour supprimer une catégorie.</p></p>
@@ -98,6 +98,9 @@
                                 </div>
                             </div>
                         </div>
+                        <?php } else { ?>
+                            <button type="submit" class="pBtn " name="poserquestion" value="valide">Envoyer</button>
+                            </form>
                         <?php } ?>
                     </div>
                 </div>

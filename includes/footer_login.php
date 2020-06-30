@@ -105,7 +105,7 @@
         $(document).ready(function(){
     $("select.list2").change(function(){
         var listDeTri = $(this).children("option:selected").val();
-        if(listDeTri == "categ"){
+        if(listDeTri == "categorie"){
             $("select.categ").css("display","block")
             $("select.list2").css("display","none")
             

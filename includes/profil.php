@@ -99,7 +99,7 @@
                 
                     foreach ($questions as $question) {
                         ?>
-                        <div class="p-card">
+                        <div <?php if($question["Type"] == 1) { ?> style="background-color: #ECDCEC;" <?php } ?> class="p-card">
                             <div >
                                 <img class="rounded-circle float-left  image-profil " src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>">
                                 
