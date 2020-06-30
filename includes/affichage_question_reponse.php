@@ -80,6 +80,7 @@
                 </form>
             </div>
         </div>
+    </div>
             <?php
             
             if (!empty($reponses)) {
