@@ -588,7 +588,7 @@ body{
 }
 .heart{
     display: flex;
-    margin-left: 49%;
+    margin-left: 48%;
 }
 #reload{
     margin-top: 14px;
@@ -964,6 +964,7 @@ button[aria-expanded="false"] .afficher
 .press-button{
     border: none;
     background-color: white;
+    margin-left: 2px;
 }
 /* met en ligne le boutton edit et supprimer */
 .btn-flex{

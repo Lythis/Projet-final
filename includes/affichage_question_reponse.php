@@ -20,8 +20,31 @@
                         <button type="submit" class="btn bg-primary text-white ml-4"  data-toggle="modal" data-target="#modifCAteg">Modifier la catégorie</button>
                         <form action="./QuestionsReponses.php" method="get">
                             <button class="btn btn-danger ml-4" name="question" value="<?php echo $idQuestion; ?>,supp">Supprimer la question</button>
-                        </form>
+                        </form>                      
                         <?php } ?>
+                        <div class="heart">
+                    <?php
+                    $nombreLikes = getLikeQuestion($idQuestion);
+
+                    $hasLiked = hasLiked($_SESSION["utilisateur"]["id"], $idQuestion);
+                        if($hasLiked == true) {
+                            ?>
+                            <button class="liked1 press-button" name="liked" id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
+                                <i class="fas fa-heart heart1"> </i>
+                            </button>
+                            <?php
+                        }
+                        else {
+                            ?>
+                            <button class="notliked1 press-button" name="notliked"  id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
+                                <i class="far fa-heart heart2"></i>
+                            </button>
+                            
+                            <?php
+                        }
+                    ?>
+                    <div id="reload"> <p> <?php echo $nombreLikes["likecounter"]; ?></p></div>
+                    </div>
                     </div>
                 </div>
             </div>

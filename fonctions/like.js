@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $(".notliked1").click(function(){
-        var like = $( ".notliked1" ).first().attr( "id" ).split(',');
+        var like = $(this).first().attr( "id" ).split(',');
         var questionId = like[0];
         var connexionId = like[1]; 
         console.log(like);
@@ -19,7 +19,7 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
     $(".liked1").click(function(){
-        var like = $( ".liked1" ).first().attr( "id" ).split(',');
+        var like = $(this).first().attr( "id" ).split(',');
         var questionId = like[0];
         var connexionId = like[1]; 
         console.log(like);      

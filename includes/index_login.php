@@ -14,7 +14,7 @@
                 <option <?php if(isset($_COOKIE["triage"]) && $_COOKIE["triage"] == "reponseD") { echo "selected"; } ?> value="reponseD">Nombre de réponses - Descendantes</i></option>
             </select>
             <select class="listDeTri list2" name="triagea" >
-                <option <?php if(!isset($_COOKIE["triagea"])) { echo "selected"; } ?> class="defaut" value="0">Pas de triage avancé</option>
+            <option <?php if(!isset($_COOKIE["triagea"])) { echo "selected"; } ?> class="defaut" value="0">Pas de triage avancé</option>
                 <option <?php if(isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] == "categ") { echo "selected"; } ?> value="categ">Sélectionner une catégorie</i></option>
                 <option <?php if(isset($_COOKIE["triagea"]) && $_COOKIE["triagea"] == "qamis") { echo "selected"; } ?> value="qamis">Questions posées par mes amis</i></option>
             </select>
@@ -157,10 +157,14 @@
             
             $nombreReponses = getnombreReponses($reponses);
 
+            ?>
+            <div class="reload"><?php 
             $nombreLikes = getLikeQuestion($idQuestion);
 
             $hasLiked = hasLiked($_SESSION["utilisateur"]["id"], $idQuestion);
             ?>
+            </div>
+
 
             <div class="carde5 responsive-bootstrap-card m-card shadow-lg p-3 mb-5" id="questionpose<?php echo $idQuestion ?>">
                 <h5  id="reponse<?php echo $idQuestion; ?>"><a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><img class="picture-user-small " src="<?php echo $users["Image_profil"]; ?>" alt="<?php echo $users["Pseudo_profil"]; ?>"></a> <a class="text-dark" name="profil" href="./profil.php?profil=<?php echo $users["Id_profil"]; ?>"><b><?php echo $users["Pseudo_profil"]; ?></a></b> a posé la question :</h5>
@@ -179,7 +183,7 @@
                         else {
                             ?>
                             <button class="notliked1 press-button" name="notliked"  id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
-                                <i class="far fa-heart heart2"> </div></i>
+                                <i class="far fa-heart heart2"></i>
                             </button>
                             
                             <?php
