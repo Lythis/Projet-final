@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 29 juin 2020 à 16:02
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Généré le :  mar. 30 juin 2020 à 11:55
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.4.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -88,6 +88,13 @@ CREATE TABLE IF NOT EXISTS `demande_ami` (
   KEY `Id_profil_send` (`Id_profil`),
   KEY `Id_profil_receive` (`#Id_profil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Déchargement des données de la table `demande_ami`
+--
+
+INSERT INTO `demande_ami` (`Id_profil`, `#Id_profil`) VALUES
+(57, 1);
 
 -- --------------------------------------------------------
 
@@ -234,13 +241,13 @@ CREATE TABLE IF NOT EXISTS `question` (
   `Id_question` int(11) NOT NULL AUTO_INCREMENT,
   `Titre_question` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `Date_creation_question` date NOT NULL,
-  `Type` int(11) NOT NULL DEFAULT '0',
+  `Type` int(11) NOT NULL DEFAULT 0,
   `#Id_profil` int(11) NOT NULL,
   `#Id_categorie` int(11) NOT NULL,
   PRIMARY KEY (`Id_question`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_categorie` (`#Id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `question`
@@ -370,8 +377,9 @@ INSERT INTO `question` (`Id_question`, `Titre_question`, `Date_creation_question
 (173, 'Rerum voluptas qui qui rem omnis quia voluptatem. Excepturi asperiores in voluptatem delectus incidunt similique ut dolore?', '2020-06-11', 0, 2, 2),
 (174, 'Quam assumenda non voluptas voluptatem consequuntur. Quaerat ullam quas exercitationem ut sint numquam et. Doloribus nostrum eaque dolorum id autem. Id aut ad quia aut?', '2020-06-11', 0, 2, 13),
 (175, 'salut', '2020-06-24', 1, 1, 13),
-(176, 'salut2', '2020-06-24', 1, 1, 5),
-(180, 'Morgan est très beau', '2020-06-29', 1, 1, 4);
+(176, 'salut2', '2020-06-24', 1, 1, 10),
+(180, 'Morgan est très beau', '2020-06-29', 1, 1, 4),
+(181, 'Quelle est votre couleur préférée?', '2020-06-30', 1, 57, 13);
 
 -- --------------------------------------------------------
 
@@ -389,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   PRIMARY KEY (`Id_reponse`),
   KEY `#Id_profil` (`#Id_profil`),
   KEY `#Id_question` (`#Id_question`)
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Déchargement des données de la table `reponse`
@@ -406,7 +414,8 @@ INSERT INTO `reponse` (`Id_reponse`, `Contenu_reponse`, `Date_reponse`, `#Id_pro
 (85, 'test', '2020-04-21', 1, 45),
 (86, 'test2', '2020-04-21', 1, 45),
 (91, 'k', '2020-04-22', 1, 46),
-(96, 'lol', '2020-06-29', 1, 176);
+(96, 'lol', '2020-06-29', 1, 176),
+(97, 'ok', '2020-06-30', 1, 176);
 
 -- --------------------------------------------------------
 
