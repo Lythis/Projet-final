@@ -240,7 +240,6 @@
             $request = $request." LIMIT $limit OFFSET $offset";
         }
         
-        var_dump($request);
         $query = $con->prepare($request);
         $query->execute();
         return $query->fetchAll();
