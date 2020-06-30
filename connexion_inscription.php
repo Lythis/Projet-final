@@ -5,7 +5,7 @@
     require_once('includes/header.php');
 
     // Si les informations de connexion ne sont pas vides
-    // accès au compte root : root@livequestion.com, mdp : 12345 (tout les derniers comptes de la base de données ont le mot de passe "Jeff")
+    // accès au compte root : root@livequestion.com, mdp : 123456 (tout les derniers comptes de la base de données ont le mot de passe "jeff")
     if (!empty($_POST['email']) && !empty($_POST['mdp']) && isset($_POST['connexion']) && $_POST['connexion'] == 'valide') {
         $connexion = true;
         $email = $_POST['email'];
