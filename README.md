@@ -14,6 +14,7 @@ Le site comporte 2 grandes parties : La partie *non-connecté*, avec une page de
 - Les comptes sont mis administrateurs directement depuis la base de données (```#Id_role = 1``` étant égal au status administrateur).
 - D'autres fonctionnalités secondaires sont présentes.
 - Essayer d'accéder à une page du site partie *connecté* sans être connecté résultera d'un accès refusé.
+- **Update 30/06/20** : L'utilisateur possède maintenant une liste d'amis, des questions uniquement pour les amis, un système de triage de questions, un système de like, une meilleure gestion de l'image de profil... Les administrateurs peuvent supprimer/ajouter une catégorie.
 
 ## Comment installer le site :
 
