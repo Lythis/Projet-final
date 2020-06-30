@@ -29,14 +29,14 @@
                     $hasLiked = hasLiked($_SESSION["utilisateur"]["id"], $idQuestion);
                         if($hasLiked == true) {
                             ?>
-                            <button class="liked1 press-button" name="liked" id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
+                            <button class="liked1 press-button" name="liked" id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>" <?php if($question["Type"] == 1) { ?> style="background-color: #ECDCEC;" <?php } ?>>
                                 <i class="fas fa-heart heart1"> </i>
                             </button>
                             <?php
                         }
                         else {
                             ?>
-                            <button class="notliked1 press-button" name="notliked"  id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>">
+                            <button class="notliked1 press-button" name="notliked"  id="<?php echo $idQuestion ?>, <?php echo $_SESSION['utilisateur']['id']; ?>" <?php if($question["Type"] == 1) { ?> style="background-color: #ECDCEC;"<?php } ?>>
                                 <i class="far fa-heart heart2"></i>
                             </button>
                             
