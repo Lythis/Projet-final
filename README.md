@@ -1,3 +1,5 @@
+Refonte du projet en Symfony pour la deuxième année. 
+
 # Projet-LiveQuestion
 Ce projet consiste à réaliser un site interactif en fonction d'un cahier des charges et de maquettes données.
 Le site comporte 2 grandes parties : La partie *non-connecté*, avec une page design précise à réaliser, et une partie *connecté*, où l'utilisateur change d'interface et peut envoyer et/ou répondre à des questions.
@@ -28,6 +30,6 @@ Le site comporte 2 grandes parties : La partie *non-connecté*, avec une page de
 
 ## Membres du projet :
 
-- Nicolas Valenti ([@YummYume](https://github.com/YummYume))
-- Morgan Watbled ([@Lythis](https://github.com/Lythis))
-- Kyllian Louis Joseph ([@prxph3te](https://github.com/prxph3te))
+- Valenti ([@YummYume](https://github.com/YummYume))
+- Watbled ([@Lythis](https://github.com/Lythis))
+- Louis Joseph ([@prxph3te](https://github.com/prxph3te))
